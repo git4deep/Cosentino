@@ -6,10 +6,10 @@
                 "privileges_with_grant_option": [
                     "SELECT",
                     "SELECT METADATA",
-                    "INSERT",
-                    "EXECUTE"
+                    "INSERT", 
+                    "EXECUTE" 
                 ]
             }
-        ]
+         ]
     }
 }
