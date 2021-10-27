@@ -4,3 +4,5 @@ mta_archives/
 db/.env
 # auto generated wildcard
 Cosentino/COS_BIC/db/.env
+# auto generated wildcard
+COS_BIC/db/.env

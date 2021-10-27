@@ -28,5 +28,11 @@
         "object": "DUMMY",
         "schema": "SYS"
         }
+    },
+    "Training_SCP::Z0COSTCENTER_HREPCONSO": {
+    "target": {
+        "object": "Z0COSTCENTER_HREPCONSO",
+        "schema": "COS_SDI"
+        }
     }
   }

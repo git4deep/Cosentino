@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="Training_SCP::CV_Z0COSTCENTERH" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_Z0COSTCENTERH"/>
+  <metadata changedAt="2020-07-10 11:41:47.744"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="CV_Z0COSTCENTER_H">
+      <resourceUri>Training_SCP::CV_Z0COSTCENTER_H</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="CV_Z0COSTCENTER_H">
+    <descriptions/>
+    <attributes>
+      <attribute id="0COSTCENTER_TEXT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCENTER_TEXT"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="0COSTCENTER_TEXT"/>
+      </attribute>
+      <attribute id="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel7_1" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel7"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel7"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel1_1" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel1"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel1"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel2_1" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel2"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel2"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel3_1" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel3"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel3"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel4_1" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel4"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel4"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel5_1" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel5"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel5"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel6_1" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel6"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel6"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel8_1" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel8"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel8"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel9_1" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel9"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel9"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel10_1" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel10"/>
+        <keyMapping columnObjectName="CV_Z0COSTCENTER_H" columnName="Cost_CenterLevel10"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CAL_KFIGURE" hidden="false" order="1" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="CAL_KFIGURE"/>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="COSTCENTER_H">
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel1_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel2_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel3_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel4_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel5_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel6_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel7_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">Cost_CenterLevel8_1</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">0COSTCENTER_TEXT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="COSTCENTER_H" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED">
+            <descriptions defaultDescription="COSTCENTER_H"/>
+            <levels>
+              <level levelAttribute="Cost_CenterLevel1_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="1" orderAttribute="Cost_CenterLevel1_1"/>
+              <level levelAttribute="Cost_CenterLevel2_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="2" orderAttribute="Cost_CenterLevel2_1"/>
+              <level levelAttribute="Cost_CenterLevel3_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="3" orderAttribute="Cost_CenterLevel3_1"/>
+              <level levelAttribute="Cost_CenterLevel4_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="4" orderAttribute="Cost_CenterLevel4_1"/>
+              <level levelAttribute="Cost_CenterLevel5_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="5" orderAttribute="Cost_CenterLevel5_1"/>
+              <level levelAttribute="Cost_CenterLevel6_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="6" orderAttribute="Cost_CenterLevel6_1"/>
+              <level levelAttribute="Cost_CenterLevel7_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="7" orderAttribute="Cost_CenterLevel7_1"/>
+              <level levelAttribute="Cost_CenterLevel8_1" levelType="MDLEVEL_TYPE_UNKNOWN" order="8" orderAttribute="Cost_CenterLevel8_1"/>
+              <level levelAttribute="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT" levelType="MDLEVEL_TYPE_UNKNOWN" order="9" orderAttribute="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+              <level levelAttribute="0COSTCENTER_TEXT" levelType="MDLEVEL_TYPE_UNKNOWN" order="10" orderAttribute="0COSTCENTER_TEXT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>
