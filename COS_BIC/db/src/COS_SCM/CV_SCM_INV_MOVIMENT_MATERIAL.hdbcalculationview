@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_INV_MOVIMENT_MATERIAL" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_INV_MOVIMENT_MATERIAL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_INV_MOVIMENT_MATERIAL">
+      <resourceUri>COS_SCM::SCM_INV_MOVIMENT_MATERIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_INV_MOVIMENT_MATERIAL">
+    <attributes>
+      <attribute id="CD_ACCOU_PLAN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ACCOU_PLAN"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="CD_ACCOU_PLAN"/>
+      </attribute>
+      <attribute id="CD_AREA" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_AREA"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="CD_AREA"/>
+      </attribute>
+      <attribute id="CD_MATER_TYPE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER_TYPE"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="CD_MATER_TYPE"/>
+      </attribute>
+      <attribute id="CD_MOVIM_CLASS" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MOVIM_CLASS"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="CD_MOVIM_CLASS"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="DS_ACCOU_PLAN" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_ACCOU_PLAN"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="DS_ACCOU_PLAN"/>
+      </attribute>
+      <attribute id="DS_AREA" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_AREA"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="DS_AREA"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="DS_PLANT_GROUP" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT_GROUP"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="DS_PLANT_GROUP"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="MY_NATUR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MY_NATUR"/>
+        <keyMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="MY_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_UMB" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_UMB"/>
+        <measureMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="QT_UMB"/>
+      </measure>
+      <measure id="QT_UME" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_UME"/>
+        <measureMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="QT_UME"/>
+      </measure>
+      <measure id="TS_LOAD" order="15" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="VL_LOCAL_CURRE" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_LOCAL_CURRE"/>
+        <measureMapping columnObjectName="SCM_INV_MOVIMENT_MATERIAL" columnName="VL_LOCAL_CURRE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

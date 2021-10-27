@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_LEARNING_HOURS" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_LEARNING_HOURS"/>
+  <metadata changedAt="2020-03-12 10:34:59.427"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_YTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_YTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_YTD_LY">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD_LY"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_YTD_LY">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD_LY"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_MTD_LY">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_MTD_LY"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_LEARNING_HOURS_MTD_LY">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_LEARNING_HOURS_MTD_LY"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="34"/>
+  <dataSources>
+    <DataSource id="CV_LEARNING_HOURS_YTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_LEARNING_HOURS_YTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD_LY</resourceUri>
+    </DataSource>
+    <DataSource id="CV_LEARNING_HOURS_MTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_MTD_LY</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="TIME_EXPERIMENTED_YTD"/>
+        <viewAttribute id="REAL_HOURS_YTD"/>
+        <viewAttribute id="VIRTUAL_HOURS_YTD"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_YEAR$$</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_LEARNING_HOURS_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_YTD" source="TIME_EXPERIMENTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_YTD" source="REAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_YTD" source="VIRTUAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="TIME_EXPERIMENTED_YTD_LY"/>
+        <viewAttribute id="REAL_HOURS_YTD_LY"/>
+        <viewAttribute id="VIRTUAL_HOURS_YTD_LY"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="name_DEP"/>
+        <viewAttribute id="name_SUB"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_YEAR$$-1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_LEARNING_HOURS_YTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_YTD_LY" source="TIME_EXPERIMENTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_YTD_LY" source="REAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_YTD_LY" source="VIRTUAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DEP" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_SUB" source="name_SUB"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="VIRTUAL_HOURS_MTD_LY"/>
+        <viewAttribute id="REAL_HOURS_MTD_LY"/>
+        <viewAttribute id="TIME_EXPERIMENTED_MTD_LY"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_YEAR$$-1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_LEARNING_HOURS_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_MTD_LY" source="VIRTUAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_MTD_LY" source="REAL_HOURS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_MTD_LY" source="TIME_EXPERIMENTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="TIME_EXPERIMENTED_YTD"/>
+        <viewAttribute id="REAL_HOURS_YTD"/>
+        <viewAttribute id="VIRTUAL_HOURS_YTD"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="TIME_EXPERIMENTED_YTD_LY"/>
+        <viewAttribute id="REAL_HOURS_YTD_LY"/>
+        <viewAttribute id="VIRTUAL_HOURS_YTD_LY"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+        <viewAttribute id="VIRTUAL_HOURS_MTD_LY" transparentFilter="false"/>
+        <viewAttribute id="REAL_HOURS_MTD_LY" transparentFilter="false"/>
+        <viewAttribute id="TIME_EXPERIMENTED_MTD_LY" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_YTD" source="TIME_EXPERIMENTED_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_YTD" source="REAL_HOURS_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_YTD" source="VIRTUAL_HOURS_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_MTD_LY" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_2">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MONTH" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_YTD_LY" source="TIME_EXPERIMENTED_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_YTD_LY" source="REAL_HOURS_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_YTD_LY" source="VIRTUAL_HOURS_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="name_SUB"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_MTD_LY" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_3">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEPARTMENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MONTH" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TIME_EXPERIMENTED_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="REAL_HOURS_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VIRTUAL_HOURS_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VIRTUAL_HOURS_MTD_LY" source="VIRTUAL_HOURS_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="REAL_HOURS_MTD_LY" source="REAL_HOURS_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TIME_EXPERIMENTED_MTD_LY" source="TIME_EXPERIMENTED_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT" order="4" attributeHierarchyActive="false" descriptionColumnName="BUSINESS_UNIT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="5" attributeHierarchyActive="false" descriptionColumnName="DIVISION_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="6" attributeHierarchyActive="false" descriptionColumnName="DEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="7" attributeHierarchyActive="false" descriptionColumnName="SUB_DEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="MONTH" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Union_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT_NAME" hidden="true" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT_NAME"/>
+      </attribute>
+      <attribute id="DEPARTMENT_NAME" hidden="true" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="DIVISION_NAME" hidden="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION_NAME"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT_NAME" hidden="true" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="TIME_EXPERIMENTED_YTD_WITHNULL" hidden="true" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_YTD_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="TIME_EXPERIMENTED_YTD"/>
+      </measure>
+      <measure id="REAL_HOURS_YTD_WITHNULL" hidden="true" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="REAL_HOURS_YTD_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="REAL_HOURS_YTD"/>
+      </measure>
+      <measure id="VIRTUAL_HOURS_YTD_WITHNULL" hidden="true" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Hours"/>
+        <measureMapping columnObjectName="Union_1" columnName="VIRTUAL_HOURS_YTD"/>
+      </measure>
+      <measure id="TIME_EXPERIMENTED_YTD_LY_WITHNULL" hidden="true" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_YTD_LY_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="TIME_EXPERIMENTED_YTD_LY"/>
+      </measure>
+      <measure id="REAL_HOURS_YTD_LY_WITHNULL" hidden="true" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="REAL_HOURS_YTD_LY_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="REAL_HOURS_YTD_LY"/>
+      </measure>
+      <measure id="VIRTUAL_HOURS_YTD_LY_WITHNULL" hidden="true" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Hours"/>
+        <measureMapping columnObjectName="Union_1" columnName="VIRTUAL_HOURS_YTD_LY"/>
+      </measure>
+      <measure id="VIRTUAL_HOURS_MTD_LY_WITHNULL" hidden="true" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VIRTUAL_HOURS_MTD_LY_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="VIRTUAL_HOURS_MTD_LY"/>
+      </measure>
+      <measure id="REAL_HOURS_MTD_LY_WITHNULL" hidden="true" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="REAL_HOURS_MTD_LY_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="REAL_HOURS_MTD_LY"/>
+      </measure>
+      <measure id="TIME_EXPERIMENTED_MTD_LY_WITHNULL" hidden="true" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_MTD_LY_WITHNULL"/>
+        <measureMapping columnObjectName="Union_1" columnName="TIME_EXPERIMENTED_MTD_LY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="TIME_EXPERIMENTED_YTD" hidden="false" order="12" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_YTD"/>
+        <formula>if(isnull(&quot;TIME_EXPERIMENTED_YTD_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;TIME_EXPERIMENTED_YTD_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="REAL_HOURS_YTD" hidden="false" order="13" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="REAL_HOURS_YTD"/>
+        <formula>if(isnull(&quot;REAL_HOURS_YTD_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;REAL_HOURS_YTD_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="VIRTUAL_HOURS_YTD" hidden="false" order="14" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="VIRTUAL_HOURS_YTD"/>
+        <formula>if(isnull(&quot;VIRTUAL_HOURS_YTD_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;VIRTUAL_HOURS_YTD_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="TIME_EXPERIMENTED_YTD_LY" hidden="false" order="15" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_YTD_LY"/>
+        <formula>if(isnull(&quot;TIME_EXPERIMENTED_YTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;TIME_EXPERIMENTED_YTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="REAL_HOURS_YTD_LY" hidden="false" order="16" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="REAL_HOURS_YTD_LY"/>
+        <formula>if(isnull(&quot;REAL_HOURS_YTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;REAL_HOURS_YTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="VIRTUAL_HOURS_YTD_LY" hidden="false" order="17" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="VIRTUAL_HOURS_YTD_LY"/>
+        <formula>if(isnull(&quot;VIRTUAL_HOURS_YTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;VIRTUAL_HOURS_YTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="TIME_EXPERIMENTED_MTD_LY" hidden="false" order="25" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TIME_EXPERIMENTED_YTD_LY"/>
+        <formula>if(isnull(&quot;TIME_EXPERIMENTED_MTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;TIME_EXPERIMENTED_MTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="REAL_HOURS_MTD_LY" hidden="false" order="26" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="REAL_HOURS_YTD_LY"/>
+        <formula>if(isnull(&quot;REAL_HOURS_MTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;REAL_HOURS_MTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+      <measure id="VIRTUAL_HOURS_MTD_LY" hidden="false" order="27" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="VIRTUAL_HOURS_YTD_LY"/>
+        <formula>if(isnull(&quot;VIRTUAL_HOURS_MTD_LY_WITHNULL&quot;),&#xD;
+0,&#xD;
+&quot;VIRTUAL_HOURS_MTD_LY_WITHNULL&quot;)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="LEARNING_HOURS_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">#BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="LEARNING_HOURS_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="LEARNING_HOURS_HIER"/>
+            <levels>
+              <level levelAttribute="#BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#BUSINESS_UNIT"/>
+              <level levelAttribute="#DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#DIVISION"/>
+              <level levelAttribute="#DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#DEPARTMENT"/>
+              <level levelAttribute="#SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="299"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="299"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="299"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::COPYOFCV_HEADCOUNT_TURNOVER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_TURNOVER"/>
+  <metadata changedAt="2019-09-27 12:06:28.411"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_MTD_LY">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_MTD_LY"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_MTD_LY">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_MTD_LY"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_YTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_YTD"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_YTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_YTD"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_MTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_MTD"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_TURNOVER_MTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_TURNOVER_MTD"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_MTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_MTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_YTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_YTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_YTD_LY">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD_LY"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_YTD_LY">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD_LY"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_MTD_LY">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD_LY"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_PEOPLE_MTD_LY">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD_LY"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="52"/>
+  <dataSources>
+    <DataSource id="CV_TURNOVER_MTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_TURNOVER_MTD_LY</resourceUri>
+    </DataSource>
+    <DataSource id="CV_TURNOVER_YTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_TURNOVER_YTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_TURNOVER_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_TURNOVER_MTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT_PEOPLE_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT_PEOPLE_YTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT_PEOPLE_YTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD_LY</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT_PEOPLE_MTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD_LY</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT_YTD_AGG">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_AGG</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ORG_HIER">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ORG_HIER</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TURN_MTD_LY">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD_LY"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_YEAR$$-1</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="MONTH" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_MONTH$$</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_TURNOVER_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" source="NUMBER_VOLUNTARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" source="NUMBER_INVOLUNTARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TURN_YTD">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT" keepFlag="true"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_YTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_YTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_TURNOVER_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_YTD" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_YTD" source="NUMBER_VOLUNTARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_YTD" source="NUMBER_INVOLUNTARY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="TURN_MTD">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT" keepFlag="false"/>
+        <viewAttribute id="DIVISION" keepFlag="false"/>
+        <viewAttribute id="DEPARTMENT" keepFlag="false"/>
+        <viewAttribute id="SUB_DEPARTMENT" keepFlag="false"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME" keepFlag="false"/>
+        <viewAttribute id="DIVISION_NAME" keepFlag="false"/>
+        <viewAttribute id="DEPARTMENT_NAME" keepFlag="false"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME" keepFlag="false"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_YEAR$$</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="MONTH" expressionLanguage="COLUMN_ENGINE">
+          <formula>$$IP_MONTH$$</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_TURNOVER_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD" source="NUMBER_VOLUNTARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD" source="NUMBER_INVOLUNTARY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="TURNOVER">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD_LY"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_YTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_YTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#TURN_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" source="NUMBER_VOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" source="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" source="TURN_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_YTD" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#TURN_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_YTD" source="TURN_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_YTD" source="NUMBER_VOLUNTARY_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_YTD" source="NUMBER_INVOLUNTARY_YTD"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#TURN_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD" source="TURN_WORKED_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD" source="NUMBER_VOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD" source="NUMBER_INVOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_YTD" null="true" value=""/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HEAD_MTD">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_HEADCOUNT_PEOPLE_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HEAD_YTD">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_HEADCOUNT_PEOPLE_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HEAD_YTD_LY">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_HEADCOUNT_PEOPLE_YTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HEAD_MTD_LY">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_HEADCOUNT_PEOPLE_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="HEAD_CY" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HEAD_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD" source="HEAD_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE_YTD"/>
+      </input>
+      <input node="#HEAD_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKER_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+      </input>
+      <joinAttribute name="MONTH"/>
+      <joinAttribute name="YEAR"/>
+      <joinAttribute name="BUSINESS_UNIT"/>
+      <joinAttribute name="DIVISION"/>
+      <joinAttribute name="DEPARTMENT"/>
+      <joinAttribute name="SUB_DEPARTMENT"/>
+      <joinAttribute name="CONTINGENT_WORKER"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="HEAD_LY" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#HEAD_YTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE_YTD_LY"/>
+      </input>
+      <input node="#HEAD_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+      </input>
+      <joinAttribute name="MONTH"/>
+      <joinAttribute name="YEAR"/>
+      <joinAttribute name="BUSINESS_UNIT"/>
+      <joinAttribute name="DIVISION"/>
+      <joinAttribute name="DEPARTMENT"/>
+      <joinAttribute name="SUB_DEPARTMENT"/>
+      <joinAttribute name="CONTINGENT_WORKER"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="HEADCOUNT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#HEAD_CY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD" source="HEAD_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKER_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#HEAD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKER_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE_MTD_LY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="DATE_START"/>
+        <viewAttribute id="DATE_END"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="YEAR" expressionLanguage="SQL">
+          <formula>YEAR(&quot;DATE_START&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_HEADCOUNT_YTD_AGG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_START" source="DATE_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_END" source="DATE_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Projection_1">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MONTH" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKER_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL" source="HEAD_WORKED_TOTAL"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#HEADCOUNT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKER_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL" null="true" value=""/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD_LY"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_YTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_YTD"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#TURNOVER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTINGENT_WORKER" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKER_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD" source="TURN_WORKED_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD" source="NUMBER_VOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD" source="NUMBER_INVOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" source="NUMBER_VOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" source="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" source="TURN_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_YTD" source="TURN_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_YTD" source="NUMBER_VOLUNTARY_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_YTD" source="NUMBER_INVOLUNTARY_YTD"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TURN_WORKED_TOTAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_VOLUNTARY_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NUMBER_INVOLUNTARY_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKER_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD" source="HEAD_WORKED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE_MTD"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_AGG"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD"/>
+        <viewAttribute id="HEAD_WORKER_TOTAL_MTD"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <viewAttribute id="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_MTD_LY"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_MTD_LY"/>
+        <viewAttribute id="TURN_WORKED_TOTAL_YTD"/>
+        <viewAttribute id="NUMBER_VOLUNTARY_YTD"/>
+        <viewAttribute id="NUMBER_INVOLUNTARY_YTD"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="SUBDEPARTMENT_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#Union_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_AGG" source="HEAD_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD" source="HEADCOUNT_PEOPLE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKER_TOTAL_MTD" source="HEAD_WORKER_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD" source="HEADCOUNT_PEOPLE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_YTD_LY" source="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_YTD_LY" source="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL_MTD_LY" source="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_PEOPLE_MTD_LY" source="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD" source="TURN_WORKED_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD" source="NUMBER_VOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD" source="NUMBER_INVOLUNTARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_MTD_LY" source="NUMBER_VOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_MTD_LY" source="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_MTD_LY" source="TURN_WORKED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TURN_WORKED_TOTAL_YTD" source="TURN_WORKED_TOTAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY_YTD" source="NUMBER_VOLUNTARY_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY_YTD" source="NUMBER_INVOLUNTARY_YTD"/>
+      </input>
+      <input node="#CV_ORG_HIER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEPARTMENT_NAME" source="name_SUB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      </input>
+      <joinAttribute name="BUSINESS_UNIT"/>
+      <joinAttribute name="DEPARTMENT"/>
+      <joinAttribute name="DIVISION"/>
+      <joinAttribute name="SUB_DEPARTMENT"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MONTH" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="YEAR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="14" attributeHierarchyActive="false" descriptionColumnName="BUSINESS_UNIT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="15" attributeHierarchyActive="false" descriptionColumnName="DIVISION_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="16" attributeHierarchyActive="false" descriptionColumnName="DEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="17" attributeHierarchyActive="false" descriptionColumnName="SUBDEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT_NAME" hidden="true" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT_NAME"/>
+      </attribute>
+      <attribute id="DIVISION_NAME" hidden="true" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIVISION_NAME"/>
+      </attribute>
+      <attribute id="DEPARTMENT_NAME" hidden="true" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="SUBDEPARTMENT_NAME" hidden="true" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBDEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUBDEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="CONTINGENT_WORKER" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONTINGENT_WORKER"/>
+        <keyMapping columnObjectName="Join_1" columnName="CONTINGENT_WORKER"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="10" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
+          <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_NAME" hidden="true" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
+          <formula>CASE &#xD;
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'&#xD;
+WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'&#xD;
+WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'&#xD;
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="HEAD_WORKED_TOTAL_AGG" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEAD_WORKED_TOTAL_AGG"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEAD_WORKED_TOTAL_AGG"/>
+      </measure>
+      <measure id="HEADCOUNT_PEOPLE_YTD" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_PEOPLE_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_PEOPLE_YTD"/>
+      </measure>
+      <measure id="HEAD_WORKER_TOTAL_MTD" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEAD_WORKER_TOTAL_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEAD_WORKER_TOTAL_MTD"/>
+      </measure>
+      <measure id="HEADCOUNT_PEOPLE_MTD" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_PEOPLE_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_PEOPLE_MTD"/>
+      </measure>
+      <measure id="HEAD_WORKED_TOTAL_YTD_LY" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEAD_WORKED_TOTAL_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEAD_WORKED_TOTAL_YTD_LY"/>
+      </measure>
+      <measure id="HEADCOUNT_PEOPLE_YTD_LY" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_PEOPLE_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_PEOPLE_YTD_LY"/>
+      </measure>
+      <measure id="HEAD_WORKED_TOTAL_MTD_LY" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEAD_WORKED_TOTAL_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEAD_WORKED_TOTAL_MTD_LY"/>
+      </measure>
+      <measure id="HEADCOUNT_PEOPLE_MTD_LY" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_PEOPLE_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_PEOPLE_MTD_LY"/>
+      </measure>
+      <measure id="TURN_WORKED_TOTAL_MTD" hidden="false" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TURN_WORKED_TOTAL_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="TURN_WORKED_TOTAL_MTD"/>
+      </measure>
+      <measure id="NUMBER_VOLUNTARY_MTD" hidden="true" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_VOLUNTARY_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_VOLUNTARY_MTD"/>
+      </measure>
+      <measure id="NUMBER_INVOLUNTARY_MTD" hidden="true" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_INVOLUNTARY_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_INVOLUNTARY_MTD"/>
+      </measure>
+      <measure id="NUMBER_VOLUNTARY_MTD_LY" hidden="true" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_VOLUNTARY_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_VOLUNTARY_MTD_LY"/>
+      </measure>
+      <measure id="NUMBER_INVOLUNTARY_MTD_LY" hidden="true" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_INVOLUNTARY_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_INVOLUNTARY_MTD_LY"/>
+      </measure>
+      <measure id="TURN_WORKED_TOTAL_MTD_LY" hidden="true" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TURN_WORKED_TOTAL_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="TURN_WORKED_TOTAL_MTD_LY"/>
+      </measure>
+      <measure id="TURN_WORKED_TOTAL_YTD" hidden="true" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TURN_WORKED_TOTAL_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="TURN_WORKED_TOTAL_YTD"/>
+      </measure>
+      <measure id="NUMBER_VOLUNTARY_YTD" hidden="true" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_VOLUNTARY_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_VOLUNTARY_YTD"/>
+      </measure>
+      <measure id="NUMBER_INVOLUNTARY_YTD" hidden="true" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NUMBER_INVOLUNTARY_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="NUMBER_INVOLUNTARY_YTD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="TURNOVER_VOLUNTARY_YTD" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Voluntary"/>
+        <formula>(&quot;NUMBER_VOLUNTARY_YTD&quot;/&quot;TURN_WORKED_TOTAL_YTD&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_INVOLUNTARY_YTD" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Involuntary"/>
+        <formula>(&quot;NUMBER_INVOLUNTARY_YTD&quot;/&quot;TURN_WORKED_TOTAL_YTD&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_TOTAL_YTD" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Turnover"/>
+        <formula>&quot;TURNOVER_VOLUNTARY_YTD&quot;+&quot;TURNOVER_INVOLUNTARY_YTD&quot;</formula>
+      </measure>
+      <measure id="TURNOVER_VOLUNTARY_MTD" hidden="false" order="4" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Voluntary"/>
+        <formula>(&quot;NUMBER_VOLUNTARY_MTD&quot;/&quot;TURN_WORKED_TOTAL_MTD&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_INVOLUNTARY_MTD" hidden="false" order="5" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Involuntary"/>
+        <formula>(&quot;NUMBER_INVOLUNTARY_MTD&quot;/&quot;TURN_WORKED_TOTAL_MTD&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_TOTAL_MTD" hidden="false" order="6" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Turnover"/>
+        <formula>&quot;TURNOVER_VOLUNTARY_MTD&quot;+&quot;TURNOVER_INVOLUNTARY_MTD&quot;</formula>
+      </measure>
+      <measure id="TURNOVER_VOLUNTARY_MTD_LY" hidden="false" order="7" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TURNOVER_VOLUNTARY_MTD_LY"/>
+        <formula>(&quot;NUMBER_VOLUNTARY_MTD_LY&quot;/&quot;TURN_WORKED_TOTAL_MTD_LY&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_INVOLUNTARY_MTD_LY" hidden="false" order="8" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TURNOVER_INVOLUNTARY_MTD_LY"/>
+        <formula>(&quot;NUMBER_INVOLUNTARY_MTD_LY&quot;/&quot;TURN_WORKED_TOTAL_MTD_LY&quot;)*100</formula>
+      </measure>
+      <measure id="TURNOVER_TOTAL_MTD_LY" hidden="false" order="9" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="TURNOVER_TOTAL_MTD_LY"/>
+        <formula>&quot;TURNOVER_VOLUNTARY_MTD_LY&quot;+&quot;TURNOVER_INVOLUNTARY_MTD_LY&quot;</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HEADCOUNT_TUROVER_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">#BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HEADCOUNT_TUROVER_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="TUROVER_HIER"/>
+            <levels>
+              <level levelAttribute="#BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#BUSINESS_UNIT"/>
+              <level levelAttribute="#DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#DIVISION"/>
+              <level levelAttribute="#DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#DEPARTMENT"/>
+              <level levelAttribute="#SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="351" y="87"/>
+        <rectangleSize height="67" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TURN_MTD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="511"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TURN_YTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="511"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TURN_MTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="330" y="511"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="TURNOVER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="117" y="362"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_MTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="411" y="723"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_YTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="256" y="723"/>
+        <rectangleSize height="66" width="141"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_YTD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="565" y="723"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_MTD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="719" y="723"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_CY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="411" y="627"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEAD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="565" y="627"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEADCOUNT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="511"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="638" y="511"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="377"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="351" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="351" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

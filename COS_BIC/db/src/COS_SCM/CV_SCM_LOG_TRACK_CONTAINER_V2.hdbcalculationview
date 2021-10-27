@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_TRACK_CONTAINER_V2" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_TRACK_CONTAINER"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_TRACKER_CONTAINER">
+      <resourceUri>COS_SCM::SCM_LOG_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_LATIT_CNTNR"/>
+        <viewAttribute id="CD_LATIT_DESTI"/>
+        <viewAttribute id="CD_LATIT_EVENT"/>
+        <viewAttribute id="CD_LATIT_SOURC"/>
+        <viewAttribute id="CD_LONGI_CNTNR"/>
+        <viewAttribute id="CD_LONGI_DESTI"/>
+        <viewAttribute id="CD_LONGI_EVENT"/>
+        <viewAttribute id="CD_LONGI_SOURC"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="NM_PORT_DESTI"/>
+        <viewAttribute id="NM_PORT_EVENT"/>
+        <viewAttribute id="NM_PORT_SOURC"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="TS_LOAD"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="CD_PUERT_CARGA"/>
+        <viewAttribute id="NM_1GP"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_TRACKER_CONTAINER"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_2">
+    <attributes>
+      <attribute id="CD_CNTNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_CNTNR"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_CNTNR"/>
+      </attribute>
+      <attribute id="CD_CNTNR_TYPE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_CNTNR_TYPE"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_CNTNR_TYPE"/>
+      </attribute>
+      <attribute id="CD_PROVI" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PROVI"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_PROVI"/>
+      </attribute>
+      <attribute id="CD_TRANS" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TRANS"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_TRANS"/>
+      </attribute>
+      <attribute id="DS_EVENT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_EVENT"/>
+        <keyMapping columnObjectName="Projection_2" columnName="DS_EVENT"/>
+      </attribute>
+      <attribute id="DS_VESSL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_VESSL"/>
+        <keyMapping columnObjectName="Projection_2" columnName="DS_VESSL"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="Projection_2" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="NM_PORT_DESTI" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_DESTI"/>
+        <keyMapping columnObjectName="Projection_2" columnName="NM_PORT_DESTI"/>
+      </attribute>
+      <attribute id="NM_PORT_EVENT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_EVENT"/>
+        <keyMapping columnObjectName="Projection_2" columnName="NM_PORT_EVENT"/>
+      </attribute>
+      <attribute id="NM_PORT_SOURC" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_SOURC"/>
+        <keyMapping columnObjectName="Projection_2" columnName="NM_PORT_SOURC"/>
+      </attribute>
+      <attribute id="CD_PDEST" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PDEST"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_PDEST"/>
+      </attribute>
+      <attribute id="CD_PUERT_CARGA" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PUERT_CARGA"/>
+        <keyMapping columnObjectName="Projection_2" columnName="CD_PUERT_CARGA"/>
+      </attribute>
+      <attribute id="NM_1GP" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_1GP"/>
+        <keyMapping columnObjectName="Projection_2" columnName="NM_1GP"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="CD_LATIT_CNTNR" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LATIT_CNTNR"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LATIT_CNTNR"/>
+      </measure>
+      <measure id="CD_LATIT_DESTI" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LATIT_DESTI"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LATIT_DESTI"/>
+      </measure>
+      <measure id="CD_LATIT_EVENT" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LATIT_EVENT"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LATIT_EVENT"/>
+      </measure>
+      <measure id="CD_LATIT_SOURC" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LATIT_SOURC"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LATIT_SOURC"/>
+      </measure>
+      <measure id="CD_LONGI_CNTNR" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LONGI_CNTNR"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LONGI_CNTNR"/>
+      </measure>
+      <measure id="CD_LONGI_DESTI" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LONGI_DESTI"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LONGI_DESTI"/>
+      </measure>
+      <measure id="CD_LONGI_EVENT" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LONGI_EVENT"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LONGI_EVENT"/>
+      </measure>
+      <measure id="CD_LONGI_SOURC" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CD_LONGI_SOURC"/>
+        <measureMapping columnObjectName="Projection_2" columnName="CD_LONGI_SOURC"/>
+      </measure>
+      <measure id="DT_CNTNR" order="15" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="DT_CNTNR"/>
+        <measureMapping columnObjectName="Projection_2" columnName="DT_CNTNR"/>
+      </measure>
+      <measure id="DT_DEPAR" order="16" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="DT_DEPAR"/>
+        <measureMapping columnObjectName="Projection_2" columnName="DT_DEPAR"/>
+      </measure>
+      <measure id="DT_ESTIM" order="17" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="DT_ESTIM"/>
+        <measureMapping columnObjectName="Projection_2" columnName="DT_ESTIM"/>
+      </measure>
+      <measure id="DT_EVENT" order="18" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="DT_EVENT"/>
+        <measureMapping columnObjectName="Projection_2" columnName="DT_EVENT"/>
+      </measure>
+      <measure id="DT_NATUR" order="19" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <measureMapping columnObjectName="Projection_2" columnName="DT_NATUR"/>
+      </measure>
+      <measure id="ID_TRACK" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ID_TRACK"/>
+        <measureMapping columnObjectName="Projection_2" columnName="ID_TRACK"/>
+      </measure>
+      <measure id="QT_TABLE" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_TABLE"/>
+        <measureMapping columnObjectName="Projection_2" columnName="QT_TABLE"/>
+      </measure>
+      <measure id="TS_LOAD" order="26" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="Projection_2" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="VL_CNTNR_1" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_CNTNR_1"/>
+        <measureMapping columnObjectName="Projection_2" columnName="VL_CNTNR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="316"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

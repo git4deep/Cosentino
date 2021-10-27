@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="CV_Z0COSTCENTER_H" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_Z0COSTCENTER_H"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="Z0COSTCENTER_HREPCONSO">
+      <resourceUri>Z0COSTCENTER_HREPCONSO</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <inlineHierarchy xsi:type="Dimension:LeveledHierarchy" id="0COSTH" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED">
+    <descriptions defaultDescription="0COSTH"/>
+    <levels>
+      <level levelAttribute="Cost_CenterLevel1" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="Cost_CenterLevel1"/>
+      <level levelAttribute="Cost_CenterLevel2" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="Cost_CenterLevel2"/>
+      <level levelAttribute="Cost_CenterLevel3" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="Cost_CenterLevel3"/>
+      <level levelAttribute="Cost_CenterLevel4" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="Cost_CenterLevel4"/>
+      <level levelAttribute="Cost_CenterLevel5" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="Cost_CenterLevel5"/>
+      <level levelAttribute="Cost_CenterLevel6" levelType="MDLEVEL_TYPE_REGULAR" order="6" orderAttribute="Cost_CenterLevel6"/>
+      <level levelAttribute="Cost_CenterLevel7" levelType="MDLEVEL_TYPE_REGULAR" order="7" orderAttribute="Cost_CenterLevel7"/>
+      <level levelAttribute="Cost_CenterLevel8" levelType="MDLEVEL_TYPE_REGULAR" order="8" orderAttribute="Cost_CenterLevel8"/>
+      <level levelAttribute="Cost_CenterLevel9" levelType="MDLEVEL_TYPE_REGULAR" order="9" orderAttribute="Cost_CenterLevel9"/>
+      <level levelAttribute="Cost_CenterLevel10" levelType="MDLEVEL_TYPE_REGULAR" order="10" orderAttribute="Cost_CenterLevel10"/>
+      <level levelAttribute="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT" levelType="MDLEVEL_TYPE_REGULAR" order="11" orderAttribute="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+      <level levelAttribute="0COSTCENTER_TEXT" levelType="MDLEVEL_TYPE_REGULAR" order="12" orderAttribute="0COSTCENTER_TEXT"/>
+    </levels>
+  </inlineHierarchy>
+  <logicalModel id="Z0COSTCENTER_HREPCONSO">
+    <descriptions/>
+    <attributes>
+      <attribute id="Cost_CenterLevel7" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel7"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel7"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel1" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel1"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel1"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel2" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel2"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel2"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel3" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel3"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel3"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel4" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel4"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel4"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel5" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel5"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel5"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel6" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel6"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel6"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel8" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel8"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel8"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel9" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel9"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel9"/>
+      </attribute>
+      <attribute id="Cost_CenterLevel10" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cost_CenterLevel10"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="Cost CenterLevel10"/>
+      </attribute>
+      <attribute id="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="0COSTCENTER_DISPLAY_KEY_MIXED_COMPOUNDMENT"/>
+      </attribute>
+      <attribute id="0COSTCENTER_TEXT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="0COSTCENTER_TEXT"/>
+        <keyMapping columnObjectName="Z0COSTCENTER_HREPCONSO" columnName="0COSTCENTER_TEXT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

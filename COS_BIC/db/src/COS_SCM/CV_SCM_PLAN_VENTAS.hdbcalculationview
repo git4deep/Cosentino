@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PLAN_VENTAS" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_VENTAS"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PLAN_VENTAS">
+      <resourceUri>COS_SCM::SCM_PLAN_VENTAS</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PLAN_VENTAS">
+    <attributes>
+      <attribute id="MY_NATUR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Mes natural"/>
+        <keyMapping columnObjectName="SCM_PLAN_VENTAS" columnName="MY_NATUR"/>
+      </attribute>
+      <attribute id="CD_BUSIN_UNIT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. UN"/>
+        <keyMapping columnObjectName="SCM_PLAN_VENTAS" columnName="CD_BUSIN_UNIT"/>
+      </attribute>
+      <attribute id="CD_MATER" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. material"/>
+        <keyMapping columnObjectName="SCM_PLAN_VENTAS" columnName="CD_MATER"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. centro"/>
+        <keyMapping columnObjectName="SCM_PLAN_VENTAS" columnName="CD_PLANT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="VL_HISTO" order="2" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Ventas"/>
+        <measureMapping columnObjectName="SCM_PLAN_VENTAS" columnName="VL_HISTO"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

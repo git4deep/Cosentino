@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_ABSENTEEISM" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_ABSENTEEISM_MTD"/>
+  <metadata changedAt="2020-02-13 17:01:12.808"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_CURRENCY" parameter="true">
+      <descriptions defaultDescription="IP_CURRENCY"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="EUR" length="3" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_MTD_LY" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_LY"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_MTD_LY" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_LY"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSEENTEISM_YTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ABSEENTEISM_YTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSEENTEISM_YTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ABSEENTEISM_YTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="40"/>
+  <dataSources>
+    <DataSource id="CV_ABSENTEEISM_MTD_LY">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_LY</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ABSENTEEISM_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ABSEENTEISM_YTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ABSEENTEISM_YTD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="ABS_TYPE"/>
+        <viewAttribute id="USER_ID_LONG_MTD_LY"/>
+        <viewAttribute id="USER_ID_SHORT_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_REAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_REAL_TOTAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_ABSENTEEISM_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG_MTD_LY" source="USER_ID_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_SHORT_MTD_LY" source="USER_ID_SHORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_MTD_LY" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_MTD_LY" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD_LY" source="WORKING_HOURS_REAL_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY" source="WORKING_HOURS_EXPECTED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY" source="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="ABS_TYPE"/>
+        <viewAttribute id="USER_ID_LONG"/>
+        <viewAttribute id="USER_ID_SHORT"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_MTD"/>
+        <viewAttribute id="WORKING_HOURS_REAL_MTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD"/>
+        <viewAttribute id="WORKING_HOURS_REAL_TOTAL_MTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_MTD"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_ABSENTEEISM_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_MTD" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_MTD" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD" source="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD" source="WORKING_HOURS_REAL_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD" source="WORKING_HOURS_EXPECTED_TOTAL"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="WORKING_HOURS_REAL_YTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_YTD"/>
+        <viewAttribute id="ABSENTEEISM_COST"/>
+        <viewAttribute id="ABSENTEEISM_COST_CURRENCY"/>
+        <viewAttribute id="CURRENCY_CODE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_ABSEENTEISM_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_YTD" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_YTD" source="WORKING_HOURS_EXPECTED"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="ABS_TYPE"/>
+        <viewAttribute id="WORKING_HOURS_REAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_REAL_TOTAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY"/>
+        <viewAttribute id="USER_ID_LONG_MTD_LY"/>
+        <viewAttribute id="USER_ID_SHORT_MTD_LY"/>
+        <viewAttribute id="USER_ID_LONG"/>
+        <viewAttribute id="USER_ID_SHORT"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_MTD"/>
+        <viewAttribute id="WORKING_HOURS_REAL_MTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD"/>
+        <viewAttribute id="WORKING_HOURS_REAL_TOTAL_MTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_MTD"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="WORKING_HOURS_REAL_YTD"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_YTD"/>
+        <viewAttribute id="ABSENTEEISM_COST"/>
+        <viewAttribute id="ABSENTEEISM_COST_CURRENCY"/>
+        <viewAttribute id="CURRENCY_CODE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABS_TYPE" source="ABS_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_MTD_LY" source="WORKING_HOURS_REAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_MTD_LY" source="WORKING_HOURS_EXPECTED_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD_LY" source="WORKING_HOURS_REAL_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY" source="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY" source="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG_MTD_LY" source="USER_ID_LONG_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_SHORT_MTD_LY" source="USER_ID_SHORT_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MONTH" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABSENTEEISM_COST" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABSENTEEISM_COST_CURRENCY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY_CODE" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABS_TYPE" source="ABS_TYPE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG" source="USER_ID_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_SHORT" source="USER_ID_SHORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_MTD" source="WORKING_HOURS_EXPECTED_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_MTD" source="WORKING_HOURS_REAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD" source="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD" source="WORKING_HOURS_REAL_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD" source="WORKING_HOURS_EXPECTED_TOTAL_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MONTH" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABSENTEEISM_COST" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABSENTEEISM_COST_CURRENCY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CURRENCY_CODE" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABS_TYPE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_YTD" source="WORKING_HOURS_REAL_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_YTD" source="WORKING_HOURS_EXPECTED_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABSENTEEISM_COST" source="ABSENTEEISM_COST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABSENTEEISM_COST_CURRENCY" source="ABSENTEEISM_COST_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="ABS_TYPE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ABS_TYPE"/>
+        <keyMapping columnObjectName="Union_1" columnName="ABS_TYPE"/>
+      </attribute>
+      <attribute id="USER_ID_LONG_MTD_LY" hidden="true" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_LONG_MTD_LY"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_LONG_MTD_LY"/>
+      </attribute>
+      <attribute id="USER_ID_SHORT_MTD_LY" hidden="true" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_SHORT_MTD_LY"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_SHORT_MTD_LY"/>
+      </attribute>
+      <attribute id="USER_ID_LONG" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_LONG"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_LONG"/>
+      </attribute>
+      <attribute id="USER_ID_SHORT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_SHORT"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_SHORT"/>
+      </attribute>
+      <attribute id="MONTH" hidden="true" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Union_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="ABSENTEEISM_COST_CURRENCY" hidden="true" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ABSENTEEISM_COST_CURRENCY"/>
+        <keyMapping columnObjectName="Union_1" columnName="ABSENTEEISM_COST_CURRENCY"/>
+      </attribute>
+      <attribute id="CURRENCY_CODE" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+        <keyMapping columnObjectName="Union_1" columnName="CURRENCY_CODE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="33" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
+          <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_NAME" hidden="true" order="34" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
+          <formula>CASE 
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'
+WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'
+WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'
+WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'
+WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'
+WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'
+WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'
+WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'
+WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'
+WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
+WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="DAYS5" hidden="false" order="35" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAYS5"/>
+        <keyCalculation datatype="DATE" expressionLanguage="SQL">
+          <formula>ADD_DAYS(CURRENT_DATE,-5)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="WORKING_HOURS_REAL_MTD_LY" hidden="true" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_MTD_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_MTD_LY"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_MTD_LY" hidden="true" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_MTD_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_MTD_LY"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL_TOTAL_MTD_LY" hidden="true" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_TOTAL_MTD_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_TOTAL_MTD_LY"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY" hidden="true" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL_MTD_LY"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY" hidden="true" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_MTD" hidden="true" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_MTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_MTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL_MTD" hidden="true" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_MTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_MTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD" hidden="true" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL_TOTAL_MTD" hidden="true" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_TOTAL_MTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_TOTAL_MTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL_MTD" hidden="true" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL_MTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL_MTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL_YTD" hidden="true" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_YTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_YTD"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_YTD" hidden="true" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_YTD"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_YTD"/>
+      </measure>
+      <measure id="ABSENTEEISM_COST" order="29" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions/>
+        <unitCurrencyAttribute attributeName="CURRENCY"/>
+        <currencyConversion errorHandling="setToNull" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="CURRENCY" convert="true">
+          <client>
+            <value>020</value>
+          </client>
+          <currencyConversionTables rates="DWH_CDM_PEOPLE::TCURR" configuration="DWH_CDM_PEOPLE::TCURV" prefactors="DWH_CDM_PEOPLE::TCURF" notations="DWH_CDM_PEOPLE::TCURN" precisions="DWH_CDM_PEOPLE::TCURX"/>
+          <outputDataType datatype="DOUBLE"/>
+          <sourceCurrency>
+            <attribute attributeName="ABSENTEEISM_COST_CURRENCY"/>
+          </sourceCurrency>
+          <erpDecimalShift>true</erpDecimalShift>
+          <targetCurrency>
+            <localVariable>IP_CURRENCY</localVariable>
+          </targetCurrency>
+          <referenceDate>
+            <attribute attributeName="DAYS5"/>
+          </referenceDate>
+          <exchangeRateType>M</exchangeRateType>
+        </currencyConversion>
+        <measureMapping columnObjectName="Union_1" columnName="ABSENTEEISM_COST"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ABSENTEEISM_MTD_LY" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="ABSENTEEISM"/>
+        <formula>if(&quot;WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY&quot; != 0,
+(&quot;WORKING_HOURS_EXPECTED_MTD_LY&quot;-&quot;WORKING_HOURS_REAL_MTD_LY&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD_LY&quot;,
+0)*100</formula>
+      </measure>
+      <measure id="ABSENTEEISM_TOTAL_MTD_LY" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="ABSENTEEISM_TOTAL"/>
+        <formula>if(&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD_LY&quot; != 0,
+(&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD_LY&quot;-&quot;WORKING_HOURS_REAL_TOTAL_MTD_LY&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD_LY&quot;,
+0)*100</formula>
+      </measure>
+      <measure id="N_USERS_MTD_LY" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="N_USERS"/>
+        <formula>if(&quot;WORKING_HOURS_REAL_MTD_LY&quot; &lt; &quot;WORKING_HOURS_EXPECTED_MTD_LY&quot;,
+  if(&quot;ABS_TYPE&quot;='Short/Medium-term', 
+    if(isnull(&quot;USER_ID_SHORT_MTD_LY&quot;),0,1),
+    if(isnull(&quot;USER_ID_LONG_MTD_LY&quot;),0,1))
+,0)</formula>
+      </measure>
+      <measure id="ABSENTEEISM_MTD" hidden="false" order="23" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="ABSENTEEISM"/>
+        <formula>if(&quot;WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD&quot; != 0,
+(&quot;WORKING_HOURS_EXPECTED_MTD&quot;-&quot;WORKING_HOURS_REAL_MTD&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL_FORM_MTD&quot;,
+0)*100</formula>
+      </measure>
+      <measure id="ABSENTEEISM_TOTAL_MTD" hidden="false" order="24" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="ABSENTEEISM_TOTAL"/>
+        <formula>if(&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD&quot; != 0,
+(&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD&quot;-&quot;WORKING_HOURS_REAL_TOTAL_MTD&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL_MTD&quot;,
+0)*100</formula>
+      </measure>
+      <measure id="N_USERS_MTD" hidden="false" order="25" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="N_USERS"/>
+        <formula>if(&quot;WORKING_HOURS_REAL_MTD&quot; &lt; &quot;WORKING_HOURS_EXPECTED_MTD&quot;,
+  if(&quot;ABS_TYPE&quot;='Short/Medium-term', 
+    if(isnull(&quot;USER_ID_SHORT&quot;),0,1),
+    if(isnull(&quot;USER_ID_LONG&quot;),0,1))
+,0)</formula>
+      </measure>
+      <measure id="ABSENTEEISM_TOTAL_YTD" hidden="false" order="32" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="ABSENTEEISM_TOTAL"/>
+        <formula>if(&quot;WORKING_HOURS_EXPECTED_YTD&quot; != 0,
+(&quot;WORKING_HOURS_EXPECTED_YTD&quot;-&quot;WORKING_HOURS_REAL_YTD&quot;)/&quot;WORKING_HOURS_EXPECTED_YTD&quot;,
+0)*100</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="220" y="99"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="426"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="60" y="426"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="410" y="426"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="220" y="200"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

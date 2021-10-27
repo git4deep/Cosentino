@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_HOLIDAY_ASSIGNMENT" ("HolidayCalendar_externalCode" NVARCHAR(128) NOT NULL , "date" LONGDATE  NOT NULL , "holiday" NVARCHAR(128), "holidayClass" NVARCHAR(255), "mdfSystemEffectiveEndDate" LONGDATE , "mdfSystemEffectiveStartDate" LONGDATE ) UNLOAD PRIORITY 5  AUTO MERGE 

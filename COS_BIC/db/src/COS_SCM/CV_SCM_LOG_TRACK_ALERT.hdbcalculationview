@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_TRACK_ALERT" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_LOG_TRACK_ALERT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_CONTRACT_ALERT">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ALERT">
+    <viewAttributes>
+        <viewAttribute id="CD_DESTI_PORT"/>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_DESCAR_PORT"/>
+        <viewAttribute id="CD_MONEDA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="VL_MAXIM"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_CONTRACT_ALERT"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="ALERT">
+    <attributes>
+      <attribute id="CD_DESTI_PORT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto destino"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_DESTI_PORT"/>
+      </attribute>
+      <attribute id="CD_LOAD_PORT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto carga"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_LOAD_PORT"/>
+      </attribute>
+      <attribute id="CD_NAVIE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. naviera"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_NAVIE"/>
+      </attribute>
+      <attribute id="DS_ALERT_TYPE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. tipo de alerta"/>
+        <keyMapping columnObjectName="ALERT" columnName="DS_ALERT_TYPE"/>
+      </attribute>
+      <attribute id="CD_TIPO_DIA" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. tipo día"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_TIPO_DIA"/>
+      </attribute>
+      <attribute id="CD_DESCAR_PORT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto descarga"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_DESCAR_PORT"/>
+      </attribute>
+      <attribute id="CD_MONEDA" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Moneda"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_MONEDA"/>
+      </attribute>
+      <attribute id="CD_TIPO_DEMOR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. tipo demora"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_TIPO_DEMOR"/>
+      </attribute>
+      <attribute id="CD_TIPO_EVENT" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. tipo evento"/>
+        <keyMapping columnObjectName="ALERT" columnName="CD_TIPO_EVENT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="NR_DAYS_ABAJA" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta baja"/>
+        <measureMapping columnObjectName="ALERT" columnName="NR_DAYS_ABAJA"/>
+      </measure>
+      <measure id="NR_DAYS_AGRAV" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta grave"/>
+        <measureMapping columnObjectName="ALERT" columnName="NR_DAYS_AGRAV"/>
+      </measure>
+      <measure id="NR_DAYS_MAXIM" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta máxima"/>
+        <measureMapping columnObjectName="ALERT" columnName="NR_DAYS_MAXIM"/>
+      </measure>
+      <measure id="DT_CONTR_FROM" order="13" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. contrato desde"/>
+        <measureMapping columnObjectName="ALERT" columnName="DT_CONTR_FROM"/>
+      </measure>
+      <measure id="DT_CONTR_TO" order="14" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. contrato hasta"/>
+        <measureMapping columnObjectName="ALERT" columnName="DT_CONTR_TO"/>
+      </measure>
+      <measure id="VL_ALTA" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta alta"/>
+        <measureMapping columnObjectName="ALERT" columnName="VL_ALTA"/>
+      </measure>
+      <measure id="VL_BAJA" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta baja"/>
+        <measureMapping columnObjectName="ALERT" columnName="VL_BAJA"/>
+      </measure>
+      <measure id="VL_MAXIM" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta máxima"/>
+        <measureMapping columnObjectName="ALERT" columnName="VL_MAXIM"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="ALERT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="29" y="237"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

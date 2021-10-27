@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_TALENT_YTD" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_TALENT_MTD"/>
+  <metadata changedAt="2019-03-13 15:23:56.691"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="56"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_TALENT">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_TALENT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="POSICION_CHANGES"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||'01')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FT_SSFF_TALENT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSICION_CHANGES" source="POSICION_CHANGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSIBILITY" source="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="COST_CENTER" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_CENTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="COST_CENTER"/>
+      </attribute>
+      <attribute id="COMPANY" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMPANY"/>
+        <keyMapping columnObjectName="Projection_1" columnName="COMPANY"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="DIVISION" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="MONTH" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MONTH_NAME" hidden="false" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="9">
+          <formula>CASE&#xD;
+WHEN &quot;MONTH&quot; = 1 THEN 'JANUARY'&#xD;
+WHEN &quot;MONTH&quot; = 2 THEN 'FEBRUARY'&#xD;
+WHEN &quot;MONTH&quot; = 3 THEN 'MARCH'&#xD;
+WHEN &quot;MONTH&quot; = 4 THEN 'APRIL'&#xD;
+WHEN &quot;MONTH&quot; = 5 THEN 'MAY'&#xD;
+WHEN &quot;MONTH&quot; = 6 THEN 'JUNE'&#xD;
+WHEN &quot;MONTH&quot; = 7 THEN 'JULY'&#xD;
+WHEN &quot;MONTH&quot; = 8 THEN 'AUGUST'&#xD;
+WHEN &quot;MONTH&quot; = 9 THEN 'SEPTEMBER'&#xD;
+WHEN &quot;MONTH&quot; = 10 THEN 'OCTOBER'&#xD;
+WHEN &quot;MONTH&quot; = 11 THEN 'NOVEMBER'&#xD;
+WHEN &quot;MONTH&quot; = 12 THEN 'DECEMBER'&#xD;
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="POSICION_CHANGES" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="POSICION_CHANGES"/>
+        <measureMapping columnObjectName="Projection_1" columnName="POSICION_CHANGES"/>
+      </measure>
+      <measure id="PROMOTIONS_INCREASED_RESPONSIBILITY" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <measureMapping columnObjectName="Projection_1" columnName="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_CV_TALENT_YTD">
+        <attributeRef xsi:type="DataFoundation:Attribute">#BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_CV_TALENT_YTD" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY_ENFORCED">
+            <descriptions defaultDescription="HIER_CV_TALENT_YTD"/>
+            <levels>
+              <level levelAttribute="#BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#BUSINESS_UNIT"/>
+              <level levelAttribute="#DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#DIVISION"/>
+              <level levelAttribute="#DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#DEPARTMENT"/>
+              <level levelAttribute="#SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="200" y="89"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

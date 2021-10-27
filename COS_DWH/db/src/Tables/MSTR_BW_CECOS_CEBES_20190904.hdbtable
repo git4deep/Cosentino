@@ -1,0 +1,1 @@
+ROW TABLE "MSTR_BW_CECOS_CEBES_20190904"  ( "costCenter" NVARCHAR(32)   NOT NULL, "profitCenter" NVARCHAR(32)   NOT NULL, "costCenterName" NVARCHAR(64)  , "profitCenterName" NVARCHAR(64)   ) 

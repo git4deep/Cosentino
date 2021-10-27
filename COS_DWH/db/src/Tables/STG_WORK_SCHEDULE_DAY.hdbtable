@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_WORK_SCHEDULE_DAY" ("WorkSchedule_externalCode" NVARCHAR(128) NOT NULL , "day" BIGINT  NOT NULL , "hoursAndMinutes" NVARCHAR(255), "workingHours" DECIMAL(20,5) , "mdfSystemEffectiveStartDate" LONGDATE , "mdfSystemEffectiveEndDate" LONGDATE ) UNLOAD PRIORITY 5  AUTO MERGE 

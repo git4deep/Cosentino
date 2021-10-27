@@ -1,0 +1,1 @@
+ROW TABLE "STG_JOB_REQUISITION_CANCELLATIONS"  ( "jobReqId" NVARCHAR(10)  , "cancellationStatus" INT , PRIMARY KEY ( "jobReqId" ) ) 

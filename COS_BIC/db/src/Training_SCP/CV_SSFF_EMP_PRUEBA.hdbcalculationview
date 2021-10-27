@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SSFF_EMP_PRUEBA" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_SSFF_EMP_PRUEBA"/>
+  <metadata changedAt="2020-07-20 16:52:15.628"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="28"/>
+  <dataSources>
+    <DataSource id="MSTR_POSITION">
+      <resourceUri>Training_SCP::MSTR_POSITION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="employeeType"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="emplStatus"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="CAL_VALUE" expressionLanguage="SQL">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CECO" length="50" expressionLanguage="SQL">
+          <formula>'1000/' || &quot;costCenter&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_POSITION"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="company" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="company"/>
+        <keyMapping columnObjectName="Projection_1" columnName="company"/>
+      </attribute>
+      <attribute id="costCenter" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="costCenter"/>
+        <keyMapping columnObjectName="Projection_1" columnName="costCenter"/>
+      </attribute>
+      <attribute id="department" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="Projection_1" columnName="department"/>
+      </attribute>
+      <attribute id="employeeType" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="employeeType"/>
+        <keyMapping columnObjectName="Projection_1" columnName="employeeType"/>
+      </attribute>
+      <attribute id="endDate" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="endDate"/>
+        <keyMapping columnObjectName="Projection_1" columnName="endDate"/>
+      </attribute>
+      <attribute id="CECO" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CECO"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CECO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CAL_VALUE" order="6" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Projection_1" columnName="CAL_VALUE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SSFF_EMP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_SSFF_EMP"/>
+  <metadata changedAt="2020-07-17 10:03:34.331"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="32"/>
+  <dataSources>
+    <DataSource id="MSTR_POSITION">
+      <resourceUri>Training_SCP::MSTR_POSITION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="businessUnit"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="ceco" length="50" expressionLanguage="SQL">
+          <formula>'1000/' || &quot;costCenter&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_POSITION"/>
+    <filter>(&quot;endDate&quot; ='9999-12-31 00:00:00.0')</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="userId" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="userId"/>
+        <keyMapping columnObjectName="Projection_1" columnName="userId"/>
+      </attribute>
+      <attribute id="company" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="company"/>
+        <keyMapping columnObjectName="Projection_1" columnName="company"/>
+      </attribute>
+      <attribute id="costCenter" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="costCenter"/>
+        <keyMapping columnObjectName="Projection_1" columnName="costCenter"/>
+      </attribute>
+      <attribute id="endDate" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="endDate"/>
+        <keyMapping columnObjectName="Projection_1" columnName="endDate"/>
+      </attribute>
+      <attribute id="emplStatus" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="emplStatus"/>
+        <keyMapping columnObjectName="Projection_1" columnName="emplStatus"/>
+      </attribute>
+      <attribute id="position" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="position"/>
+        <keyMapping columnObjectName="Projection_1" columnName="position"/>
+      </attribute>
+      <attribute id="startDate" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="startDate"/>
+        <keyMapping columnObjectName="Projection_1" columnName="startDate"/>
+      </attribute>
+      <attribute id="division" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="division"/>
+        <keyMapping columnObjectName="Projection_1" columnName="division"/>
+      </attribute>
+      <attribute id="department" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="Projection_1" columnName="department"/>
+      </attribute>
+      <attribute id="subDepartment" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="subDepartment"/>
+        <keyMapping columnObjectName="Projection_1" columnName="subDepartment"/>
+      </attribute>
+      <attribute id="ceco" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ceco"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ceco"/>
+      </attribute>
+      <attribute id="businessUnit" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="businessUnit"/>
+        <keyMapping columnObjectName="Projection_1" columnName="businessUnit"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

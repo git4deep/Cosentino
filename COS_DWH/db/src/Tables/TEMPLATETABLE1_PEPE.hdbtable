@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTable1_pepe" ("profitCenter" NVARCHAR(32), "costCenter" NVARCHAR(32), "costCenterName" NVARCHAR(64) NOT NULL , "profitCenterName" NVARCHAR(64) NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

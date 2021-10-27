@@ -1,0 +1,1 @@
+ROW TABLE "EXPORT_ME"  ( "Fecha Informacion" DAYDATE , "Estatus PAO" NVARCHAR(32)  , "ID Usuario" INT  NOT NULL ) 

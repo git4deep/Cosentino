@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_EM_EVENT" ("eventDescription" NVARCHAR(3999), "eventDescriptionMsgKey" NVARCHAR(3999), "eventName" NVARCHAR(3999) NOT NULL , "eventTime" LONGDATE , "eventType" NVARCHAR(3999), "id" BIGINT  NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

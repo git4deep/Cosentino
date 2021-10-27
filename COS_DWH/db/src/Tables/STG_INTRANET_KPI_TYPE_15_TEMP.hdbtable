@@ -1,0 +1,1 @@
+ROW TABLE "STG_INTRANET_KPI_TYPE_15_TEMP"  ( "date" DAYDATE , "value" INT , "employeeId" INT , "typeId" NVARCHAR(32)  , "objectives" NVARCHAR(32)  , "status" NVARCHAR(1024)  , "valueNotStarted" INT , "valueInProgress" INT , "valueDone" INT , "valueNoStatus" INT , "valueCanceled" INT  ) 

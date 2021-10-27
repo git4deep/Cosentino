@@ -1,0 +1,1 @@
+COLUMN TABLE "FT_SSFF_RECRUITMENT_INTERVIEWS" ("businessUnit" NVARCHAR(32), "division" NVARCHAR(32), "department" NVARCHAR(32), "subDepartment" NVARCHAR(128), "position" NVARCHAR(128), "jobReqId" BIGINT , "less3Candidates" INTEGER  NOT NULL , "less5Candidates" INTEGER  NOT NULL , "year" INTEGER , "month" INTEGER ) UNLOAD PRIORITY 5  AUTO MERGE 

@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_LEARNING_HOURS_T2" ("user_code" INTEGER , "user_call_begin_date" LONGDATE , "user_call_end_date" LONGDATE , "tiempo_experimentado_horas" DECIMAL , "horas_reales_teoricas" DECIMAL , "horas_virtuales_teoricas" DECIMAL ) UNLOAD PRIORITY 5  AUTO MERGE 

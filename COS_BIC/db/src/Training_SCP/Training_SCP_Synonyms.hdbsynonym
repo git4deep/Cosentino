@@ -1,0 +1,38 @@
+{
+  "Training_SCP::MSTR_POSITION": {
+    "target": {
+      "object": "MSTR_POSITION",
+      "schema": "COS_DWH"
+    }
+  },
+  "Training_SCP::MSTR_POSITION_HIST": {
+    "target": {
+      "object": "MSTR_POSITION_HIST",
+      "schema": "COS_DWH"
+        }
+    },
+    "Training_SCP::FT_SSFF_TRAINING_EMP_JOB": {
+    "target": {
+      "object": "FT_SSFF_TRAINING_EMP_JOB",
+      "schema": "COS_DWH"
+        }
+    },
+    "Training_SCP::Z0COSTCENTER_HREPCONSO": {
+    "target": {
+      "object": "Z0COSTCENTER_HREPCONSO",
+      "schema": "COS_SDI"
+        }
+    },
+    "Training_SCP::MSTR_FO_BUSINESS_UNIT": {
+    "target": {
+      "object": "MSTR_FO_BUSINESS_UNIT",
+      "schema": "COS_DWH"
+        }
+    },
+    "Training_SCP::DUMMY": {
+    "target": {
+        "object": "DUMMY",
+        "schema": "COS_SCM"
+        }
+    }
+  }

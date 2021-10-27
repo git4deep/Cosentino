@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_ORG_HIER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_ORG_HIER"/>
+  <metadata changedAt="2019-07-06 08:21:33.47"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="45"/>
+  <dataSources>
+    <DataSource id="MSTR_POSITION">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_POSITION</resourceUri>
+    </DataSource>
+    <DataSource id="REL_EMPLOYEE_POSITION_TIME">
+      <resourceUri>DWH_CDM_PEOPLE::REL_EMPLOYEE_POSITION_TIME</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_BUSINESS_UNIT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_BUSINESS_UNIT</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_DIVISION">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_DIVISION</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_DEPARTMENT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_DEPARTMENT</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_SUB_DEPARTMENT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_SUB_DEPARTMENT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMPJOB">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_POSITION"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMPLOYEE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="REL_EMPLOYEE_POSITION_TIME"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute aggregationType="count" id="COUNT"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="P_EMPLOYEE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="userId"/></input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="COUNT"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMPJOB">
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+      </input>
+      <input node="Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_BU">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="name"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_FO_BUSINESS_UNIT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_DIV">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="name"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_FO_DIVISION"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_DEP">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="name"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_FO_DEPARTMENT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_SUB">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="externalName_defaultValue"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_SUB_DEPARTMENT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="COUNT"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+      </input>
+      <input node="P_MSTR_BU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="externalCode"/>
+      </input>
+    <joinAttribute name="businessUnit"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="COUNT"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+      </input>
+      <input node="P_MSTR_DIV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="externalCode"/>
+      </input>
+    <joinAttribute name="division"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="COUNT"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="name_DEP"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_3">
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+      </input>
+      <input node="P_MSTR_DEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DEP" source="name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="externalCode"/>
+      </input>
+    <joinAttribute name="department"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="businessUnit_nvl"/>
+        <viewAttribute id="division_nvl"/>
+        <viewAttribute id="department_nvl"/>
+        <viewAttribute id="subDepartment_nvl"/>
+        <viewAttribute id="COUNT"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="name_DEP"/>
+        <viewAttribute id="name_SUB"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="businessUnit" length="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;businessUnit_nvl&quot;), 'Sin Asignar', &quot;businessUnit_nvl&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="division" length="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF ( ISNULL (&quot;division_nvl&quot;), 'Sin Asignar', &quot;division_nvl&quot; )</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="department" length="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL (&quot;department_nvl&quot;), 'Sin Asignar', &quot;department_nvl&quot; )</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="subDepartment" length="32" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF (ISNULL( &quot;subDepartment_nvl&quot;), 'Sin Asignar', &quot;subDepartment_nvl&quot; )</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit_nvl" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division_nvl" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department_nvl" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment_nvl" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COUNT" source="COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DEP" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+      </input>
+      <input node="P_MSTR_SUB">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_SUB" source="externalName_defaultValue"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment_nvl" source="externalCode"/>
+      </input>
+    <joinAttribute name="subDepartment_nvl"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_5">
+    <descriptions/>
+    <attributes>
+      <attribute id="name_BU" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_BU"/>
+        <keyMapping columnObjectName="Join_5" columnName="name_BU"/>
+      </attribute>
+      <attribute id="name_DIV" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_DIV"/>
+        <keyMapping columnObjectName="Join_5" columnName="name_DIV"/>
+      </attribute>
+      <attribute id="name_DEP" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_DEP"/>
+        <keyMapping columnObjectName="Join_5" columnName="name_DEP"/>
+      </attribute>
+      <attribute id="name_SUB" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_SUB"/>
+        <keyMapping columnObjectName="Join_5" columnName="name_SUB"/>
+      </attribute>
+      <attribute id="startDate" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="startDate"/>
+        <keyMapping columnObjectName="Join_5" columnName="startDate"/>
+      </attribute>
+      <attribute id="endDate" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="endDate"/>
+        <keyMapping columnObjectName="Join_5" columnName="endDate"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="8" attributeHierarchyActive="false" descriptionColumnName="name_BU" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Join_5" columnName="businessUnit"/>
+      </attribute>
+      <attribute id="DIVISION" order="9" attributeHierarchyActive="false" descriptionColumnName="name_DIV" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_5" columnName="division"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="10" attributeHierarchyActive="false" descriptionColumnName="name_DEP" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_5" columnName="department"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="11" attributeHierarchyActive="false" descriptionColumnName="name_SUB" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_5" columnName="subDepartment"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="COUNT" order="5" aggregationType="sum" engineAggregation="count" measureType="simple">
+        <descriptions defaultDescription="userId"/>
+        <measureMapping columnObjectName="Join_5" columnName="COUNT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="ORG_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="ORG_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="ORG_HIER"/>
+            <levels>
+              <level levelAttribute="BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BUSINESS_UNIT"/>
+              <level levelAttribute="DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIVISION"/>
+              <level levelAttribute="DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEPARTMENT"/>
+              <level levelAttribute="SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="249" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_EMPJOB" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_EMPLOYEE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="723"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="645"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMPJOB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_BU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="549"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_DIV" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_DEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_SUB" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="172" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="453"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_BU" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_DIV" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="326" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_DEP" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="249" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_SUB" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

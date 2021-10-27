@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_MII" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_MII"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_MII">
+      <resourceUri>COS_SCM::SCM_PROD_MII</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_MII">
+    <attributes>
+      <attribute id="CODCOL" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CODCOL"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="CODCOL"/>
+      </attribute>
+      <attribute id="DESCOL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DESCOL"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="DESCOL"/>
+      </attribute>
+      <attribute id="DURT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DURT"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="DURT"/>
+      </attribute>
+      <attribute id="FFINPLA" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FFINPLA"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="FFINPLA"/>
+      </attribute>
+      <attribute id="FHMODIF" order="9" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FHMODIF"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="FHMODIF"/>
+      </attribute>
+      <attribute id="FHREG" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FHREG"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="FHREG"/>
+      </attribute>
+      <attribute id="GRUESO" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="GRUESO"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="GRUESO"/>
+      </attribute>
+      <attribute id="HCAMBIO" order="14" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HCAMBIO"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="HCAMBIO"/>
+      </attribute>
+      <attribute id="HPARADA" order="15" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HPARADA"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="HPARADA"/>
+      </attribute>
+      <attribute id="LOTE" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOTE"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="LOTE"/>
+      </attribute>
+      <attribute id="LOTEPLAN" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LOTEPLAN"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="LOTEPLAN"/>
+      </attribute>
+      <attribute id="MOTDESV" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MOTDESV"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="MOTDESV"/>
+      </attribute>
+      <attribute id="NOTAS" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NOTAS"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="NOTAS"/>
+      </attribute>
+      <attribute id="RECURSO" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="RECURSO"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="RECURSO"/>
+      </attribute>
+      <attribute id="STATUS" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="STATUS"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="STATUS"/>
+      </attribute>
+      <attribute id="TABDIA" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TABDIA"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="TABDIA"/>
+      </attribute>
+      <attribute id="TFINPLA" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TFINPLA"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="TFINPLA"/>
+      </attribute>
+      <attribute id="TINIANT" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TINIANT"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="TINIANT"/>
+      </attribute>
+      <attribute id="TINIPLA" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TINIPLA"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="TINIPLA"/>
+      </attribute>
+      <attribute id="USUARIO" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USUARIO"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="USUARIO"/>
+      </attribute>
+      <attribute id="USUMODIF" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USUMODIF"/>
+        <keyMapping columnObjectName="SCM_PROD_MII" columnName="USUMODIF"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="CANTIDAD" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CANTIDAD"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="CANTIDAD"/>
+      </measure>
+      <measure id="CTDFAB" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CTDFAB"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="CTDFAB"/>
+      </measure>
+      <measure id="CTDPEND" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CTDPEND"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="CTDPEND"/>
+      </measure>
+      <measure id="DURH" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DURH"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="DURH"/>
+      </measure>
+      <measure id="FINIANT" order="11" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="FINIANT"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="FINIANT"/>
+      </measure>
+      <measure id="FINIPLA" order="12" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="FINIPLA"/>
+        <measureMapping columnObjectName="SCM_PROD_MII" columnName="FINIPLA"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

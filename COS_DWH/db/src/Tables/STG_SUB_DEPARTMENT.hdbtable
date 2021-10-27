@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_SUB_DEPARTMENT" ("cust_parent" NVARCHAR(128), "effectiveStartDate" LONGDATE  NOT NULL , "externalCode" NVARCHAR(128) NOT NULL , "externalName_defaultValue" NVARCHAR(128)) UNLOAD PRIORITY 5  AUTO MERGE 

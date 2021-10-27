@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::DIM_EMPLYOYEE_HIER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="DIM_EMPLYOYEE_HIER"/>
+  <metadata changedAt="2019-01-30 11:29:41.371"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="MSTR_EMPLOYEE">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_EMPLOYEE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <inlineHierarchy xsi:type="Dimension:ParentChildHierarchy" id="HIER_EMPLOYEE" aggregateAllNodes="true" cycleHandling="BREAKUP" multipleParents="true" orphanedNodesHandling="STEPPARENT_NODE" rootNodeVisibility="ADD_ROOT_NODE_IF_DEFINED">
+    <descriptions defaultDescription="HIER_EMPLOYEE"/>
+    <unassignedMemberProperties>
+      <name xsi:nil="true"/>
+      <nullConvertValue xsi:nil="true"/>
+    </unassignedMemberProperties>
+    <attributeParentPair attribute="#USER_ID" parentAttribute="#MANAGER_ID" stepParentNodeID="0">
+      <rootNode>
+        <value>0</value>
+      </rootNode>
+    </attributeParentPair>
+  </inlineHierarchy>
+  <logicalModel id="MSTR_EMPLOYEE">
+    <descriptions/>
+    <attributes>
+      <attribute id="USER_ID" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="userId"/>
+      </attribute>
+      <attribute id="MANAGER_ID" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MANAGER_ID"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="managerId"/>
+      </attribute>
+      <attribute id="PERSON_ID_EXTERNAL" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PERSON_ID_EXTERNAL"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="personIdExternal"/>
+      </attribute>
+      <attribute id="FIRST_NAME" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FIRST_NAME"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="firstName"/>
+      </attribute>
+      <attribute id="LAST_NAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LAST_NAME"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="lastName"/>
+      </attribute>
+      <attribute id="START_DATE" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="START_DATE"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="startDate"/>
+      </attribute>
+      <attribute id="END_DATE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="END_DATE"/>
+        <keyMapping columnObjectName="MSTR_EMPLOYEE" columnName="endDate"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

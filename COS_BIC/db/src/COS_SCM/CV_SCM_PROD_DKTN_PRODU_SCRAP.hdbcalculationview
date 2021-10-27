@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_DKTN_PRODU_SCRAP" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_DKTN_PRODU_SCRAP"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_DKTN_PRODUCTION_SCRAP">
+      <resourceUri>COS_SCM::SCM_PROD_DKTN_PRODUCTION_SCRAP</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_DKTN_PRODUCTION_SCRAP">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_GROSS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_GROSS"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_GROSS"/>
+      </attribute>
+      <attribute id="CD_LOCAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_LOCAT"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_LOCAT"/>
+      </attribute>
+      <attribute id="CD_MOVIM" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MOVIM"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_MOVIM"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="CD_QUALI" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_QUALI"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_QUALI"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="DS_LOCAT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_LOCAT"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="DS_LOCAT"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="ID_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DAY" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="QT_DAY"/>
+      </measure>
+      <measure id="QT_MONTH" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="QT_MONTH"/>
+      </measure>
+      <measure id="TS_LOAD" order="15" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="VL_TARGE" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_TARGE"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="VL_TARGE"/>
+      </measure>
+      <measure id="VL_PROC_PRUEB_DAY" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_PROC_PRUEB_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="VL_PROC_PRUEB_DAY"/>
+      </measure>
+      <measure id="VL_PROC_PRUEB_MONTH" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_PROC_PRUEB_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_PRODUCTION_SCRAP" columnName="VL_PROC_PRUEB_MONTH"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

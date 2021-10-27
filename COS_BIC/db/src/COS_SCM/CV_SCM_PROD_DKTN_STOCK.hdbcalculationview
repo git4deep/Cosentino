@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_DKTN_STOCK" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_DKTN_STOCK"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_DKTN_STOCK">
+      <resourceUri>COS_SCM::SCM_PROD_DKTN_STOCK</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_DKTN_STOCK">
+    <attributes>
+      <attribute id="ID_SOURC" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="FL_LOAD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DAY_SLAB" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_SLAB"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="QT_DAY_SLAB"/>
+      </measure>
+      <measure id="QT_DAY_TON" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_TON"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="QT_DAY_TON"/>
+      </measure>
+      <measure id="TS_LOAD" order="7" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_STOCK" columnName="TS_LOAD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,1 @@
+COLUMN TABLE "akuna_matata" ("businessUnit" NVARCHAR(32), "department" NVARCHAR(32), "year" INTEGER , "month" INTEGER , "subDepartment" NVARCHAR(128), "division" NVARCHAR(32), "personIdExternal" NVARCHAR(100), "userId" NVARCHAR(100)) UNLOAD PRIORITY 5  AUTO MERGE 

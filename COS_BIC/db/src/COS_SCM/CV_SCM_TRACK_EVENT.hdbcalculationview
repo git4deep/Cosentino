@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_TRACK_EVENT" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_TRACK_EVENT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_TRACKER_CONTAINER">
+      <resourceUri>COS_SCM::SCM_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="NM_PORT_DESTI"/>
+        <viewAttribute id="NM_PORT_EVENT"/>
+        <viewAttribute id="NM_PORT_SOURC"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_TRACKER_CONTAINER"/>
+    <filter>ISNULL(&quot;DS_EVENT&quot;) = 0  </filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="ID_TRACK" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_TRACK"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ID_TRACK"/>
+      </attribute>
+      <attribute id="DS_VESSL" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_VESSL"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DS_VESSL"/>
+      </attribute>
+      <attribute id="DS_EVENT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_EVENT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DS_EVENT"/>
+      </attribute>
+      <attribute id="NM_PORT_DESTI" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_DESTI"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NM_PORT_DESTI"/>
+      </attribute>
+      <attribute id="NM_PORT_EVENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_EVENT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NM_PORT_EVENT"/>
+      </attribute>
+      <attribute id="NM_PORT_SOURC" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_PORT_SOURC"/>
+        <keyMapping columnObjectName="Projection_1" columnName="NM_PORT_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_TABLE" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_TABLE"/>
+        <measureMapping columnObjectName="Projection_1" columnName="QT_TABLE"/>
+      </measure>
+      <measure id="VL_CNTNR" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_CNTNR"/>
+        <measureMapping columnObjectName="Projection_1" columnName="VL_CNTNR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="86" y="280"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

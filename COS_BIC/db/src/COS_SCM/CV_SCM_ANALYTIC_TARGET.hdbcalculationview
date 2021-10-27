@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_ANALYTIC_TARGET" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_ANALYTIC_TARGET"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_ANALYTIC_TARGET">
+      <resourceUri>COS_SCM::SCM_ANALYTIC_TARGET</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_ANALYTIC_TARGET">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="SCM_ANALYTIC_TARGET" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_ANALYTIC_TARGET" columnName="ID_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="VL_TARGE" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_TARGE"/>
+        <measureMapping columnObjectName="SCM_ANALYTIC_TARGET" columnName="VL_TARGE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

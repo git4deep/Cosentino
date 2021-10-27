@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_PRESSES_TABLES" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_PRESSES_TABLES"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_PRESSES_TABLES">
+      <resourceUri>COS_SCM::SCM_PROD_PRESSES_TABLES</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PRJ_PROD_PRESSES_TABLES">
+    <viewAttributes>
+        <viewAttribute id="CD_DIMEN"/>
+        <viewAttribute id="CD_RESOU"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="QT_PRESS"/>
+        <viewAttribute id="TS_LOAD"/>
+        <viewAttribute id="QT_PRESS_TARGE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_PROD_PRESSES_TABLES"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="PRJ_PROD_PRESSES_TABLES">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="FL_LOAD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="ID_SOURC" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <measureMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="ID_SOURC"/>
+      </measure>
+      <measure id="QT_PRESS" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_PRESS"/>
+        <measureMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="QT_PRESS"/>
+      </measure>
+      <measure id="TS_LOAD" order="6" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="QT_PRESS_TARGE" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_PRESS_TARGE"/>
+        <measureMapping columnObjectName="PRJ_PROD_PRESSES_TABLES" columnName="QT_PRESS_TARGE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PRJ_PROD_PRESSES_TABLES" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="203" y="225"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

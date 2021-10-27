@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_FO_DIVISION" ("externalCode" NVARCHAR(32) NOT NULL , "name" NVARCHAR(90), "startDate" LONGDATE  NOT NULL , "endDate" LONGDATE , "status" NVARCHAR(255), "cust_BusinessunitProp" NVARCHAR(3999), PRIMARY KEY ("externalCode")) UNLOAD PRIORITY 5  AUTO MERGE 

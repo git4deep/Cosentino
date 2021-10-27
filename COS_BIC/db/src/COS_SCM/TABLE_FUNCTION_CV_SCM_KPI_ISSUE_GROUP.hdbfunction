@@ -1,0 +1,140 @@
+FUNCTION "COS_SCM::TABLE_FUNCTION_SCM_KPI_ISSUE_GROUP" ()
+RETURNS TABLE ("QT_KPI_ISSUE" INTEGER, "DS_SOURC_GROUP" NVARCHAR (50), "DT_NATUR" DATE, "QT_KPI" INTEGER, "NR_ROW" INTEGER)
+LANGUAGE SQLSCRIPT
+SQL SECURITY DEFINER
+  AS 
+
+/********* Begin Procedure Script ************/ 
+BEGIN
+   /* Cantidad de KPIs y KPIs fuera de rango - Hub Control */
+   T_HUB =  SELECT 0 AS QT_KPI_ISSUE, 'HUB CONTROL' AS DS_SOURC_GROUP, NOW() AS DT_NATUR,
+                   COUNT(*) * (SELECT COUNT(DISTINCT C."CD_RESOU")
+                               FROM "COS_SCM::SCM_KPI_ISSUE" C
+                               WHERE C."DS_SOURC_GROUP" = 'HUB CONTROL') AS QT_KPI,
+                   0 AS NR_ROW
+            FROM "COS_SCM::SCM_ANALYTIC_SOURCE" B
+            WHERE B."DS_SOURC_GROUP" = 'HUB CONTROL'
+            UNION ALL
+            SELECT TOP 3 COUNT(*) AS QT_KPI_ISSUE, A."DS_SOURC_GROUP", A."DT_NATUR", 0 AS QT_KPI,
+                   ROW_NUMBER() OVER (PARTITION BY A."DS_SOURC_GROUP" ORDER BY A."DT_NATUR" DESC) AS NR_ROW
+            FROM "COS_SCM::SCM_KPI_ISSUE" A
+            WHERE A."DS_SOURC_GROUP" = 'HUB CONTROL'
+            GROUP BY A."DS_SOURC_GROUP", A."DT_NATUR"
+            ORDER BY 5, 3 DESC;
+            
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Producción */
+   T_PROD =  SELECT 0 AS QT_KPI_ISSUE, 'PRODUCCION' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, COUNT(*) AS QT_KPI, 0 AS NR_ROW
+             FROM "COS_SCM::SCM_ANALYTIC_SOURCE" B
+             WHERE B."DS_SOURC_GROUP" = 'PRODUCCION'
+             UNION ALL
+             SELECT TOP 3 COUNT(*) AS QT_KPI_ISSUE, A."DS_SOURC_GROUP", A."DT_NATUR", 0 AS QT_KPI,
+                    ROW_NUMBER() OVER (PARTITION BY A."DS_SOURC_GROUP" ORDER BY A."DT_NATUR" DESC) AS NR_ROW
+             FROM "COS_SCM::SCM_KPI_ISSUE" A
+             WHERE A."DS_SOURC_GROUP" = 'PRODUCCION'
+             GROUP BY A."DS_SOURC_GROUP", A."DT_NATUR"
+             ORDER BY 5, 3 DESC;
+             
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Production Dekton */
+   T_DEKTON = SELECT 0 AS QT_KPI_ISSUE, 'DEKTON' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 55 AS QT_KPI, 0 AS NR_ROW
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 10 AS "QT_KPI_ISSUE", 'DEKTON' AS "DS_SOURC_GROUP", NOW() AS "DT_NATUR", 0 AS "QT_KPI", 1 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 16 AS "QT_KPI_ISSUE", 'DEKTON' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -1) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 16 AS "QT_KPI_ISSUE", 'DEKTON' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -2) AS "DT_NATUR", 0 AS "QT_KPI", 3 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY";             
+
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Inventory */
+   T_INVENT = SELECT 0 AS QT_KPI_ISSUE, 'INVENTORY' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 18 AS QT_KPI, 0 AS NR_ROW
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 5 AS "QT_KPI_ISSUE", 'INVENTORY' AS "DS_SOURC_GROUP", NOW() AS "DT_NATUR", 0 AS "QT_KPI", 1 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 6 AS "QT_KPI_ISSUE", 'INVENTORY' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -1) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 10 AS "QT_KPI_ISSUE", 'INVENTORY' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -2) AS "DT_NATUR", 0 AS "QT_KPI", 3 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY";
+              
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Incentives */
+   T_INCENT = SELECT 0 AS QT_KPI_ISSUE, 'INCENTIVES' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 3 AS QT_KPI, 0 AS NR_ROW
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 0 AS QT_KPI_ISSUE, 'INCENTIVES' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 0 AS "QT_KPI", 1 AS NR_ROW
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 6 AS "QT_KPI_ISSUE", 'INCENTIVES' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -1) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY"
+              UNION ALL
+              SELECT 10 AS "QT_KPI_ISSUE", 'INCENTIVES' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -2) AS "DT_NATUR", 0 AS "QT_KPI", 3 AS "NR_ROW"
+              FROM "COS_SCM::DUMMY";  
+              
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Services */
+   T_SERV = SELECT 0 AS QT_KPI_ISSUE, 'SERVICE' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 2 AS QT_KPI, 0 AS NR_ROW
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 1 AS "QT_KPI_ISSUE", 'SERVICE' AS "DS_SOURC_GROUP", NOW() AS "DT_NATUR", 0 AS "QT_KPI", 1 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 1 AS "QT_KPI_ISSUE", 'SERVICE' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -1) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 1 AS "QT_KPI_ISSUE", 'SERVICE' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -2) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY";
+              
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Logistic */
+   T_LOGIS = SELECT 0 AS QT_KPI_ISSUE, 'LOGISTIC' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 25 AS QT_KPI, 0 AS NR_ROW
+             FROM "COS_SCM::DUMMY"
+             UNION ALL
+             SELECT 7 AS QT_KPI_ISSUE, 'LOGISTIC' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 0 AS "QT_KPI", 1 AS NR_ROW
+             FROM "COS_SCM::DUMMY"
+             UNION ALL
+             SELECT 9 AS QT_KPI_ISSUE, 'LOGISTIC' AS DS_SOURC_GROUP, ADD_DAYS(NOW(), -1) AS DT_NATUR, 0 AS "QT_KPI", 2 AS NR_ROW
+             FROM "COS_SCM::DUMMY"
+             UNION ALL
+             SELECT 12 AS QT_KPI_ISSUE, 'LOGISTIC' AS DS_SOURC_GROUP, ADD_DAYS(NOW(), -2) AS DT_NATUR, 0 AS "QT_KPI", 3 AS NR_ROW
+             FROM "COS_SCM::DUMMY";                
+
+   --------------------------------------------------------------------------------------------------------------------
+   /* Cantidad de KPIs y KPIs fuera de rango - Planning */
+   T_PLAN = SELECT 0 AS QT_KPI_ISSUE, 'PLANNING' AS DS_SOURC_GROUP, NOW() AS DT_NATUR, 4 AS QT_KPI, 0 AS NR_ROW
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 1 AS "QT_KPI_ISSUE", 'PLANNING' AS "DS_SOURC_GROUP", NOW() AS "DT_NATUR", 0 AS "QT_KPI", 1 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 1 AS "QT_KPI_ISSUE", 'PLANNING' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -1) AS "DT_NATUR", 0 AS "QT_KPI", 2 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY"
+            UNION ALL
+            SELECT 2 AS "QT_KPI_ISSUE", 'PLANNING' AS "DS_SOURC_GROUP", ADD_DAYS(NOW(), -2) AS "DT_NATUR", 0 AS "QT_KPI", 3 AS "NR_ROW"
+            FROM "COS_SCM::DUMMY";
+            
+   --------------------------------------------------------------------------------------------------------------------
+   /* UNION ALL */
+   T_UNION1 = CE_UNION_ALL(:T_HUB, :T_PROD);
+   T_UNION2 = CE_UNION_ALL(:T_UNION1, :T_INVENT);
+   T_UNION3 = CE_UNION_ALL(:T_UNION2, :T_INCENT);
+   T_UNION4 = CE_UNION_ALL(:T_UNION3, :T_SERV);
+   T_UNION5 = CE_UNION_ALL(:T_UNION4, :T_LOGIS);
+   T_UNION6 = CE_UNION_ALL(:T_UNION5, :T_PLAN);
+   T_UNION7 = CE_UNION_ALL(:T_UNION6, :T_DEKTON);
+   
+   --------------------------------------------------------------------------------------------------------------------             
+                                                            
+   var_out = SELECT "QT_KPI_ISSUE", "DS_SOURC_GROUP", "DT_NATUR", "QT_KPI", "NR_ROW"
+             FROM :T_UNION7
+             ORDER BY "DS_SOURC_GROUP", "DT_NATUR";
+
+
+return :var_out;
+END;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_HUB_CONTROL_DAILY" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_HUB_CONTROL_DAILY"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_HUB_CONTROL_DAILY">
+      <resourceUri>COS_SCM::SCM_HUB_CONTROL_DAILY</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_HUB_CONTROL_DAILY">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_HUB" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_HUB"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="CD_HUB"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="CD_RESOU_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU_GROUP"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="CD_RESOU_GROUP"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="MT_NATUR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MT_NATUR"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="MT_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="FL_ISSUE" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FL_ISSUE"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="FL_ISSUE"/>
+      </measure>
+      <measure id="PR_WEEK" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PR_WEEK"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="PR_WEEK"/>
+      </measure>
+      <measure id="TS_LOAD" order="11" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="QT_DAY" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="QT_DAY"/>
+      </measure>
+      <measure id="PR_TARGE" order="13" aggregationType="max" measureType="simple">
+        <descriptions defaultDescription="PR_TARGE"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="PR_TARGE"/>
+      </measure>
+      <measure id="QT_AVERA" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_AVERA"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL_DAILY" columnName="QT_AVERA"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

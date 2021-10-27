@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_FREIGHT_ACCOUNT" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_LOG_FREIGHT_ACCOUNT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_TRANSPORT_ACCOUNT">
+      <resourceUri>COS_SCM::SCM_LOG_TRANSPORT_ACCOUNT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_LOG_TRANSPORT_ACCOUNT">
+    <attributes>
+      <attribute id="CD_ACCOU" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ACCOU"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="CD_ACCOU"/>
+      </attribute>
+      <attribute id="CD_COST_CENTE" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_COST_CENTE"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="CD_COST_CENTE"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="DS_ACCOU" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_ACCOU"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="DS_ACCOU"/>
+      </attribute>
+      <attribute id="DS_COST_CENTE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_COST_CENTE"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="DS_COST_CENTE"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="MY_NATUR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MY_NATUR"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="MY_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="TS_LOAD" order="10" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="VL_BALAN_PREVI_MONTH" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BALAN_PREVI_MONTH"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="VL_BALAN_PREVI_MONTH"/>
+      </measure>
+      <measure id="VL_BALAN_PREVI_YEAR" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BALAN_PREVI_YEAR"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT_ACCOUNT" columnName="VL_BALAN_PREVI_YEAR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

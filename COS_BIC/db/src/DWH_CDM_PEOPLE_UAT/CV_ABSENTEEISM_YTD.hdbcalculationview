@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="CV_ABSENTEEISM_YTD" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_ABSENTEEISM_MTD"/>
+  <metadata changedAt="2019-04-17 17:01:58.656" createdAt="2019-04-17 17:01:58.656"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="38"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_ABSENTEEISM">
+      <resourceUri>DWH_CDM_PEOPLE_UAT::FT_SSFF_ABSENTEEISM</resourceUri>
+    </DataSource>
+    <DataSource id="M_TIME_DIMENSION">
+      <resourceUri>DWH_CDM_PEOPLE_UAT::M_TIME_DIMENSION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="IS_FULLTIME_EMPLOYEE"/>
+        <viewAttribute id="WORKING_HOURS_REAL_BASE"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_BASE"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="occupationPercentage"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="MONTH" expressionLanguage="SQL">
+          <formula>MONTH(&quot;DATE_SQL&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'||'01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(&quot;DATE_SQL&quot;)||right(100+MONTH(&quot;DATE_SQL&quot;),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="OCCUPATION_PERCENTAGE" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;occupationPercentage&quot;/100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_REAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_REAL_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_EXPECTED" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_EXPECTED_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_SSFF_ABSENTEEISM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_BASE" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_BASE" source="WORKING_HOURS_EXPECTED"/></input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MONTH"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="M_TIME_DIMENSION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH_INT"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="IS_FULLTIME_EMPLOYEE"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="WORKING_HOURS_REAL"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FULLTIME_EMPLOYEE" source="IS_FULLTIME_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+      </input>
+    <joinAttribute name="MONTH"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions defaultDescription="CV_ABSENTEEISM_MTD"/>
+    <attributes>
+      <attribute id="MONTH" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="USER_ID" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID"/>
+        <keyMapping columnObjectName="Join_1" columnName="USER_ID"/>
+      </attribute>
+      <attribute id="IS_FULLTIME_EMPLOYEE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_FULLTIME_EMPLOYEE"/>
+        <keyMapping columnObjectName="Join_1" columnName="IS_FULLTIME_EMPLOYEE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="12" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
+          <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
+        </keyCalculation>
+        </calculatedAttribute>
+      <calculatedAttribute id="MONTH_NAME" hidden="true" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
+          <formula>CASE 
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'
+WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'
+WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'
+WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'
+WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'
+WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'
+WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'
+WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'
+WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'
+WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
+WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
+END</formula>
+        </keyCalculation>
+        </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="COUNT_USER_ID" order="14" aggregationType="count" measureType="simple">
+        <descriptions defaultDescription="USER_ID"/>
+        <measureMapping columnObjectName="Join_1" columnName="USER_ID"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL"/>
+        <measureMapping columnObjectName="Join_1" columnName="WORKING_HOURS_REAL"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED"/>
+        <measureMapping columnObjectName="Join_1" columnName="WORKING_HOURS_EXPECTED"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="HOURS_LONG_DURATION" hidden="false" order="8" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="17" scale="1">
+        <descriptions defaultDescription="HOURS_LONG_DURATION"/>
+        <formula>IF((&quot;WORKING_HOURS_EXPECTED&quot;-&quot;WORKING_HOURS_REAL&quot;) &gt;= 160,&quot;WORKING_HOURS_EXPECTED&quot;-&quot;WORKING_HOURS_REAL&quot;,0)</formula>
+      
+        </measure>
+      <measure id="ABSENTEEISM" hidden="false" order="9" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="17" scale="1">
+        <descriptions defaultDescription="Absenteeism"/>
+        <formula>((&quot;WORKING_HOURS_EXPECTED&quot;-&quot;WORKING_HOURS_REAL&quot;)/&quot;WORKING_HOURS_EXPECTED&quot;)*100</formula>
+      
+        </measure>
+      <measure id="ABSENTEEISM_LONG_TERM" hidden="false" order="10" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="17" scale="1">
+        <descriptions defaultDescription="ABSENTEEISM_LONG_TERM"/>
+        <formula>(&quot;HOURS_LONG_DURATION&quot;/&quot;WORKING_HOURS_EXPECTED&quot;)*100</formula>
+      
+        </measure>
+      <measure id="USER_LONG_TERM" hidden="false" order="11" aggregationType="sum" measureType="simple" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="17" scale="1">
+        <descriptions defaultDescription="USER_LONG_TERM"/>
+        <formula>IF(&quot;ABSENTEEISM_LONG_TERM&quot;&gt;0,decfloat(&quot;COUNT_USER_ID&quot;),0)</formula>
+      
+        </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_CV_ABSENTEEISM_MTD">
+        <attributeRef xsi:type="DataFoundation:Attribute">BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_CV_ABSENTEEISM_MTD" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true">
+            <descriptions defaultDescription="HIER_CV_ABSENTEEISM_MTD"/>
+            <levels>
+              <level levelAttribute="BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BUSINESS_UNIT"/>
+              <level levelAttribute="DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIVISION"/>
+              <level levelAttribute="DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEPARTMENT"/>
+              <level levelAttribute="SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="221.11302679000914" y="112"/>
+        <rectangleSize height="0" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92.00000000000001" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="302.00000000000006" y="376.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="221.11302679000914" y="217"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

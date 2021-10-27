@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTableRec7" ("jobReqId" BIGINT , "isFirstInverviewOrAfter" INTEGER , "applicationId" BIGINT ) UNLOAD PRIORITY 5  AUTO MERGE 

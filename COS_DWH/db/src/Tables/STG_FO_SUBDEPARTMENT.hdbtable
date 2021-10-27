@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_FO_SUBDEPARTMENT" ("externalCode" NVARCHAR(128) NOT NULL , "externalName_defaultValue" NVARCHAR(128), "effectiveStartDate" LONGDATE  NOT NULL , "mdfSystemEffectiveEndDate" LONGDATE , "mdfSystemStatus" NVARCHAR(255), "cust_parent" NVARCHAR(128)) UNLOAD PRIORITY 5  AUTO MERGE 

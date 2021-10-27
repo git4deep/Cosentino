@@ -1,0 +1,7 @@
+{
+  "DWH_CDM_PEOPLE::M_TIME_DIMENSION": {
+    "target": {
+      "object": "M_TIME_DIMENSION"
+    }
+  }
+}

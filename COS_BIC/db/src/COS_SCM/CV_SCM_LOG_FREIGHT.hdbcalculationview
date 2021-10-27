@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_FREIGHT" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_LOG_FREIGHT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_TRANSPORT">
+      <resourceUri>COS_SCM::SCM_LOG_TRANSPORT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_LOG_TRANSPORT">
+    <attributes>
+      <attribute id="ID_SOURC" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="DS_PLANT_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT_GROUP"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="DS_PLANT_GROUP"/>
+      </attribute>
+      <attribute id="CD_EXPED_CLASS" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_EXPED_CLASS"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="CD_EXPED_CLASS"/>
+      </attribute>
+      <attribute id="CD_EXPED_POST_OUT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_EXPED_POST_OUT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="CD_EXPED_POST_OUT"/>
+      </attribute>
+      <attribute id="DS_EXPED_POST_OUT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_EXPED_POST_OUT"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="DS_EXPED_POST_OUT"/>
+      </attribute>
+      <attribute id="CD_TRANS" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TRANS"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="CD_TRANS"/>
+      </attribute>
+      <attribute id="DS_TRANS" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_TRANS"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="DS_TRANS"/>
+      </attribute>
+      <attribute id="CD_TRANS_TYPE" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TRANS_TYPE"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="CD_TRANS_TYPE"/>
+      </attribute>
+      <attribute id="DT_ACCOU" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_ACCOU"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="DT_ACCOU"/>
+      </attribute>
+      <attribute id="FL_PLANT_EXPED" order="14" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_PLANT_EXPED"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="FL_PLANT_EXPED"/>
+      </attribute>
+      <attribute id="MT_FREIG" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MT_FREIG"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="MT_FREIG"/>
+      </attribute>
+      <attribute id="YR_FREIG" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YR_FREIG"/>
+        <keyMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="YR_FREIG"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DELIV" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DELIV"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="QT_DELIV"/>
+      </measure>
+      <measure id="QT_DELIV_UOM" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DELIV_UOM"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="QT_DELIV_UOM"/>
+      </measure>
+      <measure id="QT_WEIGH_NET" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_WEIGH_NET"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="QT_WEIGH_NET"/>
+      </measure>
+      <measure id="VL_EURO_GST_PORTE" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_EURO_GST_PORTE"/>
+        <measureMapping columnObjectName="SCM_LOG_TRANSPORT" columnName="VL_EURO_GST_PORTE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CC_VL_EURO_M2" hidden="false" order="11" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="10" scale="2">
+        <descriptions defaultDescription="CC_VL_EURO_M2"/>
+        <formula>if(&quot;QT_DELIV_UOM&quot; = 0, 0, &quot;VL_EURO_GST_PORTE&quot; / &quot;QT_DELIV_UOM&quot;)</formula>
+      </measure>
+      <measure id="CC_VL_EURO_KG" hidden="false" order="12" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="10" scale="2">
+        <descriptions defaultDescription="CC_VL_EURO_KG"/>
+        <formula>if(&quot;QT_WEIGH_NET&quot; = 0, 0, &quot;VL_EURO_GST_PORTE&quot; / &quot;QT_WEIGH_NET&quot;)</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

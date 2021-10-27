@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_ORG_HIER_BW" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_ORG_HIER_BW"/>
+  <metadata changedAt="2019-07-26 19:49:31.628"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="37"/>
+  <dataSources>
+    <DataSource id="MSTR_BW_CECOS_CEBES">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_BW_CECOS_CEBES</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="costCenterName"/>
+        <viewAttribute id="profitCenterName"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="ONE" expressionLanguage="COLUMN_ENGINE">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#MSTR_BW_CECOS_CEBES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="profitCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenterName" source="costCenterName"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="profitCenterName" source="profitCenterName"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="COST_CENTER" order="1" attributeHierarchyActive="false" descriptionColumnName="NAME_COST_CENTER" displayAttribute="false">
+        <descriptions defaultDescription="COST_CENTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="COST_CENTER"/>
+      </attribute>
+      <attribute id="PROFIT_CENTER" order="2" attributeHierarchyActive="false" descriptionColumnName="NAME_PROFIT_CENTER" displayAttribute="false">
+        <descriptions defaultDescription="PROFIT_CENTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="PROFIT_CENTER"/>
+      </attribute>
+      <attribute id="NAME_PROFIT_CENTER" hidden="true" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAME_PROFIT_CENTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="profitCenterName"/>
+      </attribute>
+      <attribute id="NAME_COST_CENTER" hidden="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NAME_COST_CENTER"/>
+        <keyMapping columnObjectName="Projection_1" columnName="costCenterName"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ONE" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ONE"/>
+        <measureMapping columnObjectName="Projection_1" columnName="ONE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="ORG_HIER_BW">
+        <attributeRef xsi:type="DataFoundation:Attribute">#PROFIT_CENTER</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#COST_CENTER</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="ORG_HIER_BW" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED">
+            <descriptions defaultDescription="ORG_HIER_BW"/>
+            <levels>
+              <level levelAttribute="#PROFIT_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#PROFIT_CENTER"/>
+              <level levelAttribute="#COST_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#COST_CENTER"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

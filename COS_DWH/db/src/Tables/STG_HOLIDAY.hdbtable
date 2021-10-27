@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_HOLIDAY" ("country" NVARCHAR(128), "holidayCode" NVARCHAR(128) NOT NULL , "mdfSystemEffectiveEndDate" LONGDATE , "mdfSystemEffectiveStartDate" LONGDATE ) UNLOAD PRIORITY 5  AUTO MERGE 

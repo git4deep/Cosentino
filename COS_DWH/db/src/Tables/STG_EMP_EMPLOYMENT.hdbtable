@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_EMP_EMPLOYMENT" ("endDate" LONGDATE , "isContingentWorker" VARCHAR(5), "isPrimary" VARCHAR(5), "personIdExternal" NVARCHAR(100) NOT NULL , "seniorityDate" LONGDATE , "startDate" LONGDATE , "userId" NVARCHAR(100) NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

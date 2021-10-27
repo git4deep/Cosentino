@@ -1,0 +1,8 @@
+{
+"SAP_BOC_SPATIAL::SCM_LOCATION_MAP": {
+    "target": {
+      "object": "SCM_LOCATION_MAP",
+      "schema": "COS_SCM"
+    }
+  }
+}

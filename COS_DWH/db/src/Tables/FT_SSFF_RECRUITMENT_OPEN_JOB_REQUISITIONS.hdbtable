@@ -1,0 +1,1 @@
+COLUMN TABLE "FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" ("jobReqId" BIGINT , "numberOpenings" DECIMAL(20,5) , "year" INTEGER , "month" INTEGER , "totalOpenRequisitions" INTEGER , "isFirstInverviewOrAfter" INTEGER , "positionNumber" INTEGER ) UNLOAD PRIORITY 5  AUTO MERGE 

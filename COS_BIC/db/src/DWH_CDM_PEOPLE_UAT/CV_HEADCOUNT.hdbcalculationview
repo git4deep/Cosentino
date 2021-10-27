@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_HEADCOUNT" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_HEADCOUNT_TMP"/>
+  <metadata changedAt="2019-02-27 15:17:50.514" createdAt="2019-02-27 15:17:50.514"/>
+  <localVariables>
+    <variable id="IP_DATE_START" parameter="true">
+      <descriptions defaultDescription="IP_DATE_START"/>
+      <variableProperties datatype="DATE" defaultValue="2018-01-01" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="IP_DATE_END" parameter="true">
+      <descriptions defaultDescription="IP_DATE_END"/>
+      <variableProperties datatype="DATE" defaultValue="2019-01-01" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="45"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_HEADCOUNT">
+      <resourceUri>DWH_CDM_PEOPLE_UAT::FT_SSFF_HEADCOUNT</resourceUri>
+    </DataSource>
+    <DataSource id="MONTH_DAYS">
+      <resourceUri>DWH_CDM_PEOPLE_UAT::MONTH_DAYS</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_DATA" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="HEADCOUNT"/>
+        <viewAttribute id="DAYS_IN_PERIOD"/>
+        <viewAttribute id="DAYS_WORKED_IN_MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DOUBLE" id="HEAD_WORKED" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;HEADCOUNT&quot; * &quot;DAYS_WORKED_IN_MONTH&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>(year('$$IP_DATE_START$$')||right(100+month('$$IP_DATE_START$$'),2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>(year('$$IP_DATE_END$$')||right(100+month('$$IP_DATE_END$$'),2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_SSFF_HEADCOUNT"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DAYS"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>(year('$$IP_DATE_START$$')||right(100+month('$$IP_DATE_START$$'),2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>(year('$$IP_DATE_END$$')||right(100+month('$$IP_DATE_END$$'),2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MONTH_DAYS"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute aggregationType="sum" id="DAYS"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Projection_1"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="HEAD_WORKED"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DAYS"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DOUBLE" id="HEAD_WORKED_TOTAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;HEAD_WORKED&quot; / &quot;DAYS&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="P_DATA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED" source="HEAD_WORKED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      </input>
+      <input node="Aggregation_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS" source="DAYS"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute aggregationType="sum" id="HEAD_WORKED_TOTAL"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Aggregation_1">
+    <descriptions defaultDescription="CV_HEADCOUNT_TMP"/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Aggregation_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="DATE_START" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATE_START"/>
+        <keyCalculation datatype="DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>'$$IP_DATE_START$$'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="DATE_END" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DATE_END"/>
+        <keyCalculation datatype="DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>'$$IP_DATE_END$$'</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="HEAD_WORKED_TOTAL" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEAD_WORKED_TOTAL"/>
+        <measureMapping columnObjectName="Aggregation_1" columnName="HEAD_WORKED_TOTAL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_DATA" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="339"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="417"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="339"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="243"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_DATA" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

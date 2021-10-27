@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE_YTD" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="true" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED">
+  <origin/>
+  <descriptions defaultDescription="CV_STAR_EMPLOYEE"/>
+  <metadata changedAt="2019-01-30 16:30:32.801"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="MSTR_EMPLOYEE">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_EMPLOYEE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="EMPLOYEE_MANAGER_ID"/>
+        <viewAttribute id="EMPLOYEE_USER_ID"/>
+        <viewAttribute id="START_DATE"/>
+        <viewAttribute id="END_DATE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="COUNT" expressionLanguage="COLUMN_ENGINE">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#MSTR_EMPLOYEE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_MANAGER_ID" source="managerId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_USER_ID" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="START_DATE" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="END_DATE" source="endDate"/>
+      </input>
+      <filter>not(&quot;START_DATE&quot; > current_date  or  &quot;END_DATE&quot; &lt; ADD_MONTHS(ADD_DAYS(current_date,-EXTRACT(DAY FROM current_date) + 1), -EXTRACT(MONTH FROM current_date) + 1))</filter>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="EMPLOYEE_USER_ID$local">
+        <descriptions/>
+        <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEE_USER_ID"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="COUNT" order="1" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COUNT"/>
+        <measureMapping columnObjectName="Projection_1" columnName="COUNT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+    <sharedDimensions>
+      <logicalJoin associatedObjectUri="DWH_CDM_PEOPLE::DIM_EMPLYOYEE_HIER">
+        <attributes>
+          <attributeRef>#EMPLOYEE_USER_ID$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>USER_ID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="referential"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_EMPLOYEE_START_DATE" attributeName="START_DATE">
+            <descriptions defaultDescription="DIM_EMPLOYEE_START_DATE"/>
+          </attributeReference>
+          <attributeReference alias="DIM_EMPLOYEE_END_DATE" attributeName="END_DATE">
+            <descriptions defaultDescription="DIM_EMPLOYEE_END_DATE"/>
+          </attributeReference>
+        </associatedAttributeFeatures>
+        <associatedHierarchyFeature hierarchyName="HIER_EMPLOYEE">
+          <joinProperties nodeElementName="HIER_EMPLOYEENode" expressionParameterName="HIER_EMPLOYEEExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+      <logicalJoin associatedObjectUri="DWH_CDM_PEOPLE::DIM_EMPLYOYEE_MATRIX_HIER">
+        <attributes>
+          <attributeRef>#EMPLOYEE_USER_ID$local</attributeRef>
+        </attributes>
+        <associatedAttributeNames>
+          <attributeName>MATRIX_MANAGER_ID</attributeName>
+        </associatedAttributeNames>
+        <properties joinOperator="Equal" joinType="leftOuter"/>
+        <associatedAttributeFeatures>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_USER_ID" attributeName="USER_ID"/>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_PERSON_ID_EXTERNAL" attributeName="PERSON_ID_EXTERNAL"/>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_FIRST_NAME" attributeName="FIRST_NAME"/>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_LAST_NAME" attributeName="LAST_NAME"/>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_START_DATE" attributeName="START_DATE"/>
+          <attributeReference alias="DIM_EMPLYOYEE_MATRIX_HIER_END_DATE" attributeName="END_DATE"/>
+        </associatedAttributeFeatures>
+        <associatedHierarchyFeature hierarchyName="HIER_EMPLOYEE_MATRIX">
+          <joinProperties nodeElementName="HIER_EMPLOYEE_MATRIXNode" expressionParameterName="HIER_EMPLOYEE_MATRIXExpression">
+            <levelElementName xsi:nil="true"/>
+            <ordinalElementName xsi:nil="true"/>
+          </joinProperties>
+        </associatedHierarchyFeature>
+      </logicalJoin>
+    </sharedDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="221"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+        <upperLeftCorner x="421" y="48"/>
+      </shape>
+      <shape modelObjectName="DWH_CDM_PEOPLE::DIM_EMPLYOYEE_HIER" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="675" y="48"/>
+      </shape>
+      <shape modelObjectName="DWH_CDM_PEOPLE::DIM_EMPLYOYEE_MATRIX_HIER" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+        <upperLeftCorner x="16" y="16"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

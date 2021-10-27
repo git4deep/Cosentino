@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_TALENT_MTD" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_TALENT_MTD"/>
+  <metadata changedAt="2019-07-04 13:59:21.053"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ORG_HIER_MTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ORG_HIER_MTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="35"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_TALENT">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_TALENT</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ORG_HIER_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ORG_HIER_MTD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="POSICION_CHANGES"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_SSFF_TALENT"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="POSICION_CHANGES"/>
+        <viewAttribute id="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="name_DEP"/>
+        <viewAttribute id="name_SUB"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSICION_CHANGES" source="POSICION_CHANGES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSIBILITY" source="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      </input>
+      <input node="CV_ORG_HIER_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DEP" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_SUB" source="name_SUB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      </input>
+    <joinAttribute name="BUSINESS_UNIT"/>
+    <joinAttribute name="DIVISION"/>
+    <joinAttribute name="DEPARTMENT"/>
+    <joinAttribute name="SUB_DEPARTMENT"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="SUB_DEPARTMENT" order="1" attributeHierarchyActive="false" descriptionColumnName="SUB_DEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="DIVISION" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Join_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="6" attributeHierarchyActive="false" descriptionColumnName="BUSINESS_UNIT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT_NAME" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_BU"/>
+      </attribute>
+      <attribute id="DIVISION_NAME" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_DIV"/>
+      </attribute>
+      <attribute id="DEPARTMENT_NAME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_DEP"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT_NAME" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_SUB"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="POSICION_CHANGES" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="POSICION_CHANGES"/>
+        <measureMapping columnObjectName="Join_1" columnName="POSICION_CHANGES"/>
+      </measure>
+      <measure id="PROMOTIONS_INCREASED_RESPONSIBILITY" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+        <measureMapping columnObjectName="Join_1" columnName="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_CV_TALENT_MTD">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_CV_TALENT_MTD" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true">
+            <descriptions defaultDescription="HIER_CV_TALENT_MTD"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="200" y="89"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="320"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="200" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="DWH_CDM_PEOPLE::CV_ORG_HIER_MTD" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

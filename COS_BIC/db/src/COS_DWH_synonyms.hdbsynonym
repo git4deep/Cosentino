@@ -1,0 +1,267 @@
+{
+"DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_BW_FINANCIALS": {
+    "target": {
+      "object": "FT_BW_FINANCIALS",
+      "schema": "COS_DWH"
+    }
+  },
+
+  "DWH_CDM_PEOPLE::FT_SSFF_RECRUITMENT": {
+    "target": {
+      "object": "FT_SSFF_RECRUITMENT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::ALERTS_TEST": {
+    "target": {
+      "object": "ALERTS_TEST",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_ABSENTEEISM": {
+    "target": {
+      "object": "FT_SSFF_ABSENTEEISM",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_ABSENTEEISM_COST": {
+    "target": {
+      "object": "FT_SSFF_ABSENTEEISM_COST",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::TCURV": {
+    "target": {
+      "object": "TCURV",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::TCURX": {
+    "target": {
+      "object": "TCURX",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::TCURN": {
+    "target": {
+      "object": "TCURN",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::TCURF": {
+    "target": {
+      "object": "TCURF",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::TCURR": {
+    "target": {
+      "object": "TCURR",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_FUNCTIONAL_HEADCOUNT": {
+    "target": {
+      "object": "FT_SSFF_FUNCTIONAL_HEADCOUNT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT_BW": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT_BW",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT_PEOPLE": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT_PEOPLE",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K16": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K16",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::REL_EMPLOYEE_POSITION_TIME": {
+    "target": {
+      "object": "REL_EMPLOYEE_POSITION_TIME",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K17": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K17",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K19": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K19",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K20": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K20",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K22": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K22",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_LEARNING_HOURS": {
+    "target": {
+      "object": "FT_LEARNING_HOURS",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_POSITION": {
+    "target": {
+      "object": "MSTR_POSITION",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_FO_BUSINESS_UNIT": {
+    "target": {
+      "object": "MSTR_FO_BUSINESS_UNIT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_FO_DIVISION": {
+    "target": {
+      "object": "MSTR_FO_DIVISION",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_FO_DEPARTMENT": {
+    "target": {
+      "object": "MSTR_FO_DEPARTMENT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_SUB_DEPARTMENT": {
+    "target": {
+      "object": "MSTR_SUB_DEPARTMENT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_BW_CECOS_CEBES": {
+    "target": {
+      "object": "MSTR_BW_CECOS_CEBES",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_POSITION_HIST": {
+    "target": {
+      "object": "MSTR_POSITION_HIST",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_COST_CENTER": {
+    "target": {
+      "object": "MSTR_COST_CENTER",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::MSTR_EMPLOYEE": {
+    "target": {
+      "object": "MSTR_EMPLOYEE",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_TALENT": {
+    "target": {
+      "object": "FT_SSFF_TALENT",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K18": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K18",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K21": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K21",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K23": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K23",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_INTRANET_KPI_K24": {
+    "target": {
+      "object": "FT_INTRANET_KPI_K24",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_TURNOVER": {
+    "target": {
+      "object": "FT_SSFF_TURNOVER",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT_12MONTHS": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT_12MONTHS",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::USER_SECURITY_PRIVILEGE_FILTER_BU": {
+    "target": {
+      "object": "USER_SECURITY_PRIVILEGE_FILTER_BU",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::USER_SECURITY_PRIVILEGE": {
+    "target": {
+      "object": "USER_SECURITY_PRIVILEGE",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::USER_SECURITY_PRIVILEGE_FILTER_DEP": {
+    "target": {
+      "object": "USER_SECURITY_PRIVILEGE_FILTER_DEP",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::USER_SECURITY_PRIVILEGE_FILTER_DIV": {
+    "target": {
+      "object": "USER_SECURITY_PRIVILEGE_FILTER_DIV",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::USER_SECURITY_PRIVILEGE_FILTER_SUB": {
+    "target": {
+      "object": "USER_SECURITY_PRIVILEGE_FILTER_SUB",
+      "schema": "COS_DWH"
+    }
+  },
+    "DWH_CDM_PEOPLE::MONTH_DAYS": {
+    "target": {
+      "object": "MONTH_DAYS",
+      "schema": "COS_DWH"
+    }
+  }
+}

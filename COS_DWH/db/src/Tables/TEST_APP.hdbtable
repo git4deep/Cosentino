@@ -1,0 +1,1 @@
+ROW TABLE "TEST_APP"  ( "jobReqId" BIGINT , "dateOfferAccepted" LONGDATE , "isFirstInverviewOrAfter" INT , "applicationId" BIGINT  NOT NULL, "candidateId" BIGINT , "hiredOn" LONGDATE , "isDisqualified" INT  NOT NULL ) 

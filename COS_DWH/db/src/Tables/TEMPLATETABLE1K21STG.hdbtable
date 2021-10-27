@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTable1K21STG" ("date" DATE , "employeeId" INTEGER , "year" INTEGER , "month" INTEGER , "hasData" INTEGER , "valueNotStarted" INTEGER , "valueInProgress" INTEGER , "valueDone" INTEGER , "valueNoStatus" INTEGER , "valueCanceled" INTEGER , "value" INTEGER , "typeId" NVARCHAR(32), "objectives" NVARCHAR(32), "status" NVARCHAR(1024)) UNLOAD PRIORITY 5  AUTO MERGE 

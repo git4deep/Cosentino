@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PLAN_FORECAST_TBL" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PLAN_FORECAST"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PLAN_FORECAST">
+      <resourceUri>COS_SCM::SCM_PLAN_FORECAST</resourceUri>
+    </DataSource>
+    <DataSource id="COS_SCM::SCM_PLAN_FORECAST">
+      <resourceUri>COS_SCM::SCM_PLAN_FORECAST</resourceUri>
+    </DataSource>
+    <DataSource id="H_N$$$$COS_SCM::SCM_PLAN_FORECAST$$">
+      <resourceUri>COS_SCM::SCM_PLAN_FORECAST</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_PLAN_DEMAND_PLANNER">
+      <resourceUri>COS_SCM::SCM_PLAN_DEMAND_PLANNER</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_MD_MATERIALES">
+      <resourceUri>COS_SCM::SCM_MD_MATERIALES</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_MD_UN_CDG">
+      <resourceUri>COS_SCM::SCM_MD_UN_CDG</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="M" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_BUSIN_UNIT_UP"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_BUSIN_UNIT"/>
+        <viewAttribute id="DS_BUSIN_UNIT_UP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_PLAN_FORECAST"/>
+    <filter>&quot;FL_LOAD_TYPE&quot; = 'M'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="H_N_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions>
+      <comment text="Registros historicos N - 1"/>
+    </descriptions>
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_BUSIN_UNIT_UP"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_BUSIN_UNIT"/>
+        <viewAttribute id="DS_BUSIN_UNIT_UP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="DATE" id="CC_DT_LOAD_BEFOR" expressionLanguage="COLUMN_ENGINE">
+          <formula>daydate(FORMAT(ADDMONTHS(&quot;DT_LOAD&quot;, -1),'YYYYMM') + '01')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="CC_MY_LOAD" length="7" expressionLanguage="COLUMN_ENGINE">
+          <formula>FORMAT(&quot;DT_LOAD&quot;, 'YYYY/MM')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="COS_SCM::SCM_PLAN_FORECAST"/>
+    <filter>&quot;FL_LOAD_TYPE&quot; = 'H' AND
+&quot;CC_MY_LOAD&quot; != &quot;MY_NATUR&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_BUSIN_UNIT_UP"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_BUSIN_UNIT"/>
+        <viewAttribute id="DS_BUSIN_UNIT_UP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="M" emptyUnionBehavior="NO_ROW">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT_UP" source="CD_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_GROUP" source="CD_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_COLOR" source="CD_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER_RANGE" source="CD_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SERIE" source="CD_SERIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT" source="DS_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT_UP" source="DS_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_GROUP" source="DS_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_SUBGROUP" source="DS_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_COLOR" source="DS_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_RANGE" source="DS_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="DT_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+      </input>
+      <input node="H_N_1" emptyUnionBehavior="NO_ROW">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT_UP" source="CD_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_GROUP" source="CD_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_COLOR" source="CD_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER_RANGE" source="CD_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SERIE" source="CD_SERIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT" source="DS_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT_UP" source="DS_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_GROUP" source="DS_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_SUBGROUP" source="DS_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_COLOR" source="DS_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_RANGE" source="DS_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="CC_DT_LOAD_BEFOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+      </input>
+      <input node="H_N" emptyUnionBehavior="NO_ROW">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT_UP" source="CD_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_GROUP" source="CD_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_COLOR" source="CD_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER_RANGE" source="CD_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SERIE" source="CD_SERIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT" source="DS_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT_UP" source="DS_BUSIN_UNIT_UP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_GROUP" source="DS_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_SUBGROUP" source="DS_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_COLOR" source="DS_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_RANGE" source="DS_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="DT_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="H_N" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_BUSIN_UNIT_UP"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_BUSIN_UNIT"/>
+        <viewAttribute id="DS_BUSIN_UNIT_UP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CC_MY_LOAD" length="7" expressionLanguage="COLUMN_ENGINE">
+          <formula>FORMAT(&quot;DT_LOAD&quot;, 'YYYY/MM')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="H_N$$$$COS_SCM::SCM_PLAN_FORECAST$$"/>
+    <filter>&quot;FL_LOAD_TYPE&quot; = 'H' AND
+&quot;CC_MY_LOAD&quot; = &quot;MY_NATUR&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="SCM_PLANNER">
+    <viewAttributes>
+        <viewAttribute id="NM_DEMAN_PLANN"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_PLAN_DEMAND_PLANNER"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_DEMAND_PLANNER" cardinality="C1_N" joinType="rightOuter">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="NM_DEMAN_PLANN"/>
+        <viewAttribute id="VL_TOTAL"/>
+      <viewAttribute hidden="true" id="JOIN$CD_CDG_SUBGROUP$CD_CDG_SUBGROUP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_PLANNER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_DEMAN_PLANN" source="NM_DEMAN_PLANN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CD_CDG_SUBGROUP$CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+      </input>
+      <input node="Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="DT_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CD_CDG_SUBGROUP$CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+      </input>
+    <joinAttribute name="JOIN$CD_CDG_SUBGROUP$CD_CDG_SUBGROUP"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MD_MATERIALES">
+    <viewAttributes>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_GAMA"/>
+        <viewAttribute id="CD_MATERIAL"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_GAMA"/>
+        <viewAttribute id="GRUESO"/>
+        <viewAttribute id="NMATERIAL"/>
+        <viewAttribute id="NTIPO_PRODUCTO"/>
+        <viewAttribute id="VL_FACTOR"/>
+        <viewAttribute id="DS_MATERIAL_EN"/>
+        <viewAttribute id="DS_MATERIAL_ES"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_MD_MATERIALES"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_MATERIALES" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="NM_DEMAN_PLANN"/>
+        <viewAttribute id="VL_FACTOR"/>
+        <viewAttribute id="DS_MATERIAL_EN"/>
+        <viewAttribute id="DS_MATERIAL_ES"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="J_DEMAND_PLANNER">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="DT_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_DEMAN_PLANN" source="NM_DEMAN_PLANN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+      </input>
+      <input node="MD_MATERIALES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_COLOR" source="CD_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER_RANGE" source="CD_GAMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SERIE" source="CD_SERIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_COLOR" source="DS_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_RANGE" source="DS_GAMA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_FACTOR" source="VL_FACTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATERIAL_EN" source="DS_MATERIAL_EN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATERIAL_ES" source="DS_MATERIAL_ES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATERIAL"/>
+      </input>
+    <joinAttribute name="CD_MATER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MD_UN_CDG">
+    <viewAttributes>
+        <viewAttribute id="CD_CDG_UNS"/>
+        <viewAttribute id="DS_CDG_UNS"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_CDG_UN"/>
+        <viewAttribute id="DS_CDG_UN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_MD_UN_CDG"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_MD_UN_CDG" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+        <viewAttribute id="CD_BUSIN_UNIT"/>
+        <viewAttribute id="CD_BUSIN_UNIT_UP"/>
+        <viewAttribute id="CD_CDG_GROUP"/>
+        <viewAttribute id="CD_CDG_SUBGROUP"/>
+        <viewAttribute id="CD_COLOR"/>
+        <viewAttribute id="CD_MATER"/>
+        <viewAttribute id="CD_MATER_RANGE"/>
+        <viewAttribute id="CD_PLANT"/>
+        <viewAttribute id="CD_SERIE"/>
+        <viewAttribute id="DS_BUSIN_UNIT"/>
+        <viewAttribute id="DS_BUSIN_UNIT_UP"/>
+        <viewAttribute id="DS_CDG_GROUP"/>
+        <viewAttribute id="DS_CDG_SUBGROUP"/>
+        <viewAttribute id="DS_COLOR"/>
+        <viewAttribute id="DS_MATER_RANGE"/>
+        <viewAttribute id="DS_PLANT"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="MY_NATUR"/>
+        <viewAttribute id="VL_AGREE"/>
+        <viewAttribute id="VL_BASE_ADJUS"/>
+        <viewAttribute id="VL_BASE_ENRIC"/>
+        <viewAttribute id="VL_BUDGE"/>
+        <viewAttribute id="VL_HISTO"/>
+        <viewAttribute id="FL_LOAD_TYPE"/>
+        <viewAttribute id="DT_LOAD"/>
+        <viewAttribute id="NM_DEMAN_PLANN"/>
+        <viewAttribute id="VL_FACTOR"/>
+        <viewAttribute id="DS_MATERIAL_EN"/>
+        <viewAttribute id="DS_MATERIAL_ES"/>
+        <viewAttribute id="VL_TOTAL"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CC_CD_CENTRO" length="4" expressionLanguage="COLUMN_ENGINE">
+          <formula>leftstr(&quot;CD_PLANT&quot;, 4)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="J_MATERIALES">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_BUSIN_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_COLOR" source="CD_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER_RANGE" source="CD_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SERIE" source="CD_SERIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_COLOR" source="DS_COLOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_RANGE" source="DS_MATER_RANGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_PLANT" source="DS_PLANT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MY_NATUR" source="MY_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_AGREE" source="VL_AGREE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ADJUS" source="VL_BASE_ADJUS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BASE_ENRIC" source="VL_BASE_ENRIC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BUDGE" source="VL_BUDGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_HISTO" source="VL_HISTO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD_TYPE" source="FL_LOAD_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_LOAD" source="DT_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_DEMAN_PLANN" source="NM_DEMAN_PLANN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_FACTOR" source="VL_FACTOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATERIAL_EN" source="DS_MATERIAL_EN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATERIAL_ES" source="DS_MATERIAL_ES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL" source="VL_TOTAL"/>
+      </input>
+      <input node="MD_UN_CDG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT_UP" source="CD_CDG_UNS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_GROUP" source="CD_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CDG_SUBGROUP" source="CD_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT" source="DS_CDG_UN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_BUSIN_UNIT_UP" source="DS_CDG_UNS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_GROUP" source="DS_CDG_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_CDG_SUBGROUP" source="DS_CDG_SUBGROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_BUSIN_UNIT" source="CD_CDG_UN"/>
+      </input>
+    <joinAttribute name="CD_BUSIN_UNIT"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="J_MD_UN_CDG">
+    <attributes>
+      <attribute id="CD_BUSIN_UNIT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_BUSIN_UNIT"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_BUSIN_UNIT"/>
+      </attribute>
+      <attribute id="CD_BUSIN_UNIT_UP" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_BUSIN_UNIT_UP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_BUSIN_UNIT_UP"/>
+      </attribute>
+      <attribute id="CD_CDG_GROUP" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_CDG_GROUP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_CDG_GROUP"/>
+      </attribute>
+      <attribute id="CD_CDG_SUBGROUP" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_CDG_SUBGROUP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="CD_COLOR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_COLOR"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_COLOR"/>
+      </attribute>
+      <attribute id="CD_MATER" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_MATER"/>
+      </attribute>
+      <attribute id="CD_MATER_RANGE" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER_RANGE"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_MATER_RANGE"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="CD_SERIE" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SERIE"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CD_SERIE"/>
+      </attribute>
+      <attribute id="DS_BUSIN_UNIT" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_BUSIN_UNIT"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_BUSIN_UNIT"/>
+      </attribute>
+      <attribute id="DS_BUSIN_UNIT_UP" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_BUSIN_UNIT_UP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_BUSIN_UNIT_UP"/>
+      </attribute>
+      <attribute id="DS_CDG_GROUP" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_CDG_GROUP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_CDG_GROUP"/>
+      </attribute>
+      <attribute id="DS_CDG_SUBGROUP" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_CDG_SUBGROUP"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="DS_COLOR" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_COLOR"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_COLOR"/>
+      </attribute>
+      <attribute id="DS_MATER_RANGE" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATER_RANGE"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_MATER_RANGE"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="24" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="MY_NATUR" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MY_NATUR"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="MY_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD_TYPE" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD_TYPE"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="FL_LOAD_TYPE"/>
+      </attribute>
+      <attribute id="DT_LOAD" order="32" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_LOAD"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DT_LOAD"/>
+      </attribute>
+      <attribute id="NM_DEMAN_PLANN" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="NM_DEMAN_PLANN"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="NM_DEMAN_PLANN"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_EN" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATERIAL_EN"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_MATERIAL_EN"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_ES" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATERIAL_ES"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="DS_MATERIAL_ES"/>
+      </attribute>
+      <attribute id="CC_CD_CENTRO" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_CD_CENTRO"/>
+        <keyMapping columnObjectName="J_MD_UN_CDG" columnName="CC_CD_CENTRO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CC_DS_PERIO_REFER" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Period reference description"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="5">
+          <formula>if(format(&quot;DT_LOAD&quot;,'YYYY/MM') = &quot;MY_NATUR&quot;, 'N', 'N-1')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_DT_LOAD_BEFOR" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fecha anterior basado a la fecha actual de carga"/>
+        <keyCalculation datatype="DATE" expressionLanguage="COLUMN_ENGINE">
+          <formula>daydate(FORMAT(ADDDAYS(&quot;DT_LOAD&quot;,-25),'YYYYMM') + '01')
+</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_DT_NATUR" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_DT_NATUR"/>
+        <keyCalculation datatype="DATE" expressionLanguage="SQL">
+          <formula>to_date(&quot;MY_NATUR&quot;, 'YYYY/MM')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_QT_NATUR" hidden="false" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_QT_NATUR"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
+          <formula>RIGHT(QUARTER(TO_DATE(&quot;MY_NATUR&quot;, 'YYYY/MM')), 2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_MN_NATUR" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_MN_NATUR"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
+          <formula>MONTH(TO_DATE(&quot;MY_NATUR&quot;, 'YYYY/MM'))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_YY_NATUR" hidden="false" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_YY_NATUR"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="4">
+          <formula>leftstr(&quot;MY_NATUR&quot;,4)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <baseMeasures>
+      <measure id="VL_AGREE" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_AGREE"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_AGREE"/>
+      </measure>
+      <measure id="VL_BASE_ADJUS" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BASE_ADJUS"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_BASE_ADJUS"/>
+      </measure>
+      <measure id="VL_BASE_ENRIC" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BASE_ENRIC"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_BASE_ENRIC"/>
+      </measure>
+      <measure id="VL_BUDGE" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BUDGE"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_BUDGE"/>
+      </measure>
+      <measure id="VL_HISTO" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_HISTO"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_HISTO"/>
+      </measure>
+      <measure id="VL_FACTOR" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_FACTOR"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_FACTOR"/>
+      </measure>
+      <measure id="VL_TOTAL" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_TOTAL"/>
+        <measureMapping columnObjectName="J_MD_UN_CDG" columnName="VL_TOTAL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CC_VL_HISTO_BEFOR" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="20" scale="8">
+        <descriptions defaultDescription="CC_VL_HISTO_BEFOR"/>
+        <formula>&quot;VL_HISTO&quot;</formula>
+      
+        </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="659" y="112"/>
+      
+        <rectangleSize width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="M" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="871"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="H_N_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="512" y="871"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="132" y="696"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="H_N" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="302" y="871"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="SCM_PLANNER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="488" y="696"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="J_DEMAND_PLANNER" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="158" y="536"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+    <shape modelObjectName="SCM_PLANNER" modelObjectNameSpace="J_DEMAND_PLANNER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Union_1" modelObjectNameSpace="J_DEMAND_PLANNER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="MD_MATERIALES" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="593" y="536"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="J_MATERIALES" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="185" y="376"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+    <shape modelObjectName="J_DEMAND_PLANNER" modelObjectNameSpace="J_MATERIALES" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="MD_MATERIALES" modelObjectNameSpace="J_MATERIALES" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="MD_UN_CDG" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="712" y="376"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="J_MD_UN_CDG" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="659" y="217"/>
+        <rectangleSize height="30" width="160"/>
+      </shape>
+    
+    <shape modelObjectName="J_MATERIALES" modelObjectNameSpace="J_MD_UN_CDG" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="MD_UN_CDG" modelObjectNameSpace="J_MD_UN_CDG" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

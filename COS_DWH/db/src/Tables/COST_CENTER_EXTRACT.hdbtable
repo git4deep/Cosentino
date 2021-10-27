@@ -1,0 +1,1 @@
+ROW TABLE "COST_CENTER_EXTRACT"  ( "Centro_de_coste" NVARCHAR(255)   NOT NULL, "Denominacion" NVARCHAR(255)  , "Sociedad" NVARCHAR(255)  , "Centro_de_beneficio" NVARCHAR(255)   ) 

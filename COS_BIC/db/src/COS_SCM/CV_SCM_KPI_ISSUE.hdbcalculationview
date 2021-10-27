@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_KPI_ISSUE" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_TEST"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" type="TABLE_FUNCTION">
+      <resourceUri>COS_SCM::TABLE_FUNCTION_CV_SCM_KPI_ISSUE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION_CV_SCM_KPI_ISSUE">
+    <descriptions/>
+    <attributes>
+      <attribute id="DS_SOURC" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_SOURC"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="DS_SOURC"/>
+      </attribute>
+      <attribute id="DS_SOURC_GROUP" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_SOURC_GROUP"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="DS_SOURC_GROUP"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="MT_NATUR" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MT_NATUR"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="MT_NATUR"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="ID_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="QT_TARGE" order="7" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="QT_TARGE"/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="QT_TARGE"/>
+      </measure>
+      <measure id="QT_UNIT" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_UNIT"/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE" columnName="QT_UNIT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

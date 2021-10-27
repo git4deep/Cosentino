@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_COMPANY" ("country" NVARCHAR(128), "currency" NVARCHAR(128), "cust_paychex" NVARCHAR(4), "endDate" LONGDATE , "externalCode" NVARCHAR(32) NOT NULL , "name" NVARCHAR(32), "standardHours" DOUBLE , "startDate" LONGDATE  NOT NULL , "status" NVARCHAR(255), PRIMARY KEY ("externalCode", "startDate")) UNLOAD PRIORITY 5  AUTO MERGE 

@@ -1,0 +1,1 @@
+ROW TABLE "STG_INTRANET_KPI_STATUS"  ( "date" DAYDATE , "ohrp" INT , "objectives" INT , "status" NVARCHAR(32)  , "employeeId" INT , "typeId" INT  ) 

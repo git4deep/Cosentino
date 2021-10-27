@@ -1,0 +1,26 @@
+{
+  "DWH_CDM_PEOPLE_UAT::FT_SSFF_ABSENTEEISM": {
+    "target": {
+      "object": "FT_SSFF_ABSENTEEISM",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE_UAT::M_TIME_DIMENSION": {
+    "target": {
+      "object": "M_TIME_DIMENSION",
+      "schema": "COS_DWH"
+        }
+    },
+    "DWH_CDM_PEOPLE_UAT::FT_SSFF_HEADCOUNT": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT",
+      "schema": "COS_DWH"
+        }
+    },
+    "DWH_CDM_PEOPLE_UAT::MONTH_DAYS": {
+    "target": {
+      "object": "MONTH_DAYS",
+      "schema": "COS_DWH"
+        }
+    }
+  }

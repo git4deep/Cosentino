@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="_EJEMPLO_SCRIPT_02" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PLAN_FORECAST_GRP"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" type="TABLE_FUNCTION">
+      <resourceUri>COS_SCM::TABLE_FUNCTION__EJEMPLO_SCRIPT_02</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION__EJEMPLO_SCRIPT_02">
+    <descriptions/>
+    <attributes>
+      <attribute id="CD_FORES_GROUP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="CD_FORES_GROUP"/>
+      </attribute>
+      <attribute id="MY_NATUR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="MY_NATUR"/>
+      </attribute>
+      <attribute id="CC_DS_PERIO_REFER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="CC_DS_PERIO_REFER"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="VL_FOREC_COLOR" order="4" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="VL_FOREC_COLOR"/>
+      </measure>
+      <measure id="VL_FOREC_GAMA" order="5" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="VL_FOREC_GAMA"/>
+      </measure>
+      <measure id="VL_FOREC_MATER" order="6" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="VL_FOREC_MATER"/>
+      </measure>
+      <measure id="VL_FOREC_SERIE" order="7" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION__EJEMPLO_SCRIPT_02" columnName="VL_FOREC_SERIE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

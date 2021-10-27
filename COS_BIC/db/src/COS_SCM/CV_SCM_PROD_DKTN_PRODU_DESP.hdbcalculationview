@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_DKTN_PRODU_DESP" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_DKTN_PRODU_DESP"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_DKTN_CALIDAD">
+      <resourceUri>COS_SCM::SCM_PROD_DKTN_CALIDAD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_DKTN_CALIDAD">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_GROSS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_GROSS"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_GROSS"/>
+      </attribute>
+      <attribute id="CD_GROUP" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_GROUP"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_GROUP"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="CD_DIMEN_PARN1" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN_PARN1"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_DIMEN_PARN1"/>
+      </attribute>
+      <attribute id="CD_DIMEN_PARN2" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN_PARN2"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_DIMEN_PARN2"/>
+      </attribute>
+      <attribute id="CD_DIMEN_PARN3" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN_PARN3"/>
+        <keyMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="CD_DIMEN_PARN3"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DAY" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_DAY"/>
+      </measure>
+      <measure id="QT_DAY_SUP_TEO" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_SUP_TEO"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_DAY_SUP_TEO"/>
+      </measure>
+      <measure id="QT_DAY_SUP_UTIL" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_SUP_UTIL"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_DAY_SUP_UTIL"/>
+      </measure>
+      <measure id="QT_MONTH" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_MONTH"/>
+      </measure>
+      <measure id="QT_MONTH_SUP_TEO" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH_SUP_TEO"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_MONTH_SUP_TEO"/>
+      </measure>
+      <measure id="QT_MONTH_SUP_UTIL" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH_SUP_UTIL"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="QT_MONTH_SUP_UTIL"/>
+      </measure>
+      <measure id="TS_LOAD" order="14" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_DKTN_CALIDAD" columnName="TS_LOAD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

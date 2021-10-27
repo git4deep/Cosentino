@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD_CURR" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_ABSENTEEISM_COST_YTD_CURR"/>
+  <metadata changedAt="2019-08-02 15:49:42.834"/>
+  <localVariables>
+    <variable id="IP_CURRENCY" parameter="true">
+      <descriptions defaultDescription="IP_CURRENCY"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="EUR" length="32" mandatory="true" scale="0">
+        <valueDomain type="AttributeValue">
+          <attribute name="CURRENCY_CODE"/>
+        </valueDomain>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="CV_ABSENTEEISM_COST_YTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="CV_ABSENTEEISM_COST_YTD">
+    <descriptions/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT_NAME" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="BUSINESS_UNIT_NAME"/>
+      </attribute>
+      <attribute id="DIVISION_NAME" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_NAME"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="DIVISION_NAME"/>
+      </attribute>
+      <attribute id="DEPARTMENT_NAME" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT_NAME" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="SUB_DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="CURRENCY_CODE" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="CURRENCY_CODE"/>
+      </attribute>
+      <attribute id="MONTH" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="MONTH"/>
+      </attribute>
+      <attribute id="ABS_COST_CURR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ABS_COST_CURR"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="ABSENTEEISM_COST_CURRENCY"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="DAYS5" hidden="false" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAYS5"/>
+        <keyCalculation datatype="DATE" expressionLanguage="SQL">
+          <formula>to_date('$$IP_YEAR$$'||'.01.01')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="14" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
+          <formula>RIGHT(100+&quot;MONTH&quot;,2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_NAME" hidden="true" order="15" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
+          <formula>CASE
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'
+WHEN &quot;MONTH_AUX&quot;  = 02 THEN 'FEB'
+WHEN &quot;MONTH_AUX&quot;  = 03 THEN 'MAR'
+WHEN &quot;MONTH_AUX&quot;  = 04 THEN 'APR'
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'
+WHEN &quot;MONTH_AUX&quot;  = 06 THEN 'JUN'
+WHEN &quot;MONTH_AUX&quot;  = 07 THEN 'JUL'
+WHEN &quot;MONTH_AUX&quot;  = 08 THEN 'AUG'
+WHEN &quot;MONTH_AUX&quot;  = 09 THEN 'SEP'
+WHEN &quot;MONTH_AUX&quot;  = 10 THEN 'OCT'
+WHEN &quot;MONTH_AUX&quot;  = 11 THEN 'NOV'
+WHEN &quot;MONTH_AUX&quot;  = 12 THEN 'DEC'
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="ABSENTEEISM_COST" order="12" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="ABSENTEEISM_COST"/>
+        <unitCurrencyAttribute attributeName="CURRENCY"/>
+        <currencyConversion errorHandling="setToNull" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="CURRENCY" convert="true">
+          <client>
+            <value>020</value>
+          </client>
+          <currencyConversionTables rates="DWH_CDM_PEOPLE::TCURR" configuration="DWH_CDM_PEOPLE::TCURV" prefactors="DWH_CDM_PEOPLE::TCURF" notations="DWH_CDM_PEOPLE::TCURN" precisions="DWH_CDM_PEOPLE::TCURX"/>
+          <outputDataType datatype="DOUBLE"/>
+          <sourceCurrency>
+            <attribute attributeName="ABS_COST_CURR"/>
+          </sourceCurrency>
+          <erpDecimalShift>true</erpDecimalShift>
+          <targetCurrency>
+            <localVariable>IP_CURRENCY</localVariable>
+          </targetCurrency>
+          <referenceDate>
+            <attribute attributeName="DAYS5"/>
+          </referenceDate>
+          <exchangeRateType>ZCDG</exchangeRateType>
+        </currencyConversion>
+        <measureMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="ABSENTEEISM_COST"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_ABSENTEEISM_COST">
+        <attributeRef xsi:type="DataFoundation:Attribute">BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_ABSENTEEISM_COST" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="HIER_ABSENTEEISM_COST"/>
+            <levels>
+              <level levelAttribute="BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BUSINESS_UNIT"/>
+              <level levelAttribute="DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIVISION"/>
+              <level levelAttribute="DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEPARTMENT"/>
+              <level levelAttribute="SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

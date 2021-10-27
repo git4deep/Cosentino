@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_TRACK_ALERT_BKP" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_LOG_TRACK_ALERT"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_CONTRACT_ALERT">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_LOG_CONTRACT_VALUE">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_VALUE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ALERT">
+    <viewAttributes>
+        <viewAttribute id="CD_DESTI_PORT"/>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_CONTRACT_ALERT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="VALUE">
+    <viewAttributes>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="VL_DAYS_AGRAV"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="VL_DAYS_ABAJA"/>
+        <viewAttribute id="VL_DAYS_MAXIM"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_CONTRACT_VALUE"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="CD_DESTI_PORT"/>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_DAYS_ABAJA"/>
+        <viewAttribute id="VL_DAYS_AGRAV"/>
+        <viewAttribute id="VL_DAYS_MAXIM"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="ALERT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_DESTI_PORT" source="CD_DESTI_PORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_LOAD_PORT" source="CD_LOAD_PORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_NAVIE" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+      </input>
+      <input node="VALUE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_DAYS_ABAJA" source="VL_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_DAYS_AGRAV" source="VL_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_DAYS_MAXIM" source="VL_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_NAVIE" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_LOAD_PORT" source="CD_LOAD_PORT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+      </input>
+    <joinAttribute name="CD_NAVIE"/>
+    <joinAttribute name="CD_LOAD_PORT"/>
+    <joinAttribute name="DS_ALERT_TYPE"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <attributes>
+      <attribute id="CD_DESTI_PORT" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto destino"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_DESTI_PORT"/>
+      </attribute>
+      <attribute id="CD_LOAD_PORT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto carga"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_LOAD_PORT"/>
+      </attribute>
+      <attribute id="CD_NAVIE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. naviera"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_NAVIE"/>
+      </attribute>
+      <attribute id="DS_ALERT_TYPE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de alerta"/>
+        <keyMapping columnObjectName="Join_1" columnName="DS_ALERT_TYPE"/>
+      </attribute>
+      <attribute id="NR_DAYS_ABAJA" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Inicio alerta baja"/>
+        <keyMapping columnObjectName="Join_1" columnName="NR_DAYS_ABAJA"/>
+      </attribute>
+      <attribute id="NR_DAYS_AGRAV" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Inicio alerta grave"/>
+        <keyMapping columnObjectName="Join_1" columnName="NR_DAYS_AGRAV"/>
+      </attribute>
+      <attribute id="NR_DAYS_MAXIM" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Inicio alerta máxima"/>
+        <keyMapping columnObjectName="Join_1" columnName="NR_DAYS_MAXIM"/>
+      </attribute>
+      <attribute id="CD_TIPO_DIA" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de día"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_TIPO_DIA"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="VL_DAYS_ABAJA" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta baja"/>
+        <measureMapping columnObjectName="Join_1" columnName="VL_DAYS_ABAJA"/>
+      </measure>
+      <measure id="VL_DAYS_AGRAV" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta grave"/>
+        <measureMapping columnObjectName="Join_1" columnName="VL_DAYS_AGRAV"/>
+      </measure>
+      <measure id="VL_DAYS_MAXIM" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Coste alerta máxima"/>
+        <measureMapping columnObjectName="Join_1" columnName="VL_DAYS_MAXIM"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="ALERT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="29" y="237"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="VALUE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="278" y="259"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="190"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    
+    <shape modelObjectName="ALERT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="VALUE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

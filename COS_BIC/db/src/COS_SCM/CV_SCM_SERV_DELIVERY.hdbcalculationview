@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_SERV_DELIVERY" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_SERV_DELIVERY"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_SRV_DELIVERY">
+      <resourceUri>COS_SCM::SCM_SRV_DELIVERY</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_SRV_DELIVERY">
+    <attributes>
+      <attribute id="CD_COLOR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_COLOR"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_COLOR"/>
+      </attribute>
+      <attribute id="CD_DELIV" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DELIV"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_DELIV"/>
+      </attribute>
+      <attribute id="CD_DELIV_BLOCK" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DELIV_BLOCK"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_DELIV_BLOCK"/>
+      </attribute>
+      <attribute id="CD_DELIV_POSIT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DELIV_POSIT"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_DELIV_POSIT"/>
+      </attribute>
+      <attribute id="CD_DELIV_STATU" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DELIV_STATU"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_DELIV_STATU"/>
+      </attribute>
+      <attribute id="CD_DESTI" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DESTI"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_DESTI"/>
+      </attribute>
+      <attribute id="CD_EXPED_PLACE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_EXPED_PLACE"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_EXPED_PLACE"/>
+      </attribute>
+      <attribute id="CD_FAC_STATU" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_FAC_STATU"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_FAC_STATU"/>
+      </attribute>
+      <attribute id="CD_INCOL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_INCOL"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_INCOL"/>
+      </attribute>
+      <attribute id="CD_INCOL_2" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_INCOL_2"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_INCOL_2"/>
+      </attribute>
+      <attribute id="CD_MATER" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_MATER"/>
+      </attribute>
+      <attribute id="CD_ORDER" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ORDER"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_ORDER"/>
+      </attribute>
+      <attribute id="CD_ORDER_POSIT" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ORDER_POSIT"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_ORDER_POSIT"/>
+      </attribute>
+      <attribute id="CD_PICKI_STATU" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PICKI_STATU"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_PICKI_STATU"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="CD_POSIT_TYPE" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_POSIT_TYPE"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_POSIT_TYPE"/>
+      </attribute>
+      <attribute id="CD_ROUTE" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ROUTE"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_ROUTE"/>
+      </attribute>
+      <attribute id="CD_SALE_ORGAN" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SALE_ORGAN"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_SALE_ORGAN"/>
+      </attribute>
+      <attribute id="CD_SM_STATU" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SM_STATU"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_SM_STATU"/>
+      </attribute>
+      <attribute id="CD_SOLIC" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SOLIC"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_SOLIC"/>
+      </attribute>
+      <attribute id="CD_TIMES" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TIMES"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_TIMES"/>
+      </attribute>
+      <attribute id="CD_UNIT_MEASU" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_UNIT_MEASU"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_UNIT_MEASU"/>
+      </attribute>
+      <attribute id="CD_UNIT_MEASU_P" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_UNIT_MEASU_P"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_UNIT_MEASU_P"/>
+      </attribute>
+      <attribute id="CD_UNIT_MEASU_V" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_UNIT_MEASU_V"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_UNIT_MEASU_V"/>
+      </attribute>
+      <attribute id="CD_UNIT_MESAU_V" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_UNIT_MESAU_V"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_UNIT_MESAU_V"/>
+      </attribute>
+      <attribute id="CD_WRHSE" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_WRHSE"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_WRHSE"/>
+      </attribute>
+      <attribute id="CD_XCHPF" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_XCHPF"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_XCHPF"/>
+      </attribute>
+      <attribute id="CD_ZZEGLKZ" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_ZZEGLKZ"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="CD_ZZEGLKZ"/>
+      </attribute>
+      <attribute id="DS_COLOR_2" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_COLOR_2"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="DS_COLOR_2"/>
+      </attribute>
+      <attribute id="DS_WRKST" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_WRKST"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="DS_WRKST"/>
+      </attribute>
+      <attribute id="DT_CREAT" order="31" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_CREAT"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="DT_CREAT"/>
+      </attribute>
+      <attribute id="DT_SM" order="32" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_SM"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="DT_SM"/>
+      </attribute>
+      <attribute id="DT_SM_REAL" order="33" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_SM_REAL"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="DT_SM_REAL"/>
+      </attribute>
+      <attribute id="FL_DELET" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_DELET"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="FL_DELET"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="35" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="36" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="TS_LOAD" order="42" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <keyMapping columnObjectName="SCM_SRV_DELIVERY" columnName="TS_LOAD"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="SM1" order="43" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Indicador SM&gt;SMReal"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="1">
+          <formula>if(int(&quot;DT_SM&quot;)&gt;int(&quot;DT_SM_REAL&quot;),1,2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <baseMeasures>
+      <measure id="QT_DELIV" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DELIV"/>
+        <measureMapping columnObjectName="SCM_SRV_DELIVERY" columnName="QT_DELIV"/>
+      </measure>
+      <measure id="QT_ORDER" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_ORDER"/>
+        <measureMapping columnObjectName="SCM_SRV_DELIVERY" columnName="QT_ORDER"/>
+      </measure>
+      <measure id="QT_PICKI" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_PICKI"/>
+        <measureMapping columnObjectName="SCM_SRV_DELIVERY" columnName="QT_PICKI"/>
+      </measure>
+      <measure id="QT_VOLUM" order="40" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_VOLUM"/>
+        <measureMapping columnObjectName="SCM_SRV_DELIVERY" columnName="QT_VOLUM"/>
+      </measure>
+      <measure id="QT_WEIGH_NET" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_WEIGH_NET"/>
+        <measureMapping columnObjectName="SCM_SRV_DELIVERY" columnName="QT_WEIGH_NET"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

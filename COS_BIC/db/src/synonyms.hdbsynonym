@@ -1,0 +1,218 @@
+{
+  "COS_SCM::SCM_ANALYTIC_TARGET": {
+    "target": {
+      "object": "SCM_ANALYTIC_TARGET",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::V_SCM_APO_FORECAST": {
+    "target": {
+      "object": "V_SCM_APO_FORECAST",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PLAN_DEMAND_PLANNER": {
+    "target": {
+      "object": "SCM_PLAN_DEMAND_PLANNER",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_HUB_CONTROL": {
+    "target": {
+      "object": "SCM_HUB_CONTROL",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_HUB_CONTROL_DAILY": {
+    "target": {
+      "object": "SCM_HUB_CONTROL_DAILY",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_INV_MOVIMENT_MATERIAL": {
+    "target": {
+      "object": "SCM_INV_MOVIMENT_MATERIAL",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_INV_SALES_MATERIAL": {
+    "target": {
+      "object": "SCM_INV_SALES_MATERIAL",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_TRANSPORT": {
+    "target": {
+      "object": "SCM_LOG_TRANSPORT",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_TRANSPORT_ACCOUNT": {
+    "target": {
+      "object": "SCM_LOG_TRANSPORT_ACCOUNT",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_CONTRACT_ALERT": {
+    "target": {
+      "object": "SCM_LOG_CONTRACT_ALERT",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_CONTRACT_VALUE": {
+    "target": {
+      "object": "SCM_LOG_CONTRACT_VALUE",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::V_SCM_LOG_TRACKER_CONTAINER": {
+    "target": {
+      "object": "V_SCM_LOG_TRACKER_CONTAINER",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_TRACKER_CONTAINER": {
+    "target": {
+      "object": "SCM_LOG_TRACKER_CONTAINER",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_LOG_TRANSPORT_HEAD": {
+    "target": {
+      "object": "SCM_LOG_TRANSPORT_HEAD",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_MD_UN_CDG": {
+    "target": {
+      "object": "SCM_MD_UN_CDG",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_MD_CENTROS": {
+    "target": {
+      "object": "SCM_MD_CENTROS",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::V_SCM_MD_MATERIALES": {
+    "target": {
+      "object": "V_SCM_MD_MATERIALES",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PLAN_FORECAST": {
+    "target": {
+      "object": "SCM_PLAN_FORECAST",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_MD_MATERIALES": {
+    "target": {
+      "object": "SCM_MD_MATERIALES",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PLAN_VENTAS": {
+    "target": {
+      "object": "SCM_PLAN_VENTAS",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_DKTN_CALIDAD": {
+    "target": {
+      "object": "SCM_PROD_DKTN_CALIDAD",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_DKTN_PRODUCTION_SCRAP": {
+    "target": {
+      "object": "SCM_PROD_DKTN_PRODUCTION_SCRAP",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_DKTN_DEKTON_MARMOL": {
+    "target": {
+      "object": "SCM_PROD_DKTN_DEKTON_MARMOL",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_DKTN_STOCK": {
+    "target": {
+      "object": "SCM_PROD_DKTN_STOCK",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_LOADED": {
+    "target": {
+      "object": "SCM_PROD_LOADED",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_MII": {
+    "target": {
+      "object": "SCM_PROD_MII",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_OEE": {
+    "target": {
+      "object": "SCM_PROD_OEE",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_PRESSES_TABLES": {
+    "target": {
+      "object": "SCM_PROD_PRESSES_TABLES",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_SILESTONE": {
+    "target": {
+      "object": "SCM_PROD_SILESTONE",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_SLAB_TABLES": {
+    "target": {
+      "object": "SCM_PROD_SLAB_TABLES",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_PROD_PRESSES_POLISH": {
+    "target": {
+      "object": "SCM_PROD_PRESSES_POLISH",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_SRV_DELIVERY": {
+    "target": {
+      "object": "SCM_SRV_DELIVERY",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_SRV_SALES": {
+    "target": {
+      "object": "SCM_SRV_SALES",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_TRACKER_CONTAINER": {
+    "target": {
+      "object": "SCM_TRACKER_CONTAINER",
+      "schema": "COS_SCM"
+    }
+  },
+  "COS_SCM::SCM_ANALYTIC_SOURCE": {
+    "target": {
+      "object": "SCM_ANALYTIC_SOURCE",
+      "schema": "COS_SCM"
+    }
+  },
+"COS_SCM::DUMMY": {
+"target": {
+"object": "DUMMY",
+"schema": "SYS"
+}
+}
+}

@@ -1,0 +1,1 @@
+COLUMN TABLE "CECOS_CEBES" ("Centro_de_coste" NVARCHAR(255), "Denominacion" NVARCHAR(255), "Clase_Centro_coste" NVARCHAR(255), "Sociedad" NVARCHAR(255), "Centro_de_beneficio" NVARCHAR(255)) UNLOAD PRIORITY 5  AUTO MERGE ;

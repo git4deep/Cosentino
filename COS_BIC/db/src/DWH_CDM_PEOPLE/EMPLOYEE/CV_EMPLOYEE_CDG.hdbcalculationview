@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_CDG" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_EMPLOYEE_CDG"/>
+  <metadata changedAt="2020-07-29 16:02:10.078"/>
+  <localVariables>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_EMPLOYEE_MTD_CDG">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_CDG"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_EMPLOYEE_MTD_CDG">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_CDG"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_EMPLOYEE_MTD_LY_CDG">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_LY_CDG"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_EMPLOYEE_MTD_LY_CDG">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_LY_CDG"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="39"/>
+  <dataSources>
+    <DataSource id="CV_EMPLOYEE_MTD_CDG">
+      <resourceUri>DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_CDG</resourceUri>
+    </DataSource>
+    <DataSource id="CV_EMPLOYEE_MTD_LY_CDG">
+      <resourceUri>DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_LY_CDG</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_CV_EMPLOYEE_MTD_CDG">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+        <viewAttribute id="EMPLOYEE_NAME"/>
+        <viewAttribute id="CONT_EMP"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_1" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$' || '$$IP_MONTH$$'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="CV_EMPLOYEE_MTD_CDG"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_CV_EMPLOYEE_MTD_LY_CDG">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+        <viewAttribute id="EMPLOYEE_NAME"/>
+        <viewAttribute id="CONT_EMP"/>
+        <viewAttribute id="YEAR_ANT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_EMPLOYEE_MTD_LY_CDG"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+        <viewAttribute id="CONT_EMP"/>
+        <viewAttribute id="CONT_EMP_1"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="P_CV_EMPLOYEE_MTD_CDG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO_NAME" source="CECO_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_NAME" source="POSITION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONT_EMP" source="CONT_EMP"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONT_EMP_1" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="P_CV_EMPLOYEE_MTD_LY_CDG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO_NAME" source="CECO_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_NAME" source="POSITION_NAME"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONT_EMP" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONT_EMP_1" source="CONT_EMP"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="DIV_NAME" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIV_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIV_NAME"/>
+      </attribute>
+      <attribute id="costCenter" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="costCenter"/>
+        <keyMapping columnObjectName="Union_1" columnName="costCenter"/>
+      </attribute>
+      <attribute id="division" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="division"/>
+        <keyMapping columnObjectName="Union_1" columnName="division"/>
+      </attribute>
+      <attribute id="SUBDEP_NAME" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBDEP_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUBDEP_NAME"/>
+      </attribute>
+      <attribute id="DEP_NAME" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEP_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEP_NAME"/>
+      </attribute>
+      <attribute id="BU_NAME" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BU_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="BU_NAME"/>
+      </attribute>
+      <attribute id="subDepartment" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="subDepartment"/>
+        <keyMapping columnObjectName="Union_1" columnName="subDepartment"/>
+      </attribute>
+      <attribute id="position" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="position"/>
+        <keyMapping columnObjectName="Union_1" columnName="position"/>
+      </attribute>
+      <attribute id="department" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="Union_1" columnName="department"/>
+      </attribute>
+      <attribute id="CECO_NAME" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CECO_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="CECO_NAME"/>
+      </attribute>
+      <attribute id="POSITION_NAME" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="POSITION_NAME"/>
+        <keyMapping columnObjectName="Union_1" columnName="POSITION_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="CONT_EMP_TD" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CONT_EMP_TD"/>
+        <measureMapping columnObjectName="Union_1" columnName="CONT_EMP"/>
+      </measure>
+      <measure id="CONT_EMP_LY" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CONT_EMP_LY"/>
+        <measureMapping columnObjectName="Union_1" columnName="CONT_EMP_1"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HR_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">BU_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIV_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEP_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUBDEP_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">CECO_NAME</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HR_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED">
+            <descriptions defaultDescription="HR_HIER"/>
+            <levels>
+              <level levelAttribute="BU_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BU_NAME"/>
+              <level levelAttribute="DIV_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIV_NAME"/>
+              <level levelAttribute="DEP_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEP_NAME"/>
+              <level levelAttribute="SUBDEP_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUBDEP_NAME"/>
+              <level levelAttribute="CECO_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="CECO_NAME"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_CV_EMPLOYEE_MTD_CDG" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="281"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_CV_EMPLOYEE_MTD_LY_CDG" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="281"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

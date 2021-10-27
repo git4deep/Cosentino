@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_HIERARCHICAL_GROUP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_HIERARCHICAL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION_CV_SCM_PROD_HIERARCHICAL_GROUP" type="TABLE_FUNCTION">
+      <resourceUri>COS_SCM::TABLE_FUNCTION_CV_SCM_PROD_HIERARCHICAL_GROUP</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION_CV_SCM_PROD_HIERARCHICAL_GROUP">
+    <descriptions/>
+    <attributes>
+      <attribute id="CD_FACTO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_PROD_HIERARCHICAL_GROUP" columnName="CD_FACTO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="QT_ROWS" order="2" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_CV_SCM_PROD_HIERARCHICAL_GROUP" columnName="QT_ROWS"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

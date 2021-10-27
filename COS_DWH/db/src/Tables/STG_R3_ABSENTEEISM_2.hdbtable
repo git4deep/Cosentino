@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_R3_ABSENTEEISM_2" ("userId" VARCHAR(8), "date" VARCHAR(8), "position" VARCHAR(8), "plannedHours" DECIMAL(9,2) , "absenteeismHours" DECIMAL(9,2) , "notAbsenteeism" INTEGER  NOT NULL , "absenteeism" INTEGER , "absenteeismShortTerm" INTEGER , "timeType" NVARCHAR(25), "yearMonth" VARCHAR(6)) UNLOAD PRIORITY 5  AUTO MERGE 

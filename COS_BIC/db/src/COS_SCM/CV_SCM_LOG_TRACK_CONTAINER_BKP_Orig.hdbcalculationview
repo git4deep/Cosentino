@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_TRACK_CONTAINER_BKP_Orig" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_TRACK_CONTAINER"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_CONTRACT_ALERT">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_LOG_TRACKER_CONTAINER">
+      <resourceUri>COS_SCM::SCM_LOG_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+    <DataSource id="COS_SCM::SCM_LOG_CONTRACT_ALERT">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+    <DataSource id="COS_SCM::SCM_LOG_TRACKER_CONTAINER">
+      <resourceUri>COS_SCM::SCM_LOG_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+    <DataSource id="Track_Inter$$$$COS_SCM::SCM_LOG_TRACKER_CONTAINER$$">
+      <resourceUri>COS_SCM::SCM_LOG_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+    <DataSource id="Contract_Inter$$$$COS_SCM::SCM_LOG_CONTRACT_ALERT$$">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+    <DataSource id="Track_ETA$$$$COS_SCM::SCM_LOG_TRACKER_CONTAINER$$">
+      <resourceUri>COS_SCM::SCM_LOG_TRACKER_CONTAINER</resourceUri>
+    </DataSource>
+    <DataSource id="Contract_ETA$$$$COS_SCM::SCM_LOG_CONTRACT_ALERT$$">
+      <resourceUri>COS_SCM::SCM_LOG_CONTRACT_ALERT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Contract_orig" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="CD_DESCAR_PORT"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_CONTRACT_ALERT"/>
+    <filter>&quot;DT_CONTR_FROM&quot; &lt;= now() AND &quot;DT_CONTR_TO&quot; &gt;= NOW()</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Track_Orig" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_LOG_TRACKER_CONTAINER"/>
+    <filter>&quot;CD_PEVEN&quot; = &quot;CD_PORIG&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Origen" cardinality="CN_1" joinType="inner">
+    <descriptions>
+      <comment text=""/>
+    </descriptions>
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_Orig">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input node="Contract_orig">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_LOAD_PORT"/>
+      </input>
+    <joinAttribute name="CD_PROVI"/>
+    <joinAttribute name="CD_TIPO_EVENT"/>
+    <joinAttribute name="CD_PORIG"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Contract_dest" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="TS_LOAD"/>
+        <viewAttribute id="CD_DESCAR_PORT"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="COS_SCM::SCM_LOG_CONTRACT_ALERT"/>
+    <filter>&quot;DT_CONTR_FROM&quot; &lt;= now() AND &quot;DT_CONTR_TO&quot; &gt;= NOW()</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Track_Dest" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="TS_LOAD"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="COS_SCM::SCM_LOG_TRACKER_CONTAINER"/>
+    <filter>&quot;CD_PEVEN&quot; = &quot;CD_PDEST&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Destino" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_Dest">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input node="Contract_dest">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_LOAD_PORT"/>
+      </input>
+    <joinAttribute name="CD_TIPO_EVENT"/>
+    <joinAttribute name="CD_PROVI"/>
+    <joinAttribute name="CD_PDEST"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Unifica">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Origen">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Destino">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Tránsito">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DS_ALERT_TYPE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NR_DAYS_ABAJA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NR_DAYS_AGRAV" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="NR_DAYS_MAXIM" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VL_ALTA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="VL_BAJA" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CD_TIPO_DEMOR" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DT_CONTR_FROM" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DT_CONTR_TO" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CD_TIPO_DIA" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="ETA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Tránsito" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="CD_PEVEN"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_Inter">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input node="Contract_Inter">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_LOAD_PORT"/>
+      </input>
+    <joinAttribute name="CD_PROVI"/>
+    <joinAttribute name="CD_TIPO_EVENT"/>
+    <joinAttribute name="CD_PEVEN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="ETA" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_ETA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR" source="CD_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CNTNR_TYPE" source="CD_CNTNR_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_PROVI"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TRANS" source="CD_TRANS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_EVENT" source="DS_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_VESSL" source="DS_VESSL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CNTNR" source="DT_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_DEPAR" source="DT_DEPAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_ESTIM" source="DT_ESTIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_EVENT" source="DT_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_NATUR" source="DT_NATUR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_TRACK" source="ID_TRACK"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_TABLE" source="QT_TABLE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_CNTNR" source="VL_CNTNR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_PDEST"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NM_1GP" source="NM_1GP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_EVENT" source="CD_TIPO_EVENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_FINAL" source="FL_FINAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PORIG" source="CD_PORIG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PEVEN" source="CD_PEVEN"/>
+      </input>
+      <input node="Contract_ETA">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DS_ALERT_TYPE" source="DS_ALERT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_ABAJA" source="NR_DAYS_ABAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_AGRAV" source="NR_DAYS_AGRAV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NR_DAYS_MAXIM" source="NR_DAYS_MAXIM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_ALTA" source="VL_ALTA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_BAJA" source="VL_BAJA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DEMOR" source="CD_TIPO_DEMOR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_FROM" source="DT_CONTR_FROM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CONTR_TO" source="DT_CONTR_TO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TIPO_DIA" source="CD_TIPO_DIA"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PROVI" source="CD_NAVIE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PDEST" source="CD_LOAD_PORT"/>
+      </input>
+    <joinAttribute name="CD_PROVI"/>
+    <joinAttribute name="CD_PDEST"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Track_Inter" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_Inter$$$$COS_SCM::SCM_LOG_TRACKER_CONTAINER$$"/>
+    <filter>&quot;CD_PEVEN&quot; != &quot;CD_PORIG&quot; AND 
+&quot;CD_PEVEN&quot; != &quot;CD_PDEST&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Contract_Inter" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_DESCAR_PORT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Contract_Inter$$$$COS_SCM::SCM_LOG_CONTRACT_ALERT$$"/>
+    <filter>&quot;DT_CONTR_FROM&quot; &lt;= now() AND &quot;DT_CONTR_TO&quot; &gt;= NOW()</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Track_ETA" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_CNTNR_TYPE"/>
+        <viewAttribute id="CD_PROVI"/>
+        <viewAttribute id="CD_TRANS"/>
+        <viewAttribute id="DS_EVENT"/>
+        <viewAttribute id="DS_VESSL"/>
+        <viewAttribute id="DT_CNTNR"/>
+        <viewAttribute id="DT_DEPAR"/>
+        <viewAttribute id="DT_ESTIM"/>
+        <viewAttribute id="DT_EVENT"/>
+        <viewAttribute id="DT_NATUR"/>
+        <viewAttribute id="ID_TRACK"/>
+        <viewAttribute id="QT_TABLE"/>
+        <viewAttribute id="VL_CNTNR"/>
+        <viewAttribute id="CD_PDEST"/>
+        <viewAttribute id="NM_1GP"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+        <viewAttribute id="FL_FINAL"/>
+        <viewAttribute id="CD_PORIG"/>
+        <viewAttribute id="CD_PEVEN"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Track_ETA$$$$COS_SCM::SCM_LOG_TRACKER_CONTAINER$$"/>
+    <filter>&quot;DT_ESTIM&quot; &gt; now()</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Contract_ETA" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="DS_ALERT_TYPE"/>
+        <viewAttribute id="NR_DAYS_ABAJA"/>
+        <viewAttribute id="NR_DAYS_AGRAV"/>
+        <viewAttribute id="NR_DAYS_MAXIM"/>
+        <viewAttribute id="VL_ALTA"/>
+        <viewAttribute id="VL_BAJA"/>
+        <viewAttribute id="CD_TIPO_DEMOR"/>
+        <viewAttribute id="DT_CONTR_FROM"/>
+        <viewAttribute id="DT_CONTR_TO"/>
+        <viewAttribute id="CD_TIPO_DIA"/>
+        <viewAttribute id="CD_NAVIE"/>
+        <viewAttribute id="CD_LOAD_PORT"/>
+        <viewAttribute id="CD_DESCAR_PORT"/>
+        <viewAttribute id="CD_TIPO_EVENT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Contract_ETA$$$$COS_SCM::SCM_LOG_CONTRACT_ALERT$$"/>
+    <filter>&quot;DT_CONTR_FROM&quot; &lt;= now() AND &quot;DT_CONTR_TO&quot; &gt;= NOW()</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Unifica">
+    <attributes>
+      <attribute id="CD_CNTNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Núm. contenedor"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_CNTNR"/>
+      </attribute>
+      <attribute id="CD_CNTNR_TYPE" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo contenedor"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_CNTNR_TYPE"/>
+      </attribute>
+      <attribute id="CD_PROVI" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. naviera"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_PROVI"/>
+      </attribute>
+      <attribute id="CD_TRANS" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Núm. Transporte"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_TRANS"/>
+      </attribute>
+      <attribute id="DS_EVENT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. evento"/>
+        <keyMapping columnObjectName="Unifica" columnName="DS_EVENT"/>
+      </attribute>
+      <attribute id="DS_VESSL" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Núm. buque"/>
+        <keyMapping columnObjectName="Unifica" columnName="DS_VESSL"/>
+      </attribute>
+      <attribute id="DT_ESTIM" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ETA"/>
+        <keyMapping columnObjectName="Unifica" columnName="DT_ESTIM"/>
+      </attribute>
+      <attribute id="CD_PDEST" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. POD"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_PDEST"/>
+      </attribute>
+      <attribute id="NM_1GP" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. naviera"/>
+        <keyMapping columnObjectName="Unifica" columnName="NM_1GP"/>
+      </attribute>
+      <attribute id="CD_TIPO_EVENT" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cod. tipo evento"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_TIPO_EVENT"/>
+      </attribute>
+      <attribute id="FL_FINAL" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Finalizado"/>
+        <keyMapping columnObjectName="Unifica" columnName="FL_FINAL"/>
+      </attribute>
+      <attribute id="CD_PORIG" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. POL"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_PORIG"/>
+      </attribute>
+      <attribute id="DS_ALERT_TYPE" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo alerta"/>
+        <keyMapping columnObjectName="Unifica" columnName="DS_ALERT_TYPE"/>
+      </attribute>
+      <attribute id="CD_TIPO_DEMOR" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. tipo demora"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_TIPO_DEMOR"/>
+      </attribute>
+      <attribute id="CD_TIPO_DIA" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. tipo día"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_TIPO_DIA"/>
+      </attribute>
+      <attribute id="CD_PEVEN" order="33" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. puerto evento"/>
+        <keyMapping columnObjectName="Unifica" columnName="CD_PEVEN"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="CC_TP_DEMORA" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nivel de demora">
+          <comment text=""/>
+        </descriptions>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="1">
+          <formula>if(DAYSBETWEEN(&quot;DT_EVENT&quot;, NOW())&gt;&quot;NR_DAYS_MAXIM&quot;, 'M',
+    if(DAYSBETWEEN(&quot;DT_EVENT&quot;, NOW())&gt;&quot;NR_DAYS_AGRAV&quot;, 'G',
+        if(DAYSBETWEEN(&quot;DT_EVENT&quot;, NOW())&gt;&quot;NR_DAYS_ABAJA&quot;, 'B', '-')
+    )
+)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="CC_DIAS_PARA_DEMORA_BAJA" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Días para demora baja"/>
+        <keyCalculation datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(&quot;CD_PEVEN&quot;=&quot;CD_PORIG&quot;,&quot;NR_DAYS_ABAJA&quot;,IF(&quot;CD_PEVEN&quot;=&quot;CD_PDEST&quot;, &quot;NR_DAYS_ABAJA&quot;,0 ))</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <baseMeasures>
+      <measure id="DT_CNTNR" order="10" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. contenedor"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_CNTNR"/>
+      </measure>
+      <measure id="DT_DEPAR" order="11" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. salida"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_DEPAR"/>
+      </measure>
+      <measure id="DT_EVENT" order="13" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. evento"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_EVENT"/>
+      </measure>
+      <measure id="DT_NATUR" order="14" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. natural"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_NATUR"/>
+      </measure>
+      <measure id="ID_TRACK" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ID_TRACK"/>
+        <measureMapping columnObjectName="Unifica" columnName="ID_TRACK"/>
+      </measure>
+      <measure id="QT_TABLE" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant. tablas"/>
+        <measureMapping columnObjectName="Unifica" columnName="QT_TABLE"/>
+      </measure>
+      <measure id="VL_CNTNR" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor contenedor"/>
+        <measureMapping columnObjectName="Unifica" columnName="VL_CNTNR"/>
+      </measure>
+      <measure id="NR_DAYS_ABAJA" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días alerta baja"/>
+        <measureMapping columnObjectName="Unifica" columnName="NR_DAYS_ABAJA"/>
+      </measure>
+      <measure id="NR_DAYS_AGRAV" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días alerta grave"/>
+        <measureMapping columnObjectName="Unifica" columnName="NR_DAYS_AGRAV"/>
+      </measure>
+      <measure id="NR_DAYS_MAXIM" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días alerta máxima"/>
+        <measureMapping columnObjectName="Unifica" columnName="NR_DAYS_MAXIM"/>
+      </measure>
+      <measure id="VL_ALTA" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_ALTA"/>
+        <measureMapping columnObjectName="Unifica" columnName="VL_ALTA"/>
+      </measure>
+      <measure id="VL_BAJA" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_BAJA"/>
+        <measureMapping columnObjectName="Unifica" columnName="VL_BAJA"/>
+      </measure>
+      <measure id="DT_CONTR_FROM" order="30" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. contrato desde"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_CONTR_FROM"/>
+      </measure>
+      <measure id="DT_CONTR_TO" order="31" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="Fec. contrato hasta"/>
+        <measureMapping columnObjectName="Unifica" columnName="DT_CONTR_TO"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CC_QT_DAYS" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="INTEGER">
+        <descriptions defaultDescription="Días desde evento"/>
+        <formula>DAYSBETWEEN (&quot;DT_EVENT&quot;, NOW())
+</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Contract_orig" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="17" y="311"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Track_Orig" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="316"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Origen" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="127" y="247"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Track_Orig" modelObjectNameSpace="Origen" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Contract_orig" modelObjectNameSpace="Origen" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Contract_dest" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="504" y="350"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Track_Dest" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="675" y="354"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Destino" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="585" y="233"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Track_Dest" modelObjectNameSpace="Destino" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Contract_dest" modelObjectNameSpace="Destino" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Unifica" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="461" y="127"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Tránsito" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="484" y="357"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Track_Inter" modelObjectNameSpace="Tránsito" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Contract_Inter" modelObjectNameSpace="Tránsito" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="ETA" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1369" y="368"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="Track_ETA" modelObjectNameSpace="ETA" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Contract_ETA" modelObjectNameSpace="ETA" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Track_Inter" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="456" y="472"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Contract_Inter" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="609" y="472"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Track_ETA" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1080" y="585"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Contract_ETA" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1299" y="581"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

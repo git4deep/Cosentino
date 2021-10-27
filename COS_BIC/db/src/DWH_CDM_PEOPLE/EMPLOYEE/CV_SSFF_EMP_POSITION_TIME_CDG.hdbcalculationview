@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE.EMPLOYEE::CV_SSFF_EMP_POSITION_TIME_CDG" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_EMP_CCDG"/>
+  <metadata changedAt="2020-07-27 12:45:00.277"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="31"/>
+  <dataSources>
+    <DataSource id="REL_EMPLOYEE_POSITION_TIME">
+      <resourceUri>DWH_CDM_PEOPLE::REL_EMPLOYEE_POSITION_TIME</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="emplStatus"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="REL_EMPLOYEE_POSITION_TIME"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="userId" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="userId"/>
+        <keyMapping columnObjectName="Projection_1" columnName="userId"/>
+      </attribute>
+      <attribute id="startDate" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="startDate"/>
+        <keyMapping columnObjectName="Projection_1" columnName="startDate"/>
+      </attribute>
+      <attribute id="endDate" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="endDate"/>
+        <keyMapping columnObjectName="Projection_1" columnName="endDate"/>
+      </attribute>
+      <attribute id="company" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="company"/>
+        <keyMapping columnObjectName="Projection_1" columnName="company"/>
+      </attribute>
+      <attribute id="costCenter" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="costCenter"/>
+        <keyMapping columnObjectName="Projection_1" columnName="costCenter"/>
+      </attribute>
+      <attribute id="businessUnit" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="businessUnit"/>
+        <keyMapping columnObjectName="Projection_1" columnName="businessUnit"/>
+      </attribute>
+      <attribute id="division" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="division"/>
+        <keyMapping columnObjectName="Projection_1" columnName="division"/>
+      </attribute>
+      <attribute id="department" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="Projection_1" columnName="department"/>
+      </attribute>
+      <attribute id="subDepartment" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="subDepartment"/>
+        <keyMapping columnObjectName="Projection_1" columnName="subDepartment"/>
+      </attribute>
+      <attribute id="position" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="position"/>
+        <keyMapping columnObjectName="Projection_1" columnName="position"/>
+      </attribute>
+      <attribute id="emplStatus" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="emplStatus"/>
+        <keyMapping columnObjectName="Projection_1" columnName="emplStatus"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="isEmplStatusActive" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="isEmplStatusActive"/>
+        <measureMapping columnObjectName="Projection_1" columnName="isEmplStatusActive"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="180"/>
+        <rectangleSize height="74" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

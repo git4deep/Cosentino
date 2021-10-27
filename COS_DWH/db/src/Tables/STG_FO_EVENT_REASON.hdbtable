@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_FO_EVENT_REASON" ("emplStatus" NVARCHAR(45), "endDate" LONGDATE , "event" NVARCHAR(45), "externalCode" NVARCHAR(32) NOT NULL , "name" NVARCHAR(90), "payrollEvent" NVARCHAR(4), "startDate" LONGDATE  NOT NULL , "status" NVARCHAR(3999), "isVoluntary" VARCHAR(20) NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

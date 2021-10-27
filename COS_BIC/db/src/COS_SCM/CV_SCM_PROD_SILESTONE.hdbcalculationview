@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_SILESTONE" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_SILESTONE"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_SILESTONE">
+      <resourceUri>COS_SCM::SCM_PROD_SILESTONE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_SILESTONE">
+    <attributes>
+      <attribute id="CD_COLOR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_COLOR"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_COLOR"/>
+      </attribute>
+      <attribute id="CD_FACTO" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_FACTO"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_FACTO"/>
+      </attribute>
+      <attribute id="CD_GREAT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_GREAT"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_GREAT"/>
+      </attribute>
+      <attribute id="CD_MATER_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER_GROUP"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_MATER_GROUP"/>
+      </attribute>
+      <attribute id="CD_MEASU_USC" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MEASU_USC"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_MEASU_USC"/>
+      </attribute>
+      <attribute id="CD_MOVIM" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MOVIM"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_MOVIM"/>
+      </attribute>
+      <attribute id="CD_PROCE" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PROCE"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_PROCE"/>
+      </attribute>
+      <attribute id="CD_QUALI" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_QUALI"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_QUALI"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="CD_SCRAP_REASO" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SCRAP_REASO"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="CD_SCRAP_REASO"/>
+      </attribute>
+      <attribute id="DS_COLOR" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_COLOR"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_COLOR"/>
+      </attribute>
+      <attribute id="DS_FACTO" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_FACTO"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_FACTO"/>
+      </attribute>
+      <attribute id="DS_MATER_GROUP" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATER_GROUP"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_MATER_GROUP"/>
+      </attribute>
+      <attribute id="DS_MEASU_USC" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MEASU_USC"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_MEASU_USC"/>
+      </attribute>
+      <attribute id="DS_PROCE" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PROCE"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_PROCE"/>
+      </attribute>
+      <attribute id="DS_QUALI" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_QUALI"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_QUALI"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="17" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="DS_QUALI_GROUP" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_QUALI_GROUP"/>
+        <keyMapping columnObjectName="SCM_PROD_SILESTONE" columnName="DS_QUALI_GROUP"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DAY" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_DAY"/>
+      </measure>
+      <measure id="QT_DAY_SUP_TEO" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_SUP_TEO"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_DAY_SUP_TEO"/>
+      </measure>
+      <measure id="QT_DAY_SUP_UTIL" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY_SUP_UTIL"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_DAY_SUP_UTIL"/>
+      </measure>
+      <measure id="QT_MONTH" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_MONTH"/>
+      </measure>
+      <measure id="QT_MONTH_SUP_TEO" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH_SUP_TEO"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_MONTH_SUP_TEO"/>
+      </measure>
+      <measure id="QT_MONTH_SUP_UTIL" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH_SUP_UTIL"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_MONTH_SUP_UTIL"/>
+      </measure>
+      <measure id="QT_SCRAP_DAY" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_SCRAP_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_SCRAP_DAY"/>
+      </measure>
+      <measure id="QT_SCRAP_MONTH" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_SCRAP_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_SCRAP_MONTH"/>
+      </measure>
+      <measure id="QT_YEAR" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_YEAR"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_YEAR"/>
+      </measure>
+      <measure id="TS_LOAD" order="28" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="QT_SUB_DAY_CAL1" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_SUB_DAY_CAL1"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_SUB_DAY_CAL1"/>
+      </measure>
+      <measure id="QT_SUB_MONTH_CAL1" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_SUB_MONTH_CAL1"/>
+        <measureMapping columnObjectName="SCM_PROD_SILESTONE" columnName="QT_SUB_MONTH_CAL1"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

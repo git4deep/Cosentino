@@ -1,0 +1,20 @@
+FUNCTION "COS_SCM::TABLE_FUNCTION__EJEMPLO_SCRIPT_01" ()
+RETURNS TABLE ("CD_FACTO" NVARCHAR (20), "QT_ROWS" INTEGER)
+LANGUAGE SQLSCRIPT
+SQL SECURITY DEFINER
+  AS 
+
+/********* Begin Procedure Script ************/ 
+BEGIN 
+   var_out = SELECT X.CD_FACTO, COUNT(*) AS QT_ROWS
+             FROM (SELECT DISTINCT A.CD_FACTO, A.CD_RESOU
+                   FROM "COS_SCM::SCM_PROD_SILESTONE" A
+                   WHERE A.CD_RESOU IN ('PRENSA01','PRENSA02','PRENSA03','PRENSA04','PRENSA05','PRENSA06',
+                                        'PRENSA07','PRENSA08','PRENSA09','PRENSA10','PRENSA11')
+                     AND A.DT_NATUR IN (SELECT MAX(B.DT_NATUR)
+                                        FROM "COS_SCM::SCM_PROD_SILESTONE" B)) X
+             GROUP BY X.CD_FACTO;
+
+
+return :var_out;
+END;

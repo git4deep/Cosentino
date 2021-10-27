@@ -1,0 +1,1 @@
+ROW TABLE "TEST_APP_2"  ( "jobApplicationId" NVARCHAR(64)  , "newValue" NVARCHAR(3999)   NOT NULL, "revNumber" BIGINT  NOT NULL, "revType" INT , "lastModifiedDate" LONGDATE  NOT NULL, "lastModifiedExtId" NVARCHAR(64)   ) 

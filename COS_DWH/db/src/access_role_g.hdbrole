@@ -1,0 +1,15 @@
+{
+    "role": {
+        "name": "COS_DWH::access_role#",
+        "schema_privileges": [
+            {
+                "privileges_with_grant_option": [
+                    "SELECT",
+                    "SELECT METADATA",
+                    "INSERT",
+                    "EXECUTE"
+                ]
+            }
+        ]
+    }
+}

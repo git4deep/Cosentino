@@ -1,0 +1,1 @@
+COLUMN TABLE "FT_INTRANET_KPI_K23" ("date" DATE , "value" NVARCHAR(32), "employeeId" INTEGER , "typeId" INTEGER , "year" INTEGER  NOT NULL , "month" INTEGER  NOT NULL , PRIMARY KEY ("year", "month", "employeeId")) UNLOAD PRIORITY 5  AUTO MERGE ;

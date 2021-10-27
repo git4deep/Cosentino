@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTableRec71" ("jobReqId" BIGINT , "dateOfferAccepted" LONGDATE , "applicationId" BIGINT ) UNLOAD PRIORITY 5  AUTO MERGE 

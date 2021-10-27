@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_TALENT_STATUS_COPY_2" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_TALENT_STATUS_COPY_2"/>
+  <metadata changedAt="2019-08-01 23:30:40.044"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="51"/>
+  <dataSources>
+    <DataSource id="CV_INTRANET_K20_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD</resourceUri>
+    </DataSource>
+    <DataSource id="CV_INTRANET_K22_MTD">
+      <resourceUri>DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD</resourceUri>
+    </DataSource>
+    <DataSource id="FT_INTRANET_KPI_K18">
+      <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K18</resourceUri>
+    </DataSource>
+    <DataSource id="FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE</resourceUri>
+    </DataSource>
+    <DataSource id="FT_INTRANET_KPI_K19">
+      <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K19</resourceUri>
+    </DataSource>
+    <DataSource id="FT_INTRANET_KPI_K21">
+      <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K21</resourceUri>
+    </DataSource>
+    <DataSource id="FT_INTRANET_KPI_K23">
+      <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K23</resourceUri>
+    </DataSource>
+    <DataSource id="FT_INTRANET_KPI_K24">
+      <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K24</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k20">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="WITH_PAO_OBJECTIVES"/>
+        <viewAttribute id="WITHOUT_PAO_OBJECTIVES"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_INTRANET_K20_MTD"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k22">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="WITHOUT_ONBOARDING"/>
+        <viewAttribute id="WITH_ONBOARDING"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_INTRANET_K22_MTD"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k18" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="TYPE_ID"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_INITIALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'|| right('100' || '$$IP_MONTH$$',2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EMPLOYEE_ID_STRING" length="100" expressionLanguage="SQL">
+          <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="IS_TOP_TALENT" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF ( &quot;OHRP&quot; = '1' OR  &quot;OHRP&quot; = '2' OR  &quot;OHRP&quot; = '3', 1, 0 )</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="INTEGER" id="IS_UNDER_PERFORMING" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF ( &quot;OHRP&quot; = '4' OR &quot;OHRP&quot; = '7' OR &quot;OHRP&quot; = '9',  1 , 0 )</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_INTRANET_KPI_K18">
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="STATUS_CANCELED"/>
+      </input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="START_DATE"/>
+        <viewAttribute id="END_DATE"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE"/>
+    <filter>(&quot;MONTH&quot; =$$IP_MONTH$$) AND (&quot;YEAR&quot; =$$IP_YEAR$$)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="EMPLOYEE_ID_1"/>
+        <viewAttribute id="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_INITIALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
+        <viewAttribute id="IS_TOP_TALENT"/>
+        <viewAttribute id="IS_UNDER_PERFORMING"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="TOP_TALENT_EMPLOYEE" expressionLanguage="COLUMN_ENGINE">
+          <formula>1</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="k18">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="TOP_TALENT_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="TOP_TALENT_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="TOP_TALENT_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_TOP_TALENT" source="IS_TOP_TALENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_UNDER_PERFORMING" source="IS_UNDER_PERFORMING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      </input>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k19" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="TYPE_ID"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_INITIALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'|| right('100' || '$$IP_MONTH$$',2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EMPLOYEE_ID_STRING" length="100" expressionLanguage="SQL">
+          <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_INTRANET_KPI_K19">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="STATUS_CANCELED"/>
+      </input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="EMPLOYEE_ID_1"/>
+        <viewAttribute id="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_INITIALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k19">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="DEV_PLAN_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="DEV_PLAN_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="DEV_PLAN_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      </input>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k21" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="TYPE_ID"/>
+        <viewAttribute id="OBJECTIVES"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'|| right('100' || '$$IP_MONTH$$',2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EMPLOYEE_ID_STRING" length="100" expressionLanguage="SQL">
+          <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_INTRANET_KPI_K21">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="STATUS_CANCELED"/>
+      </input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="OBJECTIVES"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="EMPLOYEE_ID_1"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k21">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVES" source="OBJECTIVES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="PAO_PROGRESS_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      </input>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k23" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="date"/>
+        <viewAttribute id="value"/>
+        <viewAttribute id="employeeId"/>
+        <viewAttribute id="typeId"/>
+        <viewAttribute id="year"/>
+        <viewAttribute id="month"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;year&quot;||right(100+&quot;month&quot;,2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'|| right('100' || '$$IP_MONTH$$',2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EMPLOYEE_ID_STRING" length="100" expressionLanguage="SQL">
+          <formula>TO_VARCHAR(&quot;employeeId&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DOUBLE" id="value_num" expressionLanguage="COLUMN_ENGINE">
+          <formula>double(&quot;value&quot;)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="FT_INTRANET_KPI_K23"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="date"/>
+        <viewAttribute id="K23_VALUE"/>
+        <viewAttribute id="year"/>
+        <viewAttribute id="month"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+        <viewAttribute id="value_num"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k23">
+        <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K23_VALUE" source="value"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="value_num" source="value_num"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      </input>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k24" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="date"/>
+        <viewAttribute id="value"/>
+        <viewAttribute id="employeeId"/>
+        <viewAttribute id="typeId"/>
+        <viewAttribute id="year"/>
+        <viewAttribute id="month"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;year&quot;||right(100+&quot;month&quot;,2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'|| right('100' || '$$IP_MONTH$$',2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="EMPLOYEE_ID_STRING" length="100" expressionLanguage="SQL">
+          <formula>TO_VARCHAR(&quot;employeeId&quot;)</formula>
+        </calculatedViewAttribute>
+      
+      <calculatedViewAttribute id="value_num" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+        <formula>to_double(&quot;value&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+      <input node="FT_INTRANET_KPI_K24"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="date"/>
+        <viewAttribute id="year"/>
+        <viewAttribute id="month"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+      <viewAttribute id="K24_VALUE" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k24">
+        <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K24_VALUE" source="value_num"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
+      </input>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      </input>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DATE"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="EMPLOYEE_ID"/>
+        <viewAttribute id="OHRP"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="OBJECTIVES"/>
+        <viewAttribute id="K23_VALUE"/>
+        <viewAttribute id="K24_VALUE"/>
+        <viewAttribute id="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_INITIALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
+        <viewAttribute id="TOP_TALENT_EMPLOYEE"/>
+        <viewAttribute id="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_INITIALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
+        <viewAttribute id="IS_TOP_TALENT"/>
+        <viewAttribute id="IS_UNDER_PERFORMING"/>
+        <viewAttribute id="value_num"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="false" value="0"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="TOP_TALENT_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="TOP_TALENT_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="TOP_TALENT_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_EMPLOYEE" source="TOP_TALENT_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_TOP_TALENT" source="IS_TOP_TALENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_UNDER_PERFORMING" source="IS_UNDER_PERFORMING"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="value_num" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="false" value="0"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="DEV_PLAN_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="DEV_PLAN_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="DEV_PLAN_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="value_num" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID_1"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVES" source="OBJECTIVES"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="false" value="0"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="PAO_PROGRESS_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="value_num" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_4">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OHRP" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K23_VALUE" source="K23_VALUE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="false" value="0"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="value_num" source="value_num"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Join_5">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="year"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OHRP" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K24_VALUE" source="K24_VALUE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="value_num" null="true" value=""/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="OBJECTIVES"/>
+        <viewAttribute id="K24_VALUE"/>
+        <viewAttribute id="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_INITIALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_INITIALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
+        <viewAttribute id="TOP_TALENT_EMPLOYEE"/>
+        <viewAttribute id="IS_TOP_TALENT"/>
+        <viewAttribute id="IS_UNDER_PERFORMING"/>
+        <viewAttribute id="K23_VALUE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Union_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="K23_VALUE" source="value_num"/>
+      </input>
+    </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="WITH_PAO_OBJECTIVES"/>
+        <viewAttribute id="WITHOUT_ONBOARDING"/>
+        <viewAttribute id="WITH_ONBOARDING"/>
+        <viewAttribute id="WITHOUT_PAO_OBJECTIVES"/>
+        <viewAttribute id="ACTIONS"/>
+        <viewAttribute id="OBJECTIVES"/>
+        <viewAttribute id="K24_VALUE"/>
+        <viewAttribute id="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_INITIALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
+        <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_INITIALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
+        <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
+        <viewAttribute id="TOP_TALENT_EMPLOYEE"/>
+        <viewAttribute id="IS_TOP_TALENT"/>
+        <viewAttribute id="IS_UNDER_PERFORMING"/>
+        <viewAttribute id="K23_VALUE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="k20">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WITH_PAO_OBJECTIVES" source="WITH_PAO_OBJECTIVES"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITHOUT_ONBOARDING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITH_ONBOARDING" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WITHOUT_PAO_OBJECTIVES" source="WITHOUT_PAO_OBJECTIVES"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="k22">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITH_PAO_OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WITHOUT_ONBOARDING" source="WITHOUT_ONBOARDING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WITH_ONBOARDING" source="WITH_ONBOARDING"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITHOUT_PAO_OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K24_VALUE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="TOP_TALENT_EMPLOYEE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_TOP_TALENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_UNDER_PERFORMING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="K23_VALUE" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="Projection_2">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITH_PAO_OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITHOUT_ONBOARDING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITH_ONBOARDING" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WITHOUT_PAO_OBJECTIVES" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVES" source="OBJECTIVES"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K24_VALUE" source="K24_VALUE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="TOP_TALENT_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="TOP_TALENT_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="TOP_TALENT_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="DEV_PLAN_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="DEV_PLAN_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="DEV_PLAN_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="PAO_PROGRESS_STATUS_CANCELED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_EMPLOYEE" source="TOP_TALENT_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_TOP_TALENT" source="IS_TOP_TALENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_UNDER_PERFORMING" source="IS_UNDER_PERFORMING"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="K23_VALUE" source="K23_VALUE"/>
+      </input>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="YEAR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Union_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="MONTH" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Union_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="IS_TOP_TALENT" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_TOP_TALENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="IS_TOP_TALENT"/>
+      </attribute>
+      <attribute id="IS_UNDER_PERFORMING" order="31" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_UNDER_PERFORMING"/>
+        <keyMapping columnObjectName="Union_1" columnName="IS_UNDER_PERFORMING"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="WITH_PAO_OBJECTIVES" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WITH_PAO_OBJECTIVES"/>
+        <measureMapping columnObjectName="Union_1" columnName="WITH_PAO_OBJECTIVES"/>
+      </measure>
+      <measure id="WITHOUT_ONBOARDING" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WITHOUT_ONBOARDING"/>
+        <measureMapping columnObjectName="Union_1" columnName="WITHOUT_ONBOARDING"/>
+      </measure>
+      <measure id="WITH_ONBOARDING" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WITH_ONBOARDING"/>
+        <measureMapping columnObjectName="Union_1" columnName="WITH_ONBOARDING"/>
+      </measure>
+      <measure id="WITHOUT_PAO_OBJECTIVES_1" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WITHOUT_PAO_OBJECTIVES"/>
+        <measureMapping columnObjectName="Union_1" columnName="WITHOUT_PAO_OBJECTIVES"/>
+      </measure>
+      <measure id="ACTIONS" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ACTIONS"/>
+        <measureMapping columnObjectName="Union_1" columnName="ACTIONS"/>
+      </measure>
+      <measure id="OBJECTIVES" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="OBJECTIVES"/>
+        <measureMapping columnObjectName="Union_1" columnName="OBJECTIVES"/>
+      </measure>
+      <measure id="K24_VALUE" order="13" aggregationType="sum" engineAggregation="count" measureType="simple">
+        <descriptions defaultDescription="K24_VALUE"/>
+        <measureMapping columnObjectName="Union_1" columnName="K24_VALUE"/>
+      </measure>
+      <measure id="TOP_TALENT_STATUS_NOT_ASSIGNED" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
+      </measure>
+      <measure id="TOP_TALENT_STATUS_INITIALIZED" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_STATUS_INITIALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_STATUS_INITIALIZED"/>
+      </measure>
+      <measure id="TOP_TALENT_STATUS_IN_PROGRESS" order="16" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_STATUS_IN_PROGRESS"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_STATUS_IN_PROGRESS"/>
+      </measure>
+      <measure id="TOP_TALENT_STATUS_FINALIZED" order="17" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_STATUS_FINALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_STATUS_FINALIZED"/>
+      </measure>
+      <measure id="TOP_TALENT_STATUS_CANCELED" order="18" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_STATUS_CANCELED"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_STATUS_CANCELED"/>
+      </measure>
+      <measure id="DEV_PLAN_STATUS_NOT_ASSIGNED" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+        <measureMapping columnObjectName="Union_1" columnName="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
+      </measure>
+      <measure id="DEV_PLAN_STATUS_INITIALIZED" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DEV_PLAN_STATUS_INITIALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="DEV_PLAN_STATUS_INITIALIZED"/>
+      </measure>
+      <measure id="DEV_PLAN_STATUS_IN_PROGRESS" order="21" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DEV_PLAN_STATUS_IN_PROGRESS"/>
+        <measureMapping columnObjectName="Union_1" columnName="DEV_PLAN_STATUS_IN_PROGRESS"/>
+      </measure>
+      <measure id="DEV_PLAN_STATUS_FINALIZED" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DEV_PLAN_STATUS_FINALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="DEV_PLAN_STATUS_FINALIZED"/>
+      </measure>
+      <measure id="DEV_PLAN_STATUS_CANCELED" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="DEV_PLAN_STATUS_CANCELED"/>
+        <measureMapping columnObjectName="Union_1" columnName="DEV_PLAN_STATUS_CANCELED"/>
+      </measure>
+      <measure id="PAO_PROGRESS_STATUS_NOT_ASSIGNED" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+        <measureMapping columnObjectName="Union_1" columnName="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
+      </measure>
+      <measure id="PAO_PROGRESS_STATUS_INITIALIZED" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAO_PROGRESS_STATUS_INITIALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="PAO_PROGRESS_STATUS_INITIALIZED"/>
+      </measure>
+      <measure id="PAO_PROGRESS_STATUS_IN_PROGRESS" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+        <measureMapping columnObjectName="Union_1" columnName="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
+      </measure>
+      <measure id="PAO_PROGRESS_STATUS_FINALIZED" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAO_PROGRESS_STATUS_FINALIZED"/>
+        <measureMapping columnObjectName="Union_1" columnName="PAO_PROGRESS_STATUS_FINALIZED"/>
+      </measure>
+      <measure id="PAO_PROGRESS_STATUS_CANCELED" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PAO_PROGRESS_STATUS_CANCELED"/>
+        <measureMapping columnObjectName="Union_1" columnName="PAO_PROGRESS_STATUS_CANCELED"/>
+      </measure>
+      <measure id="TOP_TALENT_EMPLOYEE" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TOP_TALENT_EMPLOYEE"/>
+        <measureMapping columnObjectName="Union_1" columnName="TOP_TALENT_EMPLOYEE"/>
+      </measure>
+      <measure id="K23_VALUE" order="32" aggregationType="sum" engineAggregation="avg" measureType="simple">
+        <descriptions defaultDescription="K23_VALUE"/>
+        <measureMapping columnObjectName="Union_1" columnName="K23_VALUE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_CV_INTRANET_K20_MTD">
+        <attributeRef xsi:type="DataFoundation:Attribute">BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_CV_INTRANET_K20_MTD" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true">
+            <descriptions defaultDescription="HIER_CV_INTRANET_K20_MTD"/>
+            <levels>
+              <level levelAttribute="BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BUSINESS_UNIT"/>
+              <level levelAttribute="DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIVISION"/>
+              <level levelAttribute="DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEPARTMENT"/>
+              <level levelAttribute="SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="905.1583409819606" y="112"/>
+        <rectangleSize height="0" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="k20" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="584.0630345629985" y="391.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="k22" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1067.0630370663937" y="391.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="k18" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="931.9999999999997" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="721.9999999999998" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="852.260209664002" y="721.9999952316284"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    <shape modelObjectName="k18" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="k19" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1141.9999999999998" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="1062.260209664002" y="721.9999952316284"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    <shape modelObjectName="k19" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="k21" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="511.9999999999998" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="642.2602096640019" y="721.9999952316284"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    <shape modelObjectName="k21" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="k23" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="302" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="432.26020966400176" y="721.9999952316284"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    <shape modelObjectName="k23" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="k24" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="92" y="921.9999940395355"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="118.66666666666663" y="721.9999952316284"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    <shape modelObjectName="k24" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="642.2602096640019" y="516.9999964237213"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="830.17904358705" y="391.9999976158142"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="830.17904358705" y="236.9999988079071"/>
+        <rectangleSize height="-1" width="160"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

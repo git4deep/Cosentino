@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_HUB_CONTROL" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_HUB_"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_HUB_CONTROL">
+      <resourceUri>COS_SCM::SCM_HUB_CONTROL</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_HUB_CONTROL">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_HUB" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_HUB"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="CD_HUB"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="CD_RESOU_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU_GROUP"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="CD_RESOU_GROUP"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="11" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="MT_NATUR" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MT_NATUR"/>
+        <keyMapping columnObjectName="SCM_HUB_CONTROL" columnName="MT_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_TARGE" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_TARGE"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL" columnName="QT_TARGE"/>
+      </measure>
+      <measure id="QT_UNIT" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_UNIT"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL" columnName="QT_UNIT"/>
+      </measure>
+      <measure id="TS_LOAD" order="9" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="FL_ISSUE" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FL_ISSUE"/>
+        <measureMapping columnObjectName="SCM_HUB_CONTROL" columnName="FL_ISSUE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

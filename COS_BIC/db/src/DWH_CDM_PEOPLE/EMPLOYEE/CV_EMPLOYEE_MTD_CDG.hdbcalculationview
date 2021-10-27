@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE.EMPLOYEE::CV_EMPLOYEE_MTD_CDG" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_EMPLOYEE_MTD_CDG"/>
+  <metadata changedAt="2020-07-29 16:14:06.772"/>
+  <localVariables>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="47"/>
+  <dataSources>
+    <DataSource id="REL_EMPLOYEE_POSITION_TIME">
+      <resourceUri>DWH_CDM_PEOPLE::REL_EMPLOYEE_POSITION_TIME</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_BUSINESS_UNIT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_BUSINESS_UNIT</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_DIVISION">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_DIVISION</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_DEPARTMENT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_FO_DEPARTMENT</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_SUB_DEPARTMENT">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_SUB_DEPARTMENT</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_COST_CENTER">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_COST_CENTER</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_POSITION_HIST">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_POSITION_HIST</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_EMPLOYEE">
+      <resourceUri>DWH_CDM_PEOPLE::MSTR_EMPLOYEE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMPLOYEE" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="isPrimary"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>YEAR(TO_DATE(&quot;startDate&quot;)) || RIGHT(100+MONTH(TO_DATE(&quot;startDate&quot;)),2)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(TO_DATE(&quot;endDate&quot;)) || RIGHT(100+MONTH(TO_DATE(&quot;endDate&quot;)),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="REL_EMPLOYEE_POSITION_TIME"/>
+    <filter>&quot;YEAR_MONTH_START&quot;&lt;=&quot;YEAR_MONTH&quot; AND &quot;YEAR_MONTH_END&quot;&gt;&quot;YEAR_MONTH&quot; AND &quot;emplStatus&quot;='10896'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_BU">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="name"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_FO_BUSINESS_UNIT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_BU" joinType="referential">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="name"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="BU_NAME" length="90" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;name&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="P_EMPLOYEE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+      </input>
+      <input node="P_MSTR_BU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="externalCode"/>
+      </input>
+    <joinAttribute name="businessUnit"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_BU">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="userId"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_BU"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_DIV">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="name"/>
+        <viewAttribute id="externalCode"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="DIV_NAME" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;name&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_FO_DIVISION"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_DIV" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="DIV_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_BU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+      </input>
+      <input node="P_MSTR_DIV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="externalCode"/>
+      </input>
+    <joinAttribute name="division"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_DIV">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_DIV"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_DEP">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="name"/>
+        <viewAttribute id="externalCode"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="DEP_NAME" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;name&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_FO_DEPARTMENT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_DEP" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="DEP_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_DIV">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+      </input>
+      <input node="P_MSTR_DEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="externalCode"/>
+      </input>
+    <joinAttribute name="department"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_DEP">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="DIV_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_DEP"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MSTR_SUBDEP">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="externalCode"/>
+        <viewAttribute id="externalName_defaultValue"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="SUBDEP_NAME" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;externalName_defaultValue&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_SUB_DEPARTMENT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_SUBDEP" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_DEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+      </input>
+      <input node="MSTR_SUBDEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="externalCode"/>
+      </input>
+    <joinAttribute name="subDepartment"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_SUBDEP">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="DIV_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_SUBDEP"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_CECO">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="name"/>
+        <viewAttribute id="externalCode"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CECO_NAME" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;name&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_COST_CENTER"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_CECO" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_SUBDEP">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+      </input>
+      <input node="P_MSTR_CECO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO_NAME" source="CECO_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="externalCode"/>
+      </input>
+    <joinAttribute name="costCenter"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_POSITION" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="code"/>
+        <viewAttribute id="externalName_defaultValue"/>
+        <viewAttribute id="effectiveEndDate"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="POSITION_NAME" length="20" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;externalName_defaultValue&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(&quot;effectiveEndDate&quot;)||RIGHT(100 + MONTH(&quot;effectiveEndDate&quot;),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||RIGHT(100 + '$$IP_MONTH$$',2))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_POSITION_HIST"/>
+    <filter>&quot;YEAR_MONTH_END&quot;&gt;&quot;YEAR_MONTH&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_POS" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_CECO">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO_NAME" source="CECO_NAME"/>
+      </input>
+      <input node="P_MSTR_POSITION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_NAME" source="POSITION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="code"/>
+      </input>
+    <joinAttribute name="position"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_POS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_POS"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_EMPL">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="firstName"/>
+        <viewAttribute id="lastName"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="EMPLOYEE_NAME" length="20" expressionLanguage="SQL">
+          <formula>&quot;firstName&quot; || ' ' || &quot;lastName&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_EMPLOYEE"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="EMP_NAME" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+        <viewAttribute id="EMPLOYEE_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_POS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIV_NAME" source="DIV_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="startDate" source="startDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="endDate" source="endDate"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="company" source="company"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="costCenter" source="costCenter"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUBDEP_NAME" source="SUBDEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEP_NAME" source="DEP_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isPrimary" source="isPrimary"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH" source="YEAR_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="isEmplStatusActive" source="isEmplStatusActive"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BU_NAME" source="BU_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="emplStatus" source="emplStatus"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="position" source="position"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO_NAME" source="CECO_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_NAME" source="POSITION_NAME"/>
+      </input>
+      <input node="P_MSTR_EMPL">
+        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_NAME" source="EMPLOYEE_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="userId" source="userId"/>
+      </input>
+    <joinAttribute name="userId"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_NAME">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="DIV_NAME"/>
+        <viewAttribute id="userId"/>
+        <viewAttribute id="startDate"/>
+        <viewAttribute id="endDate"/>
+        <viewAttribute id="company"/>
+        <viewAttribute id="costCenter"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="SUBDEP_NAME"/>
+        <viewAttribute id="DEP_NAME"/>
+        <viewAttribute id="YEAR_MONTH_START"/>
+        <viewAttribute id="isPrimary"/>
+        <viewAttribute id="YEAR_MONTH_END"/>
+        <viewAttribute id="YEAR_MONTH"/>
+        <viewAttribute id="isEmplStatusActive"/>
+        <viewAttribute id="BU_NAME"/>
+        <viewAttribute id="emplStatus"/>
+        <viewAttribute id="subDepartment"/>
+        <viewAttribute id="position"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="CECO_NAME"/>
+        <viewAttribute id="POSITION_NAME"/>
+        <viewAttribute id="EMPLOYEE_NAME"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="EMP_NAME"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="P_EMP_NAME">
+    <descriptions/>
+    <attributes>
+      <attribute id="DIV_NAME" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIV_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="DIV_NAME"/>
+      </attribute>
+      <attribute id="userId" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="userId"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="userId"/>
+      </attribute>
+      <attribute id="startDate" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="startDate"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="startDate"/>
+      </attribute>
+      <attribute id="endDate" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="endDate"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="endDate"/>
+      </attribute>
+      <attribute id="company" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="company"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="company"/>
+      </attribute>
+      <attribute id="costCenter" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="costCenter"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="costCenter"/>
+      </attribute>
+      <attribute id="division" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="division"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="division"/>
+      </attribute>
+      <attribute id="SUBDEP_NAME" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUBDEP_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="SUBDEP_NAME"/>
+      </attribute>
+      <attribute id="DEP_NAME" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEP_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="DEP_NAME"/>
+      </attribute>
+      <attribute id="YEAR_MONTH_START" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR_MONTH_START"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="YEAR_MONTH_START"/>
+      </attribute>
+      <attribute id="isPrimary" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="isPrimary"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="isPrimary"/>
+      </attribute>
+      <attribute id="YEAR_MONTH_END" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR_MONTH_END"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="YEAR_MONTH_END"/>
+      </attribute>
+      <attribute id="YEAR_MONTH" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR_MONTH"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="YEAR_MONTH"/>
+      </attribute>
+      <attribute id="BU_NAME" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BU_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="BU_NAME"/>
+      </attribute>
+      <attribute id="emplStatus" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="emplStatus"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="emplStatus"/>
+      </attribute>
+      <attribute id="subDepartment" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="subDepartment"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="subDepartment"/>
+      </attribute>
+      <attribute id="position" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="position"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="position"/>
+      </attribute>
+      <attribute id="department" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="department"/>
+      </attribute>
+      <attribute id="CECO_NAME" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CECO_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="CECO_NAME"/>
+      </attribute>
+      <attribute id="POSITION_NAME" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="POSITION_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="POSITION_NAME"/>
+      </attribute>
+      <attribute id="EMPLOYEE_NAME" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="EMPLOYEE_NAME"/>
+        <keyMapping columnObjectName="P_EMP_NAME" columnName="EMPLOYEE_NAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="isEmplStatusActive" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="isEmplStatusActive"/>
+        <measureMapping columnObjectName="P_EMP_NAME" columnName="isEmplStatusActive"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="CONT_EMP" hidden="false" order="23" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="CONT_EMP"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="userId"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HR_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">BU_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DIV_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">DEP_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">SUBDEP_NAME</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">CECO_NAME</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HR_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_PATH_ENFORCED">
+            <descriptions defaultDescription="HR_HIER"/>
+            <levels>
+              <level levelAttribute="BU_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BU_NAME"/>
+              <level levelAttribute="DIV_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="DIV_NAME"/>
+              <level levelAttribute="DEP_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="DEP_NAME"/>
+              <level levelAttribute="SUBDEP_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="SUBDEP_NAME"/>
+              <level levelAttribute="CECO_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="5" orderAttribute="CECO_NAME"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="552" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_EMPLOYEE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="1305"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_BU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="1305"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_BU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="1209"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMPLOYEE" modelObjectNameSpace="EMP_BU" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_BU" modelObjectNameSpace="EMP_BU" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_BU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="1131"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_DIV" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="1131"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_DIV" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="1035"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMP_BU" modelObjectNameSpace="EMP_DIV" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_DIV" modelObjectNameSpace="EMP_DIV" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_DIV" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="175" y="957"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_DEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="329" y="957"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_DEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="861"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMP_DIV" modelObjectNameSpace="EMP_DEP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_DEP" modelObjectNameSpace="EMP_DEP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_DEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="250" y="783"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="MSTR_SUBDEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="404" y="783"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_SUBDEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="687"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMP_DEP" modelObjectNameSpace="EMP_SUBDEP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="MSTR_SUBDEP" modelObjectNameSpace="EMP_SUBDEP" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_SUBDEP" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="324" y="609"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_CECO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="478" y="609"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_CECO" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="399" y="513"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMP_SUBDEP" modelObjectNameSpace="EMP_CECO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_CECO" modelObjectNameSpace="EMP_CECO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_POSITION" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="553" y="513"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_POS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="475" y="417"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="EMP_CECO" modelObjectNameSpace="EMP_POS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_POSITION" modelObjectNameSpace="EMP_POS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_POS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="475" y="339"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_EMPL" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="629" y="339"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="EMP_NAME" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="552" y="243"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    <shape modelObjectName="P_EMP_POS" modelObjectNameSpace="EMP_NAME" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_EMPL" modelObjectNameSpace="EMP_NAME" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_EMP_NAME" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="552" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

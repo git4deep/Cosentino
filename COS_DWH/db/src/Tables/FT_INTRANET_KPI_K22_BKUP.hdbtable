@@ -1,0 +1,1 @@
+ROW TABLE "FT_INTRANET_KPI_K22_BKUP"  ( "date" DAYDATE , "value" NVARCHAR(32)  , "employeeId" INT  NOT NULL, "typeId" INT , "year" INT  NOT NULL, "month" INT  NOT NULL ) 

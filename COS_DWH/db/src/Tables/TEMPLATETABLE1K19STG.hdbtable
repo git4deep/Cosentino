@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTable1K19STG" ("date" DATE , "value" NVARCHAR(32), "employeeId" INTEGER , "typeId" INTEGER , "year" INTEGER , "month" INTEGER , "hasData" INTEGER , "actions" INTEGER , "status" NVARCHAR(256), "valueNotStarted" INTEGER , "valueInProgress" INTEGER , "valueDone" INTEGER , "valueNoStatus" INTEGER , "valueCanceled" INTEGER ) UNLOAD PRIORITY 5  AUTO MERGE 

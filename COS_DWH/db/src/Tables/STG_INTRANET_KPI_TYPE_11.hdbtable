@@ -1,0 +1,1 @@
+ROW TABLE "STG_INTRANET_KPI_TYPE_11"  ( "date" DAYDATE , "value" NVARCHAR(32)  , "employeeId" INT , "typeId" INT  ) 

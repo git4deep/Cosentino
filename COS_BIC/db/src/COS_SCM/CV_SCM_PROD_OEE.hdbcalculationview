@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_OEE" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_OEE"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_OEE">
+      <resourceUri>COS_SCM::SCM_PROD_OEE</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_OEE">
+    <attributes>
+      <attribute id="CD_LOGIC_ZONE" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_LOGIC_ZONE"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_LOGIC_ZONE"/>
+      </attribute>
+      <attribute id="CD_MANUF" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MANUF"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_MANUF"/>
+      </attribute>
+      <attribute id="CD_OEE_TYPE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_OEE_TYPE"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_OEE_TYPE"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="CD_SHIFT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_SHIFT"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="CD_SHIFT"/>
+      </attribute>
+      <attribute id="DT_MANUF" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_MANUF"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="DT_MANUF"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="9" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="SCM_PROD_OEE" columnName="ID_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="PR_AVAIL" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PR_AVAIL"/>
+        <measureMapping columnObjectName="SCM_PROD_OEE" columnName="PR_AVAIL"/>
+      </measure>
+      <measure id="PR_OEE" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PR_OEE"/>
+        <measureMapping columnObjectName="SCM_PROD_OEE" columnName="PR_OEE"/>
+      </measure>
+      <measure id="PR_PERFO" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PR_PERFO"/>
+        <measureMapping columnObjectName="SCM_PROD_OEE" columnName="PR_PERFO"/>
+      </measure>
+      <measure id="PR_QUALI" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="PR_QUALI"/>
+        <measureMapping columnObjectName="SCM_PROD_OEE" columnName="PR_QUALI"/>
+      </measure>
+      <measure id="TS_LOAD" order="14" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_OEE" columnName="TS_LOAD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,1 @@
+ROW TABLE "MSTR_BW_HIERARCHY"  ( "profitCenter" NVARCHAR(32)  , "costCenter" NVARCHAR(32)  , PRIMARY KEY ( "profitCenter", "costCenter" ) ) 

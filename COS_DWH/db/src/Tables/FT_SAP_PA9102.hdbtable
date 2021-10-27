@@ -1,0 +1,1 @@
+COLUMN TABLE "FT_SAP_PA9102" ("userId" INTEGER  NOT NULL , "startDate" DATE  NOT NULL , "endDate" DATE  NOT NULL , "sequenceNumber" INTEGER  NOT NULL , "currency" VARCHAR(5) NOT NULL , "amount" DECIMAL(11,2)  NOT NULL , "startDateYearMonth" INTEGER  NOT NULL , "endDateYearMonth" INTEGER  NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

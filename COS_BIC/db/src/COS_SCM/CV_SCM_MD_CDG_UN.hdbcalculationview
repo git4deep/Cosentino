@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_MD_CDG_UN" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_MD_CDG_UN"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_MD_UN_CDG">
+      <resourceUri>COS_SCM::SCM_MD_UN_CDG</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_MD_UN_CDG">
+    <attributes>
+      <attribute id="CD_CDG_UNS" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. UNS"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="CD_CDG_UNS"/>
+      </attribute>
+      <attribute id="DS_CDG_UNS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. UNS"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="DS_CDG_UNS"/>
+      </attribute>
+      <attribute id="CD_CDG_GROUP" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. grupo"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="CD_CDG_GROUP"/>
+      </attribute>
+      <attribute id="DS_CDG_GROUP" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. grupo"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="DS_CDG_GROUP"/>
+      </attribute>
+      <attribute id="CD_CDG_SUBGROUP" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. subgrupo"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="CD_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="DS_CDG_SUBGROUP" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. subgrupo"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="DS_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="CD_CDG_UN" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. UN"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="CD_CDG_UN"/>
+      </attribute>
+      <attribute id="DS_CDG_UN" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. UN"/>
+        <keyMapping columnObjectName="SCM_MD_UN_CDG" columnName="DS_CDG_UN"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_DUMMY" hidden="false" order="9" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="CC_DUMMY"/>
+        <exceptionAggregation>
+          <attribute attributeName="CD_CDG_UN"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

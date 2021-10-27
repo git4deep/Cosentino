@@ -1,0 +1,1 @@
+ROW TABLE "EXT_INTRANET_TYPE12_K18_K19"  ( "employeeId" INT  NOT NULL, "firstName" NVARCHAR(40)  , "lastName" NVARCHAR(40)  , "date" DAYDATE NOT NULL, "orhp" NVARCHAR(32)  , "actions" INT , "status" NVARCHAR(256)  , "valueNotStarted" INT , "valueInProgress" INT , "valueDone" INT , "valueNoStatus" INT , "valueCanceled" INT  ) 

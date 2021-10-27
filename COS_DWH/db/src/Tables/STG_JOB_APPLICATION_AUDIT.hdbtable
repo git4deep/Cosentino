@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_JOB_APPLICATION_AUDIT" ("jobApplicationId" NVARCHAR(64), "newValue" NVARCHAR(3999), "revNumber" BIGINT  NOT NULL , "revType" INTEGER , "lastModifiedDate" LONGDATE , "lastModifiedExtId" NVARCHAR(64)) UNLOAD PRIORITY 5  AUTO MERGE ;

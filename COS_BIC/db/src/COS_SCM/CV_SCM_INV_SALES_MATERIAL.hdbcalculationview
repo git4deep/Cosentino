@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_INV_SALES_MATERIAL" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_INV_SALES_MATERIAL"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_INV_SALES_MATERIAL">
+      <resourceUri>COS_SCM::SCM_INV_SALES_MATERIAL</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_INV_SALES_MATERIAL">
+    <attributes>
+      <attribute id="CD_MATER" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_MATER"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="CD_MATER"/>
+      </attribute>
+      <attribute id="CD_PLANT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_PLANT"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="CD_PLANT"/>
+      </attribute>
+      <attribute id="DS_MATER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATER"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="DS_MATER"/>
+      </attribute>
+      <attribute id="DS_MATER_TYPE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_MATER_TYPE"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="DS_MATER_TYPE"/>
+      </attribute>
+      <attribute id="DS_PLANT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DS_PLANT"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="DS_PLANT"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="MY_NATUR" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MY_NATUR"/>
+        <keyMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="MY_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_UMB" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_UMB"/>
+        <measureMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="QT_UMB"/>
+      </measure>
+      <measure id="TS_LOAD" order="9" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_INV_SALES_MATERIAL" columnName="TS_LOAD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

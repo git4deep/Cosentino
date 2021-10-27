@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_MD_MATERIALES" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_MD_MATERIALES"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="V_SCM_MD_MATERIALES">
+      <resourceUri>COS_SCM::V_SCM_MD_MATERIALES</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="V_SCM_MD_MATERIALES">
+    <attributes>
+      <attribute id="NTIPO_PRODUCTO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="nTipo producto"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="NTIPO_PRODUCTO"/>
+      </attribute>
+      <attribute id="CD_COLOR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. color"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="CD_COLOR"/>
+      </attribute>
+      <attribute id="DS_COLOR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. color"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="DS_COLOR"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_ES" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. material (ES)"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="DS_MATERIAL_ES"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_EN" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. material (EN)"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="DS_MATERIAL_EN"/>
+      </attribute>
+      <attribute id="CD_GAMA" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. gama"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="CD_GAMA"/>
+      </attribute>
+      <attribute id="CD_MATERIAL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. material"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="CD_MATERIAL"/>
+      </attribute>
+      <attribute id="DS_GAMA" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Des. gama"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="DS_GAMA"/>
+      </attribute>
+      <attribute id="VL_FACTOR" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Factor"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="VL_FACTOR"/>
+      </attribute>
+      <attribute id="NMATERIAL" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="nMaterial"/>
+        <keyMapping columnObjectName="V_SCM_MD_MATERIALES" columnName="NMATERIAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_DUMMY" hidden="false" order="11" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="CC_DUMMY"/>
+        <exceptionAggregation>
+          <attribute attributeName="CD_MATERIAL"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

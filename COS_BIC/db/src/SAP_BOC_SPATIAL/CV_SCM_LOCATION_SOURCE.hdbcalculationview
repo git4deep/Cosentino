@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="SAP_BOC_SPATIAL::CV_SCM_LOCATION_SOURCE" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" outputViewType="Projection">
+  <descriptions defaultDescription="CV_SCM_TRACK_LOCATION"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOCATION_MAP">
+      <resourceUri>SAP_BOC_SPATIAL::SCM_LOCATION_MAP</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_LOCATION_MAP">
+    <attributes>
+      <attribute id="ID_LOCAT_MAP_SOURC" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_LOCAT_MAP_SOURC"/>
+        <keyMapping columnObjectName="SCM_LOCATION_MAP" columnName="ID_LOCAT_MAP"/>
+      </attribute>
+      <attribute id="CD_LOCAT_MAP_SOURC" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_LOCAT_MAP_SOURC"/>
+        <keyMapping columnObjectName="SCM_LOCATION_MAP" columnName="CD_LOCAT_SOURC"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

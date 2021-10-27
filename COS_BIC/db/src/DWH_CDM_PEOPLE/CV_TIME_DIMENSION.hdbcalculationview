@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_TIME_DIMENSION" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_TIME_DIMENSION"/>
+  <metadata changedAt="2019-04-15 15:59:07.952"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="42"/>
+  <dataSources>
+    <DataSource id="M_TIME_DIMENSION">
+      <resourceUri>DWH_CDM_PEOPLE::M_TIME_DIMENSION</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="MONTH"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="M_TIME_DIMENSION"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="MONTH" hidden="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="MONTH_NAME" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="6">
+          <formula>CASE 
+WHEN &quot;MONTH&quot; = 01 THEN 'JAN'
+WHEN &quot;MONTH&quot; = 02 THEN 'FEB'
+WHEN &quot;MONTH&quot;= 03 THEN 'MAR'
+WHEN &quot;MONTH&quot; = 04 THEN 'APR'
+WHEN &quot;MONTH&quot; = 05 THEN 'MAY'
+WHEN &quot;MONTH&quot; = 06 THEN 'JUN'
+WHEN &quot;MONTH&quot; = 07 THEN 'JUL'
+WHEN &quot;MONTH&quot;= 08 THEN 'AUG'
+WHEN &quot;MONTH&quot; = 09 THEN 'SEP'
+WHEN &quot;MONTH&quot; = 10 THEN 'OCT'
+WHEN &quot;MONTH&quot; = 11 THEN 'NOV'
+WHEN &quot;MONTH&quot; = 12 THEN 'DEC'
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="4" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="6">
+          <formula>&quot;MONTH&quot;</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="AUX" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="AUX"/>
+        <formula>0</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="110"/></shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="240"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

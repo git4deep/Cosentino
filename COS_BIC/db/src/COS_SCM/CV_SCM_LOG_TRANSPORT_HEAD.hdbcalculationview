@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_LOG_TRANSPORT_HEAD" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_LOG_"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_LOG_TRANSPORT_HEAD">
+      <resourceUri>COS_SCM::SCM_LOG_TRANSPORT_HEAD</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+        <viewAttribute id="CD_CNTNR"/>
+        <viewAttribute id="CD_EXPED_CLASS"/>
+        <viewAttribute id="CD_TRANS_COMPA"/>
+        <viewAttribute id="CD_TRANS_DOCUM"/>
+        <viewAttribute id="DT_LOAD_FINIS"/>
+        <viewAttribute id="DT_LOAD_START"/>
+        <viewAttribute id="DT_REGIS_CRRNT"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="TS_LOAD"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="CC_SS_LOAD" expressionLanguage="COLUMN_ENGINE">
+          <formula>secondsbetween(&quot;DT_LOAD_START&quot;,&quot;DT_LOAD_FINIS&quot;)</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DOUBLE" id="CC_K" expressionLanguage="COLUMN_ENGINE">
+          <formula>1   </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="CC_DT_LOAD_START" expressionLanguage="COLUMN_ENGINE">
+          <formula>format(&quot;DT_LOAD_START&quot;,'YYYY-MM-DD')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="DATE" id="CC_DT_LOAD_FINIS" expressionLanguage="COLUMN_ENGINE">
+          <formula>format(&quot;DT_LOAD_FINIS&quot;,'YYYY-MM-DD')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="SCM_LOG_TRANSPORT_HEAD"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="CD_CNTNR" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_CNTNR"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CD_CNTNR"/>
+      </attribute>
+      <attribute id="CD_EXPED_CLASS" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_EXPED_CLASS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CD_EXPED_CLASS"/>
+      </attribute>
+      <attribute id="CD_TRANS_COMPA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TRANS_COMPA"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CD_TRANS_COMPA"/>
+      </attribute>
+      <attribute id="CD_TRANS_DOCUM" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TRANS_DOCUM"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CD_TRANS_DOCUM"/>
+      </attribute>
+      <attribute id="DT_LOAD_FINIS" order="5" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_LOAD_FINIS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DT_LOAD_FINIS"/>
+      </attribute>
+      <attribute id="DT_LOAD_START" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_LOAD_START"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DT_LOAD_START"/>
+      </attribute>
+      <attribute id="DT_REGIS_CRRNT" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_REGIS_CRRNT"/>
+        <keyMapping columnObjectName="Projection_1" columnName="DT_REGIS_CRRNT"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="Projection_1" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="CC_DT_LOAD_START" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_DT_LOAD_START"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CC_DT_LOAD_START"/>
+      </attribute>
+      <attribute id="CC_DT_LOAD_FINIS" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_DT_LOAD_FINIS"/>
+        <keyMapping columnObjectName="Projection_1" columnName="CC_DT_LOAD_FINIS"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="TS_LOAD" order="9" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="Projection_1" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="CC_SS_LOAD" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CC_SS_LOAD"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CC_SS_LOAD"/>
+      </measure>
+      <measure id="CC_K" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="CC_K"/>
+        <measureMapping columnObjectName="Projection_1" columnName="CC_K"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="86" y="248"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

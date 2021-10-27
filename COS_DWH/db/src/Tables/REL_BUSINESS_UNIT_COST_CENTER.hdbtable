@@ -1,0 +1,1 @@
+ROW TABLE "REL_BUSINESS_UNIT_COST_CENTER"  ( "Unidad de Negocio" NVARCHAR(32)   NOT NULL, "Nombre Unidad de Negocio" NVARCHAR(90)  , "Centro de Coste" NVARCHAR(32)   NOT NULL, "Nombre Centro de Coste" NVARCHAR(90)   ) 

@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_BW_FINANCIALS_TEST_AUT" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_BW_FINANCIALS"/>
+  <metadata changedAt="2019-09-27 16:26:47.857" createdAt="2019-06-21 10:14:54.911"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT"/>
+      <localVariable>#IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT"/>
+      <localVariable>#IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="49"/>
+  <dataSources>
+    <DataSource id="FT_BW_FINANCIALS">
+      <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
+    </DataSource>
+    <DataSource id="FINANCIALS_MTD$$$$FT_BW_FINANCIALS$$">
+      <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
+    </DataSource>
+    <DataSource id="FINANCIALS_YTD_LY$$$$FT_BW_FINANCIALS$$">
+      <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
+    </DataSource>
+    <DataSource id="FINANCIALS_MTD_LY$$$$FT_BW_FINANCIALS$$">
+      <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
+    </DataSource>
+    <DataSource id="CV_HEADCOUNT">
+      <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ORG_HIER_TEST">
+      <resourceUri>DWH_CDM_PEOPLE::CV_ORG_HIER_TEST</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>'$$IP_YEAR$$'||'01'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))  </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FT_BW_FINANCIALS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))  </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FINANCIALS_MTD$$$$FT_BW_FINANCIALS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>( (TO_INT('$$IP_YEAR$$') -1) ||'01')</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>( (TO_INT('$$IP_YEAR$$') -1) ||'12')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FINANCIALS_YTD_LY$$$$FT_BW_FINANCIALS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FINANCIALS_MTD_LY$$$$FT_BW_FINANCIALS$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_CY" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FINANCIALS_YTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+      </input>
+      <input node="#FINANCIALS_MTD">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+      </input>
+      <joinAttribute name="COST_CENTER"/>
+      <joinAttribute name="PROFIT_CENTER"/>
+      <joinAttribute name="COMPANY"/>
+      <joinAttribute name="YEAR"/>
+      <joinAttribute name="MONTH"/>
+      <joinAttribute name="IS_COST_ELEMENT_SALARY"/>
+      <joinAttribute name="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+      <joinAttribute name="COST_ELEMENT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_LY" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#FINANCIALS_YTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+      </input>
+      <input node="#FINANCIALS_MTD_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+      </input>
+      <joinAttribute name="COST_CENTER"/>
+      <joinAttribute name="PROFIT_CENTER"/>
+      <joinAttribute name="COMPANY"/>
+      <joinAttribute name="IS_COST_ELEMENT_SALARY"/>
+      <joinAttribute name="YEAR"/>
+      <joinAttribute name="MONTH"/>
+      <joinAttribute name="COST_ELEMENT"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
+        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
+        <viewAttribute id="COMPANY" transparentFilter="false"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#FINANCIALS_CY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#FINANCIALS_LY">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="HEADCOUNT">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="HEADCOUNT_YTD"/>
+        <viewAttribute id="HEADCOUNT_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_MTD"/>
+        <viewAttribute id="HEADCOUNT_MTD_LY"/>
+        <viewAttribute id="MONTH_AUX"/>
+        <viewAttribute id="CONTINGENT_WORKER" transparentFilter="false"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="MONTH_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SUB_DEPARTMENT" length="128" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Sin Asignar'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SUB_DEPARTMENT_NAME" length="128" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Sin Asignar'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#CV_HEADCOUNT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD" source="HEADCOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD_LY" source="HEADCOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD" source="HEADCOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD_LY" source="HEADCOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_AUX" source="MONTH_AUX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_NAME" source="MONTH_NAME"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_6">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#CV_ORG_HIER_TEST">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="name_DEP"/>
+      </input>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
+        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
+        <viewAttribute id="COMPANY" transparentFilter="false"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SUB_DEPARTMENT" length="128" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Sin Asignar'</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="SUB_DEPARTMENT_NAME" length="128" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Sin Asignar'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Union_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+      </input>
+      <input node="#Projection_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+      </input>
+      <joinAttribute name="COST_CENTER"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_2">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="HEADCOUNT_YTD"/>
+        <viewAttribute id="HEADCOUNT_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_MTD"/>
+        <viewAttribute id="HEADCOUNT_MTD_LY"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="BUSINESS_UNIT_NAME"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="DIVISION_NAME"/>
+        <viewAttribute id="DEPARTMENT_NAME"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="SUB_DEPARTMENT" transparentFilter="false"/>
+        <viewAttribute id="SUB_DEPARTMENT_NAME" transparentFilter="false"/>
+        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
+        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
+        <viewAttribute id="COST_ELEMENT" transparentFilter="false"/>
+        <viewAttribute id="COST_ELEMENT_TYPE" transparentFilter="false"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#HEADCOUNT">
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD" source="HEADCOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD_LY" source="HEADCOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD" source="HEADCOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD_LY" source="HEADCOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="IS_COST_ELEMENT_SALARY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROFIT_CENTER" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_CENTER" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_ELEMENT_TYPE" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#FINANCIALS">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_YTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_YTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_MTD" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="HEADCOUNT_MTD_LY" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="CONTINGENT_WORKER" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_2">
+    <descriptions defaultDescription="CV_BW_FINANCIALS"/>
+    <attributes>
+      <attribute id="CONTINGENT_WORKER" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONTINGENT_WORKER"/>
+        <keyMapping columnObjectName="Union_2" columnName="CONTINGENT_WORKER"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT" order="10" attributeHierarchyActive="false" descriptionColumnName="BUSINESS_UNIT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Union_2" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="BUSINESS_UNIT_NAME" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+        <keyMapping columnObjectName="Union_2" columnName="BUSINESS_UNIT_NAME"/>
+      </attribute>
+      <attribute id="DIVISION" order="12" attributeHierarchyActive="false" descriptionColumnName="DIVISION_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Union_2" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="13" attributeHierarchyActive="false" descriptionColumnName="DEPARTMENT_NAME" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_2" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="DIVISION_NAME" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION_NAME"/>
+        <keyMapping columnObjectName="Union_2" columnName="DIVISION_NAME"/>
+      </attribute>
+      <attribute id="DEPARTMENT_NAME" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Union_2" columnName="DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="MONTH" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Union_2" columnName="MONTH"/>
+      </attribute>
+      <attribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <keyMapping columnObjectName="Union_2" columnName="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+      </attribute>
+      <attribute id="IS_COST_ELEMENT_SALARY" order="18" attributeHierarchyActive="false" descriptionColumnName="IS_COST_ELEMENT_SALARY_NAME" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_SALARY"/>
+        <keyMapping columnObjectName="Union_2" columnName="IS_COST_ELEMENT_SALARY"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="44" attributeHierarchyActive="false" descriptionColumnName="SUB_DEPARTMENT_NAME" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_2" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT_NAME" hidden="true" order="45" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+        <keyMapping columnObjectName="Union_2" columnName="SUB_DEPARTMENT_NAME"/>
+      </attribute>
+      <attribute id="PROFIT_CENTER" order="46" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="PROFIT_CENTER"/>
+        <keyMapping columnObjectName="Union_2" columnName="PROFIT_CENTER"/>
+      </attribute>
+      <attribute id="COST_CENTER" order="47" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="COST_CENTER"/>
+        <keyMapping columnObjectName="Union_2" columnName="COST_CENTER"/>
+      </attribute>
+      <attribute id="COST_ELEMENT" hidden="false" order="48" attributeHierarchyActive="false" descriptionColumnName="COST_ELEMENT_TYPE" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="COST_ELEMENT"/>
+        <keyMapping columnObjectName="Union_2" columnName="COST_ELEMENT"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_TYPE" hidden="true" order="49" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+        <descriptions defaultDescription="COST_ELEMENT_TYPE"/>
+        <keyMapping columnObjectName="Union_2" columnName="COST_ELEMENT_TYPE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes>
+      <calculatedAttribute id="IS_COST_ELEMENT_SALARY_NAME" hidden="false" order="43" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_SALARY_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+          <formula>if(&quot;IS_COST_ELEMENT_SALARY&quot; = 1, 'Wages', 'Extra Costs')</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_NAME" hidden="true" order="51" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
+          <formula>CASE &#xD;
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'&#xD;
+WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'&#xD;
+WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'&#xD;
+WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'&#xD;
+END</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+      <calculatedAttribute id="MONTH_AUX" hidden="false" order="52" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
+          <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
+        </keyCalculation>
+      </calculatedAttribute>
+    </calculatedAttributes>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="HEADCOUNT_YTD" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="HEADCOUNT_YTD"/>
+      </measure>
+      <measure id="HEADCOUNT_YTD_LY" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="HEADCOUNT_YTD_LY"/>
+      </measure>
+      <measure id="HEADCOUNT_MTD" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_MTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="HEADCOUNT_MTD"/>
+      </measure>
+      <measure id="HEADCOUNT_MTD_LY" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="HEADCOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_YTD" order="19" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_YTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_MTD" order="20" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_MTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_YTD_LY" order="21" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_MTD_LY" order="22" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_YTD" order="23" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_BUDGET_AMOUNT_YTD"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_MTD" order="24" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_BUDGET_AMOUNT_MTD"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_YTD_LY" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_BUDGET_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_MTD_LY" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_BUDGET_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_YTD" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_ELEMENT_AMOUNT_YTD"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_MTD" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_ELEMENT_AMOUNT_MTD"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_YTD_LY" order="29" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_ELEMENT_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_MTD_LY" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_ELEMENT_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_YTD" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_PLAN_AMOUNT_YTD"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_MTD" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_PLAN_AMOUNT_MTD"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_YTD_LY" order="33" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_PLAN_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_MTD_LY" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_PLAN_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="36" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="38" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="40" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="42" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <measureMapping columnObjectName="Union_2" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="AVERAGE_COST_PER_EMPLOYEE_YTD" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions/>
+        <formula>IF(&quot;HEADCOUNT_YTD&quot; != 0,&quot;COST_ELEMENT_AMOUNT_YTD&quot;/&quot;HEADCOUNT_YTD&quot;,0)</formula>
+      </measure>
+      <measure id="AVERAGE_COST_PER_EMPLOYEE_MTD" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="AVERAGE_COST_PER_EMPLOYEE_MTD"/>
+        <formula>IF(&quot;HEADCOUNT_MTD&quot; != 0,&quot;COST_ELEMENT_AMOUNT_MTD&quot;/&quot;HEADCOUNT_MTD&quot;,0)</formula>
+      </measure>
+      <measure id="AVERAGE_COST_PER_EMPLOYEE_YTD_LY" hidden="false" order="3" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="AVERAGE_COST_PER_EMPLOYEE_YTD_LY"/>
+        <formula>IF( &quot;HEADCOUNT_YTD_LY&quot; != 0,&quot;COST_ELEMENT_AMOUNT_YTD_LY&quot;/&quot;HEADCOUNT_YTD_LY&quot;,0)</formula>
+      </measure>
+      <measure id="AVERAGE_COST_PER_EMPLOYEE_MTD_LY" hidden="false" order="4" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="AVERAGE_COST_PER_EMPLOYEE_MTD_LY"/>
+        <formula>IF(&quot;HEADCOUNT_MTD_LY&quot; != 0,&quot;COST_ELEMENT_AMOUNT_MTD_LY&quot;/&quot;HEADCOUNT_MTD_LY&quot;,0)</formula>
+      </measure>
+      <measure id="CNT_SALES_INFO" hidden="false" order="50" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="CNT_SALES_INFO"/>
+        <exceptionAggregation exceptionAggregationType="countDistinct">
+          <attribute attributeName="COST_CENTER"/>
+          <attribute attributeName="BUSINESS_UNIT"/>
+          <attribute attributeName="DIVISION"/>
+          <attribute attributeName="DEPARTMENT"/>
+          <attribute attributeName="SUB_DEPARTMENT"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="ORG_HIER">
+        <attributeRef xsi:type="DataFoundation:Attribute">#BUSINESS_UNIT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DIVISION</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#DEPARTMENT</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">#SUB_DEPARTMENT</attributeRef>
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="ORG_HIER" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY">
+            <descriptions defaultDescription="ORG_HIER"/>
+            <levels>
+              <level levelAttribute="#BUSINESS_UNIT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#BUSINESS_UNIT"/>
+              <level levelAttribute="#DIVISION" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#DIVISION"/>
+              <level levelAttribute="#DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="#DEPARTMENT"/>
+              <level levelAttribute="#SUB_DEPARTMENT" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="#SUB_DEPARTMENT"/>
+            </levels>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="335" y="54"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_YTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="569"/>
+        <rectangleSize height="64" width="179"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_MTD" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="215" y="569"/>
+        <rectangleSize height="64" width="181"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_YTD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="410" y="569"/>
+        <rectangleSize height="64" width="190"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_MTD_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="614" y="569"/>
+        <rectangleSize height="64" width="196"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_CY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="235" y="473"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS_LY" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="435" y="473"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="335" y="357"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="HEADCOUNT" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="258" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_6" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="489" y="357"/>
+        <rectangleSize height="64" width="146"/>
+      </shape>
+      <shape expanded="true" modelObjectName="FINANCIALS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="412" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="335" y="140"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

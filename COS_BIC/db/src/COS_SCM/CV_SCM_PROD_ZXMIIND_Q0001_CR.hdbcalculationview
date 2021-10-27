@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_ZXMIIND_Q0001_CR" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_ZXMIIND_Q0001_CR"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_PRESSES_POLISH">
+      <resourceUri>COS_SCM::SCM_PROD_PRESSES_POLISH</resourceUri>
+    </DataSource>
+    <DataSource id="SCM_ANALYTIC_TARGET">
+      <resourceUri>COS_SCM::SCM_ANALYTIC_TARGET</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PRJ_PROD_PRESSES_POLISH">
+    <viewAttributes>
+        <viewAttribute id="CD_DIMEN"/>
+        <viewAttribute id="CD_RESOU"/>
+        <viewAttribute id="CD_RESOU_GROUP"/>
+        <viewAttribute id="DT_PRODU"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="QT_DAY"/>
+        <viewAttribute id="QT_MONTH"/>
+        <viewAttribute id="TS_LOAD"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_PROD_PRESSES_POLISH"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PRJ_ANALYTIC_TARGE">
+    <viewAttributes>
+        <viewAttribute id="CD_DIMEN"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="VL_TARGE"/>
+        <viewAttribute id="CD_TARGE_OUT"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="SCM_ANALYTIC_TARGET"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+        <viewAttribute id="CD_DIMEN"/>
+        <viewAttribute id="CD_RESOU"/>
+        <viewAttribute id="CD_RESOU_GROUP"/>
+        <viewAttribute id="DT_PRODU"/>
+        <viewAttribute id="FL_LOAD"/>
+        <viewAttribute id="ID_SOURC"/>
+        <viewAttribute id="QT_DAY"/>
+        <viewAttribute id="QT_MONTH"/>
+        <viewAttribute id="TS_LOAD"/>
+        <viewAttribute id="VL_TARGE"/>
+        <viewAttribute id="CD_TARGE_OUT"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="INTEGER" id="CC_FL_ISSUE" expressionLanguage="COLUMN_ENGINE">
+          <formula>if(isnull(&quot;VL_TARGE&quot;),0,
+   if(if(isnull(&quot;QT_DAY&quot;),0,&quot;QT_DAY&quot;) &gt; &quot;VL_TARGE&quot;, 1, 0))</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="PRJ_PROD_PRESSES_POLISH">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_DIMEN" source="CD_DIMEN"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_RESOU" source="CD_RESOU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_RESOU_GROUP" source="CD_RESOU_GROUP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DT_PRODU" source="DT_PRODU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD" source="FL_LOAD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_DAY" source="QT_DAY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="QT_MONTH" source="QT_MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="TS_LOAD" source="TS_LOAD"/>
+      </input>
+      <input node="PRJ_ANALYTIC_TARGE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="VL_TARGE" source="VL_TARGE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_TARGE_OUT" source="CD_TARGE_OUT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CD_DIMEN" source="CD_DIMEN"/>
+      </input>
+    <joinAttribute name="ID_SOURC"/>
+    <joinAttribute name="CD_DIMEN"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <attributes>
+      <attribute id="CD_DIMEN" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_DIMEN"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_DIMEN"/>
+      </attribute>
+      <attribute id="CD_RESOU" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_RESOU"/>
+      </attribute>
+      <attribute id="CD_RESOU_GROUP" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU_GROUP"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_RESOU_GROUP"/>
+      </attribute>
+      <attribute id="DT_PRODU" order="4" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_PRODU"/>
+        <keyMapping columnObjectName="Join_1" columnName="DT_PRODU"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="Join_1" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="ID_SOURC" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <keyMapping columnObjectName="Join_1" columnName="ID_SOURC"/>
+      </attribute>
+      <attribute id="CD_TARGE_OUT" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_TARGE_OUT"/>
+        <keyMapping columnObjectName="Join_1" columnName="CD_TARGE_OUT"/>
+      </attribute>
+      <attribute id="FL_ISSUE" order="12" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CC_FL_ISSUE"/>
+        <keyMapping columnObjectName="Join_1" columnName="CC_FL_ISSUE"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_DAY" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_DAY"/>
+        <measureMapping columnObjectName="Join_1" columnName="QT_DAY"/>
+      </measure>
+      <measure id="QT_MONTH" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_MONTH"/>
+        <measureMapping columnObjectName="Join_1" columnName="QT_MONTH"/>
+      </measure>
+      <measure id="TS_LOAD" order="9" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="Join_1" columnName="TS_LOAD"/>
+      </measure>
+      <measure id="VL_TARGE" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="VL_TARGE"/>
+        <measureMapping columnObjectName="Join_1" columnName="VL_TARGE"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PRJ_PROD_PRESSES_POLISH" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="87" y="231"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PRJ_ANALYTIC_TARGE" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="254" y="374"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="170" y="298"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    
+    <shape modelObjectName="PRJ_PROD_PRESSES_POLISH" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="PRJ_ANALYTIC_TARGE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

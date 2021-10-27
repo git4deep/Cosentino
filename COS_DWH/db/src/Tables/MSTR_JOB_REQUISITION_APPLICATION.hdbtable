@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_JOB_REQUISITION_APPLICATION" ("jobReqId" BIGINT , "dateOfferAccepted" LONGDATE , "applicationId" BIGINT  NOT NULL , "candidateId" BIGINT , "isDisqualified" INTEGER  NOT NULL , "lastModifiedDate" LONGDATE , "isFirstInverviewOrAfter" INTEGER , "hiredOn" LONGDATE ) UNLOAD PRIORITY 5  AUTO MERGE 

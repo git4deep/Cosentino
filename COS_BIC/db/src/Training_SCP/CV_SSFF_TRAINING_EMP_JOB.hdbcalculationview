@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SSFF_TRAINING_EMP_JOB" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SSFF_TRAINING_EMP_JOB"/>
+  <metadata changedAt="2020-07-03 14:00:04.5"/>
+  <localVariables/>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_TRAINING_EMP_JOB">
+      <resourceUri>Training_SCP::FT_SSFF_TRAINING_EMP_JOB</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_POSITION_HIST">
+      <resourceUri>Training_SCP::MSTR_POSITION_HIST</resourceUri>
+    </DataSource>
+    <DataSource id="MSTR_FO_BUSINESS_UNIT">
+      <resourceUri>Training_SCP::MSTR_FO_BUSINESS_UNIT</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP_JOB">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="POSITION"/>
+        <viewAttribute id="USER_ID_COUNT"/>
+        <viewAttribute id="WORK_SCHEDULE"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="FT_SSFF_TRAINING_EMP_JOB"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_POS">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="code"/>
+        <viewAttribute id="externalName_defaultValue"/>
+        <viewAttribute id="costCenter"/>
+      </viewAttributes>
+    <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="CECO" length="10" expressionLanguage="SQL">
+          <formula>&quot;costCenter&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="MSTR_POSITION_HIST"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="POSITION"/>
+        <viewAttribute id="USER_ID_COUNT"/>
+        <viewAttribute id="WORK_SCHEDULE"/>
+        <viewAttribute id="externalName_defaultValue"/>
+        <viewAttribute id="CECO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="P_EMP_JOB">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION" source="POSITION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_COUNT" source="USER_ID_COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORK_SCHEDULE" source="WORK_SCHEDULE"/>
+      </input>
+      <input node="P_MSTR_POS">
+        <mapping xsi:type="Calculation:AttributeMapping" target="externalName_defaultValue" source="externalName_defaultValue"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO" source="CECO"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION" source="code"/>
+      </input>
+    <joinAttribute name="POSITION"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_MSTR_BU">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="name"/>
+        <viewAttribute id="externalCode"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="MSTR_FO_BUSINESS_UNIT"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="POSITION"/>
+        <viewAttribute id="USER_ID_COUNT"/>
+        <viewAttribute id="WORK_SCHEDULE"/>
+        <viewAttribute id="externalName_defaultValue"/>
+        <viewAttribute id="name"/>
+        <viewAttribute id="CECO"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="POSITION" source="POSITION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_COUNT" source="USER_ID_COUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORK_SCHEDULE" source="WORK_SCHEDULE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="externalName_defaultValue" source="externalName_defaultValue"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CECO" source="CECO"/>
+      </input>
+      <input node="P_MSTR_BU">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="externalCode"/>
+      </input>
+    <joinAttribute name="BUSINESS_UNIT"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_2">
+    <descriptions/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT" order="1" attributeHierarchyActive="false" descriptionColumnName="name" displayAttribute="false">
+        <descriptions defaultDescription="Business Unit"/>
+        <keyMapping columnObjectName="Join_2" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="POSITION" order="2" attributeHierarchyActive="false" descriptionColumnName="externalName_defaultValue" displayAttribute="false">
+        <descriptions defaultDescription="Position"/>
+        <keyMapping columnObjectName="Join_2" columnName="POSITION"/>
+      </attribute>
+      <attribute id="WORK_SCHEDULE" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Schedule Code"/>
+        <keyMapping columnObjectName="Join_2" columnName="WORK_SCHEDULE"/>
+      </attribute>
+      <attribute id="externalName_defaultValue" hidden="true" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Position Name"/>
+        <keyMapping columnObjectName="Join_2" columnName="externalName_defaultValue"/>
+      </attribute>
+      <attribute id="name" hidden="true" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Business Unit Name"/>
+        <keyMapping columnObjectName="Join_2" columnName="name"/>
+      </attribute>
+      <attribute id="CECO" order="7" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="Join_2" columnName="CECO"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="USER_ID_COUNT" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Count of User ID"/>
+        <measureMapping columnObjectName="Join_2" columnName="USER_ID_COUNT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="176" y="87"/></shape>
+      <shape expanded="true" modelObjectName="P_EMP_JOB" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="357"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_POS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="357"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    <shape modelObjectName="P_EMP_JOB" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_POS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+      <shape expanded="true" modelObjectName="P_MSTR_BU" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="253" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="165"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="P_MSTR_BU" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

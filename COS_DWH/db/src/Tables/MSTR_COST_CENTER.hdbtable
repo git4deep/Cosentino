@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_COST_CENTER" ("cust_societyProp" NVARCHAR(3999), "description" NVARCHAR(128), "endDate" LONGDATE , "externalCode" NVARCHAR(32) NOT NULL , "name" NVARCHAR(90), "startDate" LONGDATE  NOT NULL , "status" NVARCHAR(255), PRIMARY KEY ("externalCode", "startDate")) UNLOAD PRIORITY 5  AUTO MERGE 

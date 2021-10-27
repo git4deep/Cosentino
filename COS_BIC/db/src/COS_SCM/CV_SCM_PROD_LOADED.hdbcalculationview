@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_PROD_LOADED" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_LOADED"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PROD_LOADED">
+      <resourceUri>COS_SCM::SCM_PROD_LOADED</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PROD_LOADED">
+    <attributes>
+      <attribute id="CD_RESOU_GROUP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CD_RESOU_GROUP"/>
+        <keyMapping columnObjectName="SCM_PROD_LOADED" columnName="CD_RESOU_GROUP"/>
+      </attribute>
+      <attribute id="FL_LOAD" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FL_LOAD"/>
+        <keyMapping columnObjectName="SCM_PROD_LOADED" columnName="FL_LOAD"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="8" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DT_NATUR"/>
+        <keyMapping columnObjectName="SCM_PROD_LOADED" columnName="DT_NATUR"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="ID_SOURC" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="ID_SOURC"/>
+        <measureMapping columnObjectName="SCM_PROD_LOADED" columnName="ID_SOURC"/>
+      </measure>
+      <measure id="QT_LOAD_DAY" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_LOAD_DAY"/>
+        <measureMapping columnObjectName="SCM_PROD_LOADED" columnName="QT_LOAD_DAY"/>
+      </measure>
+      <measure id="QT_LOAD_MONTH" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_LOAD_MONTH"/>
+        <measureMapping columnObjectName="SCM_PROD_LOADED" columnName="QT_LOAD_MONTH"/>
+      </measure>
+      <measure id="QT_LOAD_YEAR" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="QT_LOAD_YEAR"/>
+        <measureMapping columnObjectName="SCM_PROD_LOADED" columnName="QT_LOAD_YEAR"/>
+      </measure>
+      <measure id="TS_LOAD" order="7" aggregationType="min" measureType="simple">
+        <descriptions defaultDescription="TS_LOAD"/>
+        <measureMapping columnObjectName="SCM_PROD_LOADED" columnName="TS_LOAD"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

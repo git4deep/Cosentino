@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_APO_FORECAST" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="true" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_APO_FORECAST"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="V_SCM_APO_FORECAST">
+      <resourceUri>COS_SCM::V_SCM_APO_FORECAST</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="V_SCM_APO_FORECAST">
+    <attributes>
+      <attribute id="CD_CENTRO" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Plant code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_CENTRO"/>
+      </attribute>
+      <attribute id="CD_CDG_UN" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BU code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_CDG_UN"/>
+      </attribute>
+      <attribute id="PERIODO" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Period"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="PERIODO"/>
+      </attribute>
+      <attribute id="MES_NATURAL" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FCST YYYYMM"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="MES_NATURAL"/>
+      </attribute>
+      <attribute id="CD_MATERIAL" order="10" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SKU"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_MATERIAL"/>
+      </attribute>
+      <attribute id="CD_SERIE" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Series code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_SERIE"/>
+      </attribute>
+      <attribute id="CD_GAMA" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Range code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_GAMA"/>
+      </attribute>
+      <attribute id="CD_COLOR" order="13" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Color code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_COLOR"/>
+      </attribute>
+      <attribute id="DT_MES_NATURAL" order="14" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Dat. FCST month"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DT_MES_NATURAL"/>
+      </attribute>
+      <attribute id="DS_DEMAND_PLANNER" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Planner name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_DEMAND_PLANNER"/>
+      </attribute>
+      <attribute id="DS_COLOR" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Color name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_COLOR"/>
+      </attribute>
+      <attribute id="DS_GAMA" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Range name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_GAMA"/>
+      </attribute>
+      <attribute id="QT_MES_NATURAL" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FCST quarter"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="QT_MES_NATURAL"/>
+      </attribute>
+      <attribute id="YY_MES_NATURAL" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FCST year"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="YY_MES_NATURAL"/>
+      </attribute>
+      <attribute id="DS_CDG_UN" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BU name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_CDG_UN"/>
+      </attribute>
+      <attribute id="CD_CDG_UNS" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUS code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_CDG_UNS"/>
+      </attribute>
+      <attribute id="DS_CDG_UNS" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUS name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_CDG_UNS"/>
+      </attribute>
+      <attribute id="CD_CDG_GROUP" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Group code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_CDG_GROUP"/>
+      </attribute>
+      <attribute id="DS_CDG_GROUP" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Group name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_CDG_GROUP"/>
+      </attribute>
+      <attribute id="CD_CDG_SUBGROUP" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Subgroup code"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="CD_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="DS_CDG_SUBGROUP" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Subgroup name"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_ES" order="27" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material name (ES)"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_MATERIAL_ES"/>
+      </attribute>
+      <attribute id="DS_MATERIAL_EN" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Material name (EN)"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="DS_MATERIAL_EN"/>
+      </attribute>
+      <attribute id="MM_MES_NATURAL" order="29" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="FCST month"/>
+        <keyMapping columnObjectName="V_SCM_APO_FORECAST" columnName="MM_MES_NATURAL"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="VL_HISTO" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Sales"/>
+        <measureMapping columnObjectName="V_SCM_APO_FORECAST" columnName="VL_HISTO"/>
+      </measure>
+      <measure id="VL_BASE_ENRIC" order="6" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FCST enriched"/>
+        <measureMapping columnObjectName="V_SCM_APO_FORECAST" columnName="VL_BASE_ENRIC"/>
+      </measure>
+      <measure id="VL_AGREE" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FCST agreed"/>
+        <measureMapping columnObjectName="V_SCM_APO_FORECAST" columnName="VL_AGREE"/>
+      </measure>
+      <measure id="VL_BASE_ADJUS" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FCST base"/>
+        <measureMapping columnObjectName="V_SCM_APO_FORECAST" columnName="VL_BASE_ADJUS"/>
+      </measure>
+      <measure id="VL_TOTAL" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="FCST total"/>
+        <measureMapping columnObjectName="V_SCM_APO_FORECAST" columnName="VL_TOTAL"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

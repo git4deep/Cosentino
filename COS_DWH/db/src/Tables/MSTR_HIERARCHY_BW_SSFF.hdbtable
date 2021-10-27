@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_HIERARCHY_BW_SSFF" ("effectiveStartDate" LONGDATE , "effectiveEndDate" LONGDATE , "company" NVARCHAR(32), "costCenter" NVARCHAR(32), "businessUnit" NVARCHAR(32), "division" NVARCHAR(32), "department" NVARCHAR(32), "subDepartment" NVARCHAR(32), "profitCenter" NVARCHAR(32)) UNLOAD PRIORITY 5  AUTO MERGE 

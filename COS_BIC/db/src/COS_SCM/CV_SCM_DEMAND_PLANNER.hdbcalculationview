@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="CV_SCM_DEMAND_PLANNER" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_DEMAND_PLANNER"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SCM_PLAN_DEMAND_PLANNER">
+      <resourceUri>COS_SCM::SCM_PLAN_DEMAND_PLANNER</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="SCM_PLAN_DEMAND_PLANNER">
+    <attributes>
+      <attribute id="CD_CDG_SUBGROUP" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. subgrupo"/>
+        <keyMapping columnObjectName="SCM_PLAN_DEMAND_PLANNER" columnName="CD_CDG_SUBGROUP"/>
+      </attribute>
+      <attribute id="NM_DEMAN_PLANN" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. planificador"/>
+        <keyMapping columnObjectName="SCM_PLAN_DEMAND_PLANNER" columnName="NM_DEMAN_PLANN"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_DUMMY" hidden="false" order="3" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="CC_DUMMY"/>
+        <exceptionAggregation>
+          <attribute attributeName="CD_CDG_SUBGROUP"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

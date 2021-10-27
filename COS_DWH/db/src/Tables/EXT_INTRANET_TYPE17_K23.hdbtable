@@ -1,0 +1,1 @@
+ROW TABLE "EXT_INTRANET_TYPE17_K23"  ( "employeeId" INT  NOT NULL, "firstName" NVARCHAR(40)  , "lastName" NVARCHAR(40)  , "date" DAYDATE NOT NULL, "value" NVARCHAR(32)   ) 

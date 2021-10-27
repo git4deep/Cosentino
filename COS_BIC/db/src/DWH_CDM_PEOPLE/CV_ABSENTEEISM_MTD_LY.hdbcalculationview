@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_LY" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <origin/>
+  <descriptions defaultDescription="CV_ABSENTEEISM_MTD"/>
+  <metadata changedAt="2019-04-18 16:56:31.385"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="41"/>
+  <dataSources>
+    <DataSource id="FT_SSFF_ABSENTEEISM">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_ABSENTEEISM</resourceUri>
+    </DataSource>
+    <DataSource id="Long_total$$$$FT_SSFF_ABSENTEEISM$$">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_ABSENTEEISM</resourceUri>
+    </DataSource>
+    <DataSource id="Short_total$$$$FT_SSFF_ABSENTEEISM$$">
+      <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_ABSENTEEISM</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Abs_total" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="IS_FULLTIME_EMPLOYEE"/>
+        <viewAttribute id="WORKING_HOURS_REAL_BASE"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_BASE"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="occupationPercentage"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(&quot;DATE_SQL&quot;)||right(100+MONTH(&quot;DATE_SQL&quot;),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="OCCUPATION_PERCENTAGE" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;occupationPercentage&quot;/100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_REAL_TOTAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_REAL_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_EXPECTED_TOTAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_EXPECTED_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#FT_SSFF_ABSENTEEISM">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FULLTIME_EMPLOYEE" source="IS_FULLTIME_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_BASE" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_BASE" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="occupationPercentage" source="occupationPercentage"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="USER_ID_LONG"/>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute aggregationType="sum" id="WORKING_HOURS_EXPECTED_TOTAL"/>
+        <viewAttribute aggregationType="sum" id="WORKING_HOURS_REAL_TOTAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="FLOAT" id="HOURS_LONG_DURATION" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF((&quot;WORKING_HOURS_EXPECTED_TOTAL&quot;-&quot;WORKING_HOURS_REAL_TOTAL&quot;) >= 160,&#xD;
+&quot;WORKING_HOURS_EXPECTED_TOTAL&quot;-&quot;WORKING_HOURS_REAL_TOTAL&quot;,&#xD;
+0)</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Abs_total">
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL" source="WORKING_HOURS_EXPECTED_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL" source="WORKING_HOURS_REAL_TOTAL"/>
+      </input>
+      <filter>&quot;HOURS_LONG_DURATION&quot;>0</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Long_total" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="IS_FULLTIME_EMPLOYEE"/>
+        <viewAttribute id="WORKING_HOURS_REAL_BASE"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_BASE"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="occupationPercentage"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(&quot;DATE_SQL&quot;)||right(100+MONTH(&quot;DATE_SQL&quot;),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="OCCUPATION_PERCENTAGE" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;occupationPercentage&quot;/100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_REAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_REAL_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_EXPECTED_TOTAL_FORM" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_EXPECTED_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ABS_TYPE" length="255" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Long-term'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Long_total$$$$FT_SSFF_ABSENTEEISM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FULLTIME_EMPLOYEE" source="IS_FULLTIME_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_BASE" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_BASE" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="occupationPercentage" source="occupationPercentage"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="Short_total" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="IS_FULLTIME_EMPLOYEE"/>
+        <viewAttribute id="WORKING_HOURS_REAL_BASE"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_BASE"/>
+        <viewAttribute id="DATE_SQL"/>
+        <viewAttribute id="occupationPercentage"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_START" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="VARCHAR" id="YEAR_MONTH_END" length="6" expressionLanguage="SQL">
+          <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
+          <formula>(YEAR(&quot;DATE_SQL&quot;)||right(100+MONTH(&quot;DATE_SQL&quot;),2))</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="OCCUPATION_PERCENTAGE" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;occupationPercentage&quot;/100</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_REAL" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_REAL_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="FLOAT" id="WORKING_HOURS_EXPECTED_TOTAL_FORM" expressionLanguage="COLUMN_ENGINE">
+          <formula>&quot;WORKING_HOURS_EXPECTED_BASE&quot;*&quot;OCCUPATION_PERCENTAGE&quot;</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ABS_TYPE" length="255" expressionLanguage="COLUMN_ENGINE">
+          <formula>'Short/Medium-term'</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Short_total$$$$FT_SSFF_ABSENTEEISM$$">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_FULLTIME_EMPLOYEE" source="IS_FULLTIME_EMPLOYEE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_BASE" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_BASE" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DATE_SQL" source="DATE_SQL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="occupationPercentage" source="occupationPercentage"/>
+      </input>
+      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
+AND &#xD;
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Long_Short" joinType="leftOuter">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="WORKING_HOURS_REAL"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED"/>
+        <viewAttribute id="USER_ID_LONG"/>
+      </viewAttributes>
+      <calculatedViewAttributes>
+        <calculatedViewAttribute datatype="VARCHAR" id="USER_ID_SHORT" length="100" expressionLanguage="SQL">
+          <formula>CASE WHEN &quot;USER_ID_LONG&quot; IS NULL THEN &quot;USER_ID&quot; ELSE NULL END</formula>
+        </calculatedViewAttribute>
+        <calculatedViewAttribute datatype="NVARCHAR" id="ABS_TYPE" length="255" expressionLanguage="COLUMN_ENGINE">
+          <formula>IF(ISNULL(&quot;USER_ID_LONG&quot;),'Short/Medium-term','Long-term')</formula>
+        </calculatedViewAttribute>
+      </calculatedViewAttributes>
+      <input node="#Abs_total">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL" source="WORKING_HOURS_REAL_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED" source="WORKING_HOURS_EXPECTED_TOTAL"/>
+      </input>
+      <input node="#Aggregation_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG" source="USER_ID_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID_LONG"/>
+      </input>
+      <joinAttribute name="BUSINESS_UNIT"/>
+      <joinAttribute name="DIVISION"/>
+      <joinAttribute name="DEPARTMENT"/>
+      <joinAttribute name="SUB_DEPARTMENT"/>
+      <joinAttribute name="USER_ID"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="BUSINESS_UNIT"/>
+        <viewAttribute id="DIVISION"/>
+        <viewAttribute id="DEPARTMENT"/>
+        <viewAttribute id="SUB_DEPARTMENT"/>
+        <viewAttribute id="USER_ID"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+        <viewAttribute id="ABS_TYPE"/>
+        <viewAttribute id="WORKING_HOURS_REAL"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED"/>
+        <viewAttribute id="USER_ID_LONG"/>
+        <viewAttribute id="USER_ID_SHORT"/>
+        <viewAttribute id="WORKING_HOURS_REAL_TOTAL"/>
+        <viewAttribute id="WORKING_HOURS_EXPECTED_TOTAL"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="#Long_total">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM" source="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABS_TYPE" source="ABS_TYPE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Short_total">
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="BUSINESS_UNIT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DIVISION" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEPARTMENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="SUB_DEPARTMENT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM" source="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABS_TYPE" source="ABS_TYPE"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL" null="true" value=""/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Abs_total">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ABS_TYPE" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_LONG" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="USER_ID_SHORT" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL_TOTAL" source="WORKING_HOURS_REAL_TOTAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL" source="WORKING_HOURS_EXPECTED_TOTAL"/>
+      </input>
+      <input emptyUnionBehavior="NO_ROW" node="#Long_Short">
+        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID" source="USER_ID"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL_FORM" null="true" value=""/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="ABS_TYPE" source="ABS_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_REAL" source="WORKING_HOURS_REAL"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="WORKING_HOURS_EXPECTED" source="WORKING_HOURS_EXPECTED"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_LONG" source="USER_ID_LONG"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="USER_ID_SHORT" source="USER_ID_SHORT"/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_REAL_TOTAL" null="true" value=""/>
+        <mapping xsi:type="Calculation:ConstantAttributeMapping" target="WORKING_HOURS_EXPECTED_TOTAL" null="true" value=""/>
+      </input>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Union_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="BUSINESS_UNIT" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="BUSINESS_UNIT"/>
+        <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT"/>
+      </attribute>
+      <attribute id="DIVISION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DIVISION"/>
+        <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+      </attribute>
+      <attribute id="DEPARTMENT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT"/>
+      </attribute>
+      <attribute id="SUB_DEPARTMENT" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SUB_DEPARTMENT"/>
+        <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT"/>
+      </attribute>
+      <attribute id="USER_ID" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID"/>
+      </attribute>
+      <attribute id="ABS_TYPE" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ABS_TYPE"/>
+        <keyMapping columnObjectName="Union_1" columnName="ABS_TYPE"/>
+      </attribute>
+      <attribute id="USER_ID_LONG" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_LONG"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_LONG"/>
+      </attribute>
+      <attribute id="USER_ID_SHORT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="USER_ID_SHORT"/>
+        <keyMapping columnObjectName="Union_1" columnName="USER_ID_SHORT"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="WORKING_HOURS_REAL" hidden="false" order="11" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED" hidden="false" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED"/>
+      </measure>
+      <measure id="WORKING_HOURS_REAL_TOTAL" hidden="false" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_REAL_TOTAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_REAL_TOTAL"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL" hidden="false" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL"/>
+      </measure>
+      <measure id="WORKING_HOURS_EXPECTED_TOTAL_FORM" hidden="false" order="15" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+        <measureMapping columnObjectName="Union_1" columnName="WORKING_HOURS_EXPECTED_TOTAL_FORM"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="ABSENTEEISM" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE" length="34">
+        <descriptions defaultDescription="ABSENTEEISM"/>
+        <formula>((&quot;WORKING_HOURS_EXPECTED&quot;-&quot;WORKING_HOURS_REAL&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL_FORM&quot;)*100</formula>
+      </measure>
+      <measure id="ABSENTEEISM_TOTAL" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="ABSENTEEISM_TOTAL"/>
+        <formula>((&quot;WORKING_HOURS_EXPECTED_TOTAL&quot;-&quot;WORKING_HOURS_REAL_TOTAL&quot;)/&quot;WORKING_HOURS_EXPECTED_TOTAL&quot;)*100</formula>
+      </measure>
+      <measure id="N_USERS" hidden="false" order="16" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="N_USERS"/>
+        <formula>if(&quot;ABS_TYPE&quot;='Short/Medium-term', &#xD;
+if(isnull(&quot;USER_ID_SHORT&quot;),0,1),&#xD;
+if(isnull(&quot;USER_ID_LONG&quot;),0,1))</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions>
+      <localDimension id="HIER_CV_ABSENTEEISM_MTD_LY">
+        <hierarchies>
+          <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIER_CV_ABSENTEEISM_MTD_LY" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true">
+            <descriptions defaultDescription="HIER_CV_ABSENTEEISM_MTD_LY"/>
+            <levels/>
+          </hierarchy>
+        </hierarchies>
+      </localDimension>
+    </localDimensions>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="281" y="84"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Abs_total" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="320" y="570"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="470" y="480"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Long_total" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="440"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Short_total" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="190" y="440"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Long_Short" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="420" y="360"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="281" y="210"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

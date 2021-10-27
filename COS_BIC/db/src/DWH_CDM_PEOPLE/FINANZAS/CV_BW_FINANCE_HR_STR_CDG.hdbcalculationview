@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_HR_STR_CDG" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
+  <descriptions defaultDescription="CV_BW_FINANCE_HR_STR_CDG"/>
+  <metadata changedAt="2020-08-19 16:40:13.382"/>
+  <localVariables>
+    <variable id="IP_YEAR" parameter="true">
+      <descriptions defaultDescription="IP_YEAR"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_MONTH" parameter="true">
+      <descriptions defaultDescription="IP_MONTH"/>
+      <variableProperties datatype="INTEGER" defaultExpressionLanguage="SQL" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+        <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+      </variableProperties>
+    </variable>
+    <variable id="IP_CURRENCY" parameter="true">
+      <descriptions defaultDescription="IP_CURRENCY"/>
+      <variableProperties datatype="NVARCHAR" defaultValue="EUR" length="3" mandatory="true">
+        <valueDomain type="empty"/>
+        <selection multiLine="false" type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_CURRENCY" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
+      <localVariable>IP_CURRENCY</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG"/>
+      <localVariable>IP_YEAR</localVariable>
+    </mapping>
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG" targetType="CALCULATION_VIEW">
+      <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG"/>
+      <localVariable>IP_MONTH</localVariable>
+    </mapping>
+  </variableMappings>
+  <informationModelLayout relativeWidthScenario="26"/>
+  <dataSources>
+    <DataSource id="CV_BW_FINANCE_COST_CDG">
+      <resourceUri>DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG</resourceUri>
+    </DataSource>
+    <DataSource id="CV_ORG_HIER_CECO_CDG">
+      <resourceUri>DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY_NAME"/>
+        <viewAttribute id="MONTH_AUX"/>
+        <viewAttribute id="MONTH_NAME"/>
+        <viewAttribute id="SALES_VS_SALARY_MTD"/>
+        <viewAttribute id="SALES_VS_SALARY_MTD_LY"/>
+        <viewAttribute id="DAYS5"/>
+        <viewAttribute id="PERCENTAGE_SALES_INCREASE_MTD"/>
+        <viewAttribute id="PERCENTAGE_COST_INCREASE_MTD"/>
+        <viewAttribute id="PERCENTAGE_SALES_INCREASE_YTD"/>
+        <viewAttribute id="PERCENTAGE_COST_INCREASE_YTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_MTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_YTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_MTD_LY"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_YTD_LY"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER_NAME"/>
+        <viewAttribute id="PROFIT_CENTER_NAME"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_FORMATTED_CURRENCY_CODE"/>
+        <viewAttribute id="HEADCOUNT_YTD"/>
+        <viewAttribute id="HEADCOUNT_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_MTD"/>
+        <viewAttribute id="HEADCOUNT_MTD_LY"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="SALES_BUDGET_CURRENCY_CODE"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY_"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="CV_BW_FINANCE_COST_CDG"/>
+    </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY_NAME"/>
+        <viewAttribute id="MONTH_AUX"/>
+        <viewAttribute id="MONTH_NAME"/>
+        <viewAttribute id="SALES_VS_SALARY_MTD"/>
+        <viewAttribute id="SALES_VS_SALARY_MTD_LY"/>
+        <viewAttribute id="DAYS5"/>
+        <viewAttribute id="PERCENTAGE_SALES_INCREASE_MTD"/>
+        <viewAttribute id="PERCENTAGE_COST_INCREASE_MTD"/>
+        <viewAttribute id="PERCENTAGE_SALES_INCREASE_YTD"/>
+        <viewAttribute id="PERCENTAGE_COST_INCREASE_YTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_MTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_YTD"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_MTD_LY"/>
+        <viewAttribute id="COST_PER_EMPLOYEE_YTD_LY"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="MONTH"/>
+        <viewAttribute id="COST_CENTER_NAME"/>
+        <viewAttribute id="PROFIT_CENTER_NAME"/>
+        <viewAttribute id="COST_CURRENCY_CODE"/>
+        <viewAttribute id="COST_ELEMENT_TYPE"/>
+        <viewAttribute id="COST_ELEMENT"/>
+        <viewAttribute id="SALES_CURRENCY_CODE"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
+        <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY"/>
+        <viewAttribute id="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <viewAttribute id="SALES_FORMATTED_CURRENCY_CODE"/>
+        <viewAttribute id="HEADCOUNT_YTD"/>
+        <viewAttribute id="HEADCOUNT_YTD_LY"/>
+        <viewAttribute id="HEADCOUNT_MTD"/>
+        <viewAttribute id="HEADCOUNT_MTD_LY"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="SALES_BUDGET_CURRENCY_CODE"/>
+        <viewAttribute id="SALES_BUDGET_AMOUNT_YTD_LY_"/>
+        <viewAttribute id="name_BU"/>
+        <viewAttribute id="name_DIV"/>
+        <viewAttribute id="name_DEP"/>
+        <viewAttribute id="name_SUB"/>
+        <viewAttribute id="businessUnit"/>
+        <viewAttribute id="division"/>
+        <viewAttribute id="department"/>
+        <viewAttribute id="subDepartment"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY_NAME" source="IS_COST_ELEMENT_SALARY_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_AUX" source="MONTH_AUX"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_NAME" source="MONTH_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_VS_SALARY_MTD" source="SALES_VS_SALARY_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_VS_SALARY_MTD_LY" source="SALES_VS_SALARY_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS5" source="DAYS5"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERCENTAGE_SALES_INCREASE_MTD" source="PERCENTAGE_SALES_INCREASE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERCENTAGE_COST_INCREASE_MTD" source="PERCENTAGE_COST_INCREASE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERCENTAGE_SALES_INCREASE_YTD" source="PERCENTAGE_SALES_INCREASE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PERCENTAGE_COST_INCREASE_YTD" source="PERCENTAGE_COST_INCREASE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PER_EMPLOYEE_MTD" source="COST_PER_EMPLOYEE_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PER_EMPLOYEE_YTD" source="COST_PER_EMPLOYEE_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PER_EMPLOYEE_MTD_LY" source="COST_PER_EMPLOYEE_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PER_EMPLOYEE_YTD_LY" source="COST_PER_EMPLOYEE_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_CURRENCY" source="SALES_AMOUNT_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_CURRENCY" source="SALES_AMOUNT_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY_CURRENCY" source="SALES_AMOUNT_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY_CURRENCY" source="SALES_AMOUNT_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_CURRENCY" source="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_CURRENCY" source="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY" source="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY" source="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_CURRENCY" source="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_CURRENCY" source="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY" source="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY" source="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_CURRENCY" source="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_CURRENCY" source="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY_CURRENCY" source="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY_CURRENCY" source="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_FORMATTED_CURRENCY_CODE" source="SALES_FORMATTED_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD" source="HEADCOUNT_YTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD_LY" source="HEADCOUNT_YTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD" source="HEADCOUNT_MTD"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD_LY" source="HEADCOUNT_MTD_LY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_CURRENCY_CODE" source="SALES_BUDGET_CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY_" source="SALES_BUDGET_AMOUNT_YTD_LY_"/>
+      </input>
+      <input node="CV_ORG_HIER_CECO_CDG">
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_BU" source="name_BU"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DIV" source="name_DIV"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_DEP" source="name_DEP"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="name_SUB" source="name_SUB"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="businessUnit" source="businessUnit"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="division" source="division"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="department" source="department"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="subDepartment" source="subDepartment"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="costCenter"/>
+      </input>
+    <joinAttribute name="COST_CENTER"/>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="IS_COST_ELEMENT_SALARY_NAME" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_SALARY_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="IS_COST_ELEMENT_SALARY_NAME"/>
+      </attribute>
+      <attribute id="MONTH_AUX" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_AUX"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH_AUX"/>
+      </attribute>
+      <attribute id="MONTH_NAME" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH_NAME"/>
+      </attribute>
+      <attribute id="DAYS5" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="DAYS5"/>
+        <keyMapping columnObjectName="Join_1" columnName="DAYS5"/>
+      </attribute>
+      <attribute id="YEAR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="YEAR"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR"/>
+      </attribute>
+      <attribute id="MONTH" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="MONTH"/>
+        <keyMapping columnObjectName="Join_1" columnName="MONTH"/>
+      </attribute>
+      <attribute id="COST_CENTER_NAME" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_CENTER_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_CENTER_NAME"/>
+      </attribute>
+      <attribute id="PROFIT_CENTER_NAME" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROFIT_CENTER_NAME"/>
+        <keyMapping columnObjectName="Join_1" columnName="PROFIT_CENTER_NAME"/>
+      </attribute>
+      <attribute id="COST_CURRENCY_CODE" order="19" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_CURRENCY_CODE"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_CURRENCY_CODE"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_TYPE" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT_TYPE"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT_TYPE"/>
+      </attribute>
+      <attribute id="COST_ELEMENT" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT"/>
+      </attribute>
+      <attribute id="SALES_CURRENCY_CODE" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_CURRENCY_CODE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_CURRENCY_CODE"/>
+      </attribute>
+      <attribute id="PROFIT_CENTER" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="PROFIT_CENTER"/>
+        <keyMapping columnObjectName="Join_1" columnName="PROFIT_CENTER"/>
+      </attribute>
+      <attribute id="COMPANY" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COMPANY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COMPANY"/>
+      </attribute>
+      <attribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" order="25" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+      </attribute>
+      <attribute id="IS_COST_ELEMENT_SALARY" order="26" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="IS_COST_ELEMENT_SALARY"/>
+        <keyMapping columnObjectName="Join_1" columnName="IS_COST_ELEMENT_SALARY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_YTD_CURRENCY" order="28" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_MTD_CURRENCY" order="30" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_YTD_LY_CURRENCY" order="32" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_MTD_LY_CURRENCY" order="34" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_BUDGET_AMOUNT_YTD_CURRENCY" order="36" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_BUDGET_AMOUNT_MTD_CURRENCY" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY" order="40" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY" order="42" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_AMOUNT_YTD_CURRENCY" order="44" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_AMOUNT_MTD_CURRENCY" order="46" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY" order="48" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY" order="50" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_PLAN_AMOUNT_YTD_CURRENCY" order="52" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_PLAN_AMOUNT_MTD_CURRENCY" order="54" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_PLAN_AMOUNT_YTD_LY_CURRENCY" order="56" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_PLAN_AMOUNT_MTD_LY_CURRENCY" order="58" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" order="60" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" order="62" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" order="64" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" order="66" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" order="68" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" order="70" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" order="72" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" order="74" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
+      </attribute>
+      <attribute id="SALES_FORMATTED_CURRENCY_CODE" order="75" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_FORMATTED_CURRENCY_CODE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_FORMATTED_CURRENCY_CODE"/>
+      </attribute>
+      <attribute id="CONTINGENT_WORKER" order="80" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CONTINGENT_WORKER"/>
+        <keyMapping columnObjectName="Join_1" columnName="CONTINGENT_WORKER"/>
+      </attribute>
+      <attribute id="COST_CENTER" order="81" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="COST_CENTER"/>
+        <keyMapping columnObjectName="Join_1" columnName="COST_CENTER"/>
+      </attribute>
+      <attribute id="SALES_BUDGET_CURRENCY_CODE" order="82" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALES_BUDGET_CURRENCY_CODE"/>
+        <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_CURRENCY_CODE"/>
+      </attribute>
+      <attribute id="name_BU" order="84" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_BU"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_BU"/>
+      </attribute>
+      <attribute id="name_DIV" order="85" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_DIV"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_DIV"/>
+      </attribute>
+      <attribute id="name_DEP" order="86" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_DEP"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_DEP"/>
+      </attribute>
+      <attribute id="name_SUB" order="87" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="name_SUB"/>
+        <keyMapping columnObjectName="Join_1" columnName="name_SUB"/>
+      </attribute>
+      <attribute id="businessUnit" order="88" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="businessUnit"/>
+        <keyMapping columnObjectName="Join_1" columnName="businessUnit"/>
+      </attribute>
+      <attribute id="division" order="89" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="division"/>
+        <keyMapping columnObjectName="Join_1" columnName="division"/>
+      </attribute>
+      <attribute id="department" order="90" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="department"/>
+        <keyMapping columnObjectName="Join_1" columnName="department"/>
+      </attribute>
+      <attribute id="subDepartment" order="91" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="subDepartment"/>
+        <keyMapping columnObjectName="Join_1" columnName="subDepartment"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="SALES_VS_SALARY_MTD" order="4" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_VS_SALARY_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_VS_SALARY_MTD"/>
+      </measure>
+      <measure id="SALES_VS_SALARY_MTD_LY" order="5" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_VS_SALARY_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_VS_SALARY_MTD_LY"/>
+      </measure>
+      <measure id="PERCENTAGE_SALES_INCREASE_MTD" order="7" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Sales Growth"/>
+        <measureMapping columnObjectName="Join_1" columnName="PERCENTAGE_SALES_INCREASE_MTD"/>
+      </measure>
+      <measure id="PERCENTAGE_COST_INCREASE_MTD" order="8" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Wages Growth"/>
+        <measureMapping columnObjectName="Join_1" columnName="PERCENTAGE_COST_INCREASE_MTD"/>
+      </measure>
+      <measure id="PERCENTAGE_SALES_INCREASE_YTD" order="9" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Sales Growth"/>
+        <measureMapping columnObjectName="Join_1" columnName="PERCENTAGE_SALES_INCREASE_YTD"/>
+      </measure>
+      <measure id="PERCENTAGE_COST_INCREASE_YTD" order="10" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Wages Growth"/>
+        <measureMapping columnObjectName="Join_1" columnName="PERCENTAGE_COST_INCREASE_YTD"/>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_MTD" order="11" semanticType="amount" aggregationType="sum" measureType="amount">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD"/>
+        <unitCurrencyAttribute attributeName="COST_PER_EMPLOYEE_MTD_CURRENCY"/>
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PER_EMPLOYEE_MTD_CURRENCY" convert="true">
+          <client>
+            <value>020</value>
+          </client>
+          <currencyConversionTables rates="DWH_CDM_PEOPLE::TCURR" configuration="DWH_CDM_PEOPLE::TCURV" prefactors="DWH_CDM_PEOPLE::TCURF" notations="DWH_CDM_PEOPLE::TCURN" precisions="DWH_CDM_PEOPLE::TCURX"/>
+          <outputDataType datatype="DOUBLE"/>
+          <sourceCurrency>
+            <attribute attributeName="SALES_CURRENCY_CODE"/>
+          </sourceCurrency>
+          <erpDecimalShift>false</erpDecimalShift>
+          <targetCurrency>
+            <localVariable>IP_CURRENCY</localVariable>
+          </targetCurrency>
+          <referenceDate>
+            <attribute attributeName="DAYS5"/>
+          </referenceDate>
+          <exchangeRateType>ZCDG</exchangeRateType>
+        </currencyConversion>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PER_EMPLOYEE_MTD"/>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_YTD" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PER_EMPLOYEE_YTD"/>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_MTD_LY" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PER_EMPLOYEE_MTD_LY"/>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_YTD_LY" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PER_EMPLOYEE_YTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_YTD" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_YTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_MTD" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_MTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_YTD_LY" order="31" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_MTD_LY" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_YTD" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_YTD"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_MTD" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_MTD"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_YTD_LY" order="39" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_MTD_LY" order="41" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_YTD" order="43" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_YTD"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_MTD" order="45" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_MTD"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_YTD_LY" order="47" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="COST_ELEMENT_AMOUNT_MTD_LY" order="49" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_ELEMENT_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_YTD" order="51" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_YTD"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_MTD" order="53" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_MTD"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_YTD_LY" order="55" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_YTD_LY"/>
+      </measure>
+      <measure id="COST_PLAN_AMOUNT_MTD_LY" order="57" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_PLAN_AMOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="59" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="61" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="63" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+      </measure>
+      <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="65" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="67" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="69" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="71" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
+      </measure>
+      <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="73" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
+      </measure>
+      <measure id="HEADCOUNT_YTD" order="76" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_YTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_YTD"/>
+      </measure>
+      <measure id="HEADCOUNT_YTD_LY" order="77" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_YTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_YTD_LY"/>
+      </measure>
+      <measure id="HEADCOUNT_MTD" order="78" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_MTD"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_MTD"/>
+      </measure>
+      <measure id="HEADCOUNT_MTD_LY" order="79" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="HEADCOUNT_MTD_LY"/>
+        <measureMapping columnObjectName="Join_1" columnName="HEADCOUNT_MTD_LY"/>
+      </measure>
+      <measure id="SALES_BUDGET_AMOUNT_YTD_LY_" order="83" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_LY_"/>
+        <measureMapping columnObjectName="Join_1" columnName="SALES_BUDGET_AMOUNT_YTD_LY_"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures>
+      <measure id="COST_PER_EMPLOYEE_MTD_CDG" hidden="false" order="92" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_CDG"/>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD&quot;) OR &quot;HEADCOUNT_MTD&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_MTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot; / &quot;HEADCOUNT_MTD&quot;, &quot;COST_ELEMENT_AMOUNT_MTD&quot; * &quot;HEADCOUNT_MTD&quot;) )</formula>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_YTD_CDG" hidden="false" order="93" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_CDG"/>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD&quot;) OR &quot;HEADCOUNT_YTD&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_YTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;HEADCOUNT_YTD&quot;, &quot;COST_ELEMENT_AMOUNT_YTD&quot; * &quot;HEADCOUNT_YTD&quot;) )</formula>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_MTD_LY_CDG" hidden="false" order="94" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_LY_CDG"/>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD_LY&quot;) OR &quot;HEADCOUNT_MTD_LY&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_MTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; / &quot;HEADCOUNT_MTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; * &quot;HEADCOUNT_MTD_LY&quot;) )</formula>
+      </measure>
+      <measure id="COST_PER_EMPLOYEE_YTD_LY_CDG" hidden="false" order="95" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_LY_CDG"/>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD_LY&quot;) OR &quot;HEADCOUNT_YTD_LY&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_YTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; / &quot;HEADCOUNT_YTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; * &quot;HEADCOUNT_YTD_LY&quot;) )</formula>
+      </measure>
+      <measure id="PERCENTAGE_SALES_INCREASE_MTD_CDG" hidden="false" order="96" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Sales Growth"/>
+        <formula>IF(&quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;SALES_AMOUNT_MTD&quot;  / &quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
+      </measure>
+      <measure id="PERCENTAGE_SALES_INCREASE_YTD_CDG" hidden="false" order="97" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="Sales Growth"/>
+        <formula>IF(ISNULL(&quot;SALES_AMOUNT_YTD_LY&quot;), 1, &quot;SALES_AMOUNT_YTD&quot; / &quot;SALES_AMOUNT_YTD_LY&quot; )</formula>
+      </measure>
+      <measure id="COST_INCREASE_MTD_CDG" hidden="false" order="98" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_INCREASE_MTD_CDG"/>
+        <formula>IF(&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot;  / &quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
+      </measure>
+      <measure id="COST_INCREASE_YTD_CDG" hidden="false" order="99" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
+        <descriptions defaultDescription="COST_INCREASE_YTD_CDG"/>
+        <formula>IF(ISNULL(&quot;COST_ELEMENT_AMOUNT_YTD_LY&quot;), 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; )</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="22" y="87"/>
+        <rectangleSize height="0" width="0"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="165"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,1 @@
+COLUMN TABLE "MSTR_BW_CECOS_CEBES" ("costCenter" NVARCHAR(32), "profitCenter" NVARCHAR(32), "costCenterName" NVARCHAR(64), "profitCenterName" NVARCHAR(64), PRIMARY KEY ("costCenter", "profitCenter")) UNLOAD PRIORITY 5  AUTO MERGE 

@@ -1,0 +1,20 @@
+{
+	"remote-grant-service": {
+		"object_owner": {
+			"roles": [
+				"COS_SCM::external_access_g",
+				"COS_BIC::external_access_g",
+				"COS_SDI::external_access_g",
+				"MODELING"				
+			]
+		},
+		"application_user": {
+			"roles": [
+				"COS_SCM::external_access_g",
+				"COS_BIC::external_access_g",
+				"COS_SDI::external_access_g",				
+				"MODELING"
+			]
+		}
+	}
+}

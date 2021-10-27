@@ -1,0 +1,1 @@
+ROW TABLE "STG_INTRANET_KPI_TYPE_16_BKUP "  ( "date" DAYDATE , "value" NVARCHAR(32)  , "employeeId" INT , "typeId" INT  ) 

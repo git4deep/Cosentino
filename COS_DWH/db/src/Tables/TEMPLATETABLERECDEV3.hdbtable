@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTableRecDev3" ("jobReqId" BIGINT , "year" INTEGER , "month" INTEGER , "isFirstInterviewOrAfter" INTEGER , "position" VARCHAR(128) NOT NULL ) UNLOAD PRIORITY 5  AUTO MERGE 

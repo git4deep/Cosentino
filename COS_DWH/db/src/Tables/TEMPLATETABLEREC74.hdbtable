@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTableRec74" ("jobReqId" BIGINT , "isFirstInverviewOrAfter" INTEGER , "numberOpenings" DECIMAL(20,5) , "year" INTEGER , "month" INTEGER , "positionNumber" INTEGER , "applicationId" BIGINT ) UNLOAD PRIORITY 5  AUTO MERGE 

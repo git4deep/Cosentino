@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_LEARNING_HOURS_TEST" ("﻿user_code" INTEGER , "user_call_begin_date" NVARCHAR(50), "user_call_end_date" NVARCHAR(50), "tiempo_experimentado_horas" DECIMAL(12,4) , "horas_reales_teoricas" DECIMAL(7,3) , "horas_virtuales_teoricas" DECIMAL(6,2) ) UNLOAD PRIORITY 5  AUTO MERGE ;

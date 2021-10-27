@@ -1,0 +1,1 @@
+COLUMN TABLE "STG_EMP_PAY_COMP_RECURRING" ("userId" NVARCHAR(100) NOT NULL , "startDate" LONGDATE  NOT NULL , "endDate" LONGDATE , "frequency" NVARCHAR(30), "paycompvalue" DOUBLE , "currencyCode" NVARCHAR(32), "payComponent" NVARCHAR(40), "seqNumber" INTEGER , PRIMARY KEY ("payComponent", "seqNumber", "startDate", "userId")) UNLOAD PRIORITY 5  AUTO MERGE 
