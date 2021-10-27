@@ -17,13 +17,7 @@
       "schema": "COS_DWH"
         }
     },
-    "Training_SCP::Z0COSTCENTER_HREPCONSO": {
-    "target": {
-      "object": "Z0COSTCENTER_HREPCONSO",
-      "schema": "COS_SDI"
-        }
-    },
-    "Training_SCP::MSTR_FO_BUSINESS_UNIT": {
+   "Training_SCP::MSTR_FO_BUSINESS_UNIT": {
     "target": {
       "object": "MSTR_FO_BUSINESS_UNIT",
       "schema": "COS_DWH"
@@ -32,7 +26,7 @@
     "Training_SCP::DUMMY": {
     "target": {
         "object": "DUMMY",
-        "schema": "COS_SCM"
+        "schema": "SYS"
         }
     }
   }
