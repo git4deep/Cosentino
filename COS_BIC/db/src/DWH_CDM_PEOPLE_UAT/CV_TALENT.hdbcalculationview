@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="DWH_CDM_PEOPLE_UAT::CV_TALENT" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_TALENT.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_YEAR" parameter="true">
+    <descriptions defaultDescription="IP_YEAR"/>
+    <variableProperties datatype="INTEGER" mandatory="true" defaultExpressionLanguage="SQL">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+      <defaultExpression>YEAR(CURRENT_DATE)</defaultExpression>
+    </variableProperties>
+  </variable>
+  <variable id="IP_MONTH" parameter="true">
+    <descriptions defaultDescription="IP_MONTH"/>
+    <variableProperties datatype="INTEGER" mandatory="true" defaultExpressionLanguage="SQL">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+      <defaultExpression>MONTH(CURRENT_DATE)</defaultExpression>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DWH_CDM_PEOPLE::CV_TALENT_MTD">
+    <resourceUri>DWH_CDM_PEOPLE::CV_TALENT_MTD</resourceUri>
+  </DataSource>
+  <DataSource id="DWH_CDM_PEOPLE::CV_TALENT_MTD_LY">
+    <resourceUri>DWH_CDM_PEOPLE::CV_TALENT_MTD_LY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="POSITION_CHANGES_MTD"/>
+      <viewAttribute id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      <viewAttribute id="DIVISION_NAME"/>
+      <viewAttribute id="DEPARTMENT_NAME"/>
+      <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="YEAR" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>$$IP_YEAR$$</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="MONTH" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>$$IP_MONTH$$</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="DWH_CDM_PEOPLE::CV_TALENT_MTD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_CHANGES_MTD" source="POSICION_CHANGES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD" source="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="POSITION_CHANGES_MTD_LY"/>
+      <viewAttribute id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      <viewAttribute id="DIVISION_NAME"/>
+      <viewAttribute id="DEPARTMENT_NAME"/>
+      <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="YEAR" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>$$IP_YEAR$$-1</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="MONTH" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>$$IP_MONTH$$</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="DWH_CDM_PEOPLE::CV_TALENT_MTD_LY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_CHANGES_MTD_LY" source="POSICION_CHANGES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY" source="PROMOTIONS_INCREASED_RESPONSIBILITY"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="POSITION_CHANGES_MTD" aggregationType="sum"/>
+      <viewAttribute id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD" aggregationType="sum"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="POSITION_CHANGES_MTD_LY" aggregationType="sum"/>
+      <viewAttribute id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY" aggregationType="sum"/>
+      <viewAttribute id="MONTH" aggregationType="sum"/>
+    
+      <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      <viewAttribute id="DIVISION_NAME"/>
+      <viewAttribute id="DEPARTMENT_NAME"/>
+      <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_CHANGES_MTD" source="POSITION_CHANGES_MTD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD" source="PROMOTIONS_INCREASED_RESPONSABILITY_MTD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="POSITION_CHANGES_MTD_LY" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+    </input>
+    <input node="Projection_2" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="POSITION_CHANGES_MTD" null="true" value=""/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD" null="true" value=""/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSITION_CHANGES_MTD_LY" source="POSITION_CHANGES_MTD_LY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY" source="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="SUB_DEPARTMENT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_DEPARTMENT"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT"/>
+    </attribute>
+    <attribute id="DEPARTMENT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPARTMENT"/>
+      <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT"/>
+    </attribute>
+    <attribute id="DIVISION" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIVISION"/>
+      <keyMapping columnObjectName="Union_1" columnName="DIVISION"/>
+    </attribute>
+    <attribute id="BUSINESS_UNIT" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_UNIT"/>
+      <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT"/>
+    </attribute>
+    <attribute id="BUSINESS_UNIT_NAME" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="BUSINESS_UNIT_NAME"/>
+    </attribute>
+    <attribute id="DIVISION_NAME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIVISION_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="DIVISION_NAME"/>
+    </attribute>
+    <attribute id="DEPARTMENT_NAME" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPARTMENT_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="DEPARTMENT_NAME"/>
+    </attribute>
+    <attribute id="SUB_DEPARTMENT_NAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="SUB_DEPARTMENT_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="POSITION_CHANGES_MTD" order="1" semanticType="empty" displayAttribute="true" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSITION_CHANGES_MTD"/>
+      <keyCalculation datatype="DECIMAL" expressionLanguage="SQL" length="17" scale="1">
+        <formula>case when isnull(&quot;POSITION_CHANGES_MTD_WITHNULL&quot;) then 0 else
+&quot;POSITION_CHANGES_MTD_WITHNULL&quot; end</formula>
+      </keyCalculation>
+    </calculatedAttribute></calculatedAttributes>
+  <baseMeasures>
+    <measure id="POSITION_CHANGES_MTD_WITHNULL" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="POSITION_CHANGES_MTD_1"/>
+      <measureMapping columnObjectName="Union_1" columnName="POSITION_CHANGES_MTD"/>
+    </measure>
+    <measure id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_WITHNULL" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_1"/>
+      <measureMapping columnObjectName="Union_1" columnName="PROMOTIONS_INCREASED_RESPONSABILITY_MTD"/>
+    </measure>
+    <measure id="POSITION_CHANGES_MTD_LY_WITHNULL" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="POSITION_CHANGES_MTD_LY_1"/>
+      <measureMapping columnObjectName="Union_1" columnName="POSITION_CHANGES_MTD_LY"/>
+    </measure>
+    <measure id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY_WITHNULL" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY_1"/>
+      <measureMapping columnObjectName="Union_1" columnName="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD" order="2" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" expressionLanguage="SQL" scale="1">
+      <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSABILITY_MTD"/>
+      <formula>case when isnull(&quot;PROMOTIONS_INCREASED_RESPONSABILITY_MTD_WITHNULL&quot;) then 0 else
+&quot;PROMOTIONS_INCREASED_RESPONSABILITY_MTD_WITHNULL&quot; end</formula>
+      
+      
+      
+      </measure>
+  
+    <measure id="POSITION_CHANGES_MTD_LY" order="3" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" expressionLanguage="SQL" scale="1">
+      <descriptions defaultDescription="POSITION_CHANGES_MTD_LY"/>
+      <formula>case when isnull(&quot;POSITION_CHANGES_MTD_LY_WITHNULL&quot;) then 0 else
+&quot;POSITION_CHANGES_MTD_LY_WITHNULL&quot; end</formula>
+      
+      
+      </measure>
+  
+    <measure id="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY" order="4" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" expressionLanguage="SQL" scale="1">
+      <descriptions defaultDescription="PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY"/>
+      <formula>case when isnull(&quot;PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY_WITHNULL&quot;) then 0 else
+&quot;PROMOTIONS_INCREASED_RESPONSABILITY_MTD_LY_WITHNULL&quot; end</formula>
+      
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="356"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="DWH_CDM_PEOPLE_UAT::CV_TURNOVER_UAT" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_TURNOVER_UAT.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_DATE_START" parameter="true">
+    <descriptions defaultDescription="IP_DATE_START"/>
+    <variableProperties datatype="DATE" mandatory="true" defaultValue="ADD_DAYS( NOW(), -365)">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+
+  <variable id="IP_DATE_END" parameter="true">
+    <descriptions defaultDescription="IP_DATE_END"/>
+    <variableProperties datatype="DATE" mandatory="false" defaultValue="NOW()">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_TURNOVER_YEAR" parameter="true">
+    <descriptions defaultDescription="IP_TURNOVER_YEAR"/>
+    <variableProperties datatype="INTEGER" mandatory="false" defaultValue="2018">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_TURNOVER_MONTH" parameter="true">
+    <descriptions defaultDescription="IP_TURNOVER_MONTH"/>
+    <variableProperties datatype="INTEGER" mandatory="false" defaultValue="12">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DWH_CDM_PEOPLE::FT_SSFF_TURNOVER">
+    <resourceUri>DWH_CDM_PEOPLE::FT_SSFF_TURNOVER</resourceUri>
+  </DataSource>
+  <DataSource id="DWH_CDM_PEOPLE_UAT::CV_HEADCOUNT">
+    <resourceUri>DWH_CDM_PEOPLE_UAT::CV_HEADCOUNT</resourceUri>
+  </DataSource>
+  <DataSource id="DWH_CDM_PEOPLE::CV_ORG_HIER">
+    <resourceUri>DWH_CDM_PEOPLE::CV_ORG_HIER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="VOLUNTARY"/>
+      <viewAttribute id="NUMBER_OF_LEAVERS"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="COMPANY"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="COST_CENTER"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="VOLUNTARY_LEAVES" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>case when &quot;VOLUNTARY&quot;='true' then &quot;NUMBER_OF_LEAVERS&quot; else 0 end</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="INVOLUNTARY_LEAVES" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>case when &quot;VOLUNTARY&quot;='false' then &quot;NUMBER_OF_LEAVERS&quot; else 0 end</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="DWH_CDM_PEOPLE::FT_SSFF_TURNOVER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="VOLUNTARY_LEAVES" aggregationType="sum"/>
+      <viewAttribute id="INVOLUNTARY_LEAVES" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_CV_HEADCOUNT">
+    <viewAttributes>
+      <viewAttribute id="DATE_START"/>
+      <viewAttribute id="DATE_END"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="HEAD_WORKED_TOTAL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DWH_CDM_PEOPLE_UAT::CV_HEADCOUNT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_TURNOVER" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="HEAD_WORKED_TOTAL" aggregationType="sum"/>
+      <viewAttribute id="HC_DATE_START"/>
+      <viewAttribute id="HC_DATE_END"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="VOLUNTARY_LEAVES" aggregationType="sum"/>
+      <viewAttribute id="INVOLUNTARY_LEAVES" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="NUMBER_VOLUNTARY" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>CASE WHEN ISNULL(&quot;VOLUNTARY_LEAVES&quot;) THEN 0 ELSE &quot;VOLUNTARY_LEAVES&quot; END</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="NUMBER_INVOLUNTARY" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>CASE WHEN ISNULL(&quot;INVOLUNTARY_LEAVES&quot;) THEN 0 ELSE &quot;INVOLUNTARY_LEAVES&quot; END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="P_CV_HEADCOUNT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL" source="HEAD_WORKED_TOTAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HC_DATE_START" source="DATE_START"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HC_DATE_END" source="DATE_END"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+    </input>
+    <input node="Aggregation_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VOLUNTARY_LEAVES" source="VOLUNTARY_LEAVES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INVOLUNTARY_LEAVES" source="INVOLUNTARY_LEAVES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+    </input>
+    <joinAttribute name="BUSINESS_UNIT"/>
+    <joinAttribute name="DEPARTMENT"/>
+    <joinAttribute name="DIVISION"/>
+    <joinAttribute name="SUB_DEPARTMENT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <viewAttributes>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="DIVISION_NAME"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="DEPARTMENT_NAME"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="DWH_CDM_PEOPLE::CV_ORG_HIER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="name_BU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="name_DIV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="name_DEP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="name_SUB"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="HEAD_WORKED_TOTAL" aggregationType="sum"/>
+      <viewAttribute id="HC_DATE_START"/>
+      <viewAttribute id="HC_DATE_END"/>
+      <viewAttribute id="BUSINESS_UNIT"/>
+      <viewAttribute id="DIVISION"/>
+      <viewAttribute id="DEPARTMENT"/>
+      <viewAttribute id="SUB_DEPARTMENT"/>
+      <viewAttribute id="NUMBER_VOLUNTARY" aggregationType="sum"/>
+      <viewAttribute id="NUMBER_INVOLUNTARY" aggregationType="sum"/>
+      <viewAttribute id="BUSINESS_UNIT_NAME"/>
+      <viewAttribute id="DIVISION_NAME"/>
+      <viewAttribute id="DEPARTMENT_NAME"/>
+      <viewAttribute id="SUB_DEPARTMENT_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="J_TURNOVER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL" source="HEAD_WORKED_TOTAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HC_DATE_START" source="HC_DATE_START"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HC_DATE_END" source="HC_DATE_END"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_VOLUNTARY" source="NUMBER_VOLUNTARY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_INVOLUNTARY" source="NUMBER_INVOLUNTARY"/>
+    </input>
+    <input node="Aggregation_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT_NAME" source="BUSINESS_UNIT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION_NAME" source="DIVISION_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT_NAME" source="DEPARTMENT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT_NAME" source="SUB_DEPARTMENT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
+    </input>
+    <joinAttribute name="BUSINESS_UNIT"/>
+    <joinAttribute name="DEPARTMENT"/>
+    <joinAttribute name="DIVISION"/>
+    <joinAttribute name="SUB_DEPARTMENT"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="HC_DATE_START" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HC_DATE_START"/>
+      <keyMapping columnObjectName="Join_1" columnName="HC_DATE_START"/>
+    </attribute>
+  
+    <attribute id="HC_DATE_END" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HC_DATE_END"/>
+  
+      <keyMapping columnObjectName="Join_1" columnName="HC_DATE_END"/>
+  
+    </attribute>
+    <attribute id="BUSINESS_UNIT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_UNIT"/>
+      <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT"/>
+    </attribute>
+    <attribute id="DEPARTMENT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPARTMENT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT"/>
+    </attribute>
+    <attribute id="DIVISION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIVISION"/>
+      <keyMapping columnObjectName="Join_1" columnName="DIVISION"/>
+    </attribute>
+    <attribute id="SUB_DEPARTMENT" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_DEPARTMENT"/>
+      <keyMapping columnObjectName="Join_1" columnName="SUB_DEPARTMENT"/>
+    </attribute>
+    <attribute id="BUSINESS_UNIT_NAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUSINESS_UNIT_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="BUSINESS_UNIT_NAME"/>
+    </attribute>
+    <attribute id="DIVISION_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIVISION_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="DIVISION_NAME"/>
+    </attribute>
+    <attribute id="DEPARTMENT_NAME" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPARTMENT_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="DEPARTMENT_NAME"/>
+    </attribute>
+    <attribute id="SUB_DEPARTMENT_NAME" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_DEPARTMENT_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="SUB_DEPARTMENT_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="HEADCOUNT_12MESES" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HEAD_WORKED_TOTAL"/>
+      <measureMapping columnObjectName="Join_1" columnName="HEAD_WORKED_TOTAL"/>
+    </measure>
+    <measure id="VOLUNTARY_LEAVES" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBER_VOLUNTARY"/>
+      <measureMapping columnObjectName="Join_1" columnName="NUMBER_VOLUNTARY"/>
+    </measure>
+    <measure id="INVOLUNTARY_LEAVES" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBER_INVOLUNTARY"/>
+      <measureMapping columnObjectName="Join_1" columnName="NUMBER_INVOLUNTARY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="TURNOVER_TOTAL" hidden="false" order="1" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="TURNOVER_TOTAL"/>
+      <formula>&quot;TURNOVER_VOLUNTARY&quot; + &quot;TURNOVER_INVOLUNTARY&quot;</formula>
+      
+      
+      
+      </measure>
+    <measure id="TURNOVER_VOLUNTARY" order="2" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="TURNOVER_VOLUNTARY"/>
+      <formula>&quot;VOLUNTARY_LEAVES&quot;/&quot;HEADCOUNT_12MESES&quot;</formula>
+      
+      
+      
+      </measure>
+    <measure id="TURNOVER_INVOLUNTARY" order="3" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="17" scale="1" expressionLanguage="SQL">
+      <descriptions defaultDescription="TURNOVER_INVOLUNTARY"/>
+      <formula>&quot;INVOLUNTARY_LEAVES&quot;/&quot;HEADCOUNT_12MESES&quot;</formula>
+      
+      
+      
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-192" y="592"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-192" y="491"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_CV_HEADCOUNT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="144" y="491"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="J_TURNOVER" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-74" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="P_CV_HEADCOUNT" modelObjectNameSpace="J_TURNOVER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="212"/>
+    </shape>
+    <shape modelObjectName="Aggregation_1" modelObjectNameSpace="J_TURNOVER" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="211"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="195" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="64" y="247"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="J_TURNOVER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="217"/>
+    </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="189"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
