@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="COS_SCM::CV_SCM_KPI_ISSUE_GROUP" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Projection" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_KPI_ISSUE_GROUP"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" type="TABLE_FUNCTION">
+      <resourceUri>COS_SCM::TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews/>
+  <logicalModel id="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP">
+    <descriptions/>
+    <attributes>
+      <attribute id="DS_SOURC_GROUP" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" columnName="DS_SOURC_GROUP"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="NR_ROW" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions/>
+        <keyMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" columnName="NR_ROW"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="QT_KPI_ISSUE" order="1" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" columnName="QT_KPI_ISSUE"/>
+      </measure>
+      <measure id="QT_KPI" order="4" aggregationType="sum" measureType="simple">
+        <descriptions/>
+        <measureMapping columnObjectName="TABLE_FUNCTION_CV_SCM_KPI_ISSUE_GROUP" columnName="QT_KPI"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape modelObjectName="Output" modelObjectNameSpace="MeasureGroup" expanded="true">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+</layout>
+</Calculation:scenario>
