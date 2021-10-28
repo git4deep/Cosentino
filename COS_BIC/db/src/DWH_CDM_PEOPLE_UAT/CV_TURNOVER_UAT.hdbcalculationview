@@ -296,7 +296,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="-192" y="592"/>
+      <upperLeftCorner x="-192" y="622"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   
@@ -306,7 +306,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="P_CV_HEADCOUNT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="144" y="491"/>
+      <upperLeftCorner x="185" y="491"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="J_TURNOVER" modelObjectNameSpace="CalculationView">
