@@ -1,0 +1,71 @@
+FUNCTION "COS_SDI_SCM::N_DIA_MES"(in p_aniomes varchar(6), in p_orden integer, in p_dia_semana varchar(1) )
+    RETURNS dt_fecha date
+    AS
+  /**
+    Devolvemos la fecha del enesimo dia de la semana del mes indicado. "El tercer jueves de enero", "primer sabado de octubre"...
+    - p_aniomes: Anio y mes donde buscar (YYYYMM)
+    - p_dia_semana: Que dia esta buscando
+    - p_orden: Cual de los dias busca (1ro, 2do...). Caso de ser NEGATIVO, se contará desde el último hacia adelante (ultimo, penultimo, antepenultimo, etc.)
+*/
+BEGIN
+  declare v_fecha date;
+    declare v_num_dia integer;
+    declare v_desplazamiento integer;
+    declare v_cant_dias integer;
+
+    select
+        case upper(p_dia_semana)
+            when 'L' then 0
+            when 'M' then 1
+            when 'X' then 2
+            when 'J' then 3
+            when 'V' then 4
+            when 'S' then 5
+            when 'D' then 6
+            else -1 -- Error en la llamada
+        end
+    into v_num_dia
+    from "COS_SCM::DUMMY";
+    
+    
+    if v_num_dia = -1 then  -- Error
+    
+        v_fecha := null;
+        
+    else
+
+        v_fecha := to_date(concat(p_aniomes, '01'), 'YYYYMMDD');
+        
+        -- Nos posicionamos en el primer dia elegido de la semana
+        while weekday(v_fecha) <> v_num_dia do
+            v_fecha := add_days(v_fecha, 1);
+        end while;
+        
+        if p_orden > 0 then
+        
+            v_desplazamiento := p_orden;
+            
+        else
+        
+            v_cant_dias := 0;
+            while month(add_days(v_fecha, (v_cant_dias * 7))) = month(to_date(concat(p_aniomes, '01'), 'YYYYMMDD')) do
+                v_cant_dias := v_cant_dias + 1;
+            end while;
+            
+            v_desplazamiento := v_cant_dias + p_orden + 1;
+            
+        end if;
+        
+        v_fecha := add_days(v_fecha, ((v_desplazamiento - 1) * 7));
+
+        
+        -- Controlamos un desbordamiento de mes.
+        if month(v_fecha) <> month(to_date(concat(p_aniomes, '01'), 'YYYYMMDD')) then
+            v_fecha := null;
+        end if;
+        
+    end if;
+    
+    dt_fecha := v_fecha;
+    
+END;

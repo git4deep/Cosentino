@@ -1,0 +1,72 @@
+FUNCTION "COS_SDI_SCM::COMPUTUS"(in p_anio decimal(4) )
+    RETURNS dt_ini date
+    AS
+  /**
+    Devolvemos la fecha de inicio de la Semana Santa (Domingo de Ramos) en el año indicado por parámetro
+    p_anio: Año del cálculo.
+*/
+BEGIN
+ declare ld_fecha date;
+    declare v_a integer;
+    declare v_b integer;
+    declare v_c integer;
+    declare v_d integer;
+    declare v_e integer;
+    declare v_m integer;
+    declare v_n integer;
+    
+
+    if p_anio >= 1583 and p_anio <= 1699 then
+       v_m:=22;
+       v_n:=2;
+    elseif p_anio >= 1700 AND p_anio <= 1799 then
+       v_m:=23;
+       v_n:=3;
+    elseif p_anio >= 1800 AND p_anio <= 1899 then
+       v_m:=23;
+       v_n:=4;
+    elseif p_anio >= 1900 AND p_anio <= 2099 then
+       v_m:=24;
+       v_n:=5;
+    elseif p_anio >= 2100 AND p_anio <= 2199 then
+       v_m:=24;
+       v_n:=6;
+    elseif p_anio >= 2200 AND p_anio <= 2299 then
+       v_m:=25;
+       v_n:=0;
+    end if;
+    
+    v_a := Mod(p_anio, 19);
+    v_b := Mod(p_anio, 4);
+    v_c := Mod(p_anio, 7);
+    v_d := Mod(((19 * v_a) + v_m), 30);
+    v_e := Mod(((2 * v_b) + (4 * v_c) + (6 * v_d) + v_n), 7);
+    
+    
+    --Cálculo de fecha relativa.
+    if (v_d + v_e) < 10 then
+        -- Se resta 1 (22 dias -1) porque se toma como base el 1ro. de marzo.
+        ld_fecha := add_days(to_date(concat('01/03/', p_anio), 'DD/MM/YYYY'), ((v_d + v_e) + (22 - 1)));
+    else
+        -- Se resta 1 (9 dias -1) porque se toma como base el 1ro. de abril.
+        ld_fecha := add_days(to_date(concat('01/04/', p_anio), 'DD/MM/YYYY'), (((v_d + v_e) - 9) - 1));
+    end if;
+
+
+    /*Condicionales especiales:
+ 
+    - Si la fecha obtenida es el 26 de abril, la Pascua caerá en el 19 de abril.
+    - Si la fecha obtenida es el 25 de abril, con d = 28, e = 6 y a > 10, la Pascua caerá en el 18 de abril.
+    */
+ 
+  
+    if to_char(ld_fecha,'dd/mm') = '26/04' then
+        ld_fecha := to_date(concat('19/04/', p_anio), 'DD/MM/YYYY');
+    elseif to_char(ld_fecha,'dd/mm') = '25/04' and v_d = 28 and v_e = 6 and v_a > 10 then
+        ld_fecha := to_date(concat('18/04/', p_anio), 'DD/MM/YYYY');
+    end if;
+ 
+    -- El cálculo está basado en el Domingo de Pascua. Para tener el de Ramos, quitamos una semana
+    dt_ini := add_days(ld_fecha, -7);
+    
+END;

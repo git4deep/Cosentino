@@ -1,0 +1,19 @@
+FUNCTION "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(in p_fecha date )
+    RETURNS dt_nueva_fecha date
+    AS
+/**
+    Comprobamos si la fecha indicada en la llamada cae en domingo y, caso de serlo, devolvemos la fecha del lunes siguiente
+    p_fecha: Fecha a comprobar.
+*/
+BEGIN
+declare dt_aux date;
+    
+    if weekday(p_fecha) = 6 then -- Si cae en domingo
+        dt_aux := add_days(dt_aux, 1);
+    else 
+        dt_aux = p_fecha;
+    end if;
+ 
+    dt_nueva_fecha := dt_aux;
+    
+END;
