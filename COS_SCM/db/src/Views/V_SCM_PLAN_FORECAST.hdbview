@@ -1,0 +1,36 @@
+VIEW "V_SCM_PLAN_FORECAST" ( "CD_BUSIN_UNIT", "CD_BUSIN_UNIT_UP", "CD_CDG_GROUP", "CD_CDG_SUBGROUP", "CD_COLOR", "CD_MATERIAL", "CD_MATER_RANGE", "CD_PLANT", "CD_SERIE", "DS_BUSIN_UNIT", "DS_BUSIN_UNIT_UP", "DS_CDG_GROUP", "DS_CDG_SUBGROUP", "DS_COLOR", "DS_MATER_ES", "DS_MATER_EN", "DS_MATER_RANGE", "DS_PLANT", "NM_DEMAN_PLANN", "DT_LOAD", "FL_LOAD_TYPE", "ID_SOURC", "MY_NATUR", "VL_AGREE", "VL_BASE_ADJUS", "VL_BASE_ENRIC", "VL_BUDGE", "VL_HISTO", "FL_LOAD", "TS_LOAD" ) AS select
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' )        as CD_BUSIN_UNIT,    -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_UNS WITH '' )       as CD_BUSIN_UNIT_UP, -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_GROUP WITH '' )     as CD_CDG_GROUP,     -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_SUBGROUP WITH '' )  as CD_CDG_SUBGROUP,  -- MD_UN_CDG
+      m.CD_COLOR,                                                                -- MD_MATERIALES
+      m.CD_MATERIAL,
+      REPLACE_REGEXPR('^0*' in m.CD_GAMA WITH '' )          as CD_MATER_RANGE,   -- MD_MATERIALES
+      IFNULL(c.CD_CENTRO, f.CD_PLANT)                       as CD_PLANT,         -- MD_CENTROS
+      m.CD_SERIE,                                                                -- MD_MATERIALES
+      u.DS_CDG_UN                                           as DS_BUSIN_UNIT,    -- MD_UN_CDG
+      u.DS_CDG_UNS                                          as DS_BUSIN_UNIT_UP, -- MD_UN_CDG
+      u.DS_CDG_GROUP                                        as DS_CDG_GROUP,     -- MD_UN_CDG
+      u.DS_CDG_SUBGROUP                                     as DS_CDG_SUBGROUP,  -- MD_UN_CDG
+      m.DS_COLOR,                                                                -- MD_MATERIALES
+      m.DS_MATERIAL_ES                                      as DS_MATER_ES,         -- MD_MATERIALES
+      m.DS_MATERIAL_EN                                      as DS_MATER_EN,         -- MD_MATERIALES
+      m.DS_GAMA                                             as DS_MATER_RANGE,   -- MD_MATERIALES
+      c.DS_CENTRO                                           as DS_PLANT,         -- MD_CENTROS
+      p.NM_DEMAN_PLANN,
+      f.DT_LOAD,
+      f.FL_LOAD_TYPE,
+      f.ID_SOURC,
+      f.MY_NATUR,
+      f.VL_AGREE,
+      f.VL_BASE_ADJUS,
+      f.VL_BASE_ENRIC,
+      f.VL_BUDGE,
+      f.VL_HISTO,
+      f.FL_LOAD,
+      f.TS_LOAD
+   from SCM_PLAN_FORECAST f 
+      inner join scm_md_materiales m on (f.cd_mater = m.cd_material)
+      inner join scm_md_un_cdg u on (REPLACE_REGEXPR('^0*' in f.CD_BUSIN_UNIT WITH '' ) = REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ))
+      left join scm_plan_demand_planner p on (REPLACE_REGEXPR('^0*' in u.CD_CDG_SUBGROUP WITH '' ) = p.CD_CDG_SUBGROUP)
+      left join scm_md_centros c on (f.CD_PLANT = c.CD_CENTRO)

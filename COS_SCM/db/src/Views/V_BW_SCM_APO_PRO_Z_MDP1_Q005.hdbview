@@ -1,0 +1,31 @@
+VIEW "V_BW_SCM_APO_PRO_Z_MDP1_Q005" ( "CD_BUSIN_UNIT", "CD_BUSIN_UNIT_UP", "CD_CDG_GROUP", "CD_CDG_SUBGROUP", "CD_COLOR", "CD_MATERIAL", "CD_MATER_RANGE", "CD_PLANT", "CD_SERIE", "DS_BUSIN_UNIT", "DS_BUSIN_UNIT_UP", "DS_CDG_GROUP", "DS_CDG_SUBGROUP", "DS_COLOR", "DS_MATER", "DS_MATER_RANGE", "DS_PLANT", "DT_LOAD", "FL_LOAD_TYPE", "ID_SOURC", "MY_NATUR", "VL_AGREE", "VL_BASE_ADJUS", "VL_BASE_ENRIC", "VL_BUDGE", "VL_HISTO" ) AS select
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' )                                                                                     as CD_BUSIN_UNIT,    -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_UNS WITH '' )                                                                                    as CD_BUSIN_UNIT_UP, -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_GROUP WITH '' )                                                                                  as CD_CDG_GROUP,     -- MD_UN_CDG
+      REPLACE_REGEXPR('^0*' in u.CD_CDG_SUBGROUP WITH '' )                                                                               as CD_CDG_SUBGROUP,  -- MD_UN_CDG
+      m.CD_COLOR,                                                                                                                                             -- MD_MATERIALES
+      m.CD_MATERIAL,
+      REPLACE_REGEXPR('^0*' in m.CD_GAMA WITH '' )                                                                                       as CD_MATER_RANGE,   -- MD_MATERIALES
+      IFNULL(c.CD_CENTRO, f."S_WERKS_DISPLAY_KEY" )                                                                                      as CD_PLANT,         -- MD_CENTROS,
+      m.CD_SERIE,                                                                                                                                             -- MD_MATERIALES
+      u.DS_CDG_UN                                                                                                                        as DS_BUSIN_UNIT,    -- MD_UN_CDG
+      u.DS_CDG_UNS                                                                                                                       as DS_BUSIN_UNIT_UP, -- MD_UN_CDG
+      u.DS_CDG_GROUP                                                                                                                     as DS_CDG_GROUP,     -- MD_UN_CDG
+      u.DS_CDG_SUBGROUP                                                                                                                  as DS_CDG_SUBGROUP,  -- MD_UN_CDG
+      m.DS_COLOR,                                                                                                                                             -- MD_MATERIALES
+      m.DS_MATERIAL_ES                                                                                                                   as DS_MATER,         -- MD_MATERIALES
+      m.DS_GAMA                                                                                                                          as DS_MATER_RANGE,   -- MD_MATERIALES
+      c.DS_CENTRO                                                                                                                        as DS_PLANT,         -- MD_CENTROS
+      TO_DATE(f."S_MESFOTO",'YYYY-MM-DD')                                                                                                as DT_LOAD,
+      'M'                                                                                                                                as FL_LOAD_TYPE,
+      172                                                                                                                                as ID_SOURC,
+      CONCAT(CONCAT(f."0CALYEAR",'/'),LPAD(f."0CALMONTH2",2,'0'))                                                                        as MY_NATUR,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AH60TR86QY8S7B"), ',', '')), 20, 8) as VL_AGREE,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AH60TR86QY8FK7"), ',', '')), 20, 8) as VL_BASE_ADJUS,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AH60TR86QY8LVR"), ',', '')), 20, 8) as VL_BASE_ENRIC,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AH60TR86QY8YIV"), ',', '')), 20, 8) as VL_BUDGE,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AH60TR86QY898N"), ',', '')), 20, 8) as VL_HISTO
+   from "BW_SCM_APO_PRO_Z_MDP1_Q005" f 
+      inner join cos_scm.scm_md_materiales m on (f."S_MAT" = m.cd_material)
+      inner join cos_scm.scm_md_un_cdg u on (REPLACE_REGEXPR('^0*' in f."ZUNIDADNE_DISPLAY_KEY" WITH '' ) = REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ))
+      left join cos_scm.scm_md_centros c on (f."S_WERKS_DISPLAY_KEY" = c.CD_CENTRO) WITH READ ONLY

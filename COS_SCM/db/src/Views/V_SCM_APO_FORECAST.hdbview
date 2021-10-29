@@ -1,0 +1,108 @@
+VIEW "V_SCM_APO_FORECAST" ( "CD_MATERIAL", "CD_COLOR", "DS_COLOR", "CD_SERIE", "CD_GAMA", "DS_GAMA", "DS_MATERIAL_ES", "DS_MATERIAL_EN", "CD_CENTRO", "CD_CDG_UN", "MES_NATURAL", "DT_MES_NATURAL", "MM_MES_NATURAL", "QT_MES_NATURAL", "YY_MES_NATURAL", "PERIODO", "DS_CDG_UN", "CD_CDG_UNS", "DS_CDG_UNS", "CD_CDG_GROUP", "DS_CDG_GROUP", "CD_CDG_SUBGROUP", "DS_CDG_SUBGROUP", "DS_DEMAND_PLANNER", "VL_BASE_ADJUS", "VL_BASE_ENRIC", "VL_AGREE", "VL_TOTAL", "VL_HISTO" ) AS select
+    fv.cd_material,
+    m.cd_color,
+    m.ds_color,
+    m.cd_serie,
+    m.cd_gama,
+    m.ds_gama,
+    m.ds_material_es,
+    m.ds_material_en,
+    fv.cd_centro,
+    fv.cd_cdg_un,
+    fv.mes_natural,
+    fv.dt_mes_natural,
+    fv.mm_mes_natural,
+    fv.qt_mes_natural,
+    fv.yy_mes_natural,
+    fv.periodo,
+    cdg.ds_cdg_un,
+    cdg.cd_cdg_uns,
+    cdg.ds_cdg_uns,
+    cdg.cd_cdg_group,
+    cdg.ds_cdg_group,
+    cdg.cd_cdg_subgroup,
+    cdg.ds_cdg_subgroup,
+    dp.nm_deman_plann                   ds_demand_planner,
+    sum(fv.vl_base_adjus)               vl_base_adjus,
+    sum(fv.vl_base_enric)               vl_base_enric,
+    sum(fv.vl_agree)                    vl_agree,
+    sum(fv.vl_total)                    vl_total,
+    sum(fv.vl_histo)                    vl_histo
+from (
+    select 
+        f.periodo,
+        f.my_natur          mes_natural,
+        f.dt_mes_natural,
+        f.mm_mes_natural,
+        f.qt_mes_natural,
+        f.yy_mes_natural,
+        f.cd_busin_unit     cd_cdg_un,
+        f.cd_plant          cd_centro,
+        f.cd_mater          cd_material,
+        f.vl_base_adjus,
+        f.vl_base_enric,
+        f.vl_agree,
+        f.vl_total,
+        0                   vl_histo
+    from scm_plan_forecast f
+    where f.fl_load_type = 'M'  -- Omitimos registros hist�ricos ('H'). Son ventas.
+        and f.dt_mes_natural > add_months(current_date, -4)
+
+    union
+    
+    select 
+        p.periodo,
+        v.my_natur          mes_natural,
+        v.dt_mes_natural,
+        v.mm_mes_natural,
+        v.qt_mes_natural,
+        v.yy_mes_natural,
+        v.cd_busin_unit     cd_cdg_un,
+        v.cd_plant          cd_centro,
+        v.cd_mater          cd_material,
+        0                   vl_base_adjus,
+        0                   vl_base_enric,
+        0                   vl_agree,
+        0                   vl_total,
+        v.vl_histo
+    from scm_plan_ventas v
+        inner join (select distinct f.periodo, f.my_natur from scm_plan_forecast f) p on p.my_natur = v.my_natur
+    where v.dt_mes_natural > add_months(current_date, -7)
+) fv
+    -- Datos maestros
+    inner join scm_md_materiales m on m.cd_material = fv.cd_material
+    inner join scm_md_un_cdg cdg on cdg.cd_cdg_un = fv.cd_cdg_un
+    inner join scm_plan_demand_planner dp on dp.cd_cdg_subgroup = cdg.cd_cdg_subgroup
+where m.cd_gama in (
+                    '001',  -- TABLA SILESTONE
+                    '007',  -- TABLA SENSA
+                    '010',  -- TABLA GRANITO
+                    '013',  -- TABLA PIEDRA NATURAL
+                    '030',  -- TABLA DEKTON
+                    '037'   -- TABLA CUARCITA
+                    )
+group by
+    fv.cd_material,
+    m.cd_color,
+    m.ds_color,
+    m.cd_serie,
+    m.cd_gama,
+    m.ds_gama,
+    m.ds_material_es,
+    m.ds_material_en,
+    fv.cd_centro,
+    fv.cd_cdg_un,
+    fv.mes_natural,
+    fv.dt_mes_natural,
+    fv.mm_mes_natural,
+    fv.qt_mes_natural,
+    fv.yy_mes_natural,
+    fv.periodo,
+    cdg.ds_cdg_un,
+    cdg.cd_cdg_uns,
+    cdg.ds_cdg_uns,
+    cdg.cd_cdg_group,
+    cdg.ds_cdg_group,
+    cdg.cd_cdg_subgroup,
+    cdg.ds_cdg_subgroup,
+    dp.nm_deman_plann

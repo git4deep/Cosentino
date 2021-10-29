@@ -1,0 +1,30 @@
+VIEW "V_BW_SCM_APO_PRO_Z_DP4_Q002" ( "CD_CDG_UN", "CD_CDG_UNS", "CD_CDG_GROUP", "CD_CDG_SUBGROUP", "CD_COLOR", "CD_MATERIAL", "CD_GAMA", "CD_CENTRO", "CD_SERIE", "DS_CDG_UN", "DS_CDG_UNS", "DS_CDG_GROUP", "DS_CDG_SUBGROUP", "DS_COLOR", "DS_MATERIAL_ES", "DS_MATERIAL_EN", "DS_GAMA", "DS_CENTRO", "DT_LOAD", "FL_LOAD_TYPE", "ID_SOURC", "MES_NATURAL", "VL_BASE_ADJUS" ) AS select
+      cast(REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ) as nvarchar(5))       as CD_CDG_UN,
+      cast(REPLACE_REGEXPR('^0*' in u.CD_CDG_UNS WITH '' ) as nvarchar(4))      as CD_CDG_UNS,
+      cast(REPLACE_REGEXPR('^0*' in u.CD_CDG_GROUP WITH '' ) as nvarchar(5))    as CD_CDG_GROUP,
+      cast(REPLACE_REGEXPR('^0*' in u.CD_CDG_SUBGROUP WITH '' ) as nvarchar(5)) as CD_CDG_SUBGROUP,
+      m.CD_COLOR,
+      m.CD_MATERIAL,
+      cast(REPLACE_REGEXPR('^0*' in m.CD_GAMA WITH '' ) as nvarchar(5))         as CD_GAMA,
+      cast(IFNULL(c.CD_CENTRO, f."S_WERKS_DISPLAY_KEY" ) as nvarchar(10))        as CD_CENTRO,
+      m.CD_SERIE,
+      u.DS_CDG_UN,
+      u.DS_CDG_UNS,
+      u.DS_CDG_GROUP,
+      u.DS_CDG_SUBGROUP,
+      m.DS_COLOR,
+      m.DS_MATERIAL_ES,
+      m.DS_MATERIAL_EN,
+      m.DS_GAMA,
+      c.DS_CENTRO,
+      ADD_MONTHS(NEXT_DAY(LAST_DAY(CURRENT_DATE)),-1)       as DT_LOAD,
+      'M'                                                   as FL_LOAD_TYPE,
+      172                                                   as ID_SOURC,
+      cast(TO_VARCHAR(TO_DATE('01 ' || f."0CALMONTH", 'DD MON YYYY'), 'YYYY/MM')    as nvarchar(10))                                                         as MES_NATURAL,
+      TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AL8LBLZHYELD7V"), ',', '')), 20, 8) as VL_BASE_ADJUS
+   from "BW_SCM_APO_PRO_Z_DP4_Q002" f 
+      inner join cos_scm.scm_md_materiales m on (f."S_MAT" = m.cd_material)
+      inner join cos_scm.scm_md_un_cdg u on (REPLACE_REGEXPR('^0*' in f."ZUNIDADNE_DISPLAY_KEY" WITH '' ) = REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ))
+      left join cos_scm.scm_md_centros c on (f."S_WERKS_DISPLAY_KEY" = c.CD_CENTRO) 
+    where upper(right(trim(f."00O2TLR2H94AL8LBLZHYELD7V"), 2)) = 'M2' 
+        and REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ) <> '' WITH READ ONLY

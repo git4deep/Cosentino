@@ -1,0 +1,27 @@
+VIEW "V_SCM_LOG_TRACKER_CONTAINER" ( "CD_CNTNR", "CD_CNTNR_TYPE", "CD_PROVI", "DS_PROVI", "CD_TRANS", "CD_PORIG", "CD_PEVEN", "CD_PDEST", "DS_EVENT", "DS_VESSL", "DT_CNTNR", "DT_DEPAR", "DT_ESTIM", "DT_EVENT", "DT_NATUR", "QT_TABLE", "VL_CNTNR", "CD_PUERT_CARGA", "CD_TIPO_EVENT", "FL_FINAL", "NUM_REG" ) AS SELECT "T"."CD_CNTNR" , "T"."CD_CNTNR_TYPE" , "T"."CD_PROVI" , "T"."DS_PROVI" , "T"."CD_TRANS" , "T"."CD_PORIG" , "T"."CD_PEVEN" , "T"."CD_PDEST" , "T"."DS_EVENT" , "T"."DS_VESSL" , "T"."DT_CNTNR" , "T"."DT_DEPAR" , "T"."DT_ESTIM" , "T"."DT_EVENT" , "T"."DT_NATUR" , "T"."QT_TABLE" , "T"."VL_CNTNR" , "T"."CD_PUERT_CARGA" , "T"."CD_TIPO_EVENT" , "T"."FL_FINAL" , "T"."NUM_REG" 
+   from ( 
+    select
+    	"CD_CNTNR",
+    	"CD_CNTNR_TYPE",
+    	"CD_PROVI",
+    	"NM_1GP"             AS DS_PROVI,
+    	"CD_TRANS",
+    	"CD_PORIG",
+    	"CD_PEVEN",
+    	"CD_PDEST",
+    	"DS_EVENT",
+    	"DS_VESSL",
+    	"DT_CNTNR",
+    	"DT_DEPAR",
+    	"DT_ESTIM",
+    	"DT_EVENT",
+    	"DT_NATUR",
+    	"QT_TABLE",
+    	"VL_CNTNR",
+    	"CD_PUERT_CARGA",
+    	"CD_TIPO_EVENT",
+    	"FL_FINAL",
+    	row_number() over (partition by "CD_CNTNR" order by "CD_TRANS" desc) num_reg
+    from scm_log_tracker_container 
+) t
+where t.num_reg = 1

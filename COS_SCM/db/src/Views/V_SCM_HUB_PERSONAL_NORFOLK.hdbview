@@ -1,0 +1,263 @@
+VIEW "V_SCM_HUB_PERSONAL_NORFOLK" ( "ID_SOURC", "CD_HUB", "CD_RESOU_GROUP", "CD_RESOU", "MT_NATUR", "DT_NATUR", "CD_DIMEN", "FL_ISSUE", "QT_TARGE", "QT_UNIT" ) AS SELECT X.ID_KPI AS ID_SOURC, 'NORFOLK' AS CD_HUB, 
+       CONCAT('WEEK_', TO_CHAR(X.DT_NATUR,'WW')) AS CD_RESOU_GROUP,
+       TO_CHAR(TO_DATE(SUBSTR(X.DT_NATUR,1,10),'YYYY-MM-DD'),'DY') AS CD_RESOU,
+	   TO_CHAR(TO_DATE(SUBSTR(X.DT_NATUR,1,10),'YYYY-MM-DD'),'YYYY/MM') AS MT_NATUR,
+	   TO_DATE(SUBSTR(X.DT_NATUR,1,10),'YYYY-MM-DD') AS DT_NATUR,
+	   W.DS_SOURC AS CD_DIMEN, 
+	   CASE WHEN X.QT_UNIT > Y.QT_TARGE THEN 1
+	        ELSE 0
+       END AS FL_ISSUE,
+       Y.QT_TARGE, X.QT_UNIT
+FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.MON_1 = ' ' THEN 0
+                  WHEN A.MON_1 IS NULL THEN 0 
+                  ELSE A.MON_1 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A 
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.TUE_1 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.TUE_1 = ' ' THEN 0
+                  WHEN A.TUE_1 IS NULL THEN 0 
+                  ELSE A.TUE_1 
+             END AS QT_UNIT  
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.WED_1 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.WED_1 = ' ' THEN 0
+                  WHEN A.WED_1 IS NULL THEN 0 
+                  ELSE A.WED_1 
+             END AS QT_UNIT    
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.THU_1 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.THU_1 = ' ' THEN 0
+                  WHEN A.THU_1 IS NULL THEN 0 
+                  ELSE A.THU_1 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.FRI_1 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.FRI_1 = ' ' THEN 0
+                  WHEN A.FRI_1 IS NULL THEN 0 
+                  ELSE A.FRI_1
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL 
+      SELECT A.ID_KPI, (SELECT B.MON_2 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.MON_2 = ' ' THEN 0
+                  WHEN A.MON_2 IS NULL THEN 0 
+                  ELSE A.MON_2 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.TUE_2 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.TUE_2 = ' ' THEN 0
+                  WHEN A.TUE_2 IS NULL THEN 0 
+                  ELSE A.TUE_2 
+             END AS QT_UNIT 
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.WED_2 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.WED_2 = ' ' THEN 0
+                  WHEN A.WED_2 IS NULL THEN 0 
+                  ELSE A.WED_2 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.THU_2 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.THU_2 = ' ' THEN 0
+                  WHEN A.THU_2 IS NULL THEN 0 
+                  ELSE A.THU_2
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.FRI_2 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.FRI_2 = ' ' THEN 0
+                  WHEN A.FRI_2 IS NULL THEN 0 
+                  ELSE A.FRI_2
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.MON_3 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.MON_3 = ' ' THEN 0
+                  WHEN A.MON_3 IS NULL THEN 0 
+                  ELSE A.MON_3 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.TUE_3 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.TUE_3 = ' ' THEN 0
+                  WHEN A.TUE_3 IS NULL THEN 0 
+                  ELSE A.TUE_3 
+             END AS QT_UNIT 
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.WED_3 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.WED_3 = ' ' THEN 0
+                  WHEN A.WED_3 IS NULL THEN 0 
+                  ELSE A.WED_3 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.THU_3 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.THU_3 = ' ' THEN 0
+                  WHEN A.THU_3 IS NULL THEN 0 
+                  ELSE A.THU_3
+             END AS QT_UNIT  
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.FRI_3 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.FRI_3 = ' ' THEN 0
+                  WHEN A.FRI_3 IS NULL THEN 0 
+                  ELSE A.FRI_3
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.MON_4 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.MON_4 = ' ' THEN 0
+                  WHEN A.MON_4 IS NULL THEN 0 
+                  ELSE A.MON_4 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.TUE_4 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.TUE_4 = ' ' THEN 0
+                  WHEN A.TUE_4 IS NULL THEN 0 
+                  ELSE A.TUE_4 
+             END AS QT_UNIT 
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.WED_4 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.WED_4 = ' ' THEN 0
+                  WHEN A.WED_4 IS NULL THEN 0 
+                  ELSE A.WED_4 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.THU_4 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.THU_4 = ' ' THEN 0
+                  WHEN A.THU_4 IS NULL THEN 0 
+                  ELSE A.THU_4 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.FRI_4 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.FRI_4 = ' ' THEN 0
+                  WHEN A.FRI_4 IS NULL THEN 0 
+                  ELSE A.FRI_4
+             END  AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.MON_5 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.MON_5 = ' ' THEN 0
+                  WHEN A.MON_5 IS NULL THEN 0 
+                  ELSE A.MON_5 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.TUE_5 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.TUE_5 = ' ' THEN 0
+                  WHEN A.TUE_5 IS NULL THEN 0 
+                  ELSE A.TUE_5 
+             END AS QT_UNIT 
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.WED_5 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.WED_5 = ' ' THEN 0
+                  WHEN A.WED_5 IS NULL THEN 0 
+                  ELSE A.WED_5
+             END AS QT_UNIT  
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.THU_5 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.THU_5 = ' ' THEN 0
+                  WHEN A.THU_5 IS NULL THEN 0 
+                  ELSE A.THU_5
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)
+      UNION ALL
+      SELECT A.ID_KPI, (SELECT B.FRI_5 AS DT_NATUR
+                        FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" B
+                        WHERE B.ID_KPI = 999) AS DT_NATUR,
+             CASE WHEN A.FRI_5 = ' ' THEN 0
+                  WHEN A.FRI_5 IS NULL THEN 0 
+                  ELSE A.FRI_5 
+             END AS QT_UNIT
+      FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
+      WHERE A.ID_KPI NOT IN (999)) X
+INNER JOIN "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" Y ON Y.ID_KPI = X.ID_KPI
+INNER JOIN "SCM_ANALYTIC_SOURCE" W ON W.ID_SOURC = X.ID_KPI
+WHERE X.ID_KPI NOT IN (999)
+  AND X.DT_NATUR IS NOT NULL WITH READ ONLY
