@@ -1,0 +1,46 @@
+PROCEDURE "COS_SDI_SCM::PRC_EXTIENDE_FECHAS" (in p_hasta date)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+as
+/**
+   Extendemos la tabla general de fechas hasta el día indicado en p_hasta.
+   Se considera día laboral de Lunes a Sabado.
+   Se consideran festivos los días marcados como tales (Navidad, etc.)
+*/
+begin
+
+    declare v_fecha_tabla date;
+    declare b_laboral decimal(1);
+    declare b_festivo decimal(1);
+
+
+    select ifnull(max(dt_fecha), to_date(concat(year(current_date), '0101'), 'YYYYMMDD')) into v_fecha_tabla from "FECHAS";
+   
+    while v_fecha_tabla <= :p_hasta do
+   
+        -- Días de la semana
+        select 
+            case weekday(v_fecha_tabla)
+    --            when 5 then 0   -- Sábado
+                when 6 then 0   -- Domingo
+                else 1
+            end
+        into b_laboral from "COS_SCM::DUMMY";
+    
+        -- Festivos
+        select 
+            case to_varchar(v_fecha_tabla, 'MMDD')
+                when '0101' then 1   -- Año nuevo
+                when '1225' then 1   -- Navidad
+                else 0
+            end
+        into b_festivo from "COS_SCM::DUMMY";
+    
+        insert into "FECHAS" ( dt_fecha, cd_pais, vl_festivo, vl_laboral ) values ( v_fecha_tabla, 'ES', b_festivo, b_laboral);
+        insert into "FECHAS" ( dt_fecha, cd_pais, vl_festivo, vl_laboral ) values ( v_fecha_tabla, 'US', b_festivo, b_laboral);
+        insert into "FECHAS" ( dt_fecha, cd_pais, vl_festivo, vl_laboral ) values ( v_fecha_tabla, 'CA', b_festivo, b_laboral);
+        select add_days(v_fecha_tabla, 1) into v_fecha_tabla from "COS_SCM::DUMMY";
+      
+    end while;
+   
+end

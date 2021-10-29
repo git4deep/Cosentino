@@ -1,0 +1,92 @@
+PROCEDURE "COS_SDI_SCM::PRC_PROD_DKTN_CP02_Q0003" ( 
+OUT OUTPUT_TABLE TABLE("ID_SOURC" INTEGER,
+                       "CD_DIMEN" NVARCHAR(59),
+                       "CD_RESOU" NVARCHAR(50),
+                       "CD_PLANT" NVARCHAR(50), 
+                       "DS_PLANT" NVARCHAR(50), 
+                       "CD_MOVIM" NVARCHAR(10), 
+                       "CD_GROSS" NVARCHAR(10), 
+                       "CD_QUALI" NVARCHAR(10),
+                       "CD_LOCAT" NVARCHAR(10), 
+                       "DS_LOCAT" NVARCHAR(50),
+                       "DT_NATUR" DATE,
+	                   "QT_DAY" DECIMAL(12,3),
+	                   "QT_MONTH" DECIMAL(12,3),
+	                   "VL_PROC_PRUEB_DAY" DECIMAL(12,3),
+	                   "VL_PROC_PRUEB_MONTH" DECIMAL(12,3),
+                       "VL_TARGE" DECIMAL(12,3)))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN 
+   T_PRODU_SCRAP = SELECT CASE WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCAL1', 'DK_LCAL2', 'DK_LCAL3') THEN 186 
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") <> '0.4' THEN 184
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") = '0.4' THEN 185                                     
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_ATM01', 'DK_ATM02', 'DK_ATM03') THEN 182
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_MOL1', 'DK_MOLI2') THEN 181
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCON1') THEN 183
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCON2') THEN 187
+                          END AS ID_SOURC,
+                          CASE WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCAL1', 'DK_LCAL2', 'DK_LCAL3') THEN 'Mesa Calidad (TX)'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") = '0.4' THEN 'Horno (TX) grosor 0,4'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") = '0.8' THEN 'Horno (TX) grosor 0,8'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") = '1.2' THEN 'Horno (TX) grosor 1,2'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4') AND
+                                     TRIM("0MATERIAL__GRUESO") = '2.0' THEN 'Horno (TX) grosor 2,0'                                    
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_ATM01', 'DK_ATM02', 'DK_ATM03') THEN 'Atomizador (T)'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_MOL1', 'DK_MOLI2') THEN 'Molino (T)'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCON1') THEN 'Dekton Linea 1'
+                               WHEN "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCON2') THEN 'Dekton Linea 2'                               
+                          END AS CD_DIMEN,
+                          "0PLANT_DISPLAY_KEY" AS CD_PLANT, "0PLANT_TEXT" AS DS_PLANT, "ZAMPPPUC4" AS CD_MOVIM, 
+                          "0MATERIAL__GRUESO" AS CD_GROSS, "ZAMPPPUC3_DISPLAY_KEY" AS CD_QUALI, "0CALDAY" AS DT_NATUR,
+                          "0STOR_LOC_DISPLAY_KEY_MIXED_COMPOUNDMENT" AS CD_LOCAT, "0STOR_LOC_TEXT" AS DS_LOCAT,
+	                      SUM(IFNULL("00O2TLOFYDHW5RUPAGRTRQY1O",0)) AS QT_DAY,
+	                      SUM(IFNULL("00O2TLOFYDHW5RUPAGRTRR4D8",0)) AS QT_MONTH,
+	                      SUM(IFNULL("00O2TLOFYDHW5RUPAGRTRTXI4",0)) AS QT_DAY_MERMA,
+	                      SUM(IFNULL("00O2TLOFYDHW5RUPAGRTRUZFG",0)) AS QT_MONTH_MERMA
+                   FROM "BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0003_HU_SAC_ACC"
+                   WHERE "0PLANT_DISPLAY_KEY" = '1090'
+                     AND "ZAMPPPUC4" IN ('101','102','551')
+                     AND "ZAMPPPUC8_DISPLAY_KEY" IN ('DK_LCAL1', 'DK_LCAL2', 'DK_LCAL3', 'DK_LCON1', 'DK_LCON2',
+                                                     'DK_HORN0', 'DK_HORN1', 'DK_HORN2', 'DK_HORN3', 'DK_HORN4',
+                                                     'DK_ATM01', 'DK_ATM02', 'DK_ATM03'
+                                                     'DK_MOL1', 'DK_MOLI2')
+                   GROUP BY "0CALDAY", "0PLANT_DISPLAY_KEY", "0PLANT_TEXT", "ZAMPPPUC4", "0MATERIAL__GRUESO", "ZAMPPPUC3_DISPLAY_KEY", 
+                            "ZAMPPPUC8_DISPLAY_KEY", "0STOR_LOC_DISPLAY_KEY_MIXED_COMPOUNDMENT", "0STOR_LOC_TEXT";
+
+   T_PRUEB = SELECT A.ID_SOURC, A.CD_DIMEN, 'Pruebas' AS CD_RESOU, A.CD_PLANT, A.DS_PLANT, A.CD_MOVIM, A.CD_GROSS, 
+                    A.CD_QUALI, A.CD_LOCAT, A.DS_LOCAT, A.DT_NATUR, A.QT_DAY, A.QT_MONTH,
+                    0 AS VL_PROC_PRUEB_DAY, 0 AS VL_PROC_PRUEB_MONTH, 0 VL_TARGE
+             FROM :T_PRODU_SCRAP A
+             WHERE A.CD_MOVIM IN ('101','102')
+               AND A.CD_QUALI = 'U';
+                           
+   T_PRODU = SELECT A.ID_SOURC, A.CD_DIMEN, 'Producción Total' AS CD_RESOU, A.CD_PLANT, A.DS_PLANT, A.CD_MOVIM, A.CD_GROSS, 
+                    A.CD_QUALI, A.CD_LOCAT, A.DS_LOCAT, A.DT_NATUR, A.QT_DAY, A.QT_MONTH,
+                    0 AS VL_PROC_PRUEB_DAY, 0 AS VL_PROC_PRUEB_MONTH, VL_TARGE
+             FROM :T_PRODU_SCRAP A
+             INNER JOIN "SCM_ANALYTIC_TARGET" B ON B.ID_SOURC = A.ID_SOURC
+                                                     AND B.CD_DIMEN = A.CD_DIMEN
+             WHERE A.CD_MOVIM IN ('101','102');
+
+   T_MERMA = SELECT A.ID_SOURC, A.CD_DIMEN, 'Mermas Sin' AS CD_RESOU, A.CD_PLANT, A.DS_PLANT, A.CD_MOVIM, A.CD_GROSS, 
+                    A.CD_QUALI, A.CD_LOCAT, A.DS_LOCAT, A.DT_NATUR, A.QT_DAY_MERMA AS QT_DAY, A.QT_MONTH_MERMA AS QT_MONTH,
+                   0 AS VL_PROC_PRUEB_DAY, 0 AS VL_PROC_PRUEB_MONTH, 0 VL_TARGE
+             FROM :T_PRODU_SCRAP A
+             INNER JOIN "SCM_ANALYTIC_TARGET" B ON B.ID_SOURC = A.ID_SOURC
+                                                     AND B.CD_DIMEN = A.CD_DIMEN
+             LEFT OUTER JOIN :T_PRODU C ON C.ID_SOURC = A.ID_SOURC
+                                       AND C.CD_GROSS = A.CD_GROSS
+                                       AND C.CD_PLANT = A.CD_PLANT;
+                   
+   OUT_1 = CE_UNION_ALL(:T_PRUEB, :T_PRODU);
+   OUTPUT_TABLE = CE_UNION_ALL(:OUT_1, :T_MERMA);
+                 
+END

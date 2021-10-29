@@ -1,0 +1,160 @@
+PROCEDURE "COS_SDI_SCM::PRC_EXTIENDE_FECHAS_FESTIVOS_TT" (in p_anio_hasta varchar(4))
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+as
+/**
+   Extendemos la tabla general de fechas hasta el ultimo dia de p_anio_hasta incluyendo los festivos de cada pais.
+   Se considera día laboral de Lunes a Sábado.
+   Se consideran festivos los días marcados como tales (Navidad, etc.) en cada país.
+*/
+begin
+
+    declare v_fecha_ini date;
+    declare v_fecha_fin date;
+    declare b_laboral decimal(1);
+    declare st_anio varchar(4);
+    declare v_cd_pais varchar(2);
+
+    -- Semana Santa
+    declare v_domingo_ramos         date;
+    declare v_jueves_santo          varchar(4);
+    declare v_viernes_santo         varchar(4);
+    declare v_lunes_pascua          varchar(4);
+
+
+    -- Festivos comunes
+    declare c_anio_nuevo            varchar(4) := '0101';
+    declare c_navidad               varchar(4) := '1225';
+
+    -- Festivos ES
+    declare c_es_epif_senior        varchar(4) := '0106';
+    declare c_es_fiesta_trabajo     varchar(4) := '0501';
+    declare c_es_asuncion_virgen    varchar(4) := '0815';
+    declare c_es_dia_hispanidad     varchar(4) := '1012';
+    declare c_es_todos_santos       varchar(4) := '1101';
+    declare c_es_constitucion       varchar(4) := '1206';
+    declare c_es_inmaculada_concp   varchar(4) := '1208';
+
+
+    -- Festivos CA
+    declare c_ca_dia_victoria       varchar(4) := '0524';
+    declare c_ca_dia_canada         varchar(4) := '0701';
+    declare c_ca_dia_trabajo        varchar(4) := '0906';
+    declare c_ca_accion_gracias     varchar(4) := '1011';
+    declare c_ca_dia_recuerdo       varchar(4) := '1111';
+
+
+    -- Festivos US
+    declare c_us_dia_independencia  varchar(4) := '0704';
+
+
+    -- Tablas temporales    
+    create local temporary table #tmp_festivos (cd_pais varchar(2), dt_fecha date);
+
+
+    -- Fecha inicial
+    select ifnull(max(dt_fecha), to_date(concat(year(current_date), '0101'), 'YYYYMMDD')) into v_fecha_ini from "FECHAS";
+
+
+    -- Fecha final
+    v_fecha_fin := to_date(concat(p_anio_hasta, '1231'), 'yyyymmdd');
+
+    
+    -- Semana Santa
+    v_domingo_ramos := "COS_SCM"."Migration.COS_SDI_SCM::COMPUTUS"(to_varchar(year(v_fecha_ini)));
+    v_jueves_santo := to_varchar(add_days(v_domingo_ramos, 4), 'MMDD');
+    v_viernes_santo := to_varchar(add_days(v_domingo_ramos, 5), 'MMDD');
+    v_lunes_pascua := to_varchar(add_days(v_domingo_ramos, 8), 'MMDD');
+    
+
+    st_anio := ''; -- Forzamos un cambio de año en la primera iteración del bucle.
+    
+    while :v_fecha_ini <= :v_fecha_fin do
+
+
+        -- Hemos cambiado de año, recalculamos los festivos
+        if st_anio <> to_varchar(year(v_fecha_ini)) then
+        
+            st_anio = to_varchar(year(v_fecha_ini));
+            
+            -- Semana Santa
+            v_domingo_ramos := "COS_SCM"."Migration.COS_SDI_SCM::COMPUTUS"(st_anio);
+            v_jueves_santo := to_varchar(add_days(v_domingo_ramos, 4), 'MMDD');
+            v_viernes_santo := to_varchar(add_days(v_domingo_ramos, 5), 'MMDD');
+            v_lunes_pascua := to_varchar(add_days(v_domingo_ramos, 8), 'MMDD');
+            
+            -- ES
+            v_cd_pais := 'ES';
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, v_jueves_santo), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_epif_senior), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_fiesta_trabajo), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_asuncion_virgen), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_dia_hispanidad), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_todos_santos), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_constitucion), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_inmaculada_concp), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) );
+            
+            -- CA
+            v_cd_pais := 'CA';
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, v_lunes_pascua), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_victoria), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_canada), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_trabajo), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_accion_gracias), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_recuerdo), 'YYYYMMDD')) );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) );
+            
+            -- US
+            v_cd_pais := 'US';
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, c_anio_nuevo), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '02'), 3, 'l') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, c_us_dia_independencia), 'YYYYMMDD') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '05'), -1, 'l') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '09'), 1, 'l') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '10'), 2, 'l') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'j') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'v') );
+            insert into #"#TMP_FESTIVOS"( cd_pais, dt_fecha ) values ( :v_cd_pais, to_date(concat(st_anio, c_navidad), 'YYYYMMDD') );
+            
+
+        end if; -- if st_anio <> to_varchar(year(v_fecha_ini)) then
+        
+   
+        -- Días de la semana
+        select 
+            case weekday(v_fecha_ini)
+--                when 5 then 0   -- Sábado     -- A efectos de navieras y puertos, los sábados se consideran laborales.
+                when 6 then 0   -- Domingo
+                else 1
+            end
+        into b_laboral from "DUMMY";
+        
+        
+        insert into "FECHAS" ( cd_pais, dt_fecha, vl_festivo, vl_laboral ) values ( 'ES', v_fecha_ini, 0, b_laboral );
+        insert into "FECHAS" ( cd_pais, dt_fecha, vl_festivo, vl_laboral ) values ( 'CA', v_fecha_ini, 0, b_laboral );
+        insert into "FECHAS" ( cd_pais, dt_fecha, vl_festivo, vl_laboral ) values ( 'US', v_fecha_ini, 0, b_laboral );
+        
+        
+        v_fecha_ini := add_days(v_fecha_ini, 1);
+      
+    end while;
+
+
+    -- Actualizamos los festivos de las fechas creadas
+    update "FECHAS" f
+    set f.vl_festivo = 1, f.vl_laboral = 0
+    from "FECHAS" f, #"#TMP_FESTIVOS" tf 
+    where f.dt_fecha = tf.dt_fecha 
+        and f.cd_pais = tf.cd_pais
+    ;
+    
+    commit;
+    
+    drop table #"#TMP_FESTIVOS";
+    
+   
+end

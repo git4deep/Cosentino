@@ -1,0 +1,225 @@
+PROCEDURE "COS_SDI_SCM::PRC_HUB_DAILY_SAVANNAH_CALC"( 
+OUT OUTPUT_TABLE TABLE(ID_SOURC         INTEGER,
+                       CD_HUB           NVARCHAR(10),
+                       CD_RESOU_GROUP   NVARCHAR(50),
+                       CD_RESOU         NVARCHAR(50),
+                       CD_DIMEN         NVARCHAR(50),
+                       DT_NATUR         DATE, 
+                       FL_ISSUE         INTEGER,
+                       MT_NATUR         NVARCHAR(7),
+                       PR_TARGE         DECIMAL(7,2),
+                       PR_WEEK          DECIMAL(7,2),
+                       QT_DAY           INTEGER,
+                       DS_UNIT          NVARCHAR(13),
+                       QT_AVERA         INTEGER)) 
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /* Lectura de todos los KPIs de la vista origen del fichero Excel */
+   T_INITIAL = SELECT ID_KPI AS ID_SOURC, CD_HUB, CD_RESOU_GROUP, CD_RESOU, CD_DIMEN, DT_NATUR, MT_NATUR,
+	                  PR_TARGE, PR_WEEK, QT_DAY, DS_UNIT, QT_UNIT, VL_FACTO
+               FROM "V_SCM_HUB_DAILY_SAVANNAH";
+
+   /* Template table para los KPIs 56, 57, 62, 63, 67, 68, 69, 82, 84, 85, 86 */
+   T_KPI_CALC_FACTOR = SELECT ID_SOURC, CD_HUB, CD_RESOU_GROUP, CD_RESOU, CD_DIMEN, DT_NATUR, MT_NATUR, PR_TARGE, 
+	                          CASE WHEN IFNULL(VL_FACTO,0) = 0 OR VL_FACTO = 0 THEN 0
+                                   ELSE TO_DECIMAL(((PR_WEEK / VL_FACTO) * 100),7,2)
+                              END AS PR_WEEK,
+	                          QT_DAY, DS_UNIT, QT_UNIT
+                       FROM :T_INITIAL
+                       WHERE ID_SOURC IN (56, 57, 62, 63, 67, 68, 69, 82, 84, 85, 86);
+
+   /* Template table para los KPIs 54, 55, 64, 65, 66, 70, 71, 80, 81, 87, 88, 89, 90, 199 */
+   T_KPI = SELECT ID_SOURC, CD_HUB, CD_RESOU_GROUP, CD_RESOU, CD_DIMEN, DT_NATUR, MT_NATUR, PR_TARGE, 
+	              CASE WHEN IFNULL(PR_WEEK,0) = 0 THEN 0
+                       ELSE TO_DECIMAL(PR_WEEK,7,0)
+                  END AS PR_WEEK,
+	              QT_DAY, DS_UNIT, QT_UNIT
+           FROM :T_INITIAL
+           WHERE ID_SOURC IN (54, 55, 64, 65, 66, 70, 71, 80, 81, 87, 88, 89, 90, 199);
+    
+   /* Template table del KPI 58 con calculo basado al KPI 105 */                   
+   T_KPI_58 = SELECT 58 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE TO_DECIMAL((480 / A.QT_UNIT),7,0)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A 
+              WHERE A.ID_SOURC = 105;
+
+   /* Template table del KPI 59 con calculo basado al KPI 104 */
+   T_KPI_59 = SELECT 59 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE TO_DECIMAL((480 / A.QT_UNIT),7,0)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              WHERE A.ID_SOURC = 104;
+
+   /* Template table del KPI 60 con calculo basado al KPI 104 */                       
+   T_KPI_60 = SELECT 60 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 OR B.VL_FACTO = 0 THEN 0
+                          ELSE TO_DECIMAL(((A.QT_UNIT / B.VL_FACTO) * 100),7,2)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A 
+              LEFT OUTER JOIN "COS_FS_SCM_HUB_CTRL_SAVANNAH_Factor" B ON B.ID_KPI = 60
+              WHERE A.ID_SOURC = 104;
+
+   /* Template table del KPI 61 con calculo basado al KPI 104 */
+   T_KPI_61 = SELECT 61 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 OR B.VL_FACTO = 0 THEN 0
+                          ELSE TO_DECIMAL(((A.QT_UNIT / B.VL_FACTO) * 100),7,2)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              LEFT OUTER JOIN "COS_FS_SCM_HUB_CTRL_SAVANNAH_Factor" B ON B.ID_KPI = 61
+              WHERE A.ID_SOURC = 104;
+
+   /* Template table del KPI 72 con calculo basado al KPI 105 */
+   T_KPI_72 = SELECT 72 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE A.QT_UNIT
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A 
+              WHERE A.ID_SOURC = 105;
+
+   /* Template table del KPI 73 con calculo basado al KPI 101 */              
+   T_KPI_73 = SELECT A.ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.PR_TARGE, 
+                     CASE WHEN IFNULL(A.PR_WEEK,0) = 0 OR IFNULL(B.QT_UNIT,0) = 0 THEN 0
+                          ELSE TO_DECIMAL(A.PR_WEEK / B.QT_UNIT,7,0)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM :T_INITIAL A
+              LEFT OUTER JOIN "V_SCM_HUB_PERSONAL_SAVANNAH" B ON B.ID_SOURC = 101
+                                                                       AND B.DT_NATUR = A.DT_NATUR
+              WHERE A.ID_SOURC = 73;
+
+   /* Template table del KPI 74 basado al KPI 103 */              
+   T_KPI_74 = SELECT 74 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE A.QT_UNIT
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              WHERE A.ID_SOURC = 103;
+
+   /* Template table del KPI 75 con calculo basado al KPI 100 */              
+   T_KPI_75 = SELECT A.ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.PR_TARGE, 
+                     CASE WHEN IFNULL(A.PR_WEEK,0) = 0 OR IFNULL(B.QT_UNIT,0) = 0 THEN 0
+                          ELSE TO_DECIMAL(A.PR_WEEK / B.QT_UNIT,7,0)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM :T_INITIAL A
+              LEFT OUTER JOIN "V_SCM_HUB_PERSONAL_SAVANNAH" B ON B.ID_SOURC = 100
+                                                                       AND B.DT_NATUR = A.DT_NATUR
+              WHERE A.ID_SOURC = 75;
+
+   /* Template table del KPI 76 basado al KPI 104 */              
+   T_KPI_76 = SELECT 76 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE A.QT_UNIT
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              WHERE A.ID_SOURC = 104;
+
+   /* Template table del KPI 77 basado al KPI 100 */              
+   T_KPI_77 = SELECT A.ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.PR_TARGE, 
+                     CASE WHEN IFNULL(A.PR_WEEK,0) = 0 OR IFNULL(B.QT_UNIT,0) = 0 THEN 0
+                          ELSE TO_DECIMAL(A.PR_WEEK / B.QT_UNIT,7,0)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM :T_INITIAL A
+              LEFT OUTER JOIN "V_SCM_HUB_PERSONAL_SAVANNAH" B ON B.ID_SOURC = 100
+                                                                       AND B.DT_NATUR = A.DT_NATUR
+              WHERE A.ID_SOURC = 77;
+
+   /* Template table del KPI 78 con calculo basado a los KPIs 103, 104 y 105 */              
+   T_KPI_78 = SELECT X.ID_SOURC, X.CD_HUB, X.CD_RESOU_GROUP, X.CD_RESOU, X.CD_DIMEN, X.DT_NATUR, X.MT_NATUR, X.PR_TARGE, 
+                     CASE WHEN IFNULL(X.PR_WEEK,0) = 0 OR IFNULL(X.QT_UNIT_TOTAL,0) = 0 THEN 0
+                          ELSE TO_DECIMAL(X.PR_WEEK / X.QT_UNIT_TOTAL,7,2)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM (SELECT A.ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.PR_TARGE, A.PR_WEEK,
+                          (SELECT SUM(IFNULL(B.QT_UNIT,0))
+                           FROM "V_SCM_HUB_PERSONAL_SAVANNAH" B
+                           WHERE B.ID_SOURC IN (103, 104, 105)
+                             AND B.DT_NATUR = A.DT_NATUR) AS QT_UNIT_TOTAL
+                    FROM :T_INITIAL A
+                    WHERE A.ID_SOURC = 78) X;
+
+   /* Template table del KPI 79 basado al KPI 107 */                    
+   T_KPI_79 = SELECT 79 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN IFNULL(A.QT_UNIT,0) = 0 THEN 0
+                          ELSE A.QT_UNIT
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              WHERE A.ID_SOURC = 107;                    
+
+   /* Template table del KPI 83 basado a la soma de los KPIs 108, 109 y 110 */
+   T_KPI_83 = SELECT 83 AS ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU,MAX(B.DS_SOURC) AS CD_DIMEN, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE AS PR_TARGE, 
+                     CASE WHEN SUM(IFNULL(A.QT_UNIT,0)) = 0 THEN 0
+                          ELSE SUM(A.QT_UNIT)
+                     END AS PR_WEEK,
+                     1 AS QT_DAY, '' AS DS_UNIT, 0 AS QT_UNIT
+              FROM "V_SCM_HUB_PERSONAL_SAVANNAH" A
+              INNER JOIN "SCM_ANALYTIC_SOURCE" B ON B.ID_SOURC = A.ID_SOURC              
+              WHERE A.ID_SOURC IN (108, 109, 110)
+              GROUP BY A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE;
+
+   /* UNION ALL de todos los template tables*/
+   T_OUT_1 = CE_UNION_ALL(:T_KPI_CALC_FACTOR, :T_KPI);
+   T_OUT_2 = CE_UNION_ALL(:T_OUT_1, :T_KPI_58);
+   T_OUT_3 = CE_UNION_ALL(:T_OUT_2, :T_KPI_59);
+   T_OUT_4 = CE_UNION_ALL(:T_OUT_3, :T_KPI_60);
+   T_OUT_5 = CE_UNION_ALL(:T_OUT_4, :T_KPI_61);
+   T_OUT_6 = CE_UNION_ALL(:T_OUT_5, :T_KPI_72);
+   T_OUT_7 = CE_UNION_ALL(:T_OUT_6, :T_KPI_73);
+   T_OUT_8 = CE_UNION_ALL(:T_OUT_7, :T_KPI_74);   
+   T_OUT_9 = CE_UNION_ALL(:T_OUT_8, :T_KPI_75);
+   T_OUT_10 = CE_UNION_ALL(:T_OUT_9, :T_KPI_76);
+   T_OUT_11 = CE_UNION_ALL(:T_OUT_10, :T_KPI_77);
+   T_OUT_12 = CE_UNION_ALL(:T_OUT_11, :T_KPI_78); 
+   T_OUT_13 = CE_UNION_ALL(:T_OUT_12, :T_KPI_79);
+   T_OUT_14 = CE_UNION_ALL(:T_OUT_13, :T_KPI_83);
+   
+   /* Template table de los objetivos */
+   T_TARGET = SELECT ID_KPI AS ID_SOURC, PR_TARGE
+              FROM "COS_FS_SCM_HUB_CTRL_SAVANNAH_Target";
+
+   /* Identifica en cada dia del mes el valor acumulado del KPI. Verifica si este valor esta fuera (arriba) de rango 
+      Para esta comparacion necesita saber la cantidad de días has la fecha de calculo (K_FECHA)
+      Soma todos los valores hasta la fecha de calculo (VL_ACUMU_DAY)
+      El campo PR_TARGE de la Virtual Table COS_FS_SCM_HUB_CTRL_SAVANNAH_Target devuelve el objetivo de los KPIs
+      El campo QT_UNIT devuelve el valor por medio hasta la fecha de calculo.
+      
+      OUTPUT_TABL es el parametro de salida de este procedimiento. Contiene todos los registros unidos de los "template tables" */
+      
+   --OUTPUT_TABLE
+   OUTPUT_TABLE = SELECT X.ID_SOURC, X.CD_HUB, X.CD_RESOU_GROUP, X.CD_RESOU, X.CD_DIMEN, X.DT_NATUR, 
+                         CASE WHEN ROUND((X.VL_ACUMU_DAY / X.K_FECHA),0) > Y.PR_TARGE THEN 1
+                              ELSE 0
+                         END AS FL_ISSUE,
+                         X.MT_NATUR, Y.PR_TARGE, X.PR_WEEK, 1 AS QT_DAY, X.DS_UNIT, 
+                         ROUND((X.VL_ACUMU_DAY / X.K_FECHA),0) AS QT_AVERA
+                  FROM (SELECT A.ID_SOURC, A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.CD_DIMEN, A.MT_NATUR, A.DT_NATUR,
+                               A.PR_WEEK, A.DS_UNIT,
+                              (SELECT SUM(C.PR_WEEK)
+                               FROM :T_OUT_14 C
+                               WHERE C.ID_SOURC = A.ID_SOURC
+                                 AND C.CD_HUB = A.CD_HUB
+                                 AND C.DT_NATUR <= A.DT_NATUR) AS VL_ACUMU_DAY,
+                              (SELECT COUNT(DISTINCT B.DT_NATUR)
+                               FROM :T_OUT_14 B
+                               WHERE B.ID_SOURC = A.ID_SOURC
+                                 AND B.CD_HUB = A.CD_HUB
+                                 AND B.DT_NATUR <= A.DT_NATUR) AS K_FECHA
+                        FROM :T_OUT_14 A
+                        WHERE A.CD_HUB = 'SAVANNAH') X 
+                  LEFT OUTER JOIN :T_TARGET Y ON Y.ID_SOURC = X.ID_SOURC;
+END;
