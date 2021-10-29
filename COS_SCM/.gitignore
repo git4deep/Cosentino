@@ -7,4 +7,8 @@ COS_BIC/db/.env
 # auto generated wildcard
 Cosentino/COS_BIC/db/.env
 # auto generated wildcard
+<<<<<<< HEAD
+COS_SCM/db/.env
+=======
 Cosentino/COS_SCM/db/.env
+>>>>>>> a4224160613dde8132521f879d957c9639ce72ee
