@@ -1,0 +1,21 @@
+FUNCTION "COS_SDI_SCM::CALC_PERIODO"(in p_dt_load date, in p_mes_natural nvarchar(10) )
+    RETURNS vl_periodo nvarchar(4)
+    AS
+    /**
+    Calculamos el periodo al que pertenece la dupla fecha de cálculo (dt_load) y de prevision (mes_natural).
+
+*/
+BEGIN
+  declare vl_periodo_aux nvarchar(4);
+
+    select
+        CASE months_between(p_dt_load, to_date(p_mes_natural || '/01', 'YYYY/MM/DD'))
+            WHEN 0 THEN 'N'
+            ELSE 'N-' || lpad(months_between(p_dt_load, to_date(p_mes_natural || '/01', 'YYYY/MM/DD')), 2, '0')
+        END
+    into vl_periodo_aux
+    from "COS_SCM::DUMMY";
+    
+    vl_periodo := vl_periodo_aux;
+    
+END;

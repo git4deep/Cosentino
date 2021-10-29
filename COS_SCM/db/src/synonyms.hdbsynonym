@@ -1,0 +1,9 @@
+
+{
+    "COS_SCM::DUMMY": {
+    "target": {
+        "object": "DUMMY",
+        "schema": "SYS"
+        }
+    }
+}

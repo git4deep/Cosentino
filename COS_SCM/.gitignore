@@ -6,3 +6,5 @@ db/.env
 COS_BIC/db/.env
 # auto generated wildcard
 Cosentino/COS_BIC/db/.env
+# auto generated wildcard
+Cosentino/COS_SCM/db/.env

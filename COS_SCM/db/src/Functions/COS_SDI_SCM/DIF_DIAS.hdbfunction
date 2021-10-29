@@ -1,0 +1,38 @@
+FUNCTION "COS_SDI_SCM::DIF_DIAS"(in p_dt_desde date, in p_dt_hasta date, in p_tipo_dias varchar(1) )
+    RETURNS qt_dias decimal(3)
+    AS
+    /**
+    Devolvemos la cantidad de dias entre las fechas indicadas segun el tipo de dias requerido. Si no hubiera datos suficientes en COS_SCM.FECHAS o el parametro fuera incorrecto se devuelve NULL.
+    p_dt_desde: Fecha inicial
+    p_dt_hasta: Fecha final
+    p_tipo_dias: Tipo de dIas a devolver:
+        L --> Laborales
+        N --> Naturales
+    
+    Nota: Para extender los dias de la tabla COS_SCM.FECHAS basta con llamar a "COS_SCM"."COS_SDI_SCM::EXTIENDE_FECHAS"('YYYY-MM-DD') indicando la fecha a la que extender la tabla.
+*/
+BEGIN
+   declare dt_aux date;
+
+    select max(dt_fecha) into dt_aux from fechas;
+    
+    -- Comprobamos que la tabla de fechas tiene todas las fechas necesarias
+    if (dt_aux < :p_dt_hasta) then
+    
+        qt_dias = null;
+
+    else
+    
+        select
+            case upper(p_tipo_dias)
+                when 'L' then sum(vl_laboral)       -- Laborales
+                when 'N' then count(1)              -- Naturales
+                else NULL                           -- Error
+            end
+        into qt_dias
+        from fechas 
+        where dt_fecha between :p_dt_desde and :p_dt_hasta;
+    
+    end if;
+    
+END;

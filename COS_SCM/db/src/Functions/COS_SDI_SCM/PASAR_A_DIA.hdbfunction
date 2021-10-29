@@ -1,0 +1,45 @@
+FUNCTION "COS_SDI_SCM::PASAR_A_DIA"(in p_fecha date, in p_dia_semana varchar(1) )
+    RETURNS dt_nueva_fecha date
+    AS
+    /**
+    Devolvemos el p_dia_semana siguiente a la fecha indicada (si no lo es ya).
+    - p_fecha: Fecha a comprobar.
+    - p_dia_semana: Qué día de la semana (L-D) hay que devolver
+*/
+BEGIN
+  declare dt_aux date;
+    declare v_num_dia integer;
+    declare v_dif_dias integer;
+    
+    select
+        case upper(p_dia_semana)
+            when 'L' then 0
+            when 'M' then 1
+            when 'X' then 2
+            when 'J' then 3
+            when 'V' then 4
+            when 'S' then 5
+            when 'D' then 6
+            else -1 -- Error en la llamada
+        end
+    into v_num_dia
+    from "COS_SCM::DUMMY";
+    
+    if v_num_dia = -1 then  -- Error
+        dt_aux := null;
+    else
+    
+        v_dif_dias := v_num_dia - weekday(p_fecha);
+        
+        if v_dif_dias >= 0 then
+            dt_aux := add_days(p_fecha, v_dif_dias);
+        else 
+            dt_aux := add_days(p_fecha, v_dif_dias + 7);
+        end if;
+    
+    end if;
+    
+    dt_nueva_fecha := dt_aux;
+
+    
+END;
