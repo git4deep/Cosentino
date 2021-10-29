@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTable1_123" ("name" NVARCHAR(64), "name_defaultValue" NVARCHAR(64), "name_en_GB" NVARCHAR(64), "name_en_US" NVARCHAR(64), "name_es_ES" NVARCHAR(64), "name_localized" NVARCHAR(64), "name_pt_PT" NVARCHAR(64), "startDate" LONGDATE  NOT NULL , "status" NVARCHAR(255), "cust_societyProp_1" NVARCHAR(3999), "name_1" NVARCHAR(64)) UNLOAD PRIORITY 5  AUTO MERGE 

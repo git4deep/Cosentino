@@ -1,0 +1,1 @@
+COLUMN TABLE "TemplateTable123" ("cust_societyProp" NVARCHAR(3999), "name" NVARCHAR(64)) UNLOAD PRIORITY 5  AUTO MERGE 
