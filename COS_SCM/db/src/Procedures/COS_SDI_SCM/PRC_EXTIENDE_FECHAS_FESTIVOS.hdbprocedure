@@ -61,15 +61,15 @@ begin
 
     
     -- Semana Santa
-    v_domingo_ramos := "COS_SCM"."Migration.COS_SDI_SCM::COMPUTUS"(to_varchar(year(v_fecha_ini)));
+    v_domingo_ramos := "COS_SDI_SCM::COMPUTUS"(to_varchar(year(v_fecha_ini)));
     v_jueves_santo := to_varchar(add_days(v_domingo_ramos, 4), 'MMDD');
     v_viernes_santo := to_varchar(add_days(v_domingo_ramos, 5), 'MMDD');
     v_lunes_pascua := to_varchar(add_days(v_domingo_ramos, 8), 'MMDD');
     
 
     -- Inicializamos
-    t_laborales = select cast(null as varchar(2)) cd_pais, cast(null as date) dt_fecha, cast(null as integer) vl_festivo, cast(null as integer) vl_laboral from "DUMMY";
-    t_festivos = select cast(null as varchar(2)) cd_pais, cast(null as date) dt_fecha from "DUMMY";
+    t_laborales = select cast(null as varchar(2)) cd_pais, cast(null as date) dt_fecha, cast(null as integer) vl_festivo, cast(null as integer) vl_laboral from "COS_SCM::DUMMY";
+    t_festivos = select cast(null as varchar(2)) cd_pais, cast(null as date) dt_fecha from "COS_SCM::DUMMY";
     st_anio := ''; -- Forzamos un cambio de año en la primera iteración del bucle.
 
 
@@ -81,74 +81,74 @@ begin
             st_anio := to_varchar(year(v_fecha_ini));
             
             -- Semana Santa
-            v_domingo_ramos := "COS_SCM"."Migration.COS_SDI_SCM::COMPUTUS"(st_anio);
+            v_domingo_ramos := "COS_SDI_SCM::COMPUTUS"(st_anio);
             v_jueves_santo := to_varchar(add_days(v_domingo_ramos, 4), 'MMDD');
             v_viernes_santo := to_varchar(add_days(v_domingo_ramos, 5), 'MMDD');
             v_lunes_pascua := to_varchar(add_days(v_domingo_ramos, 8), 'MMDD');
             
             -- ES
             v_cd_pais := 'ES';
-            t_festivos_ES = select :v_cd_pais cd_pais, to_date(concat(st_anio, v_jueves_santo), 'YYYYMMDD') dt_fecha from "DUMMY"
+            t_festivos_ES = select :v_cd_pais cd_pais, to_date(concat(st_anio, v_jueves_santo), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_epif_senior), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_epif_senior), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_fiesta_trabajo), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_fiesta_trabajo), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_asuncion_virgen), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_asuncion_virgen), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_dia_hispanidad), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_dia_hispanidad), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_todos_santos), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_todos_santos), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_constitucion), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_constitucion), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_inmaculada_concp), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_es_inmaculada_concp), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
             ;
             
             -- CA
             v_cd_pais := 'CA';
-            t_festivos_CA = select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "DUMMY"
+            t_festivos_CA = select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_lunes_pascua), 'YYYYMMDD') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_lunes_pascua), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_victoria), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_victoria), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_canada), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_canada), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_trabajo), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_trabajo), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_accion_gracias), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_accion_gracias), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_recuerdo), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_ca_dia_recuerdo), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::PASAR_DOMINGO_A_LUNES"(to_date(concat(st_anio, c_navidad), 'YYYYMMDD')) dt_fecha from "COS_SCM::DUMMY"
             ;
             
             -- US
             v_cd_pais := 'US';
-            t_festivos_US = select :v_cd_pais cd_pais, to_date(concat(st_anio, c_anio_nuevo), 'YYYYMMDD') dt_fecha from "DUMMY"
+            t_festivos_US = select :v_cd_pais cd_pais, to_date(concat(st_anio, c_anio_nuevo), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '02'), 3, 'l') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '02'), 3, 'l') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, to_date(concat(st_anio, v_viernes_santo), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, to_date(concat(st_anio, c_us_dia_independencia), 'YYYYMMDD') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, to_date(concat(st_anio, c_us_dia_independencia), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '05'), -1, 'l') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '05'), -1, 'l') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '09'), 1, 'l') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '09'), 1, 'l') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '10'), 2, 'l') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '10'), 2, 'l') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'j') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'j') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, "COS_SCM"."Migration.COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'v') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, "COS_SDI_SCM::N_DIA_MES"(concat(st_anio, '11'), 4, 'v') dt_fecha from "COS_SCM::DUMMY"
                             union all 
-                            select :v_cd_pais cd_pais, to_date(concat(st_anio, c_navidad), 'YYYYMMDD') dt_fecha from "DUMMY"
+                            select :v_cd_pais cd_pais, to_date(concat(st_anio, c_navidad), 'YYYYMMDD') dt_fecha from "COS_SCM::DUMMY"
             ;
             
 
@@ -162,16 +162,16 @@ begin
                 when 6 then 0   -- Domingo
                 else 1
             end
-        into b_laboral from "DUMMY";
+        into b_laboral from "COS_SCM::DUMMY";
         
         -- Añadimos la nueva fila a las que ya tenemos
         t_laborales =   select cd_pais, dt_fecha, vl_festivo, vl_laboral from :t_laborales
                         union all
-                        select 'ES' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "DUMMY"
+                        select 'ES' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "COS_SCM::DUMMY"
                         union all
-                        select 'CA' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "DUMMY"
+                        select 'CA' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "COS_SCM::DUMMY"
                         union all
-                        select 'US' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "DUMMY"
+                        select 'US' cd_pais, :v_fecha_ini dt_fecha, 0 vl_festivo, :b_laboral vl_laboral from "COS_SCM::DUMMY"
         ;
         
         v_fecha_ini := add_days(v_fecha_ini, 1);
