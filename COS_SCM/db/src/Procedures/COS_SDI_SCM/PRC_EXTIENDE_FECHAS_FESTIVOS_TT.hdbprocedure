@@ -144,10 +144,14 @@ begin
     end while;
 
 
+    MERGE INTO "FECHAS" f USING #TMP_FESTIVOS tf ON  f.dt_fecha = tf.dt_fecha
+    and f.cd_pais = tf.cd_pais
+    WHEN MATCHED THEN UPDATE set f.vl_festivo = 1, f.vl_laboral = 0;
+
     -- Actualizamos los festivos de las fechas creadas
-    update "FECHAS" f
-    set f.vl_festivo = 1, f.vl_laboral = 0
-   where (f.dt_fecha,f.cd_pais) in (SELECT dt_fecha,cd_pais from #TMP_FESTIVOS );
+    --update "FECHAS" f
+    --set f.vl_festivo = 1, f.vl_laboral = 0
+   --where (f.dt_fecha,f.cd_pais) in (SELECT dt_fecha,cd_pais from #TMP_FESTIVOS );
     --from "FECHAS" f, #TMP_FESTIVOS tf 
     --where f.dt_fecha = tf.dt_fecha 
     --    and f.cd_pais = tf.cd_pais
