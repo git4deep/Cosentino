@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true" defaultClient="$$client$$">
 <origin/>
   <descriptions defaultDescription="CV_ABSENTEEISM_COST_YTD"/>
   <metadata changedAt="2019-08-02 15:53:50.74"/>
@@ -86,6 +86,7 @@ AND
         <viewAttribute id="ABSENTEEISM_COST"/>
         <viewAttribute id="CURRENCY_CODE"/>
         <viewAttribute id="MONTH"/>
+      <viewAttribute id="YEAR_MONTH_START"/>
       <viewAttribute hidden="true" id="JOIN$BUSINESS_UNIT$BUSINESS_UNIT"/>
       <viewAttribute hidden="true" id="JOIN$DIVISION$DIVISION"/>
       <viewAttribute hidden="true" id="JOIN$DEPARTMENT$DEPARTMENT"/>
@@ -110,6 +111,7 @@ AND
         <mapping xsi:type="Calculation:AttributeMapping" target="ABSENTEEISM_COST" source="ABSENTEEISM_COST"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUSINESS_UNIT$BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DIVISION$DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DEPARTMENT$DEPARTMENT" source="DEPARTMENT"/>
@@ -143,7 +145,9 @@ AND
         <viewAttribute id="ABSENTEEISM_COST"/>
         <viewAttribute id="CURRENCY_CODE"/>
         <viewAttribute id="MONTH_INT"/>
-      </viewAttributes>
+      
+      <viewAttribute id="YEAR_MONTH_START"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
       <input node="Aggregation_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_INT" source="MONTH_INT"/>
@@ -159,6 +163,7 @@ AND
         <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ABSENTEEISM_COST" source="ABSENTEEISM_COST"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_INT" source="MONTH"/>
       </input>
     <joinAttribute name="MONTH_INT"/>
@@ -207,14 +212,19 @@ AND
         <descriptions defaultDescription="MONTH"/>
         <keyMapping columnObjectName="Join_2" columnName="MONTH_INT"/>
       </attribute>
+    
+      <attribute id="YEAR_MONTH_START" hidden="true" order="13" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="YEAR_MONTH_START"/>
+        <keyMapping columnObjectName="Join_2" columnName="YEAR_MONTH_START"/>
+      </attribute>
     </attributes>
     <calculatedAttributes>
       <calculatedAttribute id="DATE_DAYS5" hidden="true" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DATE_DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
-          <formula>to_date('$$IP_YEAR$$'||'.01.01')</formula>
+          <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
@@ -224,10 +234,10 @@ AND
       </layout>
     </privateDataFoundation>
     <baseMeasures>
-      <measure id="ABSENTEEISM_COST" order="10" semanticType="amount" aggregationType="sum" measureType="amount">
+      <measure id="ABSENTEEISM_COST" order="10" semanticType="amount" aggregationType="sum" measureType="amount" unconverted="false">
         <descriptions defaultDescription="ABSENTEEISM_COST"/>
         <fixedCurrency>EUR</fixedCurrency>
-        <currencyConversion errorHandling="setToNull" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="ABSENTEEISM_COST_CURRENCY" convert="true">
+        <currencyConversion errorHandling="setToNull" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="ABSENTEEISM_COST_CURRENCY" convert="true" accuracy="COMPATIBILITY" method="ERP" lookup="REGULAR">
           <client>
             <value>020</value>
           </client>
@@ -264,16 +274,16 @@ AND
 <layout>
   <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="99" y="87"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="213" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="176" y="357"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="91" y="516"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="176" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="91" y="376"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
     <shape modelObjectName="DWH_CDM_PEOPLE::CV_ORG_HIER_YTD" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
@@ -284,12 +294,12 @@ AND
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="301" y="376"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="99" y="165"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="213" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
     
     <shape modelObjectName="Aggregation_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
