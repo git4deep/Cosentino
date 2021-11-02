@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_TALENT_STATUS_SIN_HIER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_TALENT_STATUS_SIN_HIER" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="CV_INTRANET_K20"/>
   <metadata changedAt="2019-08-02 17:06:31.891"/>
   <localVariables>
@@ -22,21 +22,21 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
-      <localVariable>#IP_YEAR</localVariable>
+      <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
-      <localVariable>#IP_MONTH</localVariable>
+      <localVariable>IP_MONTH</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
-      <localVariable>#IP_YEAR</localVariable>
+      <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
-      <localVariable>#IP_MONTH</localVariable>
+      <localVariable>IP_MONTH</localVariable>
     </mapping>
   </variableMappings>
   <informationModelLayout relativeWidthScenario="49"/>
@@ -65,14 +65,14 @@
     <DataSource id="FT_INTRANET_KPI_K24">
       <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K24</resourceUri>
     </DataSource>
-    <DataSource id="CopyOfk19$$$$FT_INTRANET_KPI_K19$$">
+    <DataSource id="DWH_CDM_PEOPLE::FT_INTRANET_KPI_K19">
       <resourceUri>DWH_CDM_PEOPLE::FT_INTRANET_KPI_K19</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k20">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k20">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -82,21 +82,12 @@
         <viewAttribute id="WITH_PAO_OBJECTIVES"/>
         <viewAttribute id="WITHOUT_PAO_OBJECTIVES"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#CV_INTRANET_K20_MTD">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WITH_PAO_OBJECTIVES" source="WITH_PAO_OBJECTIVES"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WITHOUT_PAO_OBJECTIVES" source="WITHOUT_PAO_OBJECTIVES"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="CV_INTRANET_K20_MTD"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k22">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k22">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -106,21 +97,12 @@
         <viewAttribute id="WITHOUT_ONBOARDING"/>
         <viewAttribute id="WITH_ONBOARDING"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#CV_INTRANET_K22_MTD">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WITHOUT_ONBOARDING" source="WITHOUT_ONBOARDING"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="WITH_ONBOARDING" source="WITH_ONBOARDING"/>
-      </input>
+    <calculatedViewAttributes/>
+      <input node="CV_INTRANET_K22_MTD"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k18" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k18" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -134,7 +116,7 @@
         <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
         <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -148,28 +130,21 @@
           <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_INTRANET_KPI_K18">
-        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_ID" source="TYPE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+      <input node="FT_INTRANET_KPI_K18">
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="STATUS_CANCELED"/>
       </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
-&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;&#xD;
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;
 AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="BUSINESS_UNIT"/>
         <viewAttribute id="DEPARTMENT"/>
         <viewAttribute id="MONTH"/>
@@ -180,23 +155,13 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
         <viewAttribute id="END_DATE"/>
         <viewAttribute id="EMPLOYEE_ID"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE">
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="START_DATE" source="START_DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="END_DATE" source="END_DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
-      </input>
-      <filter>(&quot;MONTH&quot; =$$IP_MONTH$$) AND (&quot;YEAR&quot; =$$IP_YEAR$$)</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="FT_SSFF_HEADCOUNT_PEOPLE_EMPLOYEE"/>
+    <filter>(&quot;MONTH&quot; =$$IP_MONTH$$) AND (&quot;YEAR&quot; =$$IP_YEAR$$)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -212,14 +177,14 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
         <viewAttribute id="TOP_TALENT_STATUS_IN_PROGRESS"/>
         <viewAttribute id="TOP_TALENT_STATUS_FINALIZED"/>
         <viewAttribute id="TOP_TALENT_STATUS_CANCELED"/>
-        <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-      </viewAttributes>
-      <calculatedViewAttributes>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="INTEGER" id="TOP_TALENT_EMPLOYEE" expressionLanguage="COLUMN_ENGINE">
           <formula>1</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#k18">
+      <input node="k18">
         <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
@@ -232,7 +197,7 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
         <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="TOP_TALENT_STATUS_CANCELED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
@@ -240,11 +205,11 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k19" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k19" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -258,7 +223,7 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
         <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
         <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -272,28 +237,21 @@ AND (in (&quot;OHRP&quot;,'1','2','3'))</filter>
           <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_INTRANET_KPI_K19">
-        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_ID" source="TYPE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+      <input node="FT_INTRANET_KPI_K19">
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="STATUS_CANCELED"/>
       </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
-&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;&#xD;
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
+&quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;
 AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -309,14 +267,14 @@ AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
         <viewAttribute id="DEV_PLAN_STATUS_IN_PROGRESS"/>
         <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
         <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
-        <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-      </viewAttributes>
-      <calculatedViewAttributes>
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="INTEGER" id="UNDER_PERFORMING" expressionLanguage="COLUMN_ENGINE">
           <formula>1</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#k19">
+      <input node="k19">
         <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
@@ -329,7 +287,7 @@ AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="DEV_PLAN_STATUS_CANCELED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
@@ -337,11 +295,11 @@ AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k21" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k21" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -355,7 +313,7 @@ AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
         <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
         <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -369,27 +327,20 @@ AND (in (&quot;OHRP&quot;,'4','8','9'))</filter>
           <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_INTRANET_KPI_K21">
-        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_ID" source="TYPE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVES" source="OBJECTIVES"/>
+      <input node="FT_INTRANET_KPI_K21">
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="STATUS_CANCELED"/>
       </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -405,10 +356,10 @@ AND &#xD;
         <viewAttribute id="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
         <viewAttribute id="PAO_PROGRESS_STATUS_FINALIZED"/>
         <viewAttribute id="PAO_PROGRESS_STATUS_CANCELED"/>
-        <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-      </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#k21">
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k21">
         <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
@@ -421,7 +372,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="PAO_PROGRESS_STATUS_CANCELED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
@@ -429,11 +380,11 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k23" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k23" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="date"/>
         <viewAttribute id="value"/>
         <viewAttribute id="employeeId"/>
@@ -441,7 +392,7 @@ AND &#xD;
         <viewAttribute id="year"/>
         <viewAttribute id="month"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;year&quot;||right(100+&quot;month&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -458,21 +409,14 @@ AND &#xD;
           <formula>TO_INT(&quot;value&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_INTRANET_KPI_K23">
-        <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="value" source="value"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="employeeId" source="employeeId"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="typeId" source="typeId"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+      <input node="FT_INTRANET_KPI_K23"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="date"/>
         <viewAttribute id="year"/>
         <viewAttribute id="month"/>
@@ -482,17 +426,17 @@ AND &#xD;
         <viewAttribute id="DIVISION"/>
         <viewAttribute id="EMPLOYEE_ID"/>
         <viewAttribute id="ONBOARDING_ACTIONS"/>
-        <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-      </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#k23">
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k23">
         <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="ONBOARDING_ACTIONS" source="ONBOARDING_ACTIONS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
@@ -500,11 +444,11 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="k24" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="k24" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="date"/>
         <viewAttribute id="value"/>
         <viewAttribute id="employeeId"/>
@@ -512,7 +456,7 @@ AND &#xD;
         <viewAttribute id="year"/>
         <viewAttribute id="month"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;year&quot;||right(100+&quot;month&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -526,21 +470,14 @@ AND &#xD;
           <formula>TO_VARCHAR(&quot;employeeId&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_INTRANET_KPI_K24">
-        <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="value" source="value"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="employeeId" source="employeeId"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="typeId" source="typeId"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+      <input node="FT_INTRANET_KPI_K24"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="date"/>
         <viewAttribute id="K24_VALUE"/>
         <viewAttribute id="year"/>
@@ -550,17 +487,17 @@ AND &#xD;
         <viewAttribute id="DEPARTMENT"/>
         <viewAttribute id="SUB_DEPARTMENT"/>
         <viewAttribute id="EMPLOYEE_ID"/>
-        <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-      </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#k24">
+      <viewAttribute hidden="true" id="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="k24">
         <mapping xsi:type="Calculation:AttributeMapping" target="date" source="date"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="K24_VALUE" source="value"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="year" source="year"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="month" source="month"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
@@ -568,11 +505,11 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="JOIN$EMPLOYEE_ID_STRING$EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -587,26 +524,14 @@ AND &#xD;
         <viewAttribute aggregationType="sum" id="TOP_TALENT_STATUS_CANCELED"/>
         <viewAttribute aggregationType="sum" id="TOP_TALENT_EMPLOYEE"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_6">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_TOP_PERFORMING" source="ACTIONS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_NOT_ASSIGNED" source="TOP_TALENT_STATUS_NOT_ASSIGNED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_INITIALIZED" source="TOP_TALENT_STATUS_INITIALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_IN_PROGRESS" source="TOP_TALENT_STATUS_IN_PROGRESS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_FINALIZED" source="TOP_TALENT_STATUS_FINALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_STATUS_CANCELED" source="TOP_TALENT_STATUS_CANCELED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TOP_TALENT_EMPLOYEE" source="TOP_TALENT_EMPLOYEE"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_6">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_TOP_PERFORMING" source="ACTIONS"/></input>
     </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_3">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_3">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -620,25 +545,13 @@ AND &#xD;
         <viewAttribute aggregationType="sum" id="PAO_PROGRESS_STATUS_FINALIZED"/>
         <viewAttribute aggregationType="sum" id="PAO_PROGRESS_STATUS_CANCELED"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_2">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVES" source="OBJECTIVES"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_NOT_ASSIGNED" source="PAO_PROGRESS_STATUS_NOT_ASSIGNED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_INITIALIZED" source="PAO_PROGRESS_STATUS_INITIALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_IN_PROGRESS" source="PAO_PROGRESS_STATUS_IN_PROGRESS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_FINALIZED" source="PAO_PROGRESS_STATUS_FINALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PAO_PROGRESS_STATUS_CANCELED" source="PAO_PROGRESS_STATUS_CANCELED"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_2"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_4">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -653,26 +566,14 @@ AND &#xD;
         <viewAttribute aggregationType="sum" id="DEV_PLAN_STATUS_CANCELED"/>
         <viewAttribute aggregationType="sum" id="UNDER_PERFORMING"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_1">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_UNDER_PERFORMING" source="ACTIONS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="DEV_PLAN_STATUS_INITIALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="DEV_PLAN_STATUS_IN_PROGRESS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="DEV_PLAN_STATUS_FINALIZED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="DEV_PLAN_STATUS_CANCELED"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="UNDER_PERFORMING" source="UNDER_PERFORMING"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1">
+        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_UNDER_PERFORMING" source="ACTIONS"/></input>
     </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_5">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_5">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -681,20 +582,15 @@ AND &#xD;
         <viewAttribute id="DIVISION"/>
         <viewAttribute aggregationType="sum" id="ONBOARDING_ACTIONS"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_4">
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="year"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ONBOARDING_ACTIONS" source="ONBOARDING_ACTIONS"/>
-      </input>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/></input>
     </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_6">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_6">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -703,20 +599,15 @@ AND &#xD;
         <viewAttribute id="SUB_DEPARTMENT"/>
         <viewAttribute aggregationType="count" id="K24_VALUE"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_5">
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_5">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="year"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="K24_VALUE" source="K24_VALUE"/>
-      </input>
+        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="month"/></input>
     </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="CopyOfk19" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CopyOfk19" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DATE"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -730,7 +621,7 @@ AND &#xD;
         <viewAttribute id="DEV_PLAN_STATUS_FINALIZED"/>
         <viewAttribute id="DEV_PLAN_STATUS_CANCELED"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2)) </formula>
         </calculatedViewAttribute>
@@ -744,27 +635,20 @@ AND &#xD;
           <formula>TO_VARCHAR(&quot;EMPLOYEE_ID&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#CopyOfk19$$$$FT_INTRANET_KPI_K19$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="DATE" source="DATE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="OHRP" source="OHRP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_ID" source="TYPE_ID"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS" source="ACTIONS"/>
+      <input node="DWH_CDM_PEOPLE::FT_INTRANET_KPI_K19">
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED" source="STATUS_NOT_ASSIGNED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED" source="STATUS_INITIALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS" source="STATUS_IN_PROGRESS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED" source="STATUS_FINALIZED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED" source="STATUS_CANCELED"/>
       </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="CopyOfJoin_1" joinOrder="OUTSIDE_IN" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="CopyOfJoin_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="BUSINESS_UNIT"/>
         <viewAttribute id="DIVISION"/>
         <viewAttribute id="DEPARTMENT"/>
@@ -779,15 +663,15 @@ AND &#xD;
         <viewAttribute id="DEV_PLAN_STATUS_CANCELED_ALL"/>
         <viewAttribute id="ACTIONS_ALL"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
+    <calculatedViewAttributes/>
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
       </input>
-      <input node="#CopyOfk19">
+      <input node="CopyOfk19">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED_ALL" source="DEV_PLAN_STATUS_NOT_ASSIGNED"/>
@@ -798,11 +682,11 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_ALL" source="ACTIONS"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID_STRING"/>
       </input>
-      <joinAttribute name="EMPLOYEE_ID"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="EMPLOYEE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -816,25 +700,13 @@ AND &#xD;
         <viewAttribute aggregationType="sum" id="DEV_PLAN_STATUS_CANCELED_ALL"/>
         <viewAttribute aggregationType="sum" id="ACTIONS_ALL"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#CopyOfJoin_1">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_NOT_ASSIGNED_ALL" source="DEV_PLAN_STATUS_NOT_ASSIGNED_ALL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_INITIALIZED_ALL" source="DEV_PLAN_STATUS_INITIALIZED_ALL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_IN_PROGRESS_ALL" source="DEV_PLAN_STATUS_IN_PROGRESS_ALL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_FINALIZED_ALL" source="DEV_PLAN_STATUS_FINALIZED_ALL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" source="DEV_PLAN_STATUS_CANCELED_ALL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_ALL" source="ACTIONS_ALL"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="CopyOfJoin_1"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:UnionView" id="Union_3">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_3">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="BUSINESS_UNIT"/>
@@ -874,8 +746,8 @@ AND &#xD;
         <viewAttribute id="DEV_PLAN_STATUS_CANCELED_ALL"/>
         <viewAttribute id="ACTIONS_ALL"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input emptyUnionBehavior="NO_ROW" node="#k20">
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="k20">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -915,7 +787,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#k22">
+      <input emptyUnionBehavior="NO_ROW" node="k22">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -955,7 +827,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_3">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_3">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -995,7 +867,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_6">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_6">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -1035,7 +907,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_2">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -1075,7 +947,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_5">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_5">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -1115,7 +987,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_4">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_4">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -1155,7 +1027,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="DEV_PLAN_STATUS_CANCELED_ALL" null="true" value=""/>
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="ACTIONS_ALL" null="true" value=""/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#Aggregation_1">
+      <input emptyUnionBehavior="NO_ROW" node="Aggregation_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
@@ -1196,7 +1068,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="ACTIONS_ALL" source="ACTIONS_ALL"/>
       </input>
     </calculationView>
-  </calculationViews>
+</calculationViews>
   <logicalModel id="Union_3">
     <descriptions/>
     <attributes>
@@ -1384,8 +1256,8 @@ AND &#xD;
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="561" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -1410,6 +1282,14 @@ AND &#xD;
         <upperLeftCorner x="638" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="k18" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="k19" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="869" y="563"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1418,6 +1298,14 @@ AND &#xD;
         <upperLeftCorner x="792" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="k19" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="k21" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="253" y="563"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1426,6 +1314,14 @@ AND &#xD;
         <upperLeftCorner x="330" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="k21" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="k23" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="1023" y="563"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1434,6 +1330,14 @@ AND &#xD;
         <upperLeftCorner x="946" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="k23" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="k24" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="407" y="563"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1442,6 +1346,14 @@ AND &#xD;
         <upperLeftCorner x="484" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="k24" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Aggregation_2" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="638" y="389"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1470,6 +1382,14 @@ AND &#xD;
         <upperLeftCorner x="1100" y="467"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="CopyOfJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CopyOfk19" modelObjectNameSpace="CopyOfJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="1100" y="389"/>
         <rectangleSize height="-1" width="-1"/>
@@ -1479,5 +1399,5 @@ AND &#xD;
         <rectangleSize height="-1" width="-1"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>
