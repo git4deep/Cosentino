@@ -1,0 +1,39 @@
+PROCEDURE "COS_DWH::SSFF_JOB_APPLICATION_AUDIT_DELTA"(IN YEAR_VALUE INT, IN MONTH_VALUE INT) 
+LANGUAGE SQLSCRIPT --READS SQL DATA
+AS
+BEGIN
+DELETE FROM "STG_JOB_APPLICATION_AUDIT" WHERE "jobApplicationId" IN ( 
+    SELECT DISTINCT "applicationId" FROM "STG_JOB_APPLICATION" 
+    WHERE "jobReqId" IN 
+    (
+        SELECT "jobReqId" FROM
+        (
+            SELECT DISTINCT "jobReqId" FROM "FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" WHERE "year" = :YEAR_VALUE and "month" = :MONTH_VALUE
+            UNION
+            (
+            SELECT DISTINCT "jobReqId" FROM "FT_SSFF_RECRUITMENT_CLOSED_JOB_REQUISITIONS" WHERE "year" = :YEAR_VALUE and "month" = :MONTH_VALUE
+            )
+        ) 
+    ) 
+    /*
+    --Job Application Status can technically change even after disqualification, so all rows are reprocessed to account for edge cases 
+    
+    AND "applicationId" NOT IN
+    (
+        SELECT "applicationId" FROM "STG_JOB_APPLICATION" "JOB_APP"
+                LEFT JOIN
+                (
+                    SELECT DISTINCT AU_SUB."jobApplicationId", 
+                    SUM(CASE WHEN AU_SUB."newValue" IN ( 'Disqualified' , 'Hired' , 'Customized Rejection' , 'Requisition Closed') THEN 1 ELSE 0 END ) "total"
+                    FROM "STG_JOB_APPLICATION_AUDIT" AU_SUB 
+                    GROUP BY AU_SUB."jobApplicationId" 
+                ) "JOB_APP_AUDIT" 
+                ON JOB_APP."applicationId" = JOB_APP_AUDIT."jobApplicationId" 
+                WHERE JOB_APP_AUDIT."total" = 0
+    )
+    */
+);
+
+COMMIT;
+
+END

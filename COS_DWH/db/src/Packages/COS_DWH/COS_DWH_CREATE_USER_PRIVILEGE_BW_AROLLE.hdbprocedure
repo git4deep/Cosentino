@@ -1,0 +1,114 @@
+PROCEDURE "COS_DWH::CREATE_USER_PRIVILEGE_BW_AROLLE"
+LANGUAGE SQLSCRIPT --READS SQL DATA
+AS BEGIN
+    
+    DECLARE LV_SETCLASS_CECO NVARCHAR(4);
+    DECLARE LV_SETCLASS_CEBE NVARCHAR(4);
+    DECLARE CURSOR C_USER_CECO FOR SELECT DISTINCT "USER_ID" || '_BIS' "USER_ID", "COST_CENTER"   FROM "STG_USER_PRIVILEGE_CECO" WHERE "USER_ID" LIKE '%AROLLE%';
+    DECLARE CURSOR C_USER_CEBE FOR SELECT DISTINCT "USER_ID" || '_BIS' "USER_ID", "PROFIT_CENTER" FROM "STG_USER_PRIVILEGE_CEBE" WHERE "USER_ID" LIKE '%AROLLE%';
+    
+    LV_SETCLASS_CEBE := '0106';
+    LV_SETCLASS_CECO := '0101';
+    
+    DELETE FROM "USER_PRIVILEGE_PC" WHERE "USER_ID" LIKE '%AROLLE%';
+    DELETE FROM "USER_PRIVILEGE_CC" WHERE "USER_ID" LIKE '%AROLLE%';
+   -- TRUNCATE TABLE "USER_PRIVILEGE_PC";
+    --TRUNCATE TABLE "USER_PRIVILEGE_CC";
+    
+    
+        --TEMP
+    TRUNCATE TABLE "AUX_AUDIT";
+    INSERT INTO "AUX_AUDIT" SELECT 'CEBES', 'start' FROM DUMMY;
+    
+    --CEBE HIERARCHY
+    FOR USR AS C_USER_CEBE DO
+    
+        TRUNCATE TABLE "USER_PRIVILEGE_NODE";
+    --TEMP
+        INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'start');
+        INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", USR."PROFIT_CENTER");
+    
+        IF USR."PROFIT_CENTER" = '' THEN
+            --TEMP
+            INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'Profit center empty');
+            DATASET_CEBE = 
+                SELECT DISTINCT USR."USER_ID", BW."profitCenter", 'Sin Asignar - ' || BW."profitCenter" "BW_PROFIT_CENTER_AUX"
+                    FROM "REL_EMPLOYEE_POSITION_TIME" REL
+                    LEFT JOIN "STG_USER" EMP
+                    ON  REL."userId" = EMP."userId"
+                    LEFT JOIN "MSTR_BW_CECOS_CEBES" BW
+                    ON REL."costCenter" = BW."costCenter"
+                    WHERE UPPER(EMP."username") = REPLACE(USR."USER_ID", '_BIS', '') 
+                    AND REL."startDate" <= NOW() 
+                    AND REL."endDate"   >= NOW();
+                    
+            INSERT INTO "USER_PRIVILEGE_PC" SELECT DISTINCT "USER_ID", "profitCenter" FROM :DATASET_CEBE;
+            --ACCOUNT FOR PROFIT CENTERS WITHOUT COST_CENTERS
+            INSERT INTO "USER_PRIVILEGE_PC" SELECT DISTINCT "USER_ID", "BW_PROFIT_CENTER_AUX" FROM :DATASET_CEBE;
+            
+        ELSE 
+        
+                    --TEMP
+            INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'Profit center not empty');
+        
+            IF USR."PROFIT_CENTER" = 'ALL' THEN
+                NODES = SELECT DISTINCT "SETNAME" "NODE" FROM "STG_HR_SETNODE" WHERE "SETCLASS" = :LV_SETCLASS_CEBE;
+            ELSE
+                NODES = SELECT DISTINCT "PROFIT_CENTER" "NODE" FROM "STG_USER_PRIVILEGE_CEBE" WHERE "USER_ID" = REPLACE(USR."USER_ID", '_BIS', '') ;
+            END IF;
+            
+            INSERT INTO "USER_PRIVILEGE_NODE" SELECT * FROM :NODES;
+            CALL "COS_DWH::CREATE_USER_PRIVILEGE_BW_CEBE_PASS_START"(USR."USER_ID", :LV_SETCLASS_CEBE );
+            INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'Profit center not empty ended');
+        END IF;
+    END FOR;
+    
+    --CECO HIERARCHY
+    
+    --TEMP
+    INSERT INTO "AUX_AUDIT" SELECT 'CECO', 'start' FROM DUMMY;
+        
+    TRUNCATE TABLE "USER_PRIVILEGE_NODE";
+    FOR USR AS C_USER_CECO DO
+    
+        TRUNCATE TABLE "USER_PRIVILEGE_NODE";
+    
+        IF USR."COST_CENTER" = '' THEN
+        
+            DATASET_CECO = 
+                SELECT DISTINCT USR."USER_ID", REL."costCenter" 
+                    FROM "REL_EMPLOYEE_POSITION_TIME" REL
+                    LEFT JOIN "STG_USER" EMP
+                    ON  REL."userId" = EMP."userId"
+                    WHERE UPPER(EMP."username") = REPLACE(USR."USER_ID", '_BIS', '') 
+                    AND REL."startDate" <= NOW() 
+                    AND REL."endDate"   >= NOW();
+                    
+            INSERT INTO "USER_PRIVILEGE_CC" SELECT * FROM :DATASET_CECO;
+            
+        ELSE 
+        
+                    --TEMP
+            INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'Cost center not empty');
+        
+            IF USR."COST_CENTER" = 'ALL' THEN
+                NODES = SELECT DISTINCT "SETNAME" "NODE" FROM "STG_HR_SETNODE" WHERE "SETCLASS" = :LV_SETCLASS_CECO;
+            ELSE
+                NODES = SELECT DISTINCT "COST_CENTER" "NODE" FROM "STG_USER_PRIVILEGE_CECO" WHERE "USER_ID" =  REPLACE(USR."USER_ID", '_BIS', '') ;
+            END IF;
+            
+            INSERT INTO "USER_PRIVILEGE_NODE" SELECT * FROM :NODES;
+            CALL "COS_DWH::CREATE_USER_PRIVILEGE_BW_CECO_PASS_START"(USR."USER_ID", :LV_SETCLASS_CECO );
+            
+                    --TEMP
+            INSERT INTO "AUX_AUDIT" VALUES (USR."USER_ID", 'Cost center not empty ended');
+            
+            
+        END IF;
+    END FOR;
+    
+UPDATE "USER_PRIVILEGE_CC" SET "USER_ID" = 'AROLLE' WHERE "USER_ID" = 'AROLLE_BIS';
+UPDATE "USER_PRIVILEGE_PC" SET "USER_ID" = 'AROLLE' WHERE "USER_ID" = 'AROLLE_BIS';
+
+
+END

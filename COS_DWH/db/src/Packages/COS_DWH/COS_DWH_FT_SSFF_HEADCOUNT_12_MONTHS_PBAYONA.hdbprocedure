@@ -1,0 +1,35 @@
+PROCEDURE "COS_DWH::FT_SSFF_HEADCOUNT_12_MONTHS_PBAYONA"( )
+
+LANGUAGE SQLSCRIPT --READS SQL DATA
+AS
+BEGIN
+
+
+declare actual_year int;
+declare actual_month int;
+
+select year(current_date) into actual_year from dummy;
+select month(current_date) into actual_month from dummy;
+actual_year = '2021';
+actual_month = '2';
+
+DELETE FROM "FT_SSFF_HEADCOUNT_12MONTHS" WHERE "YEAR"=:actual_year and "MONTH"=:actual_month;
+
+EXECUTE IMMEDIATE 'INSERT INTO "FT_SSFF_HEADCOUNT_12MONTHS" 
+	SELECT
+		 "MONTH",		 
+		 "YEAR",
+		 "BUSINESS_UNIT",
+		 "DIVISION",
+		 "DEPARTMENT",
+		 "SUB_DEPARTMENT",
+		 sum("HEAD_WORKED_TOTAL") AS "HEADCOUNT" 
+	FROM "_SYS_BIC"."DWH_CDM_PEOPLE/CV_HEADCOUNT_TURNOVER_12MONTHS"(''PLACEHOLDER'' = (''$$IP_YEAR$$'','''||:actual_year||'''),''PLACEHOLDER'' = (''$$IP_MONTH$$'','''||:actual_month||''')) 
+	GROUP BY "BUSINESS_UNIT",
+		 "DIVISION",
+		 "DEPARTMENT",
+		 "SUB_DEPARTMENT",
+		 "YEAR",
+		 "MONTH"';	
+ 
+END
