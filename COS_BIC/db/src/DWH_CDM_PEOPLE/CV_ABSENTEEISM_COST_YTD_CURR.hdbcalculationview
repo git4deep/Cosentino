@@ -31,11 +31,11 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ABSENTEEISM_COST_YTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
@@ -94,20 +94,25 @@
         <descriptions defaultDescription="ABS_COST_CURR"/>
         <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="ABSENTEEISM_COST_CURRENCY"/>
       </attribute>
+    
+      <attribute id="DATE_DAYS5" order="17" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="Conversion_Date"/>
+        <keyMapping columnObjectName="CV_ABSENTEEISM_COST_YTD" columnName="DATE_DAYS5"/>
+      </attribute>
     </attributes>
     <calculatedAttributes>
       <calculatedAttribute id="DAYS5" hidden="false" order="13" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
-          <formula>to_date('$$IP_YEAR$$'||'.01.01')</formula>
+          <formula>(&quot;DATE_DAYS5&quot;)</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_AUX" hidden="false" order="14" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
         <descriptions defaultDescription="MONTH_AUX"/>
         <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
           <formula>RIGHT(100+&quot;MONTH&quot;,2)</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_NAME" hidden="true" order="15" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="MONTH_NAME"/>
         <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
@@ -126,7 +131,17 @@ WHEN &quot;MONTH_AUX&quot;  = 11 THEN 'NOV'
 WHEN &quot;MONTH_AUX&quot;  = 12 THEN 'DEC'
 END</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
+    
+      <calculatedAttribute id="YEAR_MONTH_START" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    
+        <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="13">
+    
+          <formula>'$$IP_YEAR$$'||'01'</formula>
+    
+        </keyCalculation>
+    
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
