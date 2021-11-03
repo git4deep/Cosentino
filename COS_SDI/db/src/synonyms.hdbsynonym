@@ -1,0 +1,32 @@
+{
+    "COS_SDI::DUMMY": {
+    "target": {
+        "object": "DUMMY",
+        "schema": "SYS"
+        }
+    },
+    "COS_DWH::MSTR_EMPLOYEE_MANAGER": {
+    "target": {
+        "object": "MSTR_EMPLOYEE_MANAGER",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::MSTR_EMPLOYEE": {
+    "target": {
+        "object": "MSTR_EMPLOYEE",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::MSTR_POSITION": {
+    "target": {
+        "object": "MSTR_POSITION",
+        "schema": "COS_DWH"
+        }
+    },
+    "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE": {
+    "target": {
+        "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
+        "schema": "COS_BIC"
+        }
+    }
+}
