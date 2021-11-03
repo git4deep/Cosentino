@@ -6,3 +6,5 @@ db/.env
 COS_DWH/db/.env
 # auto generated wildcard
 COS_SDI/db/.env
+# auto generated wildcard
+Cosentino/COS_SDI/db/.env

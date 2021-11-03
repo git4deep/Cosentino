@@ -7,7 +7,8 @@
                     "SELECT",
                     "SELECT METADATA",
                     "INSERT",
-                    "EXECUTE"
+                    "EXECUTE",
+                    "DELETE" 
                 ]
             }
         ]
