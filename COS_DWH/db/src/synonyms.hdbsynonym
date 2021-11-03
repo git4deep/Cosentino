@@ -1,0 +1,32 @@
+{
+  "COS_DWH::USERS": {
+    "target": {
+      "object": "USERS",
+      "schema": "SYS"
+    }
+  },
+  "COS_DWH::DUMMY": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
+  },
+  "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE": {
+    "target": {
+      "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
+      "schema": "COS_BIC"
+    }
+  },
+  "DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS": {
+    "target": {
+      "object": "DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS",
+      "schema": "COS_BIC"
+    }
+  },
+  "COS_DWH::SAML_USER_MAPPINGS": {
+    "target": {
+      "object": "SAML_USER_MAPPINGS",
+      "schema": "SYS"
+    }
+  }
+}

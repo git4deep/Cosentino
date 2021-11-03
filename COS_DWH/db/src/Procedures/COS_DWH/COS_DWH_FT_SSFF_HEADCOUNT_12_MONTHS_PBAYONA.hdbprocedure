@@ -8,8 +8,8 @@ BEGIN
 declare actual_year int;
 declare actual_month int;
 
-select year(current_date) into actual_year from dummy;
-select month(current_date) into actual_month from dummy;
+select year(current_date) into actual_year from "COS_DWH::DUMMY";
+select month(current_date) into actual_month from "COS_DWH::DUMMY";
 actual_year = '2021';
 actual_month = '2';
 
@@ -24,7 +24,7 @@ EXECUTE IMMEDIATE 'INSERT INTO "FT_SSFF_HEADCOUNT_12MONTHS"
 		 "DEPARTMENT",
 		 "SUB_DEPARTMENT",
 		 sum("HEAD_WORKED_TOTAL") AS "HEADCOUNT" 
-	FROM "_SYS_BIC"."DWH_CDM_PEOPLE/CV_HEADCOUNT_TURNOVER_12MONTHS"(''PLACEHOLDER'' = (''$$IP_YEAR$$'','''||:actual_year||'''),''PLACEHOLDER'' = (''$$IP_MONTH$$'','''||:actual_month||''')) 
+	FROM "DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS"(''PLACEHOLDER'' = (''$$IP_YEAR$$'','''||:actual_year||'''),''PLACEHOLDER'' = (''$$IP_MONTH$$'','''||:actual_month||''')) 
 	GROUP BY "BUSINESS_UNIT",
 		 "DIVISION",
 		 "DEPARTMENT",
