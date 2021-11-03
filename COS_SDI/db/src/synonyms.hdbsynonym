@@ -28,11 +28,5 @@
         "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
         "schema": "COS_BIC"
         }
-    },
-    "SAP_HR::FG_STG_HR_PA2001_SP": {
-    "target": {
-        "object": "SDI_SSFF::SAP_HR::FG_STG_HR_PA2001_SP",
-        "schema": "COS_DWH"
-        }
     }
 }
