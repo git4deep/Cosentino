@@ -215,16 +215,18 @@ AND
     
       <attribute id="YEAR_MONTH_START" hidden="true" order="13" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="YEAR_MONTH_START"/>
+    
         <keyMapping columnObjectName="Join_2" columnName="YEAR_MONTH_START"/>
+    
       </attribute>
     </attributes>
     <calculatedAttributes>
-      <calculatedAttribute id="DATE_DAYS5" hidden="true" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DATE_DAYS5"/>
+      <calculatedAttribute id="DATE_DAYS5" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Conversion_Date"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
           <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
