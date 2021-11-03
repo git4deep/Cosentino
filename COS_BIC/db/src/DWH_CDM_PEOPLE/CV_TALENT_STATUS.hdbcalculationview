@@ -22,19 +22,19 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>

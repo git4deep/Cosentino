@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CopyOfCV_BW_FINANCE_TEST" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CopyOfCV_BW_FINANCE_TEST" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="CopyOfCV_BW_FINANCE_TEST"/>
   <metadata changedAt="2019-09-27 16:26:57.281"/>
   <localVariables>
@@ -29,13 +29,13 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_BW">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_BW"/>
-      <localVariable>#IP_YEAR</localVariable>
+      <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="#CV_HEADCOUNT_BW">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_BW"/>
-      <localVariable>#IP_MONTH</localVariable>
+      <localVariable>IP_MONTH</localVariable>
     </mapping>
   </variableMappings>
   <informationModelLayout relativeWidthScenario="44"/>
@@ -43,23 +43,23 @@
     <DataSource id="FT_BW_FINANCIALS">
       <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
     </DataSource>
-    <DataSource id="FINANCIALS_MTD$$$$FT_BW_FINANCIALS$$">
+    <DataSource id="DWH_CDM_PEOPLE::FT_BW_FINANCIALS">
       <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
     </DataSource>
-    <DataSource id="FINANCIALS_YTD_LY$$$$FT_BW_FINANCIALS$$">
+    <DataSource id="FINANCIALS_YTD_LY$$$$DWH_CDM_PEOPLE::FT_BW_FINANCIALS$$">
       <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
     </DataSource>
-    <DataSource id="FINANCIALS_MTD_LY$$$$FT_BW_FINANCIALS$$">
+    <DataSource id="FINANCIALS_MTD_LY$$$$DWH_CDM_PEOPLE::FT_BW_FINANCIALS$$">
       <resourceUri>DWH_CDM_PEOPLE::FT_BW_FINANCIALS</resourceUri>
     </DataSource>
     <DataSource id="CV_HEADCOUNT_BW">
       <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER"/>
@@ -80,7 +80,7 @@
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
         </calculatedViewAttribute>
@@ -91,34 +91,20 @@
           <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))  </formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_BW_FINANCIALS">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+      <input node="FT_BW_FINANCIALS">
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD" source="COST_ELEMENT_AMOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD" source="COST_PLAN_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD" source="SALES_BUDGET_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD" source="SALES_AMOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+        <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/></input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER"/>
@@ -139,7 +125,7 @@ AND &#xD;
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
         </calculatedViewAttribute>
@@ -150,34 +136,20 @@ AND &#xD;
           <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))  </formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FINANCIALS_MTD$$$$FT_BW_FINANCIALS$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+      <input node="DWH_CDM_PEOPLE::FT_BW_FINANCIALS">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD" source="COST_PLAN_AMOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/></input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_YTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER"/>
@@ -198,7 +170,7 @@ AND &#xD;
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
         </calculatedViewAttribute>
@@ -209,34 +181,20 @@ AND &#xD;
           <formula>( (TO_INT('$$IP_YEAR$$') -1) ||'12')</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FINANCIALS_YTD_LY$$$$FT_BW_FINANCIALS$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+      <input node="FINANCIALS_YTD_LY$$$$DWH_CDM_PEOPLE::FT_BW_FINANCIALS$$">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_YTD_LY" source="SALES_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_YTD_LY" source="SALES_BUDGET_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_YTD_LY" source="COST_ELEMENT_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_YTD_LY" source="COST_PLAN_AMOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/></input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="FINANCIALS_MTD_LY" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER"/>
@@ -257,7 +215,7 @@ AND &#xD;
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
         </calculatedViewAttribute>
@@ -268,34 +226,20 @@ AND &#xD;
           <formula>((TO_INT('$$IP_YEAR$$')-1)||right(100+'$$IP_MONTH$$',2)) </formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FINANCIALS_MTD_LY$$$$FT_BW_FINANCIALS$$">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
+      <input node="FINANCIALS_MTD_LY$$$$DWH_CDM_PEOPLE::FT_BW_FINANCIALS$$">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_PLAN_AMOUNT_MTD_LY" source="COST_PLAN_AMOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY" source="IS_COST_ELEMENT_SALARY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" source="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_TYPE" source="COST_ELEMENT_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CURRENCY_CODE" source="COST_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_CURRENCY_CODE" source="SALES_CURRENCY_CODE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH"/></input>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_CY" joinOrder="OUTSIDE_IN" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_CY" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="PROFIT_CENTER"/>
         <viewAttribute id="COST_CENTER"/>
         <viewAttribute id="COMPANY"/>
@@ -322,12 +266,12 @@ AND &#xD;
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="SALES_FORMATTED_CURRENCY_CODE" length="3" expressionLanguage="COLUMN_ENGINE">
           <formula>IF(ISNULL(&quot;SALES_CURRENCY_CODE&quot;),'EUR',&quot;SALES_CURRENCY_CODE&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FINANCIALS_YTD">
+      <input node="FINANCIALS_YTD">
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
@@ -348,7 +292,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
       </input>
-      <input node="#FINANCIALS_MTD">
+      <input node="FINANCIALS_MTD">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD" source="SALES_AMOUNT_MTD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD" source="SALES_BUDGET_AMOUNT_MTD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD" source="COST_ELEMENT_AMOUNT_MTD"/>
@@ -364,18 +308,18 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
       </input>
-      <joinAttribute name="COST_CENTER"/>
-      <joinAttribute name="PROFIT_CENTER"/>
-      <joinAttribute name="COMPANY"/>
-      <joinAttribute name="YEAR"/>
-      <joinAttribute name="MONTH"/>
-      <joinAttribute name="COST_ELEMENT"/>
-      <joinAttribute name="COST_CENTER_NAME"/>
-      <joinAttribute name="PROFIT_CENTER_NAME"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_LY" joinOrder="OUTSIDE_IN" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="COST_CENTER"/>
+    <joinAttribute name="PROFIT_CENTER"/>
+    <joinAttribute name="COMPANY"/>
+    <joinAttribute name="YEAR"/>
+    <joinAttribute name="MONTH"/>
+    <joinAttribute name="COST_ELEMENT"/>
+    <joinAttribute name="COST_CENTER_NAME"/>
+    <joinAttribute name="PROFIT_CENTER_NAME"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="FINANCIALS_LY" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="COST_CENTER"/>
         <viewAttribute id="PROFIT_CENTER"/>
         <viewAttribute id="COMPANY"/>
@@ -402,12 +346,12 @@ AND &#xD;
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="SALES_FORMATTED_CURRENCY_CODE" length="3" expressionLanguage="COLUMN_ENGINE">
           <formula>IF(ISNULL(&quot;SALES_CURRENCY_CODE&quot;),'EUR',&quot;SALES_CURRENCY_CODE&quot;)</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FINANCIALS_YTD_LY">
+      <input node="FINANCIALS_YTD_LY">
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER" source="PROFIT_CENTER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY" source="COMPANY"/>
@@ -428,7 +372,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
       </input>
-      <input node="#FINANCIALS_MTD_LY">
+      <input node="FINANCIALS_MTD_LY">
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_AMOUNT_MTD_LY" source="SALES_AMOUNT_MTD_LY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_BUDGET_AMOUNT_MTD_LY" source="SALES_BUDGET_AMOUNT_MTD_LY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT_AMOUNT_MTD_LY" source="COST_ELEMENT_AMOUNT_MTD_LY"/>
@@ -449,23 +393,23 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="PROFIT_CENTER_NAME" source="PROFIT_CENTER_NAME"/>
       </input>
-      <joinAttribute name="COST_CENTER"/>
-      <joinAttribute name="PROFIT_CENTER"/>
-      <joinAttribute name="COMPANY"/>
-      <joinAttribute name="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
-      <joinAttribute name="IS_COST_ELEMENT_SALARY"/>
-      <joinAttribute name="YEAR"/>
-      <joinAttribute name="MONTH"/>
-      <joinAttribute name="SALES_CURRENCY_CODE"/>
-      <joinAttribute name="COST_ELEMENT"/>
-      <joinAttribute name="COST_ELEMENT_TYPE"/>
-      <joinAttribute name="COST_CURRENCY_CODE"/>
-      <joinAttribute name="COST_CENTER_NAME"/>
-      <joinAttribute name="PROFIT_CENTER_NAME"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:UnionView" id="Union_1">
-      <descriptions/>
-      <viewAttributes>
+    <joinAttribute name="COST_CENTER"/>
+    <joinAttribute name="PROFIT_CENTER"/>
+    <joinAttribute name="COMPANY"/>
+    <joinAttribute name="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
+    <joinAttribute name="IS_COST_ELEMENT_SALARY"/>
+    <joinAttribute name="YEAR"/>
+    <joinAttribute name="MONTH"/>
+    <joinAttribute name="SALES_CURRENCY_CODE"/>
+    <joinAttribute name="COST_ELEMENT"/>
+    <joinAttribute name="COST_ELEMENT_TYPE"/>
+    <joinAttribute name="COST_CURRENCY_CODE"/>
+    <joinAttribute name="COST_CENTER_NAME"/>
+    <joinAttribute name="PROFIT_CENTER_NAME"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER_NAME"/>
@@ -474,9 +418,9 @@ AND &#xD;
         <viewAttribute id="COST_ELEMENT_TYPE"/>
         <viewAttribute id="COST_ELEMENT"/>
         <viewAttribute id="SALES_CURRENCY_CODE"/>
-        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
-        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
-        <viewAttribute id="COMPANY" transparentFilter="false"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
         <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
         <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
         <viewAttribute id="SALES_AMOUNT_YTD"/>
@@ -505,8 +449,8 @@ AND &#xD;
         <viewAttribute id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
         <viewAttribute id="SALES_FORMATTED_CURRENCY_CODE"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input emptyUnionBehavior="NO_ROW" node="#FINANCIALS_CY">
+    <calculatedViewAttributes/>
+      <input emptyUnionBehavior="NO_ROW" node="FINANCIALS_CY">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
@@ -546,7 +490,7 @@ AND &#xD;
         <mapping xsi:type="Calculation:ConstantAttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" null="true" value=""/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_FORMATTED_CURRENCY_CODE" source="SALES_FORMATTED_CURRENCY_CODE"/>
       </input>
-      <input emptyUnionBehavior="NO_ROW" node="#FINANCIALS_LY">
+      <input emptyUnionBehavior="NO_ROW" node="FINANCIALS_LY">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
@@ -587,37 +531,28 @@ AND &#xD;
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_FORMATTED_CURRENCY_CODE" source="SALES_FORMATTED_CURRENCY_CODE"/>
       </input>
     </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="HEADCOUNT_YTD"/>
         <viewAttribute id="HEADCOUNT_YTD_LY"/>
         <viewAttribute id="HEADCOUNT_MTD"/>
         <viewAttribute id="HEADCOUNT_MTD_LY"/>
-        <viewAttribute id="CONTINGENT_WORKER" transparentFilter="false"/>
-        <viewAttribute id="YEAR" transparentFilter="false"/>
-        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
+        <viewAttribute id="YEAR"/>
+        <viewAttribute id="COST_CENTER"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="VARCHAR" id="COST_ELEMENT" length="32" expressionLanguage="COLUMN_ENGINE">
           <formula>'6400001'</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#CV_HEADCOUNT_BW">
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD" source="HEADCOUNT_YTD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD_LY" source="HEADCOUNT_YTD_LY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD" source="HEADCOUNT_MTD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD_LY" source="HEADCOUNT_MTD_LY"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER" source="COST_CENTER"/>
-      </input>
+      <input node="CV_HEADCOUNT_BW"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="COST_CENTER_NAME"/>
@@ -626,9 +561,9 @@ AND &#xD;
         <viewAttribute id="COST_ELEMENT_TYPE"/>
         <viewAttribute id="COST_ELEMENT"/>
         <viewAttribute id="SALES_CURRENCY_CODE"/>
-        <viewAttribute id="COST_CENTER_OLD" transparentFilter="false"/>
-        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
-        <viewAttribute id="COMPANY" transparentFilter="false"/>
+        <viewAttribute id="COST_CENTER_OLD"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
         <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
         <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
         <viewAttribute id="SALES_AMOUNT_YTD"/>
@@ -660,16 +595,16 @@ AND &#xD;
         <viewAttribute id="HEADCOUNT_YTD_LY"/>
         <viewAttribute id="HEADCOUNT_MTD"/>
         <viewAttribute id="HEADCOUNT_MTD_LY"/>
-        <viewAttribute id="CONTINGENT_WORKER" transparentFilter="false"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="COST_CENTER" length="32" expressionLanguage="COLUMN_ENGINE">
           <formula>IF ( &quot;COST_CENTER_OLD&quot; = 'Sin Asignar', &quot;COST_CENTER_OLD&quot; + ' - ' + &quot;PROFIT_CENTER&quot;, &quot;COST_CENTER_OLD&quot;)</formula>
         </calculatedViewAttribute>
         <calculatedViewAttribute datatype="DOUBLE" id="SALES_AMOUNT_YTD_" expressionLanguage="SQL">
-          <formula>CASE &#xD;
-when &quot;SALES_CURRENCY_CODE&quot; = 'JPY' then &quot;SALES_AMOUNT_YTD&quot;/100&#xD;
-else &quot;SALES_AMOUNT_YTD&quot;&#xD;
+          <formula>CASE 
+when &quot;SALES_CURRENCY_CODE&quot; = 'JPY' then &quot;SALES_AMOUNT_YTD&quot;/100
+else &quot;SALES_AMOUNT_YTD&quot;
 end</formula>
         </calculatedViewAttribute>
         <calculatedViewAttribute datatype="DOUBLE" id="SALES_AMOUNT_MTD_" expressionLanguage="COLUMN_ENGINE">
@@ -741,8 +676,12 @@ end</formula>
         <calculatedViewAttribute datatype="DOUBLE" id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_" expressionLanguage="COLUMN_ENGINE">
           <formula>if(&quot;COST_CURRENCY_CODE&quot; = 'JPY',&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY&quot;/100,&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY&quot;)</formula>
         </calculatedViewAttribute>
-      </calculatedViewAttributes>
-      <input node="#Union_1">
+      
+      <calculatedViewAttribute id="YEAR_MONTH_START" datatype="NVARCHAR" length="6" expressionLanguage="SQL">
+        <formula>'$$IP_YEAR$$'||'01'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+      <input node="Union_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_NAME" source="COST_CENTER_NAME"/>
@@ -782,7 +721,7 @@ end</formula>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" source="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_FORMATTED_CURRENCY_CODE" source="SALES_FORMATTED_CURRENCY_CODE"/>
       </input>
-      <input node="#Projection_1">
+      <input node="Projection_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD" source="HEADCOUNT_YTD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_YTD_LY" source="HEADCOUNT_YTD_LY"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT_MTD" source="HEADCOUNT_MTD"/>
@@ -793,12 +732,12 @@ end</formula>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_CENTER_OLD" source="COST_CENTER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="COST_ELEMENT" source="COST_ELEMENT"/>
       </input>
-      <joinAttribute name="MONTH"/>
-      <joinAttribute name="YEAR"/>
-      <joinAttribute name="COST_CENTER_OLD"/>
-      <joinAttribute name="COST_ELEMENT"/>
-    </calculationView>
-  </calculationViews>
+    <joinAttribute name="MONTH"/>
+    <joinAttribute name="YEAR"/>
+    <joinAttribute name="COST_CENTER_OLD"/>
+    <joinAttribute name="COST_ELEMENT"/>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Join_1">
     <descriptions defaultDescription="CopyOfCV_BW_FINANCE_TEST"/>
     <attributes>
@@ -834,11 +773,11 @@ end</formula>
         <descriptions defaultDescription="SALES_CURRENCY_CODE"/>
         <keyMapping columnObjectName="Join_1" columnName="SALES_CURRENCY_CODE"/>
       </attribute>
-      <attribute id="PROFIT_CENTER" order="23" attributeHierarchyActive="false" descriptionColumnName="PROFIT_CENTER_NAME" displayAttribute="false" transparentFilter="false">
+      <attribute id="PROFIT_CENTER" order="23" attributeHierarchyActive="false" descriptionColumnName="PROFIT_CENTER_NAME" displayAttribute="false">
         <descriptions defaultDescription="PROFIT_CENTER"/>
         <keyMapping columnObjectName="Join_1" columnName="PROFIT_CENTER"/>
       </attribute>
-      <attribute id="COMPANY" order="24" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="COMPANY" order="24" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="COMPANY"/>
         <keyMapping columnObjectName="Join_1" columnName="COMPANY"/>
       </attribute>
@@ -854,13 +793,18 @@ end</formula>
         <descriptions defaultDescription="SALES_FORMATTED_CURRENCY_CODE"/>
         <keyMapping columnObjectName="Join_1" columnName="SALES_FORMATTED_CURRENCY_CODE"/>
       </attribute>
-      <attribute id="CONTINGENT_WORKER" order="56" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="CONTINGENT_WORKER" order="56" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="CONTINGENT_WORKER"/>
         <keyMapping columnObjectName="Join_1" columnName="CONTINGENT_WORKER"/>
       </attribute>
       <attribute id="COST_CENTER" order="57" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="COST_CENTER"/>
         <keyMapping columnObjectName="Join_1" columnName="COST_CENTER"/>
+      </attribute>
+    
+      <attribute id="YEAR_MONTH_START" hidden="true" order="58" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="YEAR_MONTH_START"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR_MONTH_START"/>
       </attribute>
     </attributes>
     <calculatedAttributes>
@@ -869,38 +813,38 @@ end</formula>
         <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
           <formula>if(&quot;IS_COST_ELEMENT_SALARY&quot; = 1, 'Wages', 'Extra Costs')</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_AUX" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
         <descriptions defaultDescription="MONTH_AUX"/>
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
           <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_NAME" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="MONTH_NAME"/>
         <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
-          <formula>CASE &#xD;
-WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'&#xD;
-WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'&#xD;
-WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'&#xD;
-WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'&#xD;
+          <formula>CASE 
+WHEN &quot;MONTH_AUX&quot; = 01 THEN 'JAN'
+WHEN &quot;MONTH_AUX&quot; = 02 THEN 'FEB'
+WHEN &quot;MONTH_AUX&quot;= 03 THEN 'MAR'
+WHEN &quot;MONTH_AUX&quot; = 04 THEN 'APR'
+WHEN &quot;MONTH_AUX&quot; = 05 THEN 'MAY'
+WHEN &quot;MONTH_AUX&quot; = 06 THEN 'JUN'
+WHEN &quot;MONTH_AUX&quot; = 07 THEN 'JUL'
+WHEN &quot;MONTH_AUX&quot;= 08 THEN 'AUG'
+WHEN &quot;MONTH_AUX&quot; = 09 THEN 'SEP'
+WHEN &quot;MONTH_AUX&quot; = 10 THEN 'OCT'
+WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
+WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
 END</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="DAYS5" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
-          <formula>to_date('$$IP_YEAR$$'||'.01.01')</formula>
+          <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
@@ -913,7 +857,7 @@ END</formula>
       <measure id="SALES_AMOUNT_YTD" order="27" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_YTD"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -923,9 +867,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -937,7 +880,7 @@ END</formula>
       <measure id="SALES_AMOUNT_MTD" order="28" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_MTD"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -947,9 +890,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -961,7 +903,7 @@ END</formula>
       <measure id="SALES_AMOUNT_YTD_LY" order="29" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_YTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -971,9 +913,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -985,7 +926,7 @@ END</formula>
       <measure id="SALES_AMOUNT_MTD_LY" order="30" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_MTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -995,9 +936,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1009,7 +949,7 @@ END</formula>
       <measure id="SALES_BUDGET_AMOUNT_YTD" order="31" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD"/>
         <unitCurrencyAttribute attributeName="SALES_BUDGET_AMOUNT_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1019,9 +959,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1033,7 +972,7 @@ END</formula>
       <measure id="SALES_BUDGET_AMOUNT_MTD" order="32" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD"/>
         <unitCurrencyAttribute attributeName="SALES_BUDGET_AMOUNT_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1043,9 +982,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1057,7 +995,7 @@ END</formula>
       <measure id="SALES_BUDGET_AMOUNT_YTD_LY" order="33" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_BUDGET_AMOUNT_YTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1067,9 +1005,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1081,7 +1018,7 @@ END</formula>
       <measure id="SALES_BUDGET_AMOUNT_MTD_LY" order="34" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_BUDGET_AMOUNT_MTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_BUDGET_AMOUNT_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1091,9 +1028,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1105,7 +1041,7 @@ END</formula>
       <measure id="COST_ELEMENT_AMOUNT_YTD" order="35" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD"/>
         <unitCurrencyAttribute attributeName="COST_ELEMENT_AMOUNT_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1115,9 +1051,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1129,7 +1064,7 @@ END</formula>
       <measure id="COST_ELEMENT_AMOUNT_MTD" order="36" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD"/>
         <unitCurrencyAttribute attributeName="COST_ELEMENT_AMOUNT_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1139,9 +1074,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1153,7 +1087,7 @@ END</formula>
       <measure id="COST_ELEMENT_AMOUNT_YTD_LY" order="37" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_ELEMENT_AMOUNT_YTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1163,9 +1097,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1177,7 +1110,7 @@ END</formula>
       <measure id="COST_ELEMENT_AMOUNT_MTD_LY" order="38" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_ELEMENT_AMOUNT_MTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_ELEMENT_AMOUNT_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1187,9 +1120,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1201,7 +1133,7 @@ END</formula>
       <measure id="COST_PLAN_AMOUNT_YTD" order="39" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD"/>
         <unitCurrencyAttribute attributeName="COST_PLAN_AMOUNT_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1211,9 +1143,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1225,7 +1156,7 @@ END</formula>
       <measure id="COST_PLAN_AMOUNT_MTD" order="40" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD"/>
         <unitCurrencyAttribute attributeName="COST_PLAN_AMOUNT_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1235,9 +1166,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1249,7 +1179,7 @@ END</formula>
       <measure id="COST_PLAN_AMOUNT_YTD_LY" order="41" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_PLAN_AMOUNT_YTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_PLAN_AMOUNT_YTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1259,9 +1189,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1273,7 +1202,7 @@ END</formula>
       <measure id="COST_PLAN_AMOUNT_MTD_LY" order="42" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_PLAN_AMOUNT_MTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_PLAN_AMOUNT_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PLAN_AMOUNT_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1283,9 +1212,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1297,7 +1225,7 @@ END</formula>
       <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="43" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1307,9 +1235,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1321,7 +1248,7 @@ END</formula>
       <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="44" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1331,9 +1258,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1345,7 +1271,7 @@ END</formula>
       <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="45" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1355,9 +1281,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1369,7 +1294,7 @@ END</formula>
       <measure id="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="46" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
         <unitCurrencyAttribute attributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1379,9 +1304,8 @@ END</formula>
             <attribute attributeName="SALES_FORMATTED_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1393,7 +1317,7 @@ END</formula>
       <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD" order="47" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD"/>
         <unitCurrencyAttribute attributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1403,9 +1327,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1417,7 +1340,7 @@ END</formula>
       <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD" order="48" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD"/>
         <unitCurrencyAttribute attributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1427,9 +1350,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1441,7 +1363,7 @@ END</formula>
       <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY" order="49" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_YTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1451,9 +1373,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1465,7 +1386,7 @@ END</formula>
       <measure id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY" order="50" semanticType="amount" aggregationType="sum" measureType="amount">
         <descriptions defaultDescription="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY"/>
         <unitCurrencyAttribute attributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY">
+        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_CURRENCY" convert="true">
           <client>
             <value>020</value>
           </client>
@@ -1475,9 +1396,8 @@ END</formula>
             <attribute attributeName="COST_CURRENCY_CODE"/>
           </sourceCurrency>
           <erpDecimalShift>true</erpDecimalShift>
-          <erpDecimalShiftBack>false</erpDecimalShiftBack>
           <targetCurrency>
-            <localVariable>#IP_CURRENCY</localVariable>
+            <localVariable>IP_CURRENCY</localVariable>
           </targetCurrency>
           <referenceDate>
             <attribute attributeName="DAYS5"/>
@@ -1506,112 +1426,157 @@ END</formula>
     <calculatedMeasures>
       <measure id="SALES_VS_SALARY_MTD" hidden="false" order="4" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="SALES_VS_SALARY_MTD"/>
-        <formula>if(&quot;SALES_AMOUNT_MTD&quot; != 0,&#xD;
-&quot;COST_ELEMENT_AMOUNT_MTD&quot;/&quot;SALES_AMOUNT_MTD&quot;,&#xD;
+        <formula>if(&quot;SALES_AMOUNT_MTD&quot; != 0,
+&quot;COST_ELEMENT_AMOUNT_MTD&quot;/&quot;SALES_AMOUNT_MTD&quot;,
 0)*100</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="SALES_VS_SALARY_MTD_LY" hidden="false" order="5" aggregationType="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="SALES_VS_SALARY_MTD_LY"/>
-        <formula>if(&quot;SALES_AMOUNT_MTD_LY&quot; != 0,&#xD;
-&quot;COST_ELEMENT_AMOUNT_MTD_LY&quot;/&quot;SALES_AMOUNT_MTD_LY&quot;,&#xD;
+        <formula>if(&quot;SALES_AMOUNT_MTD_LY&quot; != 0,
+&quot;COST_ELEMENT_AMOUNT_MTD_LY&quot;/&quot;SALES_AMOUNT_MTD_LY&quot;,
 0)*100</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_MTD" hidden="false" order="7" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(&quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;SALES_AMOUNT_MTD&quot;  / &quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="PERCENTAGE_COST_INCREASE_MTD" hidden="false" order="8" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Wages Growth"/>
         <formula>IF(&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot;  / &quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_YTD" hidden="false" order="9" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(ISNULL(&quot;SALES_AMOUNT_YTD_LY&quot;), 1, &quot;SALES_AMOUNT_YTD&quot; / &quot;SALES_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="PERCENTAGE_COST_INCREASE_YTD" hidden="false" order="10" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Wages Growth"/>
         <formula>IF(ISNULL(&quot;COST_ELEMENT_AMOUNT_YTD_LY&quot;), 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        
+        </measure>
       <measure id="COST_PER_EMPLOYEE_MTD" hidden="false" order="11" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD"/>
-        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD&quot;) OR &quot;HEADCOUNT_MTD&quot; = 0, 0, &#xD;
-    if(&quot;HEADCOUNT_MTD&quot;  >= 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot; / &quot;HEADCOUNT_MTD&quot;, &quot;COST_ELEMENT_AMOUNT_MTD&quot; * &quot;HEADCOUNT_MTD&quot;) )</formula>
-      </measure>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD&quot;) OR &quot;HEADCOUNT_MTD&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_MTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot; / &quot;HEADCOUNT_MTD&quot;, &quot;COST_ELEMENT_AMOUNT_MTD&quot; * &quot;HEADCOUNT_MTD&quot;) )</formula>
+      
+        
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD" hidden="false" order="12" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD"/>
-        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD&quot;) OR &quot;HEADCOUNT_YTD&quot; = 0, 0, &#xD;
-    if(&quot;HEADCOUNT_YTD&quot;  >= 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;HEADCOUNT_YTD&quot;, &quot;COST_ELEMENT_AMOUNT_YTD&quot; * &quot;HEADCOUNT_YTD&quot;) )</formula>
-      </measure>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD&quot;) OR &quot;HEADCOUNT_YTD&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_YTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;HEADCOUNT_YTD&quot;, &quot;COST_ELEMENT_AMOUNT_YTD&quot; * &quot;HEADCOUNT_YTD&quot;) )</formula>
+      
+        
+        </measure>
       <measure id="COST_PER_EMPLOYEE_MTD_LY" hidden="false" order="13" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_LY"/>
-        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD_LY&quot;) OR &quot;HEADCOUNT_MTD_LY&quot; = 0, 0, &#xD;
-    if(&quot;HEADCOUNT_MTD_LY&quot;  >= 1, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; / &quot;HEADCOUNT_MTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; * &quot;HEADCOUNT_MTD_LY&quot;) )</formula>
-      </measure>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_MTD_LY&quot;) OR &quot;HEADCOUNT_MTD_LY&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_MTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; / &quot;HEADCOUNT_MTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; * &quot;HEADCOUNT_MTD_LY&quot;) )</formula>
+      
+        
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD_LY" hidden="false" order="14" aggregationType="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_LY"/>
-        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD_LY&quot;) OR &quot;HEADCOUNT_YTD_LY&quot; = 0, 0, &#xD;
-    if(&quot;HEADCOUNT_YTD_LY&quot;  >= 1, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; / &quot;HEADCOUNT_YTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; * &quot;HEADCOUNT_YTD_LY&quot;) )</formula>
-      </measure>
+        <formula>IF(ISNULL(&quot;HEADCOUNT_YTD_LY&quot;) OR &quot;HEADCOUNT_YTD_LY&quot; = 0, 0, 
+    if(&quot;HEADCOUNT_YTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; / &quot;HEADCOUNT_YTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; * &quot;HEADCOUNT_YTD_LY&quot;) )</formula>
+      
+        
+        </measure>
     </calculatedMeasures>
     <restrictedMeasures/>
     <localDimensions>
       <localDimension id="ORG_HIER_BW">
-        <attributeRef xsi:type="DataFoundation:Attribute">#PROFIT_CENTER</attributeRef>
-        <attributeRef xsi:type="DataFoundation:Attribute">#COST_CENTER</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">PROFIT_CENTER</attributeRef>
+        <attributeRef xsi:type="DataFoundation:Attribute">COST_CENTER</attributeRef>
         <hierarchies>
           <hierarchy xsi:type="Dimension:LeveledHierarchy" id="ORG_HIER_BW" aggregateAllNodes="true" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED">
             <descriptions defaultDescription="ORG_HIER_BW"/>
             <levels>
-              <level levelAttribute="#PROFIT_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="#PROFIT_CENTER"/>
-              <level levelAttribute="#COST_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="#COST_CENTER"/>
+              <level levelAttribute="PROFIT_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="PROFIT_CENTER"/>
+              <level levelAttribute="COST_CENTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="COST_CENTER"/>
             </levels>
           </hierarchy>
         </hierarchies>
       </localDimension>
     </localDimensions>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="false" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="258" y="87"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="454" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_YTD" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="473"/>
+        <upperLeftCorner x="92" y="676"/>
         <rectangleSize height="64" width="179"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_MTD" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="215" y="473"/>
+        <upperLeftCorner x="320" y="676"/>
         <rectangleSize height="64" width="181"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_YTD_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="410" y="473"/>
+        <upperLeftCorner x="797" y="676"/>
         <rectangleSize height="64" width="190"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_MTD_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="614" y="473"/>
+        <upperLeftCorner x="551" y="676"/>
         <rectangleSize height="64" width="196"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_CY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="235" y="377"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="304" y="516"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
+    <shape modelObjectName="FINANCIALS_YTD" modelObjectNameSpace="FINANCIALS_CY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="FINANCIALS_MTD" modelObjectNameSpace="FINANCIALS_CY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="435" y="377"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="596" y="516"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
+    <shape modelObjectName="FINANCIALS_YTD_LY" modelObjectNameSpace="FINANCIALS_LY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="FINANCIALS_MTD_LY" modelObjectNameSpace="FINANCIALS_LY" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="335" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="540" y="376"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="181" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="330" y="376"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="258" y="165"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="454" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
-    </shapes>
-  </layout>
+    
+    <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>

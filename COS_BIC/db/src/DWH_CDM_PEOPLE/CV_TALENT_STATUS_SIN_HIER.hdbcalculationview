@@ -22,19 +22,19 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K20_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_INTRANET_K22_MTD" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
@@ -1242,7 +1242,7 @@ AND
       </measure>
       <measure id="TOP_TALENT_DEV_PLAN" hidden="false" order="8" aggregationType="sum" measureType="simple" datatype="REAL" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="TOP_TALENT_DEV_PLAN"/>
-        <formula>(&quot;TOP_TALENT_STATUS_FINALIZED&quot;/(&quot;ACTIONS_TOP_PERFORMING&quot;-&quot;TOP_TALENT_STATUS_CANCELED&quot;))*100</formula>
+        <formula>IF((&quot;ACTIONS_TOP_PERFORMING&quot;-&quot;TOP_TALENT_STATUS_CANCELED&quot;) = 0,0,&quot;TOP_TALENT_STATUS_FINALIZED&quot;/(&quot;ACTIONS_TOP_PERFORMING&quot;-&quot;TOP_TALENT_STATUS_CANCELED&quot;))*100</formula>
       </measure>
       <measure id="DEV_PLAN_UNDER_PERFORMING" hidden="false" order="9" aggregationType="sum" measureType="simple" datatype="REAL" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="DEV_PLAN_UNDER_PERFORMING"/>

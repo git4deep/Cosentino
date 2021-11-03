@@ -690,7 +690,9 @@ end</formula>
         </calculatedViewAttribute>
       
       <calculatedViewAttribute id="YEAR_MONTH_START" datatype="NVARCHAR" length="6" expressionLanguage="SQL">
+      
         <formula>'$$IP_YEAR$$'||'01'</formula>
+      
       </calculatedViewAttribute>
     </calculatedViewAttributes>
       <input node="Union_1">
@@ -821,7 +823,9 @@ end</formula>
     
       <attribute id="YEAR_MONTH_START" hidden="true" order="60" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="YEAR_MONTH_START"/>
+    
         <keyMapping columnObjectName="Join_1" columnName="YEAR_MONTH_START"/>
+    
       </attribute>
     </attributes>
     <calculatedAttributes>
@@ -830,13 +834,13 @@ end</formula>
         <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
           <formula>if(&quot;IS_COST_ELEMENT_SALARY&quot; = 1, 'Wages', 'Extra Costs')</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="MONTH_AUX" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
         <descriptions defaultDescription="MONTH_AUX"/>
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
           <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="MONTH_NAME" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="MONTH_NAME"/>
         <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
@@ -855,13 +859,13 @@ WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
 WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
 END</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="DAYS5" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
           <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
@@ -1524,27 +1528,27 @@ END</formula>
 <layout>
   <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="454.3826492021241" y="112"/>
+        <upperLeftCorner x="454" y="112"/>
         <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_YTD" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="92" y="676.9999964237213"/>
+        <upperLeftCorner x="92" y="676"/>
         <rectangleSize height="64" width="179"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_MTD" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="320.9999999999999" y="676.9999964237213"/>
+        <upperLeftCorner x="320" y="676"/>
         <rectangleSize height="64" width="181"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_YTD_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="797.9999999999999" y="676.9999964237213"/>
+        <upperLeftCorner x="797" y="676"/>
         <rectangleSize height="64" width="190"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_MTD_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="551.9999999999999" y="676.9999964237213"/>
+        <upperLeftCorner x="551" y="676"/>
         <rectangleSize height="64" width="196"/>
       </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_CY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="304.8333333333332" y="516.9999976158142"/>
+        <upperLeftCorner x="304" y="516"/>
         <rectangleSize height="-1" width="160"/>
       </shape>
     <shape modelObjectName="FINANCIALS_YTD" modelObjectNameSpace="FINANCIALS_CY" modelObjectType="JoinNodeInput">
@@ -1556,7 +1560,7 @@ END</formula>
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="FINANCIALS_LY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="596.6666666666665" y="516.9999976158142"/>
+        <upperLeftCorner x="596" y="516"/>
         <rectangleSize height="-1" width="160"/>
       </shape>
     <shape modelObjectName="FINANCIALS_YTD_LY" modelObjectNameSpace="FINANCIALS_LY" modelObjectType="JoinNodeInput">
@@ -1568,15 +1572,15 @@ END</formula>
       <rectangleSize width="250"/>
     </shape>
       <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="540.8481846641774" y="376.9999988079071"/>
+        <upperLeftCorner x="540" y="376"/>
         <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="330.84818466417755" y="376.9999988079071"/>
+        <upperLeftCorner x="330" y="376"/>
         <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="454.3826492021241" y="217"/>
+        <upperLeftCorner x="454" y="217"/>
         <rectangleSize height="-1" width="160"/>
       </shape>
     
