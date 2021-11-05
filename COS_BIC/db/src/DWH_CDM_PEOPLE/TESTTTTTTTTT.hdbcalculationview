@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::TESTTTTTTTTT" applyPrivilegeType="NONE" defaultClient="" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::TESTTTTTTTTT" applyPrivilegeType="NONE" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="true" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="TESTTTTTTTTT"/>
   <metadata changedAt="2019-09-27 16:26:44.131"/>
   <localVariables/>
   <variableMappings>
-    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="#CV_BW_FINANCE_TEST" value="2019">
+    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="CV_BW_FINANCE_TEST" targetType="CALCULATION_VIEW" value="2019">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_BW_FINANCE_TEST"/>
     </mapping>
-    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="#CV_BW_FINANCE_TEST" value="6">
+    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="CV_BW_FINANCE_TEST" targetType="CALCULATION_VIEW" value="6">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_BW_FINANCE_TEST"/>
     </mapping>
-    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="#CV_HEADCOUNT" value="2019">
+    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="CV_HEADCOUNT" targetType="CALCULATION_VIEW" value="2019">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT"/>
     </mapping>
-    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="#CV_HEADCOUNT" value="6">
+    <mapping xsi:type="Variable:ConstantVariableMapping" dataSource="CV_HEADCOUNT" targetType="CALCULATION_VIEW" value="6">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT"/>
     </mapping>
   </variableMappings>
@@ -27,10 +27,10 @@
       <resourceUri>DWH_CDM_PEOPLE::CV_HEADCOUNT</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="IS_COST_ELEMENT_SALARY_NAME"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
@@ -40,9 +40,9 @@
         <viewAttribute id="SALES_CURRENCY_CODE"/>
         <viewAttribute id="COST_CENTER_NAME"/>
         <viewAttribute id="PROFIT_CENTER_NAME"/>
-        <viewAttribute id="COST_CENTER" transparentFilter="false"/>
-        <viewAttribute id="PROFIT_CENTER" transparentFilter="false"/>
-        <viewAttribute id="COMPANY" transparentFilter="false"/>
+        <viewAttribute id="COST_CENTER"/>
+        <viewAttribute id="PROFIT_CENTER"/>
+        <viewAttribute id="COMPANY"/>
         <viewAttribute id="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY"/>
         <viewAttribute id="IS_COST_ELEMENT_SALARY"/>
         <viewAttribute id="SALES_AMOUNT_YTD"/>
@@ -88,10 +88,10 @@
         <viewAttribute id="HEADCOUNT_YTD_LY"/>
         <viewAttribute id="HEADCOUNT_MTD"/>
         <viewAttribute id="HEADCOUNT_MTD_LY"/>
-        <viewAttribute id="CONTINGENT_WORKER" transparentFilter="false"/>
+        <viewAttribute id="CONTINGENT_WORKER"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#CV_BW_FINANCE_TEST">
+    <calculatedViewAttributes/>
+      <input node="CV_BW_FINANCE_TEST">
         <mapping xsi:type="Calculation:AttributeMapping" target="IS_COST_ELEMENT_SALARY_NAME" source="IS_COST_ELEMENT_SALARY_NAME"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
@@ -135,7 +135,7 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_VS_SALARY_MTD" source="SALES_VS_SALARY_MTD"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SALES_VS_SALARY_MTD_LY" source="SALES_VS_SALARY_MTD_LY"/>
       </input>
-      <input node="#CV_HEADCOUNT">
+      <input node="CV_HEADCOUNT">
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_1" source="MONTH"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_AUX_1" source="MONTH_AUX"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH_NAME_1" source="MONTH_NAME"/>
@@ -154,9 +154,9 @@
         <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
       </input>
-      <joinAttribute name="MONTH"/>
-    </calculationView>
-  </calculationViews>
+    <joinAttribute name="MONTH"/>
+  </calculationView>
+</calculationViews>
   <logicalModel id="Join_1">
     <descriptions defaultDescription="TESTTTTTTTTT"/>
     <attributes>
@@ -196,15 +196,15 @@
         <descriptions defaultDescription="PROFIT_CENTER_NAME"/>
         <keyMapping columnObjectName="Join_1" columnName="PROFIT_CENTER_NAME"/>
       </attribute>
-      <attribute id="COST_CENTER" order="10" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="COST_CENTER" order="10" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="COST_CENTER"/>
         <keyMapping columnObjectName="Join_1" columnName="COST_CENTER"/>
       </attribute>
-      <attribute id="PROFIT_CENTER" order="11" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="PROFIT_CENTER" order="11" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="PROFIT_CENTER"/>
         <keyMapping columnObjectName="Join_1" columnName="PROFIT_CENTER"/>
       </attribute>
-      <attribute id="COMPANY" order="12" attributeHierarchyActive="false" displayAttribute="false" transparentFilter="false">
+      <attribute id="COMPANY" order="12" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="COMPANY"/>
         <keyMapping columnObjectName="Join_1" columnName="COMPANY"/>
       </attribute>
@@ -391,16 +391,23 @@
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="40" y="85"/>
-        <rectangleSize/>
-      </shape>
+        <upperLeftCorner x="40" y="85"/></shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="70" y="260"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
-    </shapes>
-  </layout>
+    
+    <shape modelObjectName="DWH_CDM_PEOPLE::CV_BW_FINANCE_TEST" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="DWH_CDM_PEOPLE::CV_HEADCOUNT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>

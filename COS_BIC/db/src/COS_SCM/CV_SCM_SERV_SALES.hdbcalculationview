@@ -1,307 +1,288 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COS_SCM::CV_SCM_SERV_SALES" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <descriptions defaultDescription="CV_SCM_SERV_SALES"/>
-  <localVariables/>
-  <variableMappings/>
-  <dataSources>
-    <DataSource id="SCM_SRV_SALES">
-      <resourceUri>COS_SCM::SCM_SRV_SALES</resourceUri>
-    </DataSource>
-    <DataSource id="SCM_SRV_DELIVERY">
-      <resourceUri>COS_SCM::SCM_SRV_DELIVERY</resourceUri>
-    </DataSource>
-  </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Proj_SALES">
-      <viewAttributes>
-        <viewAttribute id="ID_SOURC"/>
-        <viewAttribute id="CD_DELIV_PRIOR"/>
-        <viewAttribute id="CD_CURRE"/>
-        <viewAttribute id="CD_CUSTO"/>
-        <viewAttribute id="CD_MATER"/>
-        <viewAttribute id="CD_PLANT"/>
-        <viewAttribute id="CD_SALE"/>
-        <viewAttribute id="CD_SALE_ORGAN"/>
-        <viewAttribute id="CD_SALE_TYPE"/>
-        <viewAttribute id="CD_STOCK_BREAK"/>
-        <viewAttribute id="DS_MATER"/>
-        <viewAttribute id="DS_MATER_BRAND"/>
-        <viewAttribute id="DS_RANGE_OUT"/>
-        <viewAttribute id="DT_CREAT"/>
-        <viewAttribute id="FL_LOAD"/>
-        <viewAttribute id="NM_CUSTO"/>
-        <viewAttribute id="QT_ATP"/>
-        <viewAttribute id="QT_DELIV"/>
-        <viewAttribute id="QT_ORDER"/>
-        <viewAttribute id="QT_WRHSE"/>
-        <viewAttribute id="TS_LOAD"/>
-        <viewAttribute id="QT_ATP_NEGAT"/>
-        <viewAttribute id="CD_SALE_POSIT"/>
-      </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#SCM_SRV_SALES">
-        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_DELIV_PRIOR" source="CD_DELIV_PRIOR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CURRE" source="CD_CURRE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CUSTO" source="CD_CUSTO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE" source="CD_SALE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_ORGAN" source="CD_SALE_ORGAN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" source="CD_SALE_POSIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_TYPE" source="CD_SALE_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_STOCK_BREAK" source="CD_STOCK_BREAK"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER" source="DS_MATER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_BRAND" source="DS_MATER_BRAND"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_RANGE_OUT" source="DS_RANGE_OUT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT" source="DT_CREAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD" source="FL_LOAD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="NM_CUSTO" source="NM_CUSTO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP" source="QT_ATP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_DELIV" source="QT_DELIV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ORDER" source="QT_ORDER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_WRHSE" source="QT_WRHSE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TS_LOAD" source="TS_LOAD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP_NEGAT" source="QT_ATP_NEGAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_POSIT" source="CD_SALE_POSIT"/>
-      </input>
-    </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
-      <viewAttributes>
-        <viewAttribute id="ID_SOURC"/>
-        <viewAttribute id="CD_DELIV_PRIOR"/>
-        <viewAttribute id="CD_CURRE"/>
-        <viewAttribute id="CD_CUSTO"/>
-        <viewAttribute id="CD_MATER"/>
-        <viewAttribute id="CD_PLANT"/>
-        <viewAttribute id="CD_SALE"/>
-        <viewAttribute id="CD_SALE_ORGAN"/>
-        <viewAttribute id="CD_SALE_TYPE"/>
-        <viewAttribute id="CD_STOCK_BREAK"/>
-        <viewAttribute id="DS_MATER"/>
-        <viewAttribute id="DS_MATER_BRAND"/>
-        <viewAttribute id="DS_RANGE_OUT"/>
-        <viewAttribute id="DT_CREAT"/>
-        <viewAttribute id="FL_LOAD"/>
-        <viewAttribute id="NM_CUSTO"/>
-        <viewAttribute id="QT_ATP"/>
-        <viewAttribute id="QT_DELIV"/>
-        <viewAttribute id="QT_ORDER"/>
-        <viewAttribute id="QT_WRHSE"/>
-        <viewAttribute id="TS_LOAD"/>
-        <viewAttribute id="QT_ATP_NEGAT"/>
-        <viewAttribute id="CD_ORDER"/>
-        <viewAttribute id="CD_ORDER_POSIT"/>
-        <viewAttribute id="DT_CREAT_1"/>
-        <viewAttribute id="DT_SM"/>
-        <viewAttribute id="DT_SM_REAL"/>
-        <viewAttribute id="CC_CD_ORDER_POSIT"/>
-        <viewAttribute id="CD_SALE_POSIT"/>
-      </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Proj_SALES">
-        <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_DELIV_PRIOR" source="CD_DELIV_PRIOR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CURRE" source="CD_CURRE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_CUSTO" source="CD_CUSTO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE" source="CD_SALE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_ORGAN" source="CD_SALE_ORGAN"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_TYPE" source="CD_SALE_TYPE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_STOCK_BREAK" source="CD_STOCK_BREAK"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER" source="DS_MATER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_BRAND" source="DS_MATER_BRAND"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DS_RANGE_OUT" source="DS_RANGE_OUT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT" source="DT_CREAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD" source="FL_LOAD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="NM_CUSTO" source="NM_CUSTO"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP" source="QT_ATP"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_DELIV" source="QT_DELIV"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ORDER" source="QT_ORDER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_WRHSE" source="QT_WRHSE"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="TS_LOAD" source="TS_LOAD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP_NEGAT" source="QT_ATP_NEGAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_POSIT" source="CD_SALE_POSIT"/>
-      </input>
-      <input node="#Proj_DELIVERY">
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER" source="CD_ORDER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER_POSIT" source="CD_ORDER_POSIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT_1" source="DT_CREAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM" source="DT_SM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM_REAL" source="DT_SM_REAL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CC_CD_ORDER_POSIT" source="CC_CD_ORDER_POSIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE" source="CD_ORDER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_POSIT" source="CC_CD_ORDER_POSIT"/>
-      </input>
-      <joinAttribute name="CD_SALE"/>
-      <joinAttribute name="CD_SALE_POSIT"/>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Proj_DELIVERY">
-      <viewAttributes>
-        <viewAttribute id="CD_ORDER"/>
-        <viewAttribute id="CD_ORDER_POSIT"/>
-        <viewAttribute id="DT_CREAT"/>
-        <viewAttribute id="DT_SM"/>
-        <viewAttribute id="DT_SM_REAL"/>
-      </viewAttributes>
-      <calculatedViewAttributes>
-        <calculatedViewAttribute datatype="INTEGER" id="CC_CD_ORDER_POSIT" expressionLanguage="COLUMN_ENGINE">
-          <formula>INT(&quot;CD_ORDER_POSIT&quot;)</formula>
-        </calculatedViewAttribute>
-      </calculatedViewAttributes>
-      <input node="#SCM_SRV_DELIVERY">
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER" source="CD_ORDER"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER_POSIT" source="CD_ORDER_POSIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT" source="DT_CREAT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM" source="DT_SM"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM_REAL" source="DT_SM_REAL"/>
-      </input>
-    </calculationView>
-  </calculationViews>
-  <logicalModel id="Join_1">
-    <attributes>
-      <attribute id="ID_SOURC" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="ID_SOURC"/>
-        <keyMapping columnObjectName="Join_1" columnName="ID_SOURC"/>
-      </attribute>
-      <attribute id="CD_DELIV_PRIOR" order="2" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_DELIV_PRIOR"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_DELIV_PRIOR"/>
-      </attribute>
-      <attribute id="CD_CURRE" order="3" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_CURRE"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_CURRE"/>
-      </attribute>
-      <attribute id="CD_CUSTO" order="4" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_CUSTO"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_CUSTO"/>
-      </attribute>
-      <attribute id="CD_MATER" order="5" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_MATER"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_MATER"/>
-      </attribute>
-      <attribute id="CD_PLANT" order="6" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_PLANT"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_PLANT"/>
-      </attribute>
-      <attribute id="CD_SALE" order="7" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_SALE"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_SALE"/>
-      </attribute>
-      <attribute id="CD_SALE_ORGAN" order="8" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_SALE_ORGAN"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_SALE_ORGAN"/>
-      </attribute>
-      <attribute id="CD_SALE_TYPE" order="9" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_SALE_TYPE"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_SALE_TYPE"/>
-      </attribute>
-      <attribute id="CD_STOCK_BREAK" order="10" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_STOCK_BREAK"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_STOCK_BREAK"/>
-      </attribute>
-      <attribute id="DS_MATER" order="11" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DS_MATER"/>
-        <keyMapping columnObjectName="Join_1" columnName="DS_MATER"/>
-      </attribute>
-      <attribute id="DS_MATER_BRAND" order="12" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DS_MATER_BRAND"/>
-        <keyMapping columnObjectName="Join_1" columnName="DS_MATER_BRAND"/>
-      </attribute>
-      <attribute id="DS_RANGE_OUT" order="13" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DS_RANGE_OUT"/>
-        <keyMapping columnObjectName="Join_1" columnName="DS_RANGE_OUT"/>
-      </attribute>
-      <attribute id="DT_CREAT" order="14" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DT_CREAT"/>
-        <keyMapping columnObjectName="Join_1" columnName="DT_CREAT"/>
-      </attribute>
-      <attribute id="FL_LOAD" order="15" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="FL_LOAD"/>
-        <keyMapping columnObjectName="Join_1" columnName="FL_LOAD"/>
-      </attribute>
-      <attribute id="NM_CUSTO" order="16" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="NM_CUSTO"/>
-        <keyMapping columnObjectName="Join_1" columnName="NM_CUSTO"/>
-      </attribute>
-      <attribute id="TS_LOAD" order="21" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="TS_LOAD"/>
-        <keyMapping columnObjectName="Join_1" columnName="TS_LOAD"/>
-      </attribute>
-      <attribute id="CD_ORDER" order="23" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_ORDER"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_ORDER"/>
-      </attribute>
-      <attribute id="CD_ORDER_POSIT" order="24" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_ORDER_POSIT"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_ORDER_POSIT"/>
-      </attribute>
-      <attribute id="DT_CREAT_DELIV" order="25" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DT_CREAT_1"/>
-        <keyMapping columnObjectName="Join_1" columnName="DT_CREAT_1"/>
-      </attribute>
-      <attribute id="DT_SM" order="26" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DT_SM"/>
-        <keyMapping columnObjectName="Join_1" columnName="DT_SM"/>
-      </attribute>
-      <attribute id="DT_SM_REAL" order="27" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="DT_SM_REAL"/>
-        <keyMapping columnObjectName="Join_1" columnName="DT_SM_REAL"/>
-      </attribute>
-      <attribute id="CC_CD_ORDER_POSIT" order="28" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CC_CD_ORDER_POSIT"/>
-        <keyMapping columnObjectName="Join_1" columnName="CC_CD_ORDER_POSIT"/>
-      </attribute>
-      <attribute id="CD_SALE_POSIT" order="29" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-        <descriptions defaultDescription="CD_SALE_POSIT"/>
-        <keyMapping columnObjectName="Join_1" columnName="CD_SALE_POSIT"/>
-      </attribute>
-    </attributes>
-    <calculatedAttributes/>
-    <baseMeasures>
-      <measure id="QT_ATP" order="17" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="QT_ATP"/>
-        <measureMapping columnObjectName="Join_1" columnName="QT_ATP"/>
-      </measure>
-      <measure id="QT_DELIV" order="18" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="QT_DELIV"/>
-        <measureMapping columnObjectName="Join_1" columnName="QT_DELIV"/>
-      </measure>
-      <measure id="QT_ORDER" order="19" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="QT_ORDER"/>
-        <measureMapping columnObjectName="Join_1" columnName="QT_ORDER"/>
-      </measure>
-      <measure id="QT_WRHSE" order="20" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="QT_WRHSE"/>
-        <measureMapping columnObjectName="Join_1" columnName="QT_WRHSE"/>
-      </measure>
-      <measure id="QT_ATP_NEGAT" order="22" aggregationType="sum" measureType="simple">
-        <descriptions defaultDescription="QT_ATP_NEGAT"/>
-        <measureMapping columnObjectName="Join_1" columnName="QT_ATP_NEGAT"/>
-      </measure>
-    </baseMeasures>
-    <calculatedMeasures/>
-    <restrictedMeasures/>
-    <localDimensions/>
-  </logicalModel>
-  <layout>
-    <shapes>
-      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="40" y="85"/>
-      </shape>
-      <shape expanded="true" modelObjectName="Proj_SALES" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="33" y="370"/>
-        <rectangleSize height="30" width="140"/>
-      </shape>
-      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="124" y="284"/>
-        <rectangleSize height="30" width="140"/>
-      </shape>
-      <shape expanded="true" modelObjectName="Proj_DELIVERY" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="266" y="341"/>
-        <rectangleSize height="30" width="140"/>
-      </shape>
-    </shapes>
-  </layout>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="COS_SCM::CV_SCM_SERV_SALES" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_SCM_SERV_SALES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="COS_SCM::SCM_SRV_SALES">
+    <resourceUri>COS_SCM::SCM_SRV_SALES</resourceUri>
+  </DataSource>
+  <DataSource id="COS_SCM::SCM_SRV_DELIVERY">
+    <resourceUri>COS_SCM::SCM_SRV_DELIVERY</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_SALES">
+    <viewAttributes>
+      <viewAttribute id="ID_SOURC"/>
+      <viewAttribute id="DT_CREAT"/>
+      <viewAttribute id="CD_CUSTO"/>
+      <viewAttribute id="CD_SALE"/>
+      <viewAttribute id="CD_SALE_POSIT"/>
+      <viewAttribute id="CD_SALE_TYPE"/>
+      <viewAttribute id="CD_SALE_ORGAN"/>
+      <viewAttribute id="CD_CURRE"/>
+      <viewAttribute id="CD_DELIV_PRIOR"/>
+      <viewAttribute id="CD_MATER"/>
+      <viewAttribute id="CD_PLANT"/>
+      <viewAttribute id="CD_STOCK_BREAK"/>
+      <viewAttribute id="DS_MATER"/>
+      <viewAttribute id="DS_MATER_BRAND"/>
+      <viewAttribute id="DS_RANGE_OUT"/>
+      <viewAttribute id="NM_CUSTO"/>
+      <viewAttribute id="QT_ATP"/>
+      <viewAttribute id="QT_WRHSE"/>
+      <viewAttribute id="QT_ORDER"/>
+      <viewAttribute id="QT_DELIV"/>
+      <viewAttribute id="FL_LOAD"/>
+      <viewAttribute id="TS_LOAD"/>
+      <viewAttribute id="QT_ATP_NEGAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="COS_SCM::SCM_SRV_SALES"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Proj_DELIVERY">
+    <viewAttributes>
+      <viewAttribute id="CD_ORDER"/>
+      <viewAttribute id="CD_ORDER_POSIT"/>
+      <viewAttribute id="DT_CREAT"/>
+      <viewAttribute id="DT_SM"/>
+      <viewAttribute id="DT_SM_REAL"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_CD_ORDER_POSIT" datatype="INTEGER" expressionLanguage="SQL">
+        <formula>TO_INT(&quot;CD_ORDER_POSIT&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="COS_SCM::SCM_SRV_DELIVERY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ID_SOURC" aggregationType="sum"/>
+      <viewAttribute id="DT_CREAT"/>
+      <viewAttribute id="CD_CUSTO"/>
+      <viewAttribute id="CD_SALE"/>
+      <viewAttribute id="CD_SALE_POSIT" aggregationType="sum"/>
+      <viewAttribute id="CD_SALE_TYPE"/>
+      <viewAttribute id="CD_SALE_ORGAN"/>
+      <viewAttribute id="CD_CURRE"/>
+      <viewAttribute id="CD_DELIV_PRIOR"/>
+      <viewAttribute id="CD_MATER"/>
+      <viewAttribute id="CD_PLANT"/>
+      <viewAttribute id="CD_STOCK_BREAK"/>
+      <viewAttribute id="DS_MATER"/>
+      <viewAttribute id="DS_MATER_BRAND"/>
+      <viewAttribute id="DS_RANGE_OUT"/>
+      <viewAttribute id="NM_CUSTO"/>
+      <viewAttribute id="QT_ATP" aggregationType="sum"/>
+      <viewAttribute id="QT_WRHSE" aggregationType="sum"/>
+      <viewAttribute id="QT_ORDER" aggregationType="sum"/>
+      <viewAttribute id="QT_DELIV" aggregationType="sum"/>
+      <viewAttribute id="FL_LOAD"/>
+      <viewAttribute id="TS_LOAD" aggregationType="min"/>
+      <viewAttribute id="QT_ATP_NEGAT" aggregationType="sum"/>
+      <viewAttribute id="CD_ORDER"/>
+      <viewAttribute id="CD_ORDER_POSIT"/>
+      <viewAttribute id="DT_CREAT_1"/>
+      <viewAttribute id="DT_SM"/>
+      <viewAttribute id="DT_SM_REAL"/>
+      <viewAttribute id="CC_CD_ORDER_POSIT" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Proj_SALES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_SOURC" source="ID_SOURC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT" source="DT_CREAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_CUSTO" source="CD_CUSTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE" source="CD_SALE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_POSIT" source="CD_SALE_POSIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_TYPE" source="CD_SALE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_ORGAN" source="CD_SALE_ORGAN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_CURRE" source="CD_CURRE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_DELIV_PRIOR" source="CD_DELIV_PRIOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_MATER" source="CD_MATER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_PLANT" source="CD_PLANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_STOCK_BREAK" source="CD_STOCK_BREAK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER" source="DS_MATER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DS_MATER_BRAND" source="DS_MATER_BRAND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DS_RANGE_OUT" source="DS_RANGE_OUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NM_CUSTO" source="NM_CUSTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP" source="QT_ATP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QT_WRHSE" source="QT_WRHSE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QT_ORDER" source="QT_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QT_DELIV" source="QT_DELIV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FL_LOAD" source="FL_LOAD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TS_LOAD" source="TS_LOAD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QT_ATP_NEGAT" source="QT_ATP_NEGAT"/>
+    </input>
+    <input node="Proj_DELIVERY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER" source="CD_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_ORDER_POSIT" source="CD_ORDER_POSIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CREAT_1" source="DT_CREAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM" source="DT_SM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_SM_REAL" source="DT_SM_REAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_CD_ORDER_POSIT" source="CC_CD_ORDER_POSIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE" source="CD_ORDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CD_SALE_POSIT" source="CC_CD_ORDER_POSIT"/>
+    </input>
+    <joinAttribute name="CD_SALE"/>
+    <joinAttribute name="CD_SALE_POSIT"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="DT_CREAT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_CREAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DT_CREAT"/>
+    </attribute>
+    <attribute id="CD_CUSTO" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_CUSTO"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_CUSTO"/>
+    </attribute>
+    <attribute id="CD_SALE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_SALE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_SALE"/>
+    </attribute>
+    <attribute id="CD_SALE_TYPE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_SALE_TYPE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_SALE_TYPE"/>
+    </attribute>
+    <attribute id="CD_SALE_ORGAN" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_SALE_ORGAN"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_SALE_ORGAN"/>
+    </attribute>
+    <attribute id="CD_CURRE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_CURRE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_CURRE"/>
+    </attribute>
+    <attribute id="CD_DELIV_PRIOR" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_DELIV_PRIOR"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_DELIV_PRIOR"/>
+    </attribute>
+    <attribute id="CD_MATER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_MATER"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_MATER"/>
+    </attribute>
+    <attribute id="CD_PLANT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_PLANT"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_PLANT"/>
+    </attribute>
+    <attribute id="CD_STOCK_BREAK" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_STOCK_BREAK"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_STOCK_BREAK"/>
+    </attribute>
+    <attribute id="DS_MATER" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DS_MATER"/>
+      <keyMapping columnObjectName="Join_1" columnName="DS_MATER"/>
+    </attribute>
+    <attribute id="DS_MATER_BRAND" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DS_MATER_BRAND"/>
+      <keyMapping columnObjectName="Join_1" columnName="DS_MATER_BRAND"/>
+    </attribute>
+    <attribute id="DS_RANGE_OUT" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DS_RANGE_OUT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DS_RANGE_OUT"/>
+    </attribute>
+    <attribute id="NM_CUSTO" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NM_CUSTO"/>
+      <keyMapping columnObjectName="Join_1" columnName="NM_CUSTO"/>
+    </attribute>
+    <attribute id="FL_LOAD" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FL_LOAD"/>
+      <keyMapping columnObjectName="Join_1" columnName="FL_LOAD"/>
+    </attribute>
+    <attribute id="TS_LOAD" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TS_LOAD"/>
+      <keyMapping columnObjectName="Join_1" columnName="TS_LOAD"/>
+    </attribute>
+    <attribute id="CD_ORDER" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_ORDER"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_ORDER"/>
+    </attribute>
+    <attribute id="CD_ORDER_POSIT" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CD_ORDER_POSIT"/>
+      <keyMapping columnObjectName="Join_1" columnName="CD_ORDER_POSIT"/>
+    </attribute>
+    <attribute id="DT_CREAT_1" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_CREAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DT_CREAT_1"/>
+    </attribute>
+    <attribute id="DT_SM" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_SM"/>
+      <keyMapping columnObjectName="Join_1" columnName="DT_SM"/>
+    </attribute>
+    <attribute id="DT_SM_REAL" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_SM_REAL"/>
+      <keyMapping columnObjectName="Join_1" columnName="DT_SM_REAL"/>
+    </attribute>
+    <attribute id="CC_CD_ORDER_POSIT" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_CD_ORDER_POSIT"/>
+      <keyMapping columnObjectName="Join_1" columnName="CC_CD_ORDER_POSIT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ID_SOURC" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ID_SOURC"/>
+      <measureMapping columnObjectName="Join_1" columnName="ID_SOURC"/>
+    </measure>
+    <measure id="CD_SALE_POSIT" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CD_SALE_POSIT"/>
+      <measureMapping columnObjectName="Join_1" columnName="CD_SALE_POSIT"/>
+    </measure>
+    <measure id="QT_ATP" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QT_ATP"/>
+      <measureMapping columnObjectName="Join_1" columnName="QT_ATP"/>
+    </measure>
+    <measure id="QT_WRHSE" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QT_WRHSE"/>
+      <measureMapping columnObjectName="Join_1" columnName="QT_WRHSE"/>
+    </measure>
+    <measure id="QT_ORDER" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QT_ORDER"/>
+      <measureMapping columnObjectName="Join_1" columnName="QT_ORDER"/>
+    </measure>
+    <measure id="QT_DELIV" order="20" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QT_DELIV"/>
+      <measureMapping columnObjectName="Join_1" columnName="QT_DELIV"/>
+    </measure>
+    <measure id="QT_ATP_NEGAT" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QT_ATP_NEGAT"/>
+      <measureMapping columnObjectName="Join_1" columnName="QT_ATP_NEGAT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Proj_SALES" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-43" y="417"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Proj_DELIVERY" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="305" y="417"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="86" y="242"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Proj_SALES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="189"/>
+    </shape>
+    <shape modelObjectName="Proj_DELIVERY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="208"/>
+    </shape>
+  </shapes>
+</layout>
 </Calculation:scenario>

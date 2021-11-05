@@ -29,11 +29,11 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW" targetType="CALCULATION_VIEW">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_BW"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW" targetType="CALCULATION_VIEW">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_HEADCOUNT_BW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE::CV_HEADCOUNT_BW"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
