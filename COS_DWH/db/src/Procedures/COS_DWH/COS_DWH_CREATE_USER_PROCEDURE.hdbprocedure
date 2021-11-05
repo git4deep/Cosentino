@@ -5,7 +5,7 @@ AS
 BEGIN
 
 DECLARE cursor c1 for select distinct USER_ID from "USER_PRIVILEGE_BU";
-DECLARE cursor c2 for select distinct A.USER_ID from "USER_PRIVILEGE_BU" A inner join "SYS"."USERS" B ON A.USER_ID=B.USER_NAME;
+DECLARE cursor c2 for select distinct A.USER_ID from "USER_PRIVILEGE_BU" A inner join "COS_DWH::USERS" B ON A.USER_ID=B.USER_NAME;
 
 FOR Z AS c2 do
 	EXECUTE IMMEDIATE 'DROP USER '||Z."USER_ID" || ' CASCADE';
