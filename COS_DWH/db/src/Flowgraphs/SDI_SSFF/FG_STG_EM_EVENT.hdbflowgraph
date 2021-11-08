@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:id="802bd461457f086f74cbd723f9862ae9" name="FG_STG_EM_EVENT" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="15bdb6529be210107726250f8985509f" key="sap.afm.layout">
+    <annotations xmi:id="5fa961e74a007d59f371efb99511c8a8" key="x" value="10"/>
+    <annotations xmi:id="23aa6a1bd0bb69e15a1bbaa4f6255e69" key="y" value="10"/>
+    <annotations xmi:id="a0ae764e16566c0d85e16d3195c0293d" key="width" value="100"/>
+    <annotations xmi:id="687e8a8216516100ca2caa3f0bc4788c" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="84a3f6c88df7941cadb722922888fa46" key="sap.afm.palette">
+    <annotations xmi:id="f76b6287612ce354e35e7adaa1c30b7f" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="1039c610a6b18c8b689c2e21d464801b" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="be0dd4f7f497b329635e26615a034b17" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="7b1855e031783fa7d3b476aaf0544845" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="02abb5c4a6aea995c9b9e568adff8e1c" name="V_EM_EVENT" type="DATABASE_VIEW" catalogObjectName="V_EM_EVENT" dataLayout="ROW" truncateTable="false">
+    <annotations xmi:id="87f8122e83debdfca7238f44a96d0ea0" key="sap.afm.description" value=""/>
+    <annotations xmi:id="f859bfc7436fa477677c76b47f6a8256" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="a3e4c0f30433aab8b131ed4fe9484e70" key="sap.afm.layout">
+      <annotations xmi:id="3f27cd05fa4b333a1e8048aee42ff231" key="x" value="294"/>
+      <annotations xmi:id="c20ac4fd7a1baefed1df2451656e3eff" key="y" value="128"/>
+      <annotations xmi:id="c57fbab69c78513eb12cd4e83cf59bcd" key="width" value="100"/>
+      <annotations xmi:id="b44500dcea42e02d78dee959a53cc55c" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="8f913320af7e7f47641ab04a137632e2" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="028098189fbca64aad88ac4cbe131232" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="cbbb322956164035916c20abbcd7e79f" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="7f9fba31d6e98cba76402914c809cae6" key="V_EM_EVENT_Output" value="STG_EM_EVENT_Input"/>
+    </annotations>
+    <outputs name="V_EM_EVENT_Output" kind="TABLE" xmi:id="c0b8dbf76907da0d8657d20988dd7161">
+      <attributes xmi:id="90a7caa6209bf8347e1d1dde47ece467" name="eventDescription" type="NVARCHAR" length="3999" scale="0" nullable="true"/>
+      <attributes xmi:id="de750573a920b19f6cb17bf1880494c0" name="eventDescriptionMsgKey" type="NVARCHAR" length="3999" scale="0" nullable="true"/>
+      <attributes xmi:id="9e3389cd2b99b4e034c3cbd461f10637" name="eventName" type="NVARCHAR" length="3999" scale="0" nullable="false"/>
+      <attributes xmi:id="ab15b23c688ec7ea6be786ba5f85a69d" name="eventTime" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="b0a4f39a03ee9beb5405a468c491718f" name="eventType" type="NVARCHAR" length="3999" scale="0" nullable="true"/>
+      <attributes xmi:id="09a363da09259d274afa72845e50e029" name="id" type="BIGINT" length="0" scale="0" nullable="false"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="9c3484498c0eed2373cc26702a2136d1" name="STG_EM_EVENT" type="TEMPLATE_TABLE" catalogObjectName="STG_EM_EVENT_MIG" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="8d073bc8d1e1646c7a75f872384771d7" key="sap.afm.layout">
+      <annotations xmi:id="153178f5cda26abec66f4f31134f330b" key="x" value="449"/>
+      <annotations xmi:id="e2a5ef3101b8c24a14afb6d3a2a2579a" key="y" value="128"/>
+      <annotations xmi:id="bf77ee77804253f7c0fcdab8c913558d" key="width" value="100"/>
+      <annotations xmi:id="7da8fba57bc677a11db302cbc7eb43c4" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="8173f38ceb48140ce9facd6576fa4d15" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="6951cb47fea596f824867aa96ca0a148" key="sap.afm.nodeInputs">
+      <annotations xmi:id="b7b677e3aaa76ce84ed429533bd6ab6c" key="STG_EM_EVENT_Input" value="V_EM_EVENT_Output"/>
+    </annotations>
+    <annotations xmi:id="7ff85f4ad4df20d70c42cfb2ec06fa02" key="sap.afm.nodeOutputs">
+      <annotations/>
+    </annotations>
+    <annotations xmi:id="ed8633c856458bfb20aa585c43a12a4a" key="sap.im.writerType" value="insert"/>
+    <inputs name="STG_EM_EVENT_Input" kind="TABLE" xmi:id="ae6bce81a1b1e6df67d9c84725e9e9e2">
+      <attributes xmi:id="223d8a2e7e4b4807ab60163cedbeb4bf" name="eventDescription" type="NVARCHAR" nullable="true" length="3999" scale="0"/>
+      <attributes xmi:id="0194d61152dc0884884df3497902e3b9" name="eventDescriptionMsgKey" type="NVARCHAR" nullable="true" length="3999" scale="0"/>
+      <attributes xmi:id="af096aed4fe8635533912760485e1f4d" name="eventName" type="NVARCHAR" nullable="false" length="3999" scale="0"/>
+      <attributes xmi:id="b6cd93938d611d1ea88c27119c05442f" name="eventTime" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="b6ff0ce9290168b74ccc2ad1d3b98235" name="eventType" type="NVARCHAR" nullable="true" length="3999" scale="0"/>
+      <attributes xmi:id="65c4c50a6a8511b329732bc7cb1ca844" name="id" type="BIGINT" nullable="false" length="0" scale="0"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="df7454c72d9480cdcd6b14819d2693d2" source="c0b8dbf76907da0d8657d20988dd7161" target="ae6bce81a1b1e6df67d9c84725e9e9e2">
+    <attributeMappings source="90a7caa6209bf8347e1d1dde47ece467" target="223d8a2e7e4b4807ab60163cedbeb4bf" xmi:id="1725e5bd494aa9f1db1d2590e1d89d24"/>
+    <attributeMappings source="de750573a920b19f6cb17bf1880494c0" target="0194d61152dc0884884df3497902e3b9" xmi:id="b28b2a2e6d79c7bc3dc1c491b2466d13"/>
+    <attributeMappings source="9e3389cd2b99b4e034c3cbd461f10637" target="af096aed4fe8635533912760485e1f4d" xmi:id="165729bac8a77ebb75a7622aed449cc2"/>
+    <attributeMappings source="ab15b23c688ec7ea6be786ba5f85a69d" target="b6cd93938d611d1ea88c27119c05442f" xmi:id="cf1f00ba7f7869061889642166057e77"/>
+    <attributeMappings source="b0a4f39a03ee9beb5405a468c491718f" target="b6ff0ce9290168b74ccc2ad1d3b98235" xmi:id="71fa3879c223c6ff11fc0476ec8d153e"/>
+    <attributeMappings source="09a363da09259d274afa72845e50e029" target="65c4c50a6a8511b329732bc7cb1ca844" xmi:id="2fd5df87e875aa3cdca6ed5ffbc908f4"/>
+  </tableMappings>
+</flowgraph:ContainerNode>

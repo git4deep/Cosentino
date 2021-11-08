@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="87e549f82504b6e6bf3593cee993c055" name="FG_FT_SSFF_RECRUITMENT" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="451746c8c76f1b46baad9e6976c5f999" key="sap.afm.layout">
+    <annotations xmi:id="8b7574ed3bcf27eba3339242ca5e9f4b" key="x" value="10"/>
+    <annotations xmi:id="195339fd7cd3b97b3e486f2c6cdd8011" key="y" value="10"/>
+    <annotations xmi:id="ed9523a21b246717e55b565b85c266d3" key="width" value="100"/>
+    <annotations xmi:id="4d92dd10a25ffa02c5ef3bf564e3b3dc" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="359bfcab57323d5ad9c35837c41ac41d" key="sap.afm.palette">
+    <annotations xmi:id="a82eb2ed74d72512ee9cac10bf06851c" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="3eb1af6b1f5927d1cceb6e0c3b4892d7" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="623cd8366a4c4acd7febd80cf3f6c2a5" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="0410e794fae91086753d97b9def6b01c" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <tableMappings xmi:id="13291b12cd6f8028fb2370560b8b5e10" source="3f53d78db910851226fd2d594c34582b" target="aade3b7e21023c0dd3252cbc15d09283">
+    <attributeMappings source="70602275156499fc4d9af0f3e5240228" target="51529756e226f41e177299aa4b2d63aa" xmi:id="31612e6ce33554ce3ccc72e48acce519"/>
+    <attributeMappings source="4a08ee71ff0cec055bf99a81828bf51c" target="33f0edd8f6a4d554f8f78c58d525c406" xmi:id="9c211dfa4db317daeb89fa4867164317"/>
+    <attributeMappings source="ac5298f2ca86279614811268eb901da8" target="a2bdec9dbe091d9db5ac50fe8cbdfa61" xmi:id="809c6d90b25011ede6cb429b44e8cfda"/>
+    <attributeMappings source="419d6e745c9c4f84c253edae01f8be72" target="31c53bc4cce5b08bcda87bf675fb7b03" xmi:id="992577e38f3cf87bb0a9a311c83893fb"/>
+    <attributeMappings source="e1d46561bb7c4aa57361a9b83dc49987" target="db0167e4df2619cc7012a016c3380a8a" xmi:id="a8232b8f94c2ae159ce115b5912cc2f4"/>
+    <attributeMappings xmi:id="8280c6a607ec19ba5254fe20fef67820" source="b390bb3e2335cbd719544a31271eeeea" target="3ee10822aaed94e198b8b64a894b423f"/>
+    <attributeMappings xmi:id="fd4d15b13f5f790b2fd6f399ae04eca0" source="11d3714f28dae9c1ee9bf9c64aae0548" target="f41e15695ecfe87ac985900132fab956"/>
+    <attributeMappings xmi:id="80d8acd41c434c1aa0c2147f07e3ab78" source="12ee5a134bd1f0129da2aef22e2d4d0f" target="dde8056d8302f25f710a12bc886099e8"/>
+    <attributeMappings xmi:id="5d3655c7beb910a8d310b6065a2fa4ea" source="ad0bf70d15a6db5a3dba27c9e2aa3dbc" target="98692ea57f1911934955d011df1c6317"/>
+    <attributeMappings xmi:id="0c0f83e826a7796167067c09aba1b2d9" source="a8adadf1ca16c77f58d4cc97b4b4a09a" target="23deb9dbb1159c1d159e54d4fc351830"/>
+  </tableMappings>
+  <tableMappings xmi:id="eb81d6ebb857e3ffcc3c2ea6e73f0a37" source="7f01e1258348a0dbf8e0c3becf47b05d" target="8aec4def57ca4b846d1c6163d67ea1ad">
+    <attributeMappings source="51430da41750198ddc2749fd4448f918" target="801bc338878805ebbe37766ba5dfdcf6" xmi:id="c56cbccbafb4684c10785a8d6008dcdc"/>
+    <attributeMappings source="1464357f4b876b62c595d77aeb719a41" target="2ba5acb38fd36f3fd0a9107225c74c97" xmi:id="e541aa0fa9b00802502f312d35590245"/>
+    <attributeMappings source="560a64a83ca9f2e2c851873ec76db2f8" target="56c35072da93d76421a03dde8fe78d31" xmi:id="44c4b306a7a2f117815c5bb577f84611"/>
+    <attributeMappings source="bf803bb18d01f619054a16e5e02df1f0" target="d7103be9f170eba53ebd8600a2a00f2a" xmi:id="a7888fb5dd5e25a180daa6923121f337"/>
+    <attributeMappings source="2549c3250f657b5877275d2723b01945" target="d97e58d965bfe6cb1932f24b1a8d05f4" xmi:id="f6738a04cd6898e00218af1e3c8cbb65"/>
+    <attributeMappings xmi:id="8e0caa8d23fdf7c2cca3247466ac1e57" source="d633e7cac889f20506cfa4e7410838c6" target="8af9b1572581c28ea7c82d114fdd44c1"/>
+    <attributeMappings xmi:id="c1bcb4aff4582b5bae0a0aa71fd9ef83" source="4718809f317e14e887a0a9af46f89632" target="44e43c417912e98ca520c6bf914c6344"/>
+  </tableMappings>
+  <tableMappings xmi:id="9ed3ca250a194ecd520bcb70146d919e" source="c207c3ba83d194ac991094a889d50c8e" target="c848fce6fff687d9c0bd390a1fc6e95e">
+    <attributeMappings source="9a9bb084d3d4e367929f547a26e86e07" target="ae78ca26f018c91c21d81903a4e02510" xmi:id="6249c53d402511fdd8b472756975d026"/>
+    <attributeMappings source="cd12e66efd10fba497830c6db38b6a8f" target="2036efb35c2518907ed80fc68f4cbe84" xmi:id="0686bf4c72c9c4e10a495c529a92ec6d"/>
+    <attributeMappings xmi:id="cd72cff575114a677b8adb693f0725e1" source="2f534a05c81e19bdb2affcb2d1171d29" target="9f9dd05d81f285090188f6e9e955195a"/>
+    <attributeMappings xmi:id="758eb3e0fc42338eee91aeecb0cb26c4" source="ce81fdf901353c9370450801412b8012" target="eb0af4eb572c18bd182d6b0eaa9334e2"/>
+  </tableMappings>
+  <tableMappings xmi:id="9a8a44a43216b813e8beab22bf29602a" source="012a492d517e30b3e2f7b080d996813a" target="0c13df8093d6b727010ad93dc991494e">
+    <attributeMappings source="fed56350af7e5860192003af4377e34c" target="125202a0be33cb94307a42d20245c3b3" xmi:id="74a838f5ce753be74f127677e16a4fdb"/>
+    <attributeMappings source="b75414e71d866a8d4428f6a448864d38" target="51e769fe0734be9b759d68a9e001f280" xmi:id="45a71c95c51a4b500b14737fc51d7a3a"/>
+    <attributeMappings source="b6d300146e35e8e66032619ed2031b26" target="f965f55ac94e680564cbab8f3187062c" xmi:id="433daf2730e220284e87418d718de249"/>
+    <attributeMappings source="4dc7ef779fc5c3b5bb2c326f77bc1253" target="07a509b9ca2d66f073cc9fb9b589a431" xmi:id="af5a1f7354136955a2d985c1df57445f"/>
+    <attributeMappings source="ec24c498205c17f0b40efc0a69827f6a" target="bc4cbde03127270889dccdb02040630b" xmi:id="145212a4828bed583698551d6874b918"/>
+    <attributeMappings xmi:id="39ae52fd4fc0ce5bbb8f38735a2096d9" source="d03a46f56e6f10ab59d018b9051d39b4" target="e7bfe07f79fffe28c2b643b913d74925"/>
+    <attributeMappings xmi:id="ad348891f77dc634a4f9ba163e885014" source="b417d12130e23e5a9247a866051a7971" target="49253e71925afb57c465d4599d1e6f49"/>
+    <attributeMappings xmi:id="bc116bdf8203f0aaa9ea96833f27626c" source="313f4da7b6567be6fd406df41acd3286" target="6025c68d31e25eb9b9b94ff812ce47a1"/>
+    <attributeMappings xmi:id="e64980f61487f34c99733598579fdecb" source="8de7cbe8d2e4351023e6ac2dc4384747" target="3c2f12885e6cfc24e7ddb40963c8af81"/>
+    <attributeMappings xmi:id="308b63d345eb64ab6cf319114046fb7f" source="18b6e47c3c3cc2f18cd113d771da3074" target="a2cf307acf9cfb82adaf117402ccad45"/>
+  </tableMappings>
+  <tableMappings xmi:id="d337244e02696e89c7d3003ad9351958" source="288d2d628f9b159d1f2d2e0d4daf50fc" target="8e19b4e4d92a780704da6a216a9d3266">
+    <attributeMappings source="86a1ec5f1d5815cb3b996e487d74f506" target="69992d01581860cc11ec57379bc09271" xmi:id="7ae89200f615dfae274d5148d566da5f"/>
+    <attributeMappings source="e63e4277c5dc885b03555b338fa3fe3e" target="ff86f425c7c7b3591230fe64380438ee" xmi:id="64b0d096f3eb7f76c97f1c27ffe76a0a"/>
+    <attributeMappings source="90edf0b7feaaaaff2f042a1678d541e1" target="0837ee27113cb4fbca7b7c6d8b47449d" xmi:id="be0e863911c92d693680fdc7bb19c3ab"/>
+    <attributeMappings source="ff6670f490146725b9a663fcf99f7316" target="6a0410a183020d2960c1e4b37f5a6748" xmi:id="be263d8ab88c8ee1caa39fcde0c8d096"/>
+    <attributeMappings source="28069cb1a7ef14b46bae3540f94bbfc7" target="dee3d069a0b002d4af7ef21bb8d5a7f3" xmi:id="96a5ffff8d5fe6d7d3378e0e8a7563a5"/>
+    <attributeMappings source="55f1509282ad165b46594966ea8c243a" target="363f4917095f4e77896606d06585bef0" xmi:id="1b6f969c21ded15df05ba5913ba256d6"/>
+    <attributeMappings source="796aa397b5b43010a6461b053a4d79ca" target="3c80b57c4e95e31c5df110f0ee9d0c67" xmi:id="b882c2fc3922bccb8946ec6519818bb4"/>
+    <attributeMappings source="2cd537ac6bf575371a95e54bc52dc919" target="a374b470738cffa1c7bf71fb98255b37" xmi:id="a838c7667aeb81ace9b9c27fc4a4789a"/>
+    <attributeMappings source="931e2d5b0b79920fc65fafd0052ff0bc" target="f5944539b942bb073641ad6ef1f90bef" xmi:id="3ae62b327d1c6551e6db0ad07800cc4a"/>
+    <attributeMappings source="b2ce2f93fce91e3efb2bfaba5d801931" target="1797741a008f909cebb7d37469da3e72" xmi:id="997084cb16816617675ec722c2519df4"/>
+  </tableMappings>
+  <tableMappings xmi:id="82a8c26bc816ced08fefb272fc5e35ac" source="e3a04ccefa128dcc9ec4d36e6db8205c" target="81fcd29cb71e590f0e479ce6073a110a">
+    <attributeMappings source="21c7b4f660871c333fb86c55d90c6780" target="a1b066da188e7b445e21cfd75b111249" xmi:id="d79644880d55cf16ef956c87f4133a17"/>
+    <attributeMappings source="b6a02b1320356adcfc6216e45de5d63e" target="f44a9994db27d54907b34681e5cd26c8" xmi:id="67fdcae637ee5f024e383884c3c24972"/>
+    <attributeMappings source="ab2fa986d2a5181070ff82389463e603" target="04eba7a451734cdd19b661b951a8656d" xmi:id="598d94b6fbd2c2ab7c0aa16b597dab97"/>
+    <attributeMappings source="db3f80a5412ba93d2f486adeec29f329" target="2abdb0a7afa46cd1d52ab480a129d63c" xmi:id="2109a8ace4db073a318c57ac28db6b4e"/>
+  </tableMappings>
+  <tableMappings xmi:id="425fab970375e02e03ec6620b36ee00d" source="8dfd655218bc099cbd20b3e77ae96612" target="5f9853c1fadcdee57a6ae58ac8ebb781">
+    <attributeMappings source="daa4025bc547d740b0f14974dd49337f" target="cef19d68909fd87319604de9971f9dd7" xmi:id="1c5053eb5f9c7cd215dad8a4828bb53a"/>
+    <attributeMappings source="2520ff65b2bcdb21e9f064d0ec97fc52" target="051690e389e212c50ef42b79629af713" xmi:id="df4a6a40a140a9a2f4e96e4274a6ca11"/>
+    <attributeMappings source="48d928fa6d089f45ae04ad25eb8b7a14" target="b553cd3cea9c3625e2627e077937fc19" xmi:id="88bfac0cc929a19b9056a80ddc6700e8"/>
+    <attributeMappings source="c13de1117fc0aea37fc5042e118beebb" target="1b021b4423446350cce41bf0c62689d3" xmi:id="70df86ba3f7e80041e80239d19b8c89c"/>
+    <attributeMappings source="bc6465a68bf70c1119964aa957e8f9eb" target="0ea031fd07462002d580e6de037451fa" xmi:id="e4f82841e18eee3ab2cc9f3fd101abb1"/>
+    <attributeMappings source="e6b5066002b8abf1a24c7ff35bd706c3" target="3fe2a4abfb7817a0699860ccaa1c240a" xmi:id="81ecb5ab28be90d18357df1537de9e0f"/>
+    <attributeMappings source="2675a2bc1b6b5dbd858c69aaf77c5a12" target="1d78d6f0a0f95989b6353ced2614ef13" xmi:id="23cf3432e7b6fbf0f82e2eae1c60f422"/>
+    <attributeMappings xmi:id="ac5efc3162bbab697153ddad6862156f" source="b9cd08da58d8566f7c87e00a79a74d66" target="128f8b5760e29a532d65547804973b62"/>
+    <attributeMappings xmi:id="cda099ed3d5e479d4cb69cca69868d43" source="de05309722db579c3e7420438943c862" target="af2eda93c7111a5ec65e556e74839ce5"/>
+  </tableMappings>
+  <tableMappings xmi:id="a8a5a3b688a5db8054f0a5663cf24ce6" source="56b6b2ae16c76e21fdd03ce633bf6a8c" target="36835697d0ad6887ca686e81e61f7f92">
+    <attributeMappings source="7dc9854ac64fa9f36814a7a0a89cc8f6" target="ddd8d3f71f7cd8886e28144983d95579" xmi:id="c218aa12d2e930f5d60aa41da5153bcd"/>
+    <attributeMappings source="5393c2e8497c698f200f5b6c9549d7f0" target="3a9fa24c621efc372b2cb60667354c00" xmi:id="82d83f924f7298809a485d487b619f4b"/>
+    <attributeMappings source="71edb1b2a385a613e338cafaf443d968" target="9e05401a7649ccbd82fdebc5061b2165" xmi:id="4ed720f13ac4301f46066a3d3702ebe7"/>
+    <attributeMappings source="2a85ee2f1a7a64b8874701d8736eb4f1" target="97d32b12e70e2c1d200dfac2a3e2b132" xmi:id="a635fbdba482e4c77902e38b3c34a277"/>
+    <attributeMappings source="27a861d2d5b257d0ae3a825832962a43" target="1b87d4ffac2eebd388abb4b03ada52ee" xmi:id="0b7aa4b8b75a7271ea3d41f910350aa9"/>
+    <attributeMappings source="af0d2757077950470ec4ce1b7ebf083b" target="5906fcd9e8f8e409d799384843a56e32" xmi:id="165dafe6eb97aceee6835f0d3b3f2f2f"/>
+    <attributeMappings source="ddacb735ab7abcb3423b71b568726087" target="75dbd80132ee93793b9e3d9407215038" xmi:id="029b2f35abd423d8686d3a5f0d5b2996"/>
+    <attributeMappings source="da64e9a4adbd7527728ec5afd436764d" target="6f31c0fe04ef18989f7ae2cc0724861f" xmi:id="c77d06cad2ca3325b6433af2807b77b4"/>
+    <attributeMappings source="ba4e7fcc40d63189fe0eff80081c4dc7" target="49f385c3445cbcc43011159e4b007dd4" xmi:id="eab562216d0759bc5f84db73876cc0ac"/>
+    <attributeMappings source="d5f125a642b14e23449ee5ded636e403" target="41a19b87c563e5e80a219b0a03e756d6" xmi:id="7de5be85af75c5f373622f350714e2fe"/>
+  </tableMappings>
+  <tableMappings xmi:id="7bca7d832a646a0f2cd369470f5610e6" source="91e7082607993925822a3e9625d33b66" target="9e4f07c2e084f5975654bf2b5874ba15">
+    <attributeMappings source="342eb626806a0636228be133237bacad" target="dbf283d9d10e3bc1bcc18eaa04cdf193" xmi:id="1ba53f740084d4ca5eb9921ff0f4ee20"/>
+    <attributeMappings source="04b595f4b6af9cb5f763e38df9dbe263" target="bfd58fad53686556b41c43c5b3a49d3a" xmi:id="7830a608bac9c191184578536413405f"/>
+    <attributeMappings source="fd70c2dadcbeeb5b434f61e44dd10465" target="4801d0f4c5cadf99473e5b1fbd5a31aa" xmi:id="080022201a132fc00ca3ab2e6f673d3c"/>
+    <attributeMappings source="905993587f70b5be1837d531e7010ae8" target="306a7ce50b94dea9435ec6a72bb5a9c4" xmi:id="13da456c15606d39a5e20210e1d581a6"/>
+    <attributeMappings source="0326e1048bfed5b38efacc60bc636b9e" target="5e042f4a045d05af2708d103b92ac43e" xmi:id="02d079b3e5dd80dce4ed95554bed4155"/>
+    <attributeMappings source="01cdc3a2e82c7fa59a2c5e814627b831" target="9006e81b26b6949b1f0c0b31627fc4fb" xmi:id="384cc6a64e20f4e4f66272197aaa4bcf"/>
+    <attributeMappings source="59265592c0fe4637e303fa56ddcac47f" target="d2441ea32e2d63d211551911362858a3" xmi:id="c816e3543aad7858346447e2fd418e6b"/>
+    <attributeMappings source="fd2489b305d829524c16f8197dbb9a2a" target="b98319d7c7b9e85046992047eed8bda1" xmi:id="28fd43f81e33d4bbe3a4948db37d9c68"/>
+    <attributeMappings source="96a80399f9613cef0e7e19665ae8f0f4" target="4b48c93836e3fffacbaa9f565b972872" xmi:id="537b719a080563d5a980b68314e5c878"/>
+    <attributeMappings source="2ee94e340e4a657900cc66d7663d5e03" target="23e1a3e5262e8620a8c60aba542858e4" xmi:id="693cb588c41dd2ce3d8a5b708fa74517"/>
+    <attributeMappings source="fd8397c08223dfdcf9ad5b6fcb877961" target="1a4a1f6e50e43a6e3c8464bfe6e7c50d" xmi:id="0fe84a9dafc0f132108e54fb55f1e4b2"/>
+    <attributeMappings source="d1bcac2d94ea9d4eb6d70b00c0726dbc" target="c5327abf43ac0cfef4f585c6a858f255" xmi:id="7b6dc307549ebc920b40d93275e0e490"/>
+    <attributeMappings xmi:id="ae62f20bc53b0ce4aef48973ee94fb58" source="cd8553c43dc9a0be419a05122a1dfe57" target="5edc433e6e74829955851994db4ef454"/>
+  </tableMappings>
+  <variables xmi:id="f02e8b99c8aaa9ca37dd1eea9094e7ea" name="V_EXP_LOAD_DATE" kind="expression" type="VARCHAR" length="0" scale="0" nullable="false" defaultValue="NOW()"/>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="8187af4177db5e3570f777f6a2cfe213" name="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="068fd20a16be777eda93a5516422e9e2" key="sap.afm.description" value=""/>
+    <annotations xmi:id="e919b0f7ae31b4ef4edf163d0cedfefe" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="7ef09bf759b7bab6d679cb2e1f31098e" key="sap.afm.layout">
+      <annotations xmi:id="d5399a54ae88ddbe3c175e11f7892c10" key="x" value="132"/>
+      <annotations xmi:id="3a5184e3a50373cc0f511221ec131787" key="y" value="254.17746227468194"/>
+      <annotations xmi:id="a7fa8af95a283d4371b57b584fac5ea7" key="width" value="100"/>
+      <annotations xmi:id="8824bf2b2b1870f36d84ad69fe51f5cf" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="e55c7fd3e97e0a29fa522a422cf4415b" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="1c874117d9aa73ac201f5d4dba2aeba4" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="6fd524d20ed0d34c3453eb8cd85d5c3a" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="2ac408f920231dbd938eeb6b1cc76829" key="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS_Output" value="Filter2_Input"/>
+    </annotations>
+    <outputs name="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS_Output" kind="TABLE" xmi:id="7f01e1258348a0dbf8e0c3becf47b05d">
+      <attributes name="jobReqId" type="BIGINT" length="0" scale="0" nullable="true" xmi:id="51430da41750198ddc2749fd4448f918"/>
+      <attributes name="numberOpenings" type="DECIMAL" length="20" scale="5" nullable="true" xmi:id="1464357f4b876b62c595d77aeb719a41"/>
+      <attributes name="year" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="560a64a83ca9f2e2c851873ec76db2f8"/>
+      <attributes name="month" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="bf803bb18d01f619054a16e5e02df1f0"/>
+      <attributes name="totalOpenRequisitions" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="2549c3250f657b5877275d2723b01945"/>
+      <attributes name="isFirstInverviewOrAfter" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="d633e7cac889f20506cfa4e7410838c6"/>
+      <attributes name="positionNumber" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="4718809f317e14e887a0a9af46f89632"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="54c05d4ccbffe5615417176720be3c6b" name="FT_SSFF_RECRUITMENT_INTERVIEWS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_INTERVIEWS" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="7fa7356ab21b9ce37a6a2f8f114edda1" key="sap.afm.description" value=""/>
+    <annotations xmi:id="25f2c69a9374508da9dc9422065e0771" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="51fd46dcfa00c32ab832b382db08ef8c" key="sap.afm.layout">
+      <annotations xmi:id="d72bfc6bbf50e788b86b68bd4b7b08bd" key="x" value="132"/>
+      <annotations xmi:id="3495c4ad7622878d432db84059082ea0" key="y" value="153.79282079904135"/>
+      <annotations xmi:id="db727d75bf75121e1b16e08211a5182c" key="width" value="100"/>
+      <annotations xmi:id="4a8f15b645ed440df6f06fc3e8ea0005" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="62c2e1a2c7d5146397db6432a8b1aad9" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="e162dfbb49a9899bd6e67c10849480f8" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="59b0224902aac11fd0f1cccd925c43be" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="b30ae9548d83adaf759e311b736e43d5" key="FT_SSFF_RECRUITMENT_INTERVIEWS_Output" value="F_INTERVIEW_Input"/>
+    </annotations>
+    <outputs name="FT_SSFF_RECRUITMENT_INTERVIEWS_Output" kind="TABLE" xmi:id="3f53d78db910851226fd2d594c34582b">
+      <attributes xmi:id="b390bb3e2335cbd719544a31271eeeea" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="11d3714f28dae9c1ee9bf9c64aae0548" name="division" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="12ee5a134bd1f0129da2aef22e2d4d0f" name="department" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="ad0bf70d15a6db5a3dba27c9e2aa3dbc" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="a8adadf1ca16c77f58d4cc97b4b4a09a" name="position" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes name="jobReqId" type="BIGINT" length="0" scale="0" nullable="true" xmi:id="70602275156499fc4d9af0f3e5240228"/>
+      <attributes name="less3Candidates" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="4a08ee71ff0cec055bf99a81828bf51c"/>
+      <attributes name="less5Candidates" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="ac5298f2ca86279614811268eb901da8"/>
+      <attributes name="year" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="419d6e745c9c4f84c253edae01f8be72"/>
+      <attributes name="month" type="INTEGER" length="0" scale="0" nullable="true" xmi:id="e1d46561bb7c4aa57361a9b83dc49987"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="b3fff5ba481228ac2d9ba6b26799dedf" name="F_OPEN" outputDistinctRows="true" expression="&quot;F_OPEN_Input&quot;.&quot;year&quot; = EXTRACT ( YEAR     FROM $$V_EXP_LOAD_DATE$$ ) AND&#xA;&quot;F_OPEN_Input&quot;.&quot;month&quot; = EXTRACT ( MONTH FROM $$V_EXP_LOAD_DATE$$ )">
+    <annotations xmi:id="e02a71efbf1eb00faf2c452687cb87a5" key="sap.afm.description" value=""/>
+    <annotations xmi:id="7c58beb73d2d85497270bbbb5d41cb76" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="a4cb153862d32a9e4af85f169d051e07" key="sap.afm.layout">
+      <annotations xmi:id="30e5ecb1a7c5c7da200c6b96a365cb62" key="x" value="252"/>
+      <annotations xmi:id="294f74c426a69b2de22e8387c68c5a2f" key="y" value="254.17746227468194"/>
+      <annotations xmi:id="aa39826569250bbd881cec26492c67c0" key="width" value="100"/>
+      <annotations xmi:id="3b93793533fc0e96685139ac12bf833f" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="1e6bfb4984422824ee1db4e97f3c6c43" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="049821e140bfc76ad076b445840e81bb" key="sap.afm.nodeInputs">
+      <annotations xmi:id="de033caf2511afb3b047286ad016fd6e" key="F_OPEN_Input" value="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS_Output"/>
+    </annotations>
+    <annotations xmi:id="0816c4da4eb4cab7a2abb269cc0613ab" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="361dbbc9d4aa9030fa1b99ce5c015a9f" key="F_OPEN_Output" value="TemplateTable1_1_Input"/>
+    </annotations>
+    <inputs name="F_OPEN_Input" xmi:id="8aec4def57ca4b846d1c6163d67ea1ad" kind="TABLE">
+      <attributes xmi:id="801bc338878805ebbe37766ba5dfdcf6" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="2ba5acb38fd36f3fd0a9107225c74c97" name="numberOpenings" type="DECIMAL" nullable="true" length="20" scale="5"/>
+      <attributes xmi:id="56c35072da93d76421a03dde8fe78d31" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="d7103be9f170eba53ebd8600a2a00f2a" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="d97e58d965bfe6cb1932f24b1a8d05f4" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="8af9b1572581c28ea7c82d114fdd44c1" name="isFirstInverviewOrAfter" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="44e43c417912e98ca520c6bf914c6344" name="positionNumber" type="INTEGER" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <outputs name="F_OPEN_Output" xmi:id="c207c3ba83d194ac991094a889d50c8e" kind="TABLE">
+      <attributes xmi:id="9a9bb084d3d4e367929f547a26e86e07" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0" expression="&quot;F_OPEN_Input&quot;.&quot;jobReqId&quot;"/>
+      <attributes xmi:id="cd12e66efd10fba497830c6db38b6a8f" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0" expression="IFNULL(&quot;F_OPEN_Input&quot;.&quot;totalOpenRequisitions&quot;,0)"/>
+      <attributes xmi:id="2f534a05c81e19bdb2affcb2d1171d29" name="year" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;F_OPEN_Input&quot;.&quot;year&quot;">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="ce81fdf901353c9370450801412b8012" name="month" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;F_OPEN_Input&quot;.&quot;month&quot;">
+        <annotations>
+        </annotations>
+      </attributes>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="a86e2026d24afc8b981d1203017b0f88" name="F_INTERVIEW" expression="&quot;F_INTERVIEW_Input&quot;.&quot;year&quot; = EXTRACT ( YEAR     FROM $$V_EXP_LOAD_DATE$$ ) AND&#xA;&quot;F_INTERVIEW_Input&quot;.&quot;month&quot; = EXTRACT ( MONTH FROM $$V_EXP_LOAD_DATE$$ )" outputDistinctRows="true">
+    <annotations xmi:id="6a8d48428c471ead651a7f9f6cedecef" key="sap.afm.description" value=""/>
+    <annotations xmi:id="ca07c500a0038142f3b08e207ac2d807" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="2458b7c574ac54a3d4b2a84ee1b6738c" key="sap.afm.layout">
+      <annotations xmi:id="8e7fc2f6661b2e369936a6eda75f2920" key="x" value="252"/>
+      <annotations xmi:id="9ed43d679bd91d047ac84a786b571859" key="y" value="153.79282079904135"/>
+      <annotations xmi:id="7d2803d1ec824308c91c0156ff740106" key="width" value="100"/>
+      <annotations xmi:id="e07834f5cdb3d1ff5f607ec1fdc0efca" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="7ff4943c797c6b2ba4901e947b2001ce" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="67f16532765568e0248afdd58bd87914" key="sap.afm.nodeInputs">
+      <annotations xmi:id="1ace382127a127a1d394c14ce9e990ea" key="F_INTERVIEW_Input" value="FT_SSFF_RECRUITMENT_INTERVIEWS_Output"/>
+    </annotations>
+    <annotations xmi:id="1497c2e31eb72ba6d37476d96f14c2d7" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="80341813d78f760761c49136b574f1b1" key="F_INTERVIEW_Output" value="Aggregation4_Input"/>
+    </annotations>
+    <inputs name="F_INTERVIEW_Input" xmi:id="aade3b7e21023c0dd3252cbc15d09283" kind="TABLE">
+      <attributes xmi:id="51529756e226f41e177299aa4b2d63aa" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="33f0edd8f6a4d554f8f78c58d525c406" name="less3Candidates" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="a2bdec9dbe091d9db5ac50fe8cbdfa61" name="less5Candidates" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="31c53bc4cce5b08bcda87bf675fb7b03" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="db0167e4df2619cc7012a016c3380a8a" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="3ee10822aaed94e198b8b64a894b423f" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="f41e15695ecfe87ac985900132fab956" name="division" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="dde8056d8302f25f710a12bc886099e8" name="department" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="98692ea57f1911934955d011df1c6317" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="23deb9dbb1159c1d159e54d4fc351830" name="position" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+    </inputs>
+    <outputs name="F_INTERVIEW_Output" xmi:id="012a492d517e30b3e2f7b080d996813a" kind="TABLE">
+      <attributes xmi:id="fed56350af7e5860192003af4377e34c" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;jobReqId&quot;"/>
+      <attributes xmi:id="b75414e71d866a8d4428f6a448864d38" name="less3Candidates" type="INTEGER" nullable="false" length="0" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;less3Candidates&quot;"/>
+      <attributes xmi:id="b6d300146e35e8e66032619ed2031b26" name="less5Candidates" type="INTEGER" nullable="false" length="0" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;less5Candidates&quot;"/>
+      <attributes xmi:id="4dc7ef779fc5c3b5bb2c326f77bc1253" name="year" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;year&quot;"/>
+      <attributes xmi:id="ec24c498205c17f0b40efc0a69827f6a" name="month" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;month&quot;"/>
+      <attributes xmi:id="d03a46f56e6f10ab59d018b9051d39b4" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0" expression="businessUnit"/>
+      <attributes xmi:id="b417d12130e23e5a9247a866051a7971" name="division" type="NVARCHAR" nullable="true" length="32" scale="0" expression="division"/>
+      <attributes xmi:id="313f4da7b6567be6fd406df41acd3286" name="department" type="NVARCHAR" nullable="true" length="32" scale="0" expression="department"/>
+      <attributes xmi:id="8de7cbe8d2e4351023e6ac2dc4384747" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;subDepartment&quot;"/>
+      <attributes xmi:id="18b6e47c3c3cc2f18cd113d771da3074" name="position" type="NVARCHAR" nullable="true" length="128" scale="0" expression="&quot;F_INTERVIEW_Input&quot;.&quot;position&quot;"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:AggregationNode" xmi:id="c0c3e465d0821cb414fd80cea775c00f" name="Aggregation1">
+    <annotations xmi:id="e0a2fd2027d8fd300a86d59b0dab3b8b" key="sap.afm.description" value=""/>
+    <annotations xmi:id="4e3010def4475e396048bd4afef73e7e" key="sap.afm.displayName" value="Aggregation"/>
+    <annotations xmi:id="03d629c988ada1458675fed5ca017270" key="sap.afm.layout">
+      <annotations xmi:id="4ae4b043818976821443bf8af8b2f14e" key="x" value="421.9999988079071"/>
+      <annotations xmi:id="186d76d5db50efdaae9ca0d196009262" key="y" value="254.17746227468194"/>
+      <annotations xmi:id="9a8efd7806eef3f0bb1662424a0e9948" key="width" value="100"/>
+      <annotations xmi:id="a5d60d11987c463d15937f5891e52862" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="d2b0aac74e1d2fc8f7b142e766fde550" key="sap.afm.nodeType" value="AggregationNode"/>
+    <annotations xmi:id="1dce0b6a4e2192ef817ff5900506406d" key="sap.afm.nodeInputs">
+      <annotations xmi:id="98b749a9b4fa1fbb1ecbf68473355273" key="Aggregation1_Input" value="F_OPEN_Output"/>
+    </annotations>
+    <annotations xmi:id="f082d4f4a82dbfe0606fcf03c48c8faa" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="69c7db8d39a74565f31df5e8b6a965f9" key="Aggregation1_Output" value="TemplateTable2_1_Input"/>
+    </annotations>
+    <inputs name="Aggregation1_Input" xmi:id="c848fce6fff687d9c0bd390a1fc6e95e" kind="TABLE">
+      <attributes xmi:id="ae78ca26f018c91c21d81903a4e02510" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="2036efb35c2518907ed80fc68f4cbe84" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="9f9dd05d81f285090188f6e9e955195a" name="year" type="INTEGER" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="eb0af4eb572c18bd182d6b0eaa9334e2" name="month" type="INTEGER" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+    </inputs>
+    <outputs name="Aggregation1_Output" xmi:id="e3a04ccefa128dcc9ec4d36e6db8205c" kind="TABLE">
+      <attributes xmi:id="21c7b4f660871c333fb86c55d90c6780" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="ef90c1dbc0c1547bddff8b734b0e9922" key="type" value="INTEGER"/>
+        <annotations xmi:id="473da78d956fb827452a93472f80b7eb" key="length" value="0"/>
+        <annotations xmi:id="ed77b155de079c91f433baf3632f061b" key="scale" value="0"/>
+        <annotations xmi:id="e8d98e9ca6c75aaf2c357c6c06c9f277" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="b6a02b1320356adcfc6216e45de5d63e" name="year" type="INTEGER" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="ab2fa986d2a5181070ff82389463e603" name="month" type="INTEGER" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="db3f80a5412ba93d2f486adeec29f329" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+    </outputs>
+    <aggregationTypes>SUM</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <tableMappings xmi:id="e8e90ef928cd7f4862dbac00cb45c1c2" source="c848fce6fff687d9c0bd390a1fc6e95e" target="e3a04ccefa128dcc9ec4d36e6db8205c">
+      <attributeMappings source="2036efb35c2518907ed80fc68f4cbe84" target="21c7b4f660871c333fb86c55d90c6780" xmi:id="458ad2b049a093e3ff89990390a5b69e"/>
+      <attributeMappings xmi:id="6feb4a1cd12c9f0c8b0b27d0b883952c" source="9f9dd05d81f285090188f6e9e955195a" target="b6a02b1320356adcfc6216e45de5d63e"/>
+      <attributeMappings xmi:id="f01bc0571d6470315a63a289b7a1ac01" source="eb0af4eb572c18bd182d6b0eaa9334e2" target="ab2fa986d2a5181070ff82389463e603"/>
+      <attributeMappings source="ae78ca26f018c91c21d81903a4e02510" target="db3f80a5412ba93d2f486adeec29f329" xmi:id="12f11fca4abc31c6313bfe6357f07a48"/>
+    </tableMappings>
+  </nodes>
+  <nodes xsi:type="flowgraph:AggregationNode" xmi:id="7cf87e6607a8601f0dd7799e28c8ae66" name="Aggregation4">
+    <annotations xmi:id="a58ae9f9ae6bab9d1d48a27526d8fa22" key="sap.afm.description" value=""/>
+    <annotations xmi:id="2730e41a8d2ec9ec3a381a18a38f5d8b" key="sap.afm.displayName" value="Aggregation"/>
+    <annotations xmi:id="c14bf7a1d19d84a981efc8ebb210b0dd" key="sap.afm.layout">
+      <annotations xmi:id="181b2598ee7ba5489d7e59e28355590f" key="x" value="421.9999988079071"/>
+      <annotations xmi:id="63d232905f70309417a0e055be9a8cc7" key="y" value="135.89875367693983"/>
+      <annotations xmi:id="330bd0adc75c60abd9e2d7ba6e31ced0" key="width" value="100"/>
+      <annotations xmi:id="d5aac09b9d30e8b8c860e5cad35500e4" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="a21d9414ead51e28d00ad3f5ef54dcef" key="sap.afm.nodeType" value="AggregationNode"/>
+    <annotations xmi:id="4486b583f215b60ed8514df0bbd3a187" key="sap.afm.nodeInputs">
+      <annotations xmi:id="f83a8059373ead020505c1bf52422fc3" key="Aggregation4_Input" value="F_INTERVIEW_Output"/>
+    </annotations>
+    <annotations xmi:id="c4cff66910d89ae9763625dfd57a749b" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="3e2aa691110af15802ebb27291e1d78d" key="Aggregation4_Output" value="Filter2_Input"/>
+    </annotations>
+    <inputs name="Aggregation4_Input" xmi:id="0c13df8093d6b727010ad93dc991494e" kind="TABLE">
+      <attributes xmi:id="125202a0be33cb94307a42d20245c3b3" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="51e769fe0734be9b759d68a9e001f280" name="less3Candidates" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="f965f55ac94e680564cbab8f3187062c" name="less5Candidates" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="07a509b9ca2d66f073cc9fb9b589a431" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="bc4cbde03127270889dccdb02040630b" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="e7bfe07f79fffe28c2b643b913d74925" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="49253e71925afb57c465d4599d1e6f49" name="division" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="6025c68d31e25eb9b9b94ff812ce47a1" name="department" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="3c2f12885e6cfc24e7ddb40963c8af81" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="a2cf307acf9cfb82adaf117402ccad45" name="position" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+    </inputs>
+    <outputs name="Aggregation4_Output" xmi:id="288d2d628f9b159d1f2d2e0d4daf50fc" kind="TABLE">
+      <attributes xmi:id="86a1ec5f1d5815cb3b996e487d74f506" name="less3Candidates" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="bd9cffb6ab32bbbfd13679d31115f6d7" key="type" value="INTEGER"/>
+        <annotations xmi:id="c85190665dd8b3c8366ec24b8ae27349" key="length" value="0"/>
+        <annotations xmi:id="98a6e73f24f7738e67e7c8b07312c346" key="scale" value="0"/>
+        <annotations xmi:id="a43f90c774643706f7d3846484ca96b2" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="e63e4277c5dc885b03555b338fa3fe3e" name="less5Candidates" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="0b196c84344d4c0a8083bcbd13b5fe95" key="type" value="INTEGER"/>
+        <annotations xmi:id="efb8d7a4ec3319e301962a8031bf3ada" key="length" value="0"/>
+        <annotations xmi:id="2d03fd2969edf364c3b1388bb0572985" key="scale" value="0"/>
+        <annotations xmi:id="48485b21ed334d847f8592a4e033f6b5" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="90edf0b7feaaaaff2f042a1678d541e1" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="ff6670f490146725b9a663fcf99f7316" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="28069cb1a7ef14b46bae3540f94bbfc7" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="55f1509282ad165b46594966ea8c243a" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="796aa397b5b43010a6461b053a4d79ca" name="division" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="2cd537ac6bf575371a95e54bc52dc919" name="department" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="931e2d5b0b79920fc65fafd0052ff0bc" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="b2ce2f93fce91e3efb2bfaba5d801931" name="position" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+    </outputs>
+    <aggregationTypes>SUM</aggregationTypes>
+    <aggregationTypes>SUM</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <aggregationTypes>GROUP-BY</aggregationTypes>
+    <tableMappings xmi:id="04f643458805f001baf06a7428e7ae0b" source="0c13df8093d6b727010ad93dc991494e" target="288d2d628f9b159d1f2d2e0d4daf50fc">
+      <attributeMappings source="51e769fe0734be9b759d68a9e001f280" target="86a1ec5f1d5815cb3b996e487d74f506" xmi:id="01b2e08a44820851de3693e4e2b13e5e"/>
+      <attributeMappings source="f965f55ac94e680564cbab8f3187062c" target="e63e4277c5dc885b03555b338fa3fe3e" xmi:id="ed9e159402baeffc57f6bba496feeb57"/>
+      <attributeMappings source="07a509b9ca2d66f073cc9fb9b589a431" target="90edf0b7feaaaaff2f042a1678d541e1" xmi:id="12bbedb32667a900ec4167256d409d5e"/>
+      <attributeMappings source="bc4cbde03127270889dccdb02040630b" target="ff6670f490146725b9a663fcf99f7316" xmi:id="15f836c5eaa18f05b5619fcebdfcba2e"/>
+      <attributeMappings source="125202a0be33cb94307a42d20245c3b3" target="28069cb1a7ef14b46bae3540f94bbfc7" xmi:id="a89cb54a30dd5a9163306337eb2599ac"/>
+      <attributeMappings xmi:id="f1faa32471f73e7b099b82dfd1d49470" source="e7bfe07f79fffe28c2b643b913d74925" target="55f1509282ad165b46594966ea8c243a"/>
+      <attributeMappings xmi:id="9254a99dd3b442876ee1a2b92bccdbb0" source="49253e71925afb57c465d4599d1e6f49" target="796aa397b5b43010a6461b053a4d79ca"/>
+      <attributeMappings xmi:id="9685c5fa67b886896e5b6f8fcf2c4b0f" source="6025c68d31e25eb9b9b94ff812ce47a1" target="2cd537ac6bf575371a95e54bc52dc919"/>
+      <attributeMappings xmi:id="5bacdcc7ff1d3f389efc33612cfe2611" source="3c2f12885e6cfc24e7ddb40963c8af81" target="931e2d5b0b79920fc65fafd0052ff0bc"/>
+      <attributeMappings xmi:id="d9c0d12c095d07369bd19ae838ecb78f" source="a2cf307acf9cfb82adaf117402ccad45" target="b2ce2f93fce91e3efb2bfaba5d801931"/>
+    </tableMappings>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="6bbb6e0682b54b12b8ee83fcdfce533a" name="Filter2">
+    <annotations xmi:id="c0dbf6b3abb43720f0ed5d746b7fe450" key="sap.afm.description" value=""/>
+    <annotations xmi:id="d6ba223e37f449d358b620fb6b7e8a25" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="347b6e38b94c63374c08d82535036ed8" key="sap.afm.layout">
+      <annotations xmi:id="4571ce4d2d01c6134fad7e81c241d23c" key="x" value="591.9999976158142"/>
+      <annotations xmi:id="235a3fea65312beecd525e61299958ce" key="y" value="135.89875367693983"/>
+      <annotations xmi:id="1e511de8c1ea213c4bbe7acdda1df547" key="width" value="100"/>
+      <annotations xmi:id="2f2a93c3ba538bf21760615b4467d902" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="12f98960e10a54abdde629b5dc2ab4d3" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="dc1fa8129642eb203daddab1571cbaec" key="sap.afm.nodeInputs">
+      <annotations xmi:id="1944a32d09504af8b74331b2b7367047" key="Filter2_Input" value="Aggregation4_Output"/>
+    </annotations>
+    <annotations xmi:id="4a3b099fbd8cef6d62a3b9f3d9034224" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="abf82f758a2398d9e515ee059cc0c4fd" key="Filter2_Output" value="TemplateTable4_Input"/>
+    </annotations>
+    <inputs name="Filter2_Input" xmi:id="8e19b4e4d92a780704da6a216a9d3266" kind="TABLE">
+      <attributes xmi:id="69992d01581860cc11ec57379bc09271" name="less3Candidates" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="17e72e6c7b3d085e53847f33a4992730" key="type" value="INTEGER"/>
+        <annotations xmi:id="6706035b2d1d114826f0562073f62d96" key="length" value="0"/>
+        <annotations xmi:id="0c29fc2cf546b35930d6d68c84de378e" key="scale" value="0"/>
+        <annotations xmi:id="740478151d75f5e9ba68641e77101153" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="ff86f425c7c7b3591230fe64380438ee" name="less5Candidates" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="5902caed5d4b84f3ae23c3a169653d77" key="type" value="INTEGER"/>
+        <annotations xmi:id="ea0ca89f41b277d0f3394dc68c130651" key="length" value="0"/>
+        <annotations xmi:id="8b65dc70f082f39c7a1ad8f184151a90" key="scale" value="0"/>
+        <annotations xmi:id="49b5f9ae9638506c1aeca795e1108685" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="0837ee27113cb4fbca7b7c6d8b47449d" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="6a0410a183020d2960c1e4b37f5a6748" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="dee3d069a0b002d4af7ef21bb8d5a7f3" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="363f4917095f4e77896606d06585bef0" name="businessUnit" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="3c80b57c4e95e31c5df110f0ee9d0c67" name="division" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="a374b470738cffa1c7bf71fb98255b37" name="department" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="f5944539b942bb073641ad6ef1f90bef" name="subDepartment" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="1797741a008f909cebb7d37469da3e72" name="position" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+    </inputs>
+    <outputs name="Filter2_Output" xmi:id="56b6b2ae16c76e21fdd03ce633bf6a8c" kind="TABLE">
+      <attributes xmi:id="7dc9854ac64fa9f36814a7a0a89cc8f6" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;Filter2_Input&quot;.&quot;year&quot;"/>
+      <attributes xmi:id="5393c2e8497c698f200f5b6c9549d7f0" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;Filter2_Input&quot;.&quot;month&quot;"/>
+      <attributes xmi:id="71edb1b2a385a613e338cafaf443d968" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false" expression="0"/>
+      <attributes xmi:id="2a85ee2f1a7a64b8874701d8736eb4f1" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false" length="0" scale="0" expression="&quot;Filter2_Input&quot;.&quot;less3Candidates&quot;">
+        <annotations xmi:id="9a064920106d8c0410ac482f8337b129" key="type" value="INTEGER"/>
+        <annotations xmi:id="cb81aebb3de9fd067089c5660c695a84" key="length" value="0"/>
+        <annotations xmi:id="a5c93c33749341ca5072951e8b16671f" key="scale" value="0"/>
+        <annotations xmi:id="67fefc9b0330b22efb0a8208d072d2b2" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="27a861d2d5b257d0ae3a825832962a43" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false" length="0" scale="0" expression="&quot;Filter2_Input&quot;.&quot;less5Candidates&quot;">
+        <annotations xmi:id="875b6160fd2cd4a91e179b5a014d31c0" key="type" value="INTEGER"/>
+        <annotations xmi:id="d0596b1b0c4b46a81c5498b735212058" key="length" value="0"/>
+        <annotations xmi:id="4de6a750fa9131d0d315ed36abb6125a" key="scale" value="0"/>
+        <annotations xmi:id="8ebed306c7a5e5ceb30f03463ae9dfbb" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="af0d2757077950470ec4ce1b7ebf083b" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0" expression="&quot;Filter2_Input&quot;.&quot;jobReqId&quot;"/>
+      <attributes xmi:id="ddacb735ab7abcb3423b71b568726087" name="BUSINESS_UNIT" type="NVARCHAR" nullable="true" length="32" scale="0" expression="&quot;Filter2_Input&quot;.&quot;businessUnit&quot;"/>
+      <attributes xmi:id="da64e9a4adbd7527728ec5afd436764d" name="DIVISION" type="NVARCHAR" nullable="true" length="32" scale="0" expression="&quot;Filter2_Input&quot;.&quot;division&quot;"/>
+      <attributes xmi:id="ba4e7fcc40d63189fe0eff80081c4dc7" name="DEPARTMENT" type="NVARCHAR" nullable="true" length="32" scale="0" expression="&quot;Filter2_Input&quot;.&quot;department&quot;"/>
+      <attributes xmi:id="d5f125a642b14e23449ee5ded636e403" name="SUB_DEPARTMENT" type="NVARCHAR" nullable="true" length="128" scale="0" expression="&quot;Filter2_Input&quot;.&quot;subDepartment&quot;"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="2e934b2b962ca6a9c0181d4a5faa7760" name="Filter4">
+    <annotations xmi:id="641d2fdec9c2651130beb2337ff5fce9" key="sap.afm.description" value=""/>
+    <annotations xmi:id="0b551770663a784bd7202e51a28e29b8" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="d02d65ea287438634bff4d125f7d3c2e" key="sap.afm.layout">
+      <annotations xmi:id="b024f0cae5460a6ea3b670da1a5b8565" key="x" value="591.9999976158142"/>
+      <annotations xmi:id="97f53ab0cdc4757f88e5bb3b60f14b2e" key="y" value="254.17746227468194"/>
+      <annotations xmi:id="26feef13facd862bd8238898f75ee06d" key="width" value="100"/>
+      <annotations xmi:id="eb00e7e1d5dc1cedb799de4115e6e131" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="6b3f06835c5205b72331cf33f98ebf92" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="d71e726c5272015896a5474173926bf0" key="sap.afm.nodeInputs">
+      <annotations xmi:id="082f2a3dfe1a59aec51652c1ae0c7ab8" key="Filter4_Input" value="Aggregation1_Output"/>
+    </annotations>
+    <annotations xmi:id="87403aaab63b25dad83f15472cab34f2" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="b59f2e2fcbf89bf78beccff9e07b8fca" key="Filter4_Output" value="TemplateTable2_Input"/>
+    </annotations>
+    <inputs name="Filter4_Input" xmi:id="81fcd29cb71e590f0e479ce6073a110a" kind="TABLE">
+      <attributes xmi:id="a1b066da188e7b445e21cfd75b111249" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="f44a9994db27d54907b34681e5cd26c8" name="year" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="04eba7a451734cdd19b661b951a8656d" name="month" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="2abdb0a7afa46cd1d52ab480a129d63c" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <outputs name="Filter4_Output" xmi:id="8dfd655218bc099cbd20b3e77ae96612" kind="TABLE">
+      <attributes xmi:id="daa4025bc547d740b0f14974dd49337f" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0" expression="&quot;Filter4_Input&quot;.&quot;totalOpenRequisitions&quot;"/>
+      <attributes xmi:id="2520ff65b2bcdb21e9f064d0ec97fc52" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;Filter4_Input&quot;.&quot;year&quot;"/>
+      <attributes xmi:id="48d928fa6d089f45ae04ad25eb8b7a14" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0" expression="&quot;Filter4_Input&quot;.&quot;month&quot;"/>
+      <attributes xmi:id="c13de1117fc0aea37fc5042e118beebb" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0" expression="&quot;Filter4_Input&quot;.&quot;jobReqId&quot;"/>
+      <attributes xmi:id="bc6465a68bf70c1119964aa957e8f9eb" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false" expression="0"/>
+      <attributes xmi:id="e6b5066002b8abf1a24c7ff35bd706c3" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false" expression="0"/>
+      <attributes xmi:id="2675a2bc1b6b5dbd858c69aaf77c5a12" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false" expression="0"/>
+      <attributes xmi:id="b9cd08da58d8566f7c87e00a79a74d66" name="SELECTION_PROCESS_NOT_WITHIN_DESIRED_DATE" type="DOUBLE" nullable="true" expression="null" length="0" scale="0"/>
+      <attributes xmi:id="de05309722db579c3e7420438943c862" name="DEVIATION_FROM_SELECTION_DATE" type="INTEGER" nullable="true" expression="null" length="0" scale="0"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:JoinNode" xmi:id="9f01ffee9dec42b1ef0f05b7286cba27" name="Join2">
+    <annotations xmi:id="44dd6b638db6d729e1028fdc25b26fef" key="sap.afm.description" value=""/>
+    <annotations xmi:id="111e1a1cc53411f7941348822028c63a" key="sap.afm.displayName" value="JOIN"/>
+    <annotations xmi:id="a16f581148cde93605d1d0b4783c24f4" key="sap.afm.layout">
+      <annotations xmi:id="b7b6b01a4f3b5d10034ff381b949cf84" key="x" value="761.9999964237213"/>
+      <annotations xmi:id="a2d429bd37da0e06c87a3813cb7f4fe4" key="y" value="177"/>
+      <annotations xmi:id="83ed4baf6eb5e4772c912d55a2e8ec41" key="width" value="100"/>
+      <annotations xmi:id="d85c68a8e94369e5860cbeec9b133dd9" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="45ea68d646cc7ba75f2fbaa8cb7b5f00" key="sap.afm.nodeType" value="JoinNode"/>
+    <annotations xmi:id="147039a64c67dabda71429d322ab4081" key="sap.afm.nodeInputs">
+      <annotations xmi:id="1c593604b89515e369927d611a89a774" key="Join2_Filter4" value="Filter4_Output"/>
+      <annotations xmi:id="1a2d005151f54dfd91317330853ea6ee" key="Join2_Filter2" value="Filter2_Output"/>
+    </annotations>
+    <annotations xmi:id="7c80db486b5ec8070306d414740ea24f" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="beb7845038a8ee97efbad934054d0e44" key="Join2_Output" value="TemplateTable6_Input"/>
+    </annotations>
+    <inputs xmi:id="5f9853c1fadcdee57a6ae58ac8ebb781" name="Join2_Filter4">
+      <attributes xmi:id="cef19d68909fd87319604de9971f9dd7" name="totalOpenRequisitions" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="051690e389e212c50ef42b79629af713" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="b553cd3cea9c3625e2627e077937fc19" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="1b021b4423446350cce41bf0c62689d3" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="0ea031fd07462002d580e6de037451fa" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="3fe2a4abfb7817a0699860ccaa1c240a" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="1d78d6f0a0f95989b6353ced2614ef13" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="128f8b5760e29a532d65547804973b62" name="SELECTION_PROCESS_NOT_WITHIN_DESIRED_DATE" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="af2eda93c7111a5ec65e556e74839ce5" name="DEVIATION_FROM_SELECTION_DATE" type="INTEGER" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <inputs xmi:id="36835697d0ad6887ca686e81e61f7f92" name="Join2_Filter2">
+      <attributes xmi:id="ddd8d3f71f7cd8886e28144983d95579" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="3a9fa24c621efc372b2cb60667354c00" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="9e05401a7649ccbd82fdebc5061b2165" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="97d32b12e70e2c1d200dfac2a3e2b132" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="65717960eae4e6123582679c0671ca21" key="type" value="INTEGER"/>
+        <annotations xmi:id="f3a731427f872ff8db5f90245ae9a132" key="length" value="0"/>
+        <annotations xmi:id="6dba6c63db1ccb180891444542f705e5" key="scale" value="0"/>
+        <annotations xmi:id="f5d8256dd942feff392357a56d2fcefd" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="1b87d4ffac2eebd388abb4b03ada52ee" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false" length="0" scale="0">
+        <annotations xmi:id="02b8ecbb8717dfdd6a8f02bc181f806f" key="type" value="INTEGER"/>
+        <annotations xmi:id="9f8a70d9c6228e11899e29eccde7a0eb" key="length" value="0"/>
+        <annotations xmi:id="088e13042dbae4ab25958b949722bcb3" key="scale" value="0"/>
+        <annotations xmi:id="c0c352248ac8ec223bfb06d2183ba9dc" key="nullable" value="false"/>
+      </attributes>
+      <attributes xmi:id="5906fcd9e8f8e409d799384843a56e32" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="75dbd80132ee93793b9e3d9407215038" name="BUSINESS_UNIT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="6f31c0fe04ef18989f7ae2cc0724861f" name="DIVISION" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="49f385c3445cbcc43011159e4b007dd4" name="DEPARTMENT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="41a19b87c563e5e80a219b0a03e756d6" name="SUB_DEPARTMENT" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+    </inputs>
+    <outputs name="Join2_Output" xmi:id="91e7082607993925822a3e9625d33b66">
+      <attributes xmi:id="342eb626806a0636228be133237bacad" name="OPEN_JOB_REQUISITIONS" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="04b595f4b6af9cb5f763e38df9dbe263" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="fd70c2dadcbeeb5b434f61e44dd10465" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="905993587f70b5be1837d531e7010ae8" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="0326e1048bfed5b38efacc60bc636b9e" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="01cdc3a2e82c7fa59a2c5e814627b831" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="59265592c0fe4637e303fa56ddcac47f" name="BUSINESS_UNIT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="fd2489b305d829524c16f8197dbb9a2a" name="DIVISION" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="96a80399f9613cef0e7e19665ae8f0f4" name="DEPARTMENT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="2ee94e340e4a657900cc66d7663d5e03" name="SUB_DEPARTMENT" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="fd8397c08223dfdcf9ad5b6fcb877961" name="SELECTION_PROCESS_NOT_WITHIN_DESIRED_DATE" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="d1bcac2d94ea9d4eb6d70b00c0726dbc" name="DEVIATION_FROM_SELECTION_DATE" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="cd8553c43dc9a0be419a05122a1dfe57" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0">
+        <annotations/>
+      </attributes>
+    </outputs>
+    <tableMappings xmi:id="48474c3e39e1505b571ed930c76c3c6d" source="5f9853c1fadcdee57a6ae58ac8ebb781" target="91e7082607993925822a3e9625d33b66">
+      <attributeMappings source="cef19d68909fd87319604de9971f9dd7" target="342eb626806a0636228be133237bacad" xmi:id="d5c33462fc9b243cb31dc09edf64d685"/>
+      <attributeMappings source="051690e389e212c50ef42b79629af713" target="04b595f4b6af9cb5f763e38df9dbe263" xmi:id="e577cff287931a47a42a47b5b567174b"/>
+      <attributeMappings source="b553cd3cea9c3625e2627e077937fc19" target="fd70c2dadcbeeb5b434f61e44dd10465" xmi:id="5a454cc6e5adba71a27b32baf9738871"/>
+      <attributeMappings source="0ea031fd07462002d580e6de037451fa" target="905993587f70b5be1837d531e7010ae8" xmi:id="cd154e55cb2686e4b9aff56caf135678"/>
+      <attributeMappings xmi:id="b50d7cd76a4bbca40e1b4d69d189c39d" source="128f8b5760e29a532d65547804973b62" target="fd8397c08223dfdcf9ad5b6fcb877961"/>
+      <attributeMappings xmi:id="017eae8e2cb0631724b32f7ecc9777d1" source="af2eda93c7111a5ec65e556e74839ce5" target="d1bcac2d94ea9d4eb6d70b00c0726dbc"/>
+      <attributeMappings xmi:id="49f1d381dfd01c61212fcbbe01771859" source="1b021b4423446350cce41bf0c62689d3" target="cd8553c43dc9a0be419a05122a1dfe57"/>
+    </tableMappings>
+    <tableMappings xmi:id="cf747d87e40eb582f863b2492a43b3d5" source="36835697d0ad6887ca686e81e61f7f92" target="91e7082607993925822a3e9625d33b66">
+      <attributeMappings source="75dbd80132ee93793b9e3d9407215038" target="59265592c0fe4637e303fa56ddcac47f" xmi:id="6dcd50dc183ad04a4fb2f033e603faba"/>
+      <attributeMappings source="6f31c0fe04ef18989f7ae2cc0724861f" target="fd2489b305d829524c16f8197dbb9a2a" xmi:id="a5d8bc5f6439b5f2e6d4cc12a1345625"/>
+      <attributeMappings source="49f385c3445cbcc43011159e4b007dd4" target="96a80399f9613cef0e7e19665ae8f0f4" xmi:id="c4e6602388721dc1ff9d13be0de78f87"/>
+      <attributeMappings source="41a19b87c563e5e80a219b0a03e756d6" target="2ee94e340e4a657900cc66d7663d5e03" xmi:id="b01a095848a354e60b739ee692717f09"/>
+      <attributeMappings xmi:id="3d754f5d808912ebb7d30aafb35e83e3" source="97d32b12e70e2c1d200dfac2a3e2b132" target="0326e1048bfed5b38efacc60bc636b9e"/>
+      <attributeMappings xmi:id="73d9df1e5a74ad337f96b1f6fc800653" source="1b87d4ffac2eebd388abb4b03ada52ee" target="01cdc3a2e82c7fa59a2c5e814627b831"/>
+    </tableMappings>
+    <joinDefinitions left="5f9853c1fadcdee57a6ae58ac8ebb781" right="36835697d0ad6887ca686e81e61f7f92" type="LEFT_OUTER" condition="&quot;Join2_Filter4&quot;.&quot;jobReqId&quot; = &quot;Join2_Filter2&quot;.&quot;jobReqId&quot; AND&#xA;&quot;Join2_Filter4&quot;.&quot;YEAR&quot; = &quot;Join2_Filter2&quot;.&quot;YEAR&quot; AND &#xA;&quot;Join2_Filter4&quot;.&quot;MONTH&quot; = &quot;Join2_Filter2&quot;.&quot;MONTH&quot;"/>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="26421448848c9cba04f6d7bbfa39d001" name="TemplateTable6" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_2_1_test_MIG" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="b02a6b2a16409137ab301375501fe334" key="sap.afm.layout">
+      <annotations xmi:id="d0558bc4b6d9a90ec6e1e82e245a5a7d" key="x" value="901.9999952316284"/>
+      <annotations xmi:id="0166d60946ca033e96241b841e07dbf3" key="y" value="168.66666666666669"/>
+      <annotations xmi:id="59600f17b380007b5ee7da9d14253f15" key="width" value="100"/>
+      <annotations xmi:id="894e5d6e8926a269d260cf47ebfd48d4" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="d1ff75207f029663a7ed31da511c53c2" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="73a1d5d11358235c4bfa68880450e989" key="sap.afm.nodeInputs">
+      <annotations xmi:id="1dcfadcb5c7b22fb20610d488f54e8d3" key="TemplateTable6_Input" value="Join2_Output"/>
+    </annotations>
+    <annotations xmi:id="c14902a0aa1ebfc1df9567f3ca8cd9f5" key="sap.afm.nodeOutputs"/>
+    <inputs name="TemplateTable6_Input" kind="TABLE" xmi:id="9e4f07c2e084f5975654bf2b5874ba15">
+      <attributes xmi:id="dbf283d9d10e3bc1bcc18eaa04cdf193" name="OPEN_JOB_REQUISITIONS" type="INTEGER" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="bfd58fad53686556b41c43c5b3a49d3a" name="YEAR" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="4801d0f4c5cadf99473e5b1fbd5a31aa" name="MONTH" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="306a7ce50b94dea9435ec6a72bb5a9c4" name="CLOSED_JOB_REQUISITIONS" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="5e042f4a045d05af2708d103b92ac43e" name="OPEN_PROCESS_LESS_3_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="9006e81b26b6949b1f0c0b31627fc4fb" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="false"/>
+      <attributes xmi:id="d2441ea32e2d63d211551911362858a3" name="BUSINESS_UNIT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="b98319d7c7b9e85046992047eed8bda1" name="DIVISION" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="4b48c93836e3fffacbaa9f565b972872" name="DEPARTMENT" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="23e1a3e5262e8620a8c60aba542858e4" name="SUB_DEPARTMENT" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="1a4a1f6e50e43a6e3c8464bfe6e7c50d" name="SELECTION_PROCESS_NOT_WITHIN_DESIRED_DATE" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="c5327abf43ac0cfef4f585c6a858f255" name="DEVIATION_FROM_SELECTION_DATE" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="5edc433e6e74829955851994db4ef454" name="jobReqId" type="BIGINT" nullable="true" length="0" scale="0">
+        <annotations/>
+      </attributes>
+    </inputs>
+  </nodes>
+</flowgraph:ContainerNode>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="495dad2b0bbba11eb6f0f4e9e24b650b" name="FG_STG_JOB_APPLICATION_STATUS" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="f46b2364a9e21414a6c37fd1ce9064f4" key="sap.afm.layout">
+    <annotations xmi:id="e3ea0e86c999a18be235f6765a4338bd" key="x" value="10"/>
+    <annotations xmi:id="89f33703ca6aa8f6f1a2a129c3c449bd" key="y" value="10"/>
+    <annotations xmi:id="f353fad31ef0079910a82c93bcb479ff" key="width" value="100"/>
+    <annotations xmi:id="ffa0f17b2b1dd9b6941d4fb8b8be905f" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="9310ca605712c396baba3ffcd5e920e4" key="sap.afm.palette">
+    <annotations xmi:id="fa98cd6b178fb3d0ab0e73a57a7d914c" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="d95278de7d777a95135e4dcedd3bf632" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="9f495b21392426684619f8b0cb8ed742" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="46dda7c1189de9c4acceeebdac8f76f5" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="ef4f68289476ca8e41bc19c9272b1425" name="F_JOB_APPLICATION_STATUS">
+    <annotations xmi:id="0a44486c6cea9357c1d99cb0b9f47506" key="sap.afm.description" value=""/>
+    <annotations xmi:id="5f357f6cda992bedaca6e04e8f62f665" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="a9f92e64dc16f83dddbe07775dbbd063" key="sap.afm.layout">
+      <annotations xmi:id="b39d328e3762687582c527aace82931f" key="x" value="252"/>
+      <annotations xmi:id="487eb216b4b250c27982dd53469f870a" key="y" value="87"/>
+      <annotations xmi:id="d2342c0ff98aae3f42411fab9c8d694f" key="width" value="100"/>
+      <annotations xmi:id="cfff46cf0d9588fd36e8de053bc37e0d" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="9407b6ae8f182088c139ea911cae9af0" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="a7c14f3f09ab1105b3db16646ea4614b" key="sap.afm.nodeInputs">
+      <annotations xmi:id="1efd69560d446e450d6633b78c363484" key="F_JOB_APPLICATION_STATUS_Input" value="SSFF_JobApplicationStatus_Output"/>
+    </annotations>
+    <annotations xmi:id="72d8f6f2a6d701a203ebbadf2c740098" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="fc58f682534f6fc112a94efae63c0f7a" key="F_JOB_APPLICATION_STATUS_Output" value="STG_JOB_APPLICATION_STATUS_Input"/>
+    </annotations>
+    <inputs name="F_JOB_APPLICATION_STATUS_Input" xmi:id="bb5179ef0a7c0e50206527a462102fa8" kind="TABLE">
+      <attributes xmi:id="c2e0e262b7f87683c92440ce7f9b28a6" name="appStatusId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="93c46b75d989ffa91a31f5d5b6a2f1e0" name="appStatusName" type="NVARCHAR" nullable="false" length="3999" scale="0"/>
+      <attributes xmi:id="855e052050306370c06550cddd7e9bf6" name="appStatusSetId" type="BIGINT" nullable="false" length="0" scale="0"/>
+    </inputs>
+    <outputs name="F_JOB_APPLICATION_STATUS_Output" xmi:id="5fe4826499404bbb4857e501f947615e" kind="TABLE">
+      <attributes xmi:id="71ad629aa87f72a3195659ed2242f5ba" name="appStatusId" type="BIGINT" nullable="true" length="0" scale="0" expression="appStatusId"/>
+      <attributes xmi:id="01998e2be27e68aa3fe89bdf6b28383c" name="appStatusName" type="NVARCHAR" nullable="false" length="3999" scale="0" expression="appStatusName"/>
+      <attributes xmi:id="a4a7c8e87205e4826fecb2b95ff591be" name="appStatusSetId" type="BIGINT" nullable="false" length="0" scale="0" expression="appStatusSetId">
+        <annotations xmi:id="88269d47080615f0e3c1b7d0d6fc9f05" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="63e74f17f4a2f5e02edaff001b42999f" name="STG_JOB_APPLICATION_STATUS" type="TEMPLATE_TABLE" catalogObjectName="STG_JOB_APPLICATION_STATUS_MIG" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="51f13aa8101bd4d4b08a2ca04f2c3c49" key="sap.afm.layout">
+      <annotations xmi:id="45d2ea821fcdb8cb2e6373f207357709" key="x" value="372"/>
+      <annotations xmi:id="d2d2c55268f939fad07f42d464a94609" key="y" value="87"/>
+      <annotations xmi:id="a5f589e9b75e7e2fb0507579b4e9126e" key="width" value="100"/>
+      <annotations xmi:id="0ce785f6615ff025579a432c69dda541" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="72bdac37332b7660902da3bc2d9c0b46" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="f0036163ba5e6d1ee1e2632fddb18df5" key="sap.afm.nodeInputs">
+      <annotations xmi:id="cc2fe634d68c07f94a6948e8ffcb0171" key="STG_JOB_APPLICATION_STATUS_Input" value="F_JOB_APPLICATION_STATUS_Output"/>
+    </annotations>
+    <annotations xmi:id="b6715e9611d52cb6974f9e57c806c6fd" key="sap.afm.nodeOutputs">
+      <annotations>
+      </annotations>
+    </annotations>
+    <annotations xmi:id="d69a4e9d4e6ad20829afa92ed83cb6c5" key="sap.im.writerType" value="insert"/>
+    <inputs name="STG_JOB_APPLICATION_STATUS_Input" kind="TABLE" xmi:id="ab9a5130b42806faa9e1cd9c7904ee73">
+      <attributes xmi:id="66af79af207ea2c592a7f9b5e9f01ce9" name="appStatusId" type="BIGINT" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="dde8f2eabdbc38d7e1de4aa39c3dbf22" name="appStatusName" type="NVARCHAR" nullable="false" length="3999" scale="0"/>
+      <attributes xmi:id="dbc937eb54a6ede94b6bc8b0bda7c050" name="appStatusSetId" type="BIGINT" nullable="false" length="0" scale="0">
+        <annotations xmi:id="2ffd98ae8f5f7f9b2d4feecc8f08c048" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </inputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a4af75bfeda7b14f6deb6cfc3d9e416a" name="V_JOB_APPLICATION_STATUS" type="DATABASE_VIEW" catalogObjectName="V_JOB_APPLICATION_STATUS" dataLayout="ROW" truncateTable="false">
+    <annotations xmi:id="3d8789076564b89ce82c7260edb95859" key="sap.afm.description" value=""/>
+    <annotations xmi:id="97475a8fa9c52dee9832933ac657b8bf" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="d3aa10f45681f755b8c6586429d2192c" key="sap.afm.layout">
+      <annotations xmi:id="01484427a61f0ea7c830ee15c1a8d023" key="x" value="132"/>
+      <annotations xmi:id="693eddde453a490e42a91b8ff3b240a4" key="y" value="87"/>
+      <annotations xmi:id="3391e979193a99568a694ff97fb71cb9" key="width" value="100"/>
+      <annotations xmi:id="1f22144bfd4b7b717bd006cf13b15c4b" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="54f7ed14f281728e358060f336f5c25e" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="81f3883e881f0f1e722243bcdbd8ba33" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="71e977e695ff0de538bcdbd8227e9e2e" key="sap.afm.nodeOutputs"/>
+    <outputs name="V_JOB_APPLICATION_STATUS_Output" kind="TABLE" xmi:id="2d9372cba76199974dc00ee562c6d368">
+      <attributes xmi:id="95b249fcd56eafdf53caa7146153fce4" name="appStatusId" type="BIGINT" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="1f0a7d4b6733ad676b5a889e6395df01" name="appStatusName" type="NVARCHAR" length="3999" scale="0" nullable="false"/>
+      <attributes xmi:id="83e7bdd90a58a0c53c218570ee434f06" name="appStatusSetId" type="BIGINT" length="0" scale="0" nullable="false"/>
+    </outputs>
+  </nodes>
+  <tableMappings xmi:id="12eb471dfb435a8360d3ad7d663ef500" source="5fe4826499404bbb4857e501f947615e" target="ab9a5130b42806faa9e1cd9c7904ee73">
+    <attributeMappings source="71ad629aa87f72a3195659ed2242f5ba" target="66af79af207ea2c592a7f9b5e9f01ce9" xmi:id="5987be5e63ba84efdede57cbf54127df"/>
+    <attributeMappings source="01998e2be27e68aa3fe89bdf6b28383c" target="dde8f2eabdbc38d7e1de4aa39c3dbf22" xmi:id="894baba46d96eee5fc34c628b6e6b271"/>
+    <attributeMappings source="a4a7c8e87205e4826fecb2b95ff591be" target="dbc937eb54a6ede94b6bc8b0bda7c050" xmi:id="748d7e4c1dcc312ae04a944f1a878716"/>
+  </tableMappings>
+  <tableMappings xmi:id="35c62824c40221d0d5bc023b56edee5d" source="2d9372cba76199974dc00ee562c6d368" target="bb5179ef0a7c0e50206527a462102fa8">
+    <attributeMappings source="95b249fcd56eafdf53caa7146153fce4" target="c2e0e262b7f87683c92440ce7f9b28a6" xmi:id="f19ff2316cfa5dedd15b2ea87e65d9d6"/>
+    <attributeMappings source="1f0a7d4b6733ad676b5a889e6395df01" target="93c46b75d989ffa91a31f5d5b6a2f1e0" xmi:id="181243461185ad93c1d9746cb07fb941"/>
+    <attributeMappings source="83e7bdd90a58a0c53c218570ee434f06" target="855e052050306370c06550cddd7e9bf6" xmi:id="d2d7b3d90b627836406536451f4bb34d"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
