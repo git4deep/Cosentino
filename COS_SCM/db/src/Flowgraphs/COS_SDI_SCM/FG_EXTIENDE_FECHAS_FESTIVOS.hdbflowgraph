@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="c534f64f7d2a93faa8ff17e6b291b65d" name="FG_EXTIENDE_FECHAS_FESTIVOS" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="51055275a87cab624ee8543a58953c63" key="sap.afm.layout">
+    <annotations xmi:id="d07e3a60040f04521b4dfe77082be3f9" key="x" value="10"/>
+    <annotations xmi:id="634296611f4958fb28e4276adb380add" key="y" value="10"/>
+    <annotations xmi:id="821f9be1edba8607038c2f7ee8e96c98" key="width" value="100"/>
+    <annotations xmi:id="96a7f0a1b55901bf7e9548fb87103e8e" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="1af3035cef659d727c2f6b71f4cba301" key="sap.afm.palette">
+    <annotations xmi:id="eae3cc9a6781fc00f39a0fd39b820309" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="d33a0c7362d8e404b9bbd5be911fbc32" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="9c8b0d18e322e97a2186ccb362b730e7" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="ab239ed9ad0035eefe247575683af8b0" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <variables xmi:id="d896e782b5e13d7397fca9bd9a070469" name="V_ANIO_HASTA" kind="scalarParam" type="VARCHAR" length="4" scale="0" nullable="false" defaultValue="2020"/>
+  <nodes xsi:type="flowgraph:ProcedureNode" xmi:id="5c6484352a1c712ad5c2aa58fe47882f" name="PRC_EXTIENDE_FECHAS_FESTIVOS" type="DATABASE" procedureName="COS_SDI_SCM::PRC_EXTIENDE_FECHAS_FESTIVOS" procedureParameters="5295774c11586daccd3b3edda3871593 c2d2ea7581a134eed69f23afdbb64f88">
+    <annotations xmi:id="784f497bba2c14bc60e66231c33cf7ec" key="sap.afm.description" value=""/>
+    <annotations xmi:id="4f3d1d234ba0603c81d2d7774946aae0" key="sap.afm.displayName" value="Sort"/>
+    <annotations xmi:id="454dc7d69b0a966f96e00b53121f6263" key="sap.afm.layout">
+      <annotations xmi:id="f9783e1cfa2e64439b0ad0bd0ec4f3fc" key="x" value="281"/>
+      <annotations xmi:id="cd152143dfac40ebc392e437304f4fbe" key="y" value="104"/>
+      <annotations xmi:id="51982aaf6c39cd0b7d8767de7c851e72" key="width" value="100"/>
+      <annotations xmi:id="327c6079bc65d261cb26f9e4381ac29e" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="810004841b04efdfb5967cb1697942b9" key="sap.afm.nodeType" value="ProcedureNode"/>
+    <annotations xmi:id="539aa0164f6306cc0c55c8d80ab12fb7" key="sap.afm.nodeInputs">
+      <annotations>
+      </annotations>
+    </annotations>
+    <annotations xmi:id="bb505f0489efa7367c51fa141adaa0be" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="6da92ee3370a01aec23dcf6e0e4c6ccf" key="P_FECHAS" value="FECHAS_Input"/>
+    </annotations>
+    <inputs name="P_ANIO_HASTA" kind="SCALAR" xmi:id="5295774c11586daccd3b3edda3871593">
+      <attributes name="P_ANIO_HASTA" type="VARCHAR" length="40" scale="0" xmi:id="fe7e3162ded3fcf2cee48c56b03cd445" mappedName="$$V_ANIO_HASTA$$"/>
+    </inputs>
+    <outputs name="P_FECHAS" kind="TABLE" xmi:id="c2d2ea7581a134eed69f23afdbb64f88">
+      <attributes name="CD_PAIS" type="VARCHAR" nullable="true" length="2" scale="0" xmi:id="02ac470fbc9d875b8bffc0e58ee81edd"/>
+      <attributes name="DT_FECHA" type="DATE" nullable="true" length="10" scale="0" xmi:id="ca537f3e072e9ae84cf7cc02159bbd00"/>
+      <attributes name="VL_LABORAL" type="DECIMAL" nullable="true" length="1" scale="0" xmi:id="79efc2bde716c7d760b85fbaf9e497f7"/>
+      <attributes name="VL_FESTIVO" type="DECIMAL" nullable="true" length="1" scale="0" xmi:id="4e72bf1fd0eb9166dbe60e2b6d746d4b"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a6a42c4c83e348376dd9b561b6a81039" name="FECHAS" type="DATABASE_TABLE" catalogObjectName="FECHAS" dataLayout="ROW" truncateTable="false">
+    <annotations xmi:id="fa2f94173b57132776011ed6c6700f12" key="sap.afm.attributeMapping" value="ByName"/>
+    <annotations xmi:id="247ce17444c69379d23258c80c1830a6" key="sap.afm.layout">
+      <annotations xmi:id="52ba8767f14624dfe3c7208f3248035e" key="x" value="553"/>
+      <annotations xmi:id="25c89f4aeebd7803bc0bf6e528b52dc0" key="y" value="114"/>
+      <annotations xmi:id="78254141ac230cae5a11ce007fd5233b" key="width" value="100"/>
+      <annotations xmi:id="99e8ea8ec351a6b25f82d0b1441d8594" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="4a431d3be3b0bede9ba33c8175f9fbe0" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="1d6425ebcf1b0111e400be13e5212177" key="sap.afm.nodeInputs">
+      <annotations xmi:id="0a5379d1961cba1743890e520862e212" key="FECHAS_Input" value="P_FECHAS"/>
+    </annotations>
+    <annotations xmi:id="363251be26c900773d569daa7ec2071e" key="sap.afm.nodeOutputs"/>
+    <inputs name="FECHAS_Input" kind="TABLE" xmi:id="0a3e3c376377f0802efafc91cdcd1731">
+      <attributes xmi:id="0310ba3ec5649e864634cb310acfa51a" name="DT_FECHA" type="DATE" length="0" scale="0" nullable="false">
+        <annotations xmi:id="aca85056bfcb34c2f2c942e645647d23" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="4c4169290fc55edbf3a861c7c1e7d53d" name="VL_FESTIVO" type="DECIMAL" length="1" scale="0" nullable="true"/>
+      <attributes xmi:id="44885b6062f8384c13855c659d91c68e" name="VL_LABORAL" type="DECIMAL" length="1" scale="0" nullable="true"/>
+      <attributes xmi:id="cc94fea1bae4f0c07c0717054edaf89c" name="CD_PAIS" type="VARCHAR" length="2" scale="0" nullable="false">
+        <annotations xmi:id="c72cb7f1c577dee1272507cff0f5667b" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="a3b6a8d0e97507c05c42bf25bf224023" source="c2d2ea7581a134eed69f23afdbb64f88" target="0a3e3c376377f0802efafc91cdcd1731">
+    <attributeMappings source="02ac470fbc9d875b8bffc0e58ee81edd" target="cc94fea1bae4f0c07c0717054edaf89c" xmi:id="fd4395933f4035a10a0d4cf1c8787c60"/>
+    <attributeMappings source="ca537f3e072e9ae84cf7cc02159bbd00" target="0310ba3ec5649e864634cb310acfa51a" xmi:id="1cbea48136b24ff867ea2d6e56210260"/>
+    <attributeMappings source="79efc2bde716c7d760b85fbaf9e497f7" target="44885b6062f8384c13855c659d91c68e" xmi:id="1b4187d331873c5678d8990d08e295a3"/>
+    <attributeMappings source="4e72bf1fd0eb9166dbe60e2b6d746d4b" target="4c4169290fc55edbf3a861c7c1e7d53d" xmi:id="35e1d02787a004bfbb69c6e1747f76a7"/>
+  </tableMappings>
+</flowgraph:ContainerNode>

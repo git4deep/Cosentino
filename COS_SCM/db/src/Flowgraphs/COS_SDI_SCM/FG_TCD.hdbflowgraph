@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="351560f971f02d4d266a831b7b466466" name="FG_TCD" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="f343ee5db5fd1cc789e2313ef1d19f5f" key="sap.afm.layout">
+    <annotations xmi:id="d6dbcaeaec1b666bddc42ad20787786c" key="x" value="10"/>
+    <annotations xmi:id="292ebd327d5a5dca5e2a40875b5d34aa" key="y" value="10"/>
+    <annotations xmi:id="2db4f7ce00a4d2c9a6cb6eebda568b37" key="width" value="100"/>
+    <annotations xmi:id="f20928467c123081139d66820e9afdca" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="5d33acfad3d8f86334de972044a82181" key="sap.afm.palette">
+    <annotations xmi:id="6cd72fa2ccefc8a2725db8c5e5a21944" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="0af82e0b74967b8e54e1ec9330f376e3" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="ee4fca3a8046b95cbd73deae4eaa8b5e" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="5f08ce07a17768b70d8fd489242090ea" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="11f24247cbc03a0083c62a0b0e07567b" name="COS_FS_SCM_HUB_CTRL_TCD_FECHAS" type="VIRTUAL_TABLE" catalogObjectName="COS_FS_SCM_HUB_CTRL_TCD_FECHAS" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="5ffdfeb4c88766ef7098209dd0415489" key="sap.afm.description" value=""/>
+    <annotations xmi:id="74068ced7c9c8d986fb17e5ee81503b6" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="e3d72edd082605dfd7089e5b37055b07" key="sap.afm.layout">
+      <annotations xmi:id="58e074a96243e51e8db95ca5f7abdc4d" key="x" value="222"/>
+      <annotations xmi:id="cc2b7c8d53b41fddceeb34a663087ea4" key="y" value="135"/>
+      <annotations xmi:id="9014a7536784ee00a16c85e899147ec5" key="width" value="100"/>
+      <annotations xmi:id="309a7a19c2368da72bf0a1548c190067" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="cd8b81e5a8e09af99fb6f261c0971106" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="e36cf098c6f66f507513ba94c3383e93" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="e923766b5938d004df9971757bf5b635" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="dacea76c6427bed56799f6143fcb5da6" key="COS_FS_SCM_HUB_CTRL_TCD_FECHAS_Output" value="FESTIVOS_PUERTOS_Input"/>
+    </annotations>
+    <annotations xmi:id="17e196cb9c15da64b9441b5d2d8a632b" key="sap.im.remoteSourceTableDefinitions" value="">
+      <annotations xmi:id="907e697576767a94a1bdbbaa320b2d3c" key="type" value=""/>
+    </annotations>
+    <outputs name="COS_FS_SCM_HUB_CTRL_TCD_FECHAS_Output" kind="TABLE" xmi:id="b60867bd3dfba3e66e4bf60225d5a563">
+      <attributes xmi:id="259d2a8c662a7238c6ede2f9054fa2f3" name="cd_pais" type="NVARCHAR" length="2" scale="0" nullable="true"/>
+      <attributes xmi:id="a6e7406f09b4fb14cda023620641ce46" name="cd_puerto" type="NVARCHAR" length="3" scale="0" nullable="true"/>
+      <attributes xmi:id="d16d53509a7afdfbf1c06ba4c0796c91" name="cd_onu_puerto" type="NVARCHAR" length="5" scale="0" nullable="true"/>
+      <attributes xmi:id="2abca94b6926b9aa7cd54d9bd5b5a1db" name="dt_fecha" type="DATE" length="0" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="78e2b5f494409a38dd0c3acadc26e56a" name="FESTIVOS_PUERTOS" type="DATABASE_TABLE" catalogObjectName="FESTIVOS_PUERTOS" dataLayout="ROW" truncateTable="false">
+    <annotations xmi:id="36a3278a8643996564477d0f97ac30ed" key="sap.afm.attributeMapping" value="Custom"/>
+    <annotations xmi:id="66cff0c3f457773eac06c80a28e39b3f" key="sap.afm.layout">
+      <annotations xmi:id="a98ce20c8855b0e29cc17247f76e4555" key="x" value="396"/>
+      <annotations xmi:id="7815ef7ee313fb839bcb1127f5683b77" key="y" value="135"/>
+      <annotations xmi:id="1007afe69def3f985903f8457ac1ac4d" key="width" value="100"/>
+      <annotations xmi:id="fb22e25a515f7b31b569d6f74fe7b04c" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="95303c8fbc777e1b6eb2f6a540b0f35a" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="de5c6f6446569882d8e541c214f1385a" key="sap.afm.nodeInputs">
+      <annotations xmi:id="8853c57df0fc9b0398db34f963504321" key="FESTIVOS_PUERTOS_Input" value="COS_FS_SCM_HUB_CTRL_TCD_FECHAS_Output"/>
+    </annotations>
+    <annotations xmi:id="1566c1853ff54444f1377ebac88ea76b" key="sap.afm.nodeOutputs"/>
+    <inputs name="FESTIVOS_PUERTOS_Input" kind="TABLE" xmi:id="cb25cd4d82b2d902140edc0b70e988f7">
+      <attributes xmi:id="069faefce84424cd0a5ca7b3ec75ae72" name="CD_PAIS" type="VARCHAR" length="2" scale="0" nullable="false"/>
+      <attributes xmi:id="cad74aee8c46c66a57cb5dcb3b0b3890" name="CD_PUERTO" type="VARCHAR" length="3" scale="0" nullable="false"/>
+      <attributes xmi:id="11e6557b7f737af5f8f8966beadcf914" name="CD_ONU_PUERTO" type="VARCHAR" length="5" scale="0" nullable="false">
+        <annotations xmi:id="e9e0a65a27d352dfd42271bb9937aee2" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="8c9419778af977e4930bbeb58551a572" name="DT_FESTIVO" type="DATE" length="0" scale="0" nullable="false">
+        <annotations xmi:id="9be5098e6afe6f9a1b0f8d54e8ba5505" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="656dd3d1cba264a2acf0324e1a7de27e" source="b60867bd3dfba3e66e4bf60225d5a563" target="cb25cd4d82b2d902140edc0b70e988f7">
+    <attributeMappings source="259d2a8c662a7238c6ede2f9054fa2f3" target="069faefce84424cd0a5ca7b3ec75ae72" xmi:id="ccc87c2ae9bab44a53a2a08ee85bfab5"/>
+    <attributeMappings source="a6e7406f09b4fb14cda023620641ce46" target="cad74aee8c46c66a57cb5dcb3b0b3890" xmi:id="00787e226539b0c8ecf470fd8cb2a950"/>
+    <attributeMappings source="d16d53509a7afdfbf1c06ba4c0796c91" target="11e6557b7f737af5f8f8966beadcf914" xmi:id="1045dc6a2270df4f05db2ba14cbe282c"/>
+    <attributeMappings source="2abca94b6926b9aa7cd54d9bd5b5a1db" target="8c9419778af977e4930bbeb58551a572" xmi:id="d124a0cc281bbc6bb96b4738cabfbbae"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
