@@ -688,7 +688,11 @@ end</formula>
         <calculatedViewAttribute datatype="DOUBLE" id="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY_" expressionLanguage="COLUMN_ENGINE">
           <formula>if(&quot;COST_CURRENCY_CODE&quot; = 'JPY',&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY&quot;/100,&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD_LY&quot;)</formula>
         </calculatedViewAttribute>
-      </calculatedViewAttributes>
+      
+      <calculatedViewAttribute id="YEAR_MONTH_START" datatype="NVARCHAR" length="6" expressionLanguage="SQL">
+        <formula>'$$IP_YEAR$$'||'01'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
       <input node="Union_1">
         <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
@@ -814,6 +818,11 @@ end</formula>
         <descriptions defaultDescription="SALES_BUDGET_CURRENCY_CODE"/>
         <keyMapping columnObjectName="Join_1" columnName="SALES_BUDGET_CURRENCY_CODE"/>
       </attribute>
+    
+      <attribute id="YEAR_MONTH_START" hidden="true" order="60" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="YEAR_MONTH_START"/>
+        <keyMapping columnObjectName="Join_1" columnName="YEAR_MONTH_START"/>
+      </attribute>
     </attributes>
     <calculatedAttributes>
       <calculatedAttribute id="IS_COST_ELEMENT_SALARY_NAME" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
@@ -821,13 +830,13 @@ end</formula>
         <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
           <formula>if(&quot;IS_COST_ELEMENT_SALARY&quot; = 1, 'Wages', 'Extra Costs')</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_AUX" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
         <descriptions defaultDescription="MONTH_AUX"/>
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
           <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="MONTH_NAME" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="MONTH_NAME"/>
         <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
@@ -846,13 +855,13 @@ WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
 WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
 END</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
       <calculatedAttribute id="DAYS5" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
-          <formula>to_date('$$IP_YEAR$$'||'.01.01')</formula>
+          <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-      </calculatedAttribute>
+        </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
@@ -1441,49 +1450,59 @@ END</formula>
         <formula>if(&quot;SALES_AMOUNT_MTD&quot; != 0,
 &quot;COST_ELEMENT_AMOUNT_MTD&quot;/&quot;SALES_AMOUNT_MTD&quot;,
 0)*100</formula>
-      </measure>
+      
+        </measure>
       <measure id="SALES_VS_SALARY_MTD_LY" hidden="false" order="5" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="FLOAT" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="SALES_VS_SALARY_MTD_LY"/>
         <formula>if(&quot;SALES_AMOUNT_MTD_LY&quot; != 0,
 &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot;/&quot;SALES_AMOUNT_MTD_LY&quot;,
 0)*100</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_MTD" hidden="false" order="7" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(&quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;SALES_AMOUNT_MTD&quot;  / &quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_COST_INCREASE_MTD" hidden="false" order="8" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Wages Growth"/>
         <formula>IF(&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot;  / &quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_YTD" hidden="false" order="9" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(ISNULL(&quot;SALES_AMOUNT_YTD_LY&quot;), 1, &quot;SALES_AMOUNT_YTD&quot; / &quot;SALES_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_COST_INCREASE_YTD" hidden="false" order="10" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Wages Growth"/>
         <formula>IF(ISNULL(&quot;COST_ELEMENT_AMOUNT_YTD_LY&quot;), 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_MTD" hidden="false" order="11" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_MTD&quot;) OR &quot;HEADCOUNT_MTD&quot; = 0, 0, 
     if(&quot;HEADCOUNT_MTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot; / &quot;HEADCOUNT_MTD&quot;, &quot;COST_ELEMENT_AMOUNT_MTD&quot; * &quot;HEADCOUNT_MTD&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD" hidden="false" order="12" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_YTD&quot;) OR &quot;HEADCOUNT_YTD&quot; = 0, 0, 
     if(&quot;HEADCOUNT_YTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;HEADCOUNT_YTD&quot;, &quot;COST_ELEMENT_AMOUNT_YTD&quot; * &quot;HEADCOUNT_YTD&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_MTD_LY" hidden="false" order="13" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_LY"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_MTD_LY&quot;) OR &quot;HEADCOUNT_MTD_LY&quot; = 0, 0, 
     if(&quot;HEADCOUNT_MTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; / &quot;HEADCOUNT_MTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; * &quot;HEADCOUNT_MTD_LY&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD_LY" hidden="false" order="14" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_LY"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_YTD_LY&quot;) OR &quot;HEADCOUNT_YTD_LY&quot; = 0, 0, 
     if(&quot;HEADCOUNT_YTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; / &quot;HEADCOUNT_YTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; * &quot;HEADCOUNT_YTD_LY&quot;) )</formula>
-      </measure>
+      
+        </measure>
     </calculatedMeasures>
     <restrictedMeasures/>
     <localDimensions>

@@ -590,10 +590,10 @@
         <descriptions defaultDescription="Wages Growth"/>
         <measureMapping columnObjectName="Join_1" columnName="PERCENTAGE_COST_INCREASE_YTD"/>
       </measure>
-      <measure id="COST_PER_EMPLOYEE_MTD" order="11" semanticType="amount" aggregationType="sum" measureType="amount">
+      <measure id="COST_PER_EMPLOYEE_MTD" order="11" semanticType="amount" aggregationType="sum" measureType="amount" unconverted="false">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD"/>
         <unitCurrencyAttribute attributeName="COST_PER_EMPLOYEE_MTD_CURRENCY"/>
-        <currencyConversion errorHandling="failOnError" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PER_EMPLOYEE_MTD_CURRENCY" convert="true">
+        <currencyConversion errorHandling="setToNull" generateOutputUnitCurrencyAttribute="true" outputUnitCurrencyAttributeName="COST_PER_EMPLOYEE_MTD_CURRENCY" convert="true" accuracy="COMPATIBILITY" method="ERP" lookup="REGULAR">
           <client>
             <value>020</value>
           </client>
@@ -747,38 +747,46 @@
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_CDG"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_MTD&quot;) OR &quot;HEADCOUNT_MTD&quot; = 0, 0, 
     if(&quot;HEADCOUNT_MTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot; / &quot;HEADCOUNT_MTD&quot;, &quot;COST_ELEMENT_AMOUNT_MTD&quot; * &quot;HEADCOUNT_MTD&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD_CDG" hidden="false" order="93" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_CDG"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_YTD&quot;) OR &quot;HEADCOUNT_YTD&quot; = 0, 0, 
     if(&quot;HEADCOUNT_YTD&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;HEADCOUNT_YTD&quot;, &quot;COST_ELEMENT_AMOUNT_YTD&quot; * &quot;HEADCOUNT_YTD&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_MTD_LY_CDG" hidden="false" order="94" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_MTD_LY_CDG"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_MTD_LY&quot;) OR &quot;HEADCOUNT_MTD_LY&quot; = 0, 0, 
     if(&quot;HEADCOUNT_MTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; / &quot;HEADCOUNT_MTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_MTD_LY&quot; * &quot;HEADCOUNT_MTD_LY&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_PER_EMPLOYEE_YTD_LY_CDG" hidden="false" order="95" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_PER_EMPLOYEE_YTD_LY_CDG"/>
         <formula>IF(ISNULL(&quot;HEADCOUNT_YTD_LY&quot;) OR &quot;HEADCOUNT_YTD_LY&quot; = 0, 0, 
     if(&quot;HEADCOUNT_YTD_LY&quot;  &gt;= 1, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; / &quot;HEADCOUNT_YTD_LY&quot;, &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; * &quot;HEADCOUNT_YTD_LY&quot;) )</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_MTD_CDG" hidden="false" order="96" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(&quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;SALES_AMOUNT_MTD&quot;  / &quot;SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="PERCENTAGE_SALES_INCREASE_YTD_CDG" hidden="false" order="97" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="Sales Growth"/>
         <formula>IF(ISNULL(&quot;SALES_AMOUNT_YTD_LY&quot;), 1, &quot;SALES_AMOUNT_YTD&quot; / &quot;SALES_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_INCREASE_MTD_CDG" hidden="false" order="98" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_INCREASE_MTD_CDG"/>
         <formula>IF(&quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot;=0, 1, &quot;COST_ELEMENT_AMOUNT_MTD&quot;  / &quot;COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH_MTD&quot; )</formula>
-      </measure>
+      
+        </measure>
       <measure id="COST_INCREASE_YTD_CDG" hidden="false" order="99" aggregationType="sum" engineAggregation="sum" measureType="simple" datatype="DOUBLE" expressionLanguage="COLUMN_ENGINE">
         <descriptions defaultDescription="COST_INCREASE_YTD_CDG"/>
         <formula>IF(ISNULL(&quot;COST_ELEMENT_AMOUNT_YTD_LY&quot;), 1, &quot;COST_ELEMENT_AMOUNT_YTD&quot; / &quot;COST_ELEMENT_AMOUNT_YTD_LY&quot; )</formula>
-      </measure>
+      
+        </measure>
     </calculatedMeasures>
     <restrictedMeasures/>
     <localDimensions/>
@@ -786,16 +794,16 @@
 <layout>
   <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-        <upperLeftCorner x="22" y="87"/>
-        <rectangleSize height="0" width="0"/>
+        <upperLeftCorner x="92" y="112"/>
+        <rectangleSize height="0" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="261"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="92" y="357"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
       <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-        <upperLeftCorner x="22" y="165"/>
-        <rectangleSize height="-1" width="-1"/>
+        <upperLeftCorner x="92" y="217"/>
+        <rectangleSize height="-1" width="160"/>
       </shape>
     
     <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">

@@ -1,0 +1,10 @@
+{
+"description": "Daily load from Cosentino File System (Excel). Full load.",
+"action":"COS_SDI::SDI_COS_FS",
+"schedules":  
+                [
+                                {
+                                "description": "This job loads user dashboard permission data and learning hours from Cosentino File System. Files are saved in the DPAgent folder. This process is executed daily at 05:00", 
+                                "xscron": "* * * * 7 0 0" 
+                                }
+                ]} 

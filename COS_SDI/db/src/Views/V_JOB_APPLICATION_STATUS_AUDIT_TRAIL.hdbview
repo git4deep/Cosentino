@@ -1,0 +1,6 @@
+VIEW "V_JOB_APPLICATION_STATUS_AUDIT_TRAIL" ( "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "revNumber" ) AS SELECT
+	"createdDateTime",
+	"lastModifiedBy",
+	"lastModifiedDateTime",
+	"revNumber"
+FROM "COS_DWH"."SSFF_JobApplicationStatusAuditTrail"

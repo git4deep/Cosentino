@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="898b0790dca06473c680bd5e5c3aa10b" name="FG_STG_EMP_PAY_COM_RECURRING" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="b461034896fba6bc58029146a433d090" key="sap.afm.layout">
+    <annotations xmi:id="49ea50d312aa0b4745cdb62c103839a6" key="x" value="10"/>
+    <annotations xmi:id="d2c19930a6f2c07dce47bf31ea11e959" key="y" value="10"/>
+    <annotations xmi:id="5833b6c6283f1f2a00a14c76823ff5a6" key="width" value="100"/>
+    <annotations xmi:id="5adcfe46bcdeeea8badaf16ad512a9a1" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="fb7ab0705d3dd4f84964c9e565581790" key="sap.afm.palette">
+    <annotations xmi:id="0de74711cd325c879dd727e6f51c45d7" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="e695c8e287e35cbbcfddd9ba1d3ebda0" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="b4d9cbc8642123c5b5bf11d2ddab3483" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="0c2f6c8423d3678f78fa0a382ca65bab" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="4c4f2e0aab0545b195e1d8631a81dd47" name="SSFF_EmpPayCompRecurring" type="VIRTUAL_TABLE" catalogObjectName="SSFF_EmpPayCompRecurring" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="ad654cbf3fdb60ab676130a86969e1e6" key="sap.afm.description" value=""/>
+    <annotations xmi:id="13ece362c514090f12a17ed172866ccd" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="2d73072a44bd7ac6426cdea50632042e" key="sap.afm.layout">
+      <annotations xmi:id="60bd66914c83968e736738fb8098211f" key="x" value="132"/>
+      <annotations xmi:id="90e2dcc0e8d876a34500c079dc06795f" key="y" value="82"/>
+      <annotations xmi:id="587a8195aa457fc9c29c82cd062aca4a" key="width" value="100"/>
+      <annotations xmi:id="8d05cf44a39f63028373650dca52ca15" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="e6c75489f9791cf25aa69fc1502a90a0" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="496f4b818edbf2b18d2ee5c56bb151bf" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="a5471ee1da1de58ef8c6b8e6ec1dcb60" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="164236e82f93450095ca94478ecd727a" key="SSFF_EmpPayCompRecurring_Output" value="STG_EMP_PAY_COMP_RECURRING_Input"/>
+    </annotations>
+    <annotations xmi:id="dd428fa54564044f0bf254b937ab2ab3" key="sap.im.customParameters" value="">
+      <annotations xmi:id="41b286266bdd6fca15a381efa985346e" key="__DP_READER_OPTIONS__" value="&lt;PropertyGroup displayName=&quot;EmpPayCompRecurring&quot; id=&quot;0&quot; isRepeatable=&quot;false&quot; name=&quot;EmpPayCompRecurring&quot; isEnabled=&quot;false&quot;>&lt;PropertyEntry allowAlterWhenSuspended=&quot;false&quot; displayName=&quot;As Of Date&quot; id=&quot;0&quot; isRepeatable=&quot;false&quot; isRequired=&quot;false&quot; name=&quot;asOfDate&quot; type=&quot;STRING&quot; isEnabled=&quot;true&quot;>&lt;/PropertyEntry>&lt;PropertyEntry allowAlterWhenSuspended=&quot;false&quot; displayName=&quot;From Date&quot; id=&quot;0&quot; isRepeatable=&quot;false&quot; isRequired=&quot;false&quot; name=&quot;fromDate&quot; type=&quot;STRING&quot; isEnabled=&quot;true&quot;>&lt;/PropertyEntry>&lt;PropertyEntry allowAlterWhenSuspended=&quot;false&quot; displayName=&quot;To Date&quot; id=&quot;0&quot; isRepeatable=&quot;false&quot; isRequired=&quot;false&quot; name=&quot;toDate&quot; type=&quot;STRING&quot; isEnabled=&quot;true&quot;>&lt;/PropertyEntry>&lt;/PropertyGroup>"/>
+    </annotations>
+    <annotations xmi:id="8fbd8e68ef2354005cad92b238eb7b7b" key="sap.im.remoteSourceTableDefinitions" value="">
+      <annotations xmi:id="c8460294e61a11deb1f6aa05d9774ade" key="type" value=""/>
+    </annotations>
+    <outputs name="SSFF_EmpPayCompRecurring_Output" kind="TABLE" xmi:id="072ff568a927cbaada2d966155ebbe24">
+      <attributes xmi:id="29a4aab77ab5ea731119dcb51a9af7e5" name="createdBy" type="NVARCHAR" length="100" scale="0" nullable="true"/>
+      <attributes xmi:id="765656218b7874ef2e259df6a163a63e" name="createdDateTime" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="0b03149d0253a5de6697616f3a0310a3" name="createdOn" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="5b41d6d3bb17093649b8dab5b71e1d87" name="currencyCode" type="NVARCHAR" length="32" scale="0" nullable="true"/>
+      <attributes xmi:id="e3078323553a8084e460e19e6fb57c7d" name="customDate1" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="669825a9695a55f226255601ba0470b4" name="customDate2" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="753817215a10cd6faddc437d2dae5856" name="customDouble1" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="297a6d5daf84c1b8503bf8564cc07804" name="customString6" type="NVARCHAR" length="32" scale="0" nullable="true"/>
+      <attributes xmi:id="476ae31267af14bde2ddeeba1fdd7a06" name="endDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="6ecc1e550992784d4162a6d61272f7bc" name="frequency" type="NVARCHAR" length="30" scale="0" nullable="true"/>
+      <attributes xmi:id="dfb5dcec93e5dda65d8a4ad224f81c18" name="lastModifiedBy" type="NVARCHAR" length="100" scale="0" nullable="true"/>
+      <attributes xmi:id="b264ee09aab7c29d8cff401c676d690b" name="lastModifiedDateTime" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="29afa438ff720efa7665618812cf59ab" name="lastModifiedOn" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="cba7769e139b806ce3b698f606f2ba01" name="notes" type="NCLOB" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="dd3685b40069947b2059454a3d4e51a0" name="payComponent" type="NVARCHAR" length="40" scale="0" nullable="false">
+        <annotations xmi:id="4759a52d75a928221d99ee79ba576688" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="7d8d40a2292d7a69deae8e965f7fca13" name="paycompvalue" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="a686d9270161817b4031624f38687317" name="seqNumber" type="BIGINT" length="0" scale="0" nullable="false">
+        <annotations xmi:id="1b2a6779fd7ce8664f659345360a697f" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="928f529f1988bf1516d69a2dc48605c2" name="startDate" type="TIMESTAMP" length="0" scale="0" nullable="false">
+        <annotations xmi:id="ffd22a278cea1855abd503fd3412ad86" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="d128b84ab586f43d40485b8830f055ba" name="userId" type="NVARCHAR" length="100" scale="0" nullable="false">
+        <annotations xmi:id="0d1a230d852e94e257aabd9d1f4ce6d0" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="bd3cce82e009fced2a02d92abe4bb1e3" name="STG_EMP_PAY_COMP_RECURRING" type="TEMPLATE_TABLE" catalogObjectName="STG_EMP_PAY_COMP_RECURRING_MIG" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="9a5cb4cc7451d0e3c2838cec88fa62b8" key="sap.afm.layout">
+      <annotations xmi:id="fd3b74dbdc774ec382f77f5de79260fb" key="x" value="222"/>
+      <annotations xmi:id="5cdcc71aaad4b7dce6ff9ab364f98ad5" key="y" value="82"/>
+      <annotations xmi:id="53815bbd914d74441be66490352170f5" key="width" value="100"/>
+      <annotations xmi:id="bf4ea044232f22cb5a9812992d1bbe4f" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="13ddc41fe9fcdd7a176b9b04aa67b6d6" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="df34cc6fa21e0d016bc3fb08eecd0702" key="sap.afm.nodeInputs">
+      <annotations xmi:id="8dd9634c6d1186e741cc6e8063f876d9" key="STG_EMP_PAY_COMP_RECURRING_Input" value="SSFF_EmpPayCompRecurring_Output"/>
+    </annotations>
+    <annotations xmi:id="3d3d6777076b1e67450b5ff745194f9e" key="sap.afm.nodeOutputs">
+      <annotations>
+      </annotations>
+    </annotations>
+    <annotations xmi:id="7a97f7d56aeccd5d9de03eb53743c311" key="sap.im.writerType" value="insert"/>
+    <inputs name="STG_EMP_PAY_COMP_RECURRING_Input" kind="TABLE" xmi:id="ae83bae1b637d23800be5f98c548ae24">
+      <attributes xmi:id="8f3688bc5fe817d28e49dca3eae81538" name="createdBy" type="NVARCHAR" nullable="true" length="100" scale="0"/>
+      <attributes xmi:id="0bf42a2943c7230fcb84d2ebf0599fd5" name="createdDateTime" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="df860fae138232b7d0fc193f46eb3419" name="createdOn" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="6a7cc02e54935c1c38e4fa46b6e42b0b" name="currencyCode" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="59e7f295cc57b065e9bd7df7ff65767e" name="customDate1" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="70825cdda6b1affb47504f021c484591" name="customDate2" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="b130d8f129825ef719483fa1e1eb2974" name="customDouble1" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="3f3bdda1f01aa82d28847a3d3acefcfc" name="customString6" type="NVARCHAR" nullable="true" length="32" scale="0"/>
+      <attributes xmi:id="16023cf549cbd9f67229d03471e14f11" name="endDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="936574820c1c176a4ee1bf639a973e6c" name="frequency" type="NVARCHAR" nullable="true" length="30" scale="0"/>
+      <attributes xmi:id="7d809337f44cd95113e8ecf32209c1a0" name="lastModifiedBy" type="NVARCHAR" nullable="true" length="100" scale="0"/>
+      <attributes xmi:id="76939667d7efbc981e7840f168de28c2" name="lastModifiedDateTime" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="c0baa8438691884992f9ddbbc20036dd" name="lastModifiedOn" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="0699055aa2753263d8ef4c1338663a38" name="notes" type="NCLOB" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="9c54e7e1e6a6edc719d2af2bd4c967e5" name="payComponent" type="NVARCHAR" nullable="false" length="40" scale="0">
+        <annotations xmi:id="34251af3bd78e9c9bd0e455dbdc904f2" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="e423d4bbe5493605e5363c98b74f0a8a" name="paycompvalue" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="8d2a63bc042e2377be7c501416923f77" name="seqNumber" type="BIGINT" nullable="false" length="0" scale="0">
+        <annotations xmi:id="c6dbb07cd86f2bd83d3c97398f46f78a" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="e124b43db6ba64af3abde1cddc5e530d" name="startDate" type="TIMESTAMP" nullable="false" length="0" scale="0">
+        <annotations xmi:id="4a3f49c60d9300f0df4016e3caecbf19" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="63d9a71cd1d3baeb59d55a34a6d5a1da" name="userId" type="NVARCHAR" nullable="false" length="100" scale="0">
+        <annotations xmi:id="05422920642d2c5efa2ac8b9170a0b1d" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="88c6ffeafbdb260e0584b14428f99538" source="072ff568a927cbaada2d966155ebbe24" target="ae83bae1b637d23800be5f98c548ae24">
+    <attributeMappings source="29a4aab77ab5ea731119dcb51a9af7e5" target="8f3688bc5fe817d28e49dca3eae81538" xmi:id="09e5941fd394adf1d4e91ae2036bd70f"/>
+    <attributeMappings source="765656218b7874ef2e259df6a163a63e" target="0bf42a2943c7230fcb84d2ebf0599fd5" xmi:id="458a0c6096274ed3c9b0daa6497b6e18"/>
+    <attributeMappings source="0b03149d0253a5de6697616f3a0310a3" target="df860fae138232b7d0fc193f46eb3419" xmi:id="c1a718ef67e300f39dadfe7576e3a9c0"/>
+    <attributeMappings source="5b41d6d3bb17093649b8dab5b71e1d87" target="6a7cc02e54935c1c38e4fa46b6e42b0b" xmi:id="8067bdc152238770af85598e74c56e5f"/>
+    <attributeMappings source="e3078323553a8084e460e19e6fb57c7d" target="59e7f295cc57b065e9bd7df7ff65767e" xmi:id="1ad401908f62037fb8014c307b469e94"/>
+    <attributeMappings source="669825a9695a55f226255601ba0470b4" target="70825cdda6b1affb47504f021c484591" xmi:id="e92d33798812219232a8f21c7b8d9d74"/>
+    <attributeMappings source="753817215a10cd6faddc437d2dae5856" target="b130d8f129825ef719483fa1e1eb2974" xmi:id="d6b7358daeeaf1926bc097025a665eb7"/>
+    <attributeMappings source="297a6d5daf84c1b8503bf8564cc07804" target="3f3bdda1f01aa82d28847a3d3acefcfc" xmi:id="d796fca25b6f0d2cc0b9a0cbcd1baccb"/>
+    <attributeMappings source="476ae31267af14bde2ddeeba1fdd7a06" target="16023cf549cbd9f67229d03471e14f11" xmi:id="7d33fa0bafe1a7a8172f09e1e758e9be"/>
+    <attributeMappings source="6ecc1e550992784d4162a6d61272f7bc" target="936574820c1c176a4ee1bf639a973e6c" xmi:id="842cbcc7330768595ff8a66a826a4058"/>
+    <attributeMappings source="dfb5dcec93e5dda65d8a4ad224f81c18" target="7d809337f44cd95113e8ecf32209c1a0" xmi:id="37016106497cd958f44208c88f03d1a5"/>
+    <attributeMappings source="b264ee09aab7c29d8cff401c676d690b" target="76939667d7efbc981e7840f168de28c2" xmi:id="621a8436ee85c004c491c7ea63af2777"/>
+    <attributeMappings source="29afa438ff720efa7665618812cf59ab" target="c0baa8438691884992f9ddbbc20036dd" xmi:id="3970fa48eebc8e4541d68a0d686f1141"/>
+    <attributeMappings source="cba7769e139b806ce3b698f606f2ba01" target="0699055aa2753263d8ef4c1338663a38" xmi:id="f0568c42dabf8e32986bb52f65901ea3"/>
+    <attributeMappings source="dd3685b40069947b2059454a3d4e51a0" target="9c54e7e1e6a6edc719d2af2bd4c967e5" xmi:id="1f9a2f9d123ef98192fb70a6c5f57499"/>
+    <attributeMappings source="7d8d40a2292d7a69deae8e965f7fca13" target="e423d4bbe5493605e5363c98b74f0a8a" xmi:id="c48963a832f69b70f3c24ceb4746036e"/>
+    <attributeMappings source="a686d9270161817b4031624f38687317" target="8d2a63bc042e2377be7c501416923f77" xmi:id="1c27417aa68ec3c273d967a3c2bb0115"/>
+    <attributeMappings source="928f529f1988bf1516d69a2dc48605c2" target="e124b43db6ba64af3abde1cddc5e530d" xmi:id="e99fdc2c7c4af0a5309feb633059cd77"/>
+    <attributeMappings source="d128b84ab586f43d40485b8830f055ba" target="63d9a71cd1d3baeb59d55a34a6d5a1da" xmi:id="03ce3fc90d0ccf91caaff87324933b61"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
