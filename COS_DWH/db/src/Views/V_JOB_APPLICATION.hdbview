@@ -1,4 +1,6 @@
-VIEW "V_JOB_APPLICATION" ( "NIdentification", "Nbanco", "address", "agencyInfo", "appStatusSetItemId", "applicationId", "applicationTemplateId", "candidateId", "carnetconducircaducidad", "categoriaprofesional", "cellPhone", "city", "contactEmail", "country", "countryCode", "dateOfBirth", "department", "firstName", "gender", "grupo", "hiredOn", "jobAppGuid", "jobReqId", "zip" ) AS SELECT 
+VIEW "V_JOB_APPLICATION" ( "NIdentification", "Nbanco", "address", "agencyInfo", "appStatusSetItemId", "applicationId", "applicationTemplateId", "candidateId", "carnetconducircaducidad", "categoriaprofesional", "cellPhone", "city", "contactEmail", "country", "countryCode", "dateOfBirth", "department", "firstName",
+ --"gender", It is not available in source system (NEO)
+  "grupo", "hiredOn", "jobAppGuid", "jobReqId", "zip" ) AS SELECT 
 	"NIdentification",
 	"Nbanco",
 	"address",
@@ -14,10 +16,10 @@ VIEW "V_JOB_APPLICATION" ( "NIdentification", "Nbanco", "address", "agencyInfo",
 	"contactEmail",
 	"country",
 	"countryCode",
-	"dateOfBirth",
+	"dateofbirth",
 	"department",
 	"firstName",
-	"gender",
+	--"gender", It is not available in source system (NEO)
 	"grupo",
 	"hiredOn",
 	"jobAppGuid",
