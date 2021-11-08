@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="b0d1aa96ef006dfac5a0651f26dcedb5" name="fg_md_un_cdg" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="7878cb21a477744bb2c28cec4febd6e3" key="sap.afm.layout">
+    <annotations xmi:id="585dd96dd7c1b747892d3f6558a71633" key="x" value="10"/>
+    <annotations xmi:id="542554b2e5437f9bba2c9a34b2166f40" key="y" value="10"/>
+    <annotations xmi:id="d18353329ca792003b9ec87e75b35486" key="width" value="100"/>
+    <annotations xmi:id="06aca7e4bd40e1aac49ce8b370456ed0" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="9da8ec3733a0fb33ce5e441d91b1c50b" key="sap.afm.palette">
+    <annotations xmi:id="aa1735da4058ff337b69a47fab21b132" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="79b83225770aac02eb9d3b9be40cf952" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="bddfc6ee66594e7eb44055f02a4ecb92" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="c46a5c212532062a4442c6c48c18d082" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="9b119aa1e070326f0591c4937f64a164" name="Filter2" expression="LEFT(&quot;CdG Grupo&quot;, 1) &lt;> '¬'">
+    <annotations xmi:id="9934d7242ceb3f26393ffdf0ff85f752" key="sap.afm.description" value=""/>
+    <annotations xmi:id="7c62c7b5d28825d0e8fb010b7bbf9c30" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="5a6d0c71fc4f189c2a57992bd6148375" key="sap.afm.layout">
+      <annotations xmi:id="d3730f54d83978d4f3a7d53469d75bb2" key="x" value="321"/>
+      <annotations xmi:id="4bfaba3a1981b0b0af4b4cab3482d595" key="y" value="107"/>
+      <annotations xmi:id="f96e37d61e9ee459e8184b87471b7162" key="width" value="100"/>
+      <annotations xmi:id="f5b3e397a6576038244b3ce63f7e0772" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="098f0468467b24c4e5d9d83b17b8f617" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="ae5f46a46285e7c281894aef578edb0d" key="sap.afm.nodeInputs">
+      <annotations xmi:id="58a83abf61f47382bbb5a453dffcf0c3" key="Filter2_Input" value="COS_FS_SCM_HUB_CTRL_MD_UN_CDG_Output"/>
+    </annotations>
+    <annotations xmi:id="de1775b1c6b82a608c32ac1df5db65c6" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="3026c297b518e7731c95a89c890ce1d1" key="Filter2_Output" value="SCM_MD_UN_CDG_Input"/>
+    </annotations>
+    <inputs name="Filter2_Input" xmi:id="bebeff0442087b6df1a964768b6ba50b" kind="TABLE">
+      <attributes xmi:id="ad2d9a856b3d72257276de59fc59bd1d" name="CdG Grupo" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="94cb6b5d46b3a112d17a3d97525a0792" name="CdG Grupo Descripción" type="NVARCHAR" nullable="true" length="23" scale="0"/>
+      <attributes xmi:id="e9eff9f285ad581e8233809d8066ca80" name="CdG Subgrupo" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="efb9353c206fb283bdae0440a8184bd6" name="CdG Subgrupo Descripción" type="NVARCHAR" nullable="true" length="22" scale="0"/>
+      <attributes xmi:id="05326d2e79d3c0c52ece596b7454a417" name="CdG UN" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="b709722180b409ed5ca87ac4e24bc7c2" name="CdG UN Descripción" type="NVARCHAR" nullable="true" length="25" scale="0"/>
+      <attributes xmi:id="88bc053d3e00cc75a1bebed13fe6cb71" name="CdG UN Superior" type="NVARCHAR" nullable="true" length="4" scale="0"/>
+      <attributes xmi:id="b20c8225a1cbdb4344a185d383f6c5b4" name="CdG UN Superior Descripción" type="NVARCHAR" nullable="true" length="23" scale="0"/>
+    </inputs>
+    <outputs name="Filter2_Output" xmi:id="363927bad961302ac2734dafa325039a" kind="TABLE">
+      <attributes xmi:id="6e59d31352d20d9577d5bb62a3ee8e58" name="CD_CDG_GRP" type="NVARCHAR" nullable="false" length="4" scale="0" expression="REPLACE_REGEXPR('^0*' in &quot;Filter2_Input&quot;.&quot;CdG Grupo&quot; WITH '') "/>
+      <attributes xmi:id="b99a8baba710e04e64f123d94b8d7eb7" name="DS_CDG_GRP" type="NVARCHAR" nullable="true" length="40" scale="0" expression="&quot;Filter2_Input&quot;.&quot;CdG Grupo Descripción&quot;"/>
+      <attributes xmi:id="3fb94b977bd533f42e75867bfc71206a" name="CD_CDG_SGRP" type="NVARCHAR" nullable="true" length="4" scale="0" expression="REPLACE_REGEXPR('^0*' in &quot;Filter2_Input&quot;.&quot;CdG Subgrupo&quot; WITH '') "/>
+      <attributes xmi:id="f8e6b3df7bf02d40c4a5de8692a8273a" name="DS_CDG_SGRP" type="NVARCHAR" nullable="true" length="40" scale="0" expression="&quot;Filter2_Input&quot;.&quot;CdG Subgrupo Descripción&quot;"/>
+      <attributes xmi:id="7e81c49888e7c7ba2914f9f9d48391fc" name="CD_CDG_UN" type="NVARCHAR" nullable="true" length="4" scale="0" expression="REPLACE_REGEXPR('^0*' in &quot;Filter2_Input&quot;.&quot;CdG UN&quot; WITH '') "/>
+      <attributes xmi:id="b2be162f217138a53fef27cc5d7e5acf" name="DS_CDG_UN" type="NVARCHAR" nullable="true" length="40" scale="0" expression="&quot;Filter2_Input&quot;.&quot;CdG UN Descripción&quot;"/>
+      <attributes xmi:id="f8a8e7ebd41626c4bbf9da1bbe618717" name="CD_CDG_UNS" type="NVARCHAR" nullable="true" length="4" scale="0" expression="REPLACE_REGEXPR('^0*' in &quot;Filter2_Input&quot;.&quot;CdG UN Superior&quot; WITH '') ">
+        <annotations>
+        </annotations>
+      </attributes>
+      <attributes xmi:id="8951af851332fae7d399a2d988b0d545" name="DS_CDG_UNS" type="NVARCHAR" nullable="true" length="40" scale="0" expression="&quot;Filter2_Input&quot;.&quot;CdG UN Superior Descripción&quot;">
+        <annotations>
+        </annotations>
+      </attributes>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="3a04136efc41562424683297a14a9269" name="COS_FS_SCM_HUB_CTRL_MD_UN_CDG" type="VIRTUAL_TABLE" catalogObjectName="COS_FS_SCM_HUB_CTRL_MD_UN_CDG" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="23f967a8030dbbfb1669902a1c8062a8" key="sap.afm.description" value=""/>
+    <annotations xmi:id="3167b36a5fc210a09cf69d5ae3760dfe" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="f0cb27e9332afbdbd0fe4df2cceff5f1" key="sap.afm.layout">
+      <annotations xmi:id="599754b46e1406f9ec7cda1556c208f2" key="x" value="165"/>
+      <annotations xmi:id="8bb316a2aa519c2416506a98d85d041d" key="y" value="98"/>
+      <annotations xmi:id="3f43b922524aa5f66cb31f161f0e8057" key="width" value="100"/>
+      <annotations xmi:id="75532eda5a2892b6974331691e16327f" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="e7e2d958884531263940450269db5d96" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="7e8ea97841f07679c4dd6af46b7e9992" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="273c072ca27ad2a3698e89ca1531cfe9" key="sap.afm.nodeOutputs"/>
+    <annotations xmi:id="7c2221686350792341bb12e36fac040a" key="sap.im.remoteSourceTableDefinitions" value="">
+      <annotations xmi:id="87387de5a6689d62b6253c6154a6614a" key="type" value=""/>
+    </annotations>
+    <outputs name="COS_FS_SCM_HUB_CTRL_MD_UN_CDG_Output" kind="TABLE" xmi:id="2a8e2da20507a6d3294deaab14f08586">
+      <attributes xmi:id="0a4515133255134f0fd8146be5365494" name="CdG Grupo" type="NVARCHAR" length="4" scale="0" nullable="true"/>
+      <attributes xmi:id="ac09501d445ded9d446b898f78565a88" name="CdG Grupo Descripción" type="NVARCHAR" length="23" scale="0" nullable="true"/>
+      <attributes xmi:id="8377d71c010e7e112337e644e070bc33" name="CdG Subgrupo" type="NVARCHAR" length="4" scale="0" nullable="true"/>
+      <attributes xmi:id="120d146ba39a5b3dbdc99e9c6fbd21db" name="CdG Subgrupo Descripción" type="NVARCHAR" length="22" scale="0" nullable="true"/>
+      <attributes xmi:id="a9f61c7f017dd76f726f4036b2dce8d5" name="CdG UN" type="NVARCHAR" length="4" scale="0" nullable="true"/>
+      <attributes xmi:id="41740ff42e740a3ee0bfb1448fced462" name="CdG UN Descripción" type="NVARCHAR" length="25" scale="0" nullable="true"/>
+      <attributes xmi:id="23ec55950f05ebe84712c5b9e33f64b6" name="CdG UN Superior" type="NVARCHAR" length="4" scale="0" nullable="true"/>
+      <attributes xmi:id="5038d28919dfeb50fc8c30276a45207a" name="CdG UN Superior Descripción" type="NVARCHAR" length="23" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="19e6b3a8f4a6308595a6b286d06fff38" name="SCM_MD_UN_CDG" type="DATABASE_TABLE" catalogObjectName="SCM_MD_UN_CDG" dataLayout="ROW" truncateTable="false">
+    <annotations xmi:id="6ea8a48308a28e91e607e1ef5ff631b4" key="sap.afm.attributeMapping" value="Custom"/>
+    <annotations xmi:id="d76cf2456a8ac2b0ad43d694dceb962a" key="sap.afm.layout">
+      <annotations xmi:id="c26d3813fb85ccf4eb598d12a9bf7a01" key="x" value="536"/>
+      <annotations xmi:id="7b1edb68929efda1a2998d4bd4ddffda" key="y" value="118"/>
+      <annotations xmi:id="308be026a501927b8ecc0b14b6895fb6" key="width" value="100"/>
+      <annotations xmi:id="41424557a519b268b1e6007afdbe8e1e" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="cad045b5a8871599200548c59b06b392" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="d0c9eefed1e54272efb6c463aca4275b" key="sap.afm.nodeInputs">
+      <annotations xmi:id="8c57f1bacaf530bbc4dfa8b5e04a6bbe" key="SCM_MD_UN_CDG_Input" value="Filter2_Output"/>
+    </annotations>
+    <annotations xmi:id="75a39a5293949e8f61c5370bc5ebbb10" key="sap.afm.nodeOutputs"/>
+    <annotations xmi:id="206234336413f5afb7b0eadbe66d52f2" key="sap.im.writerType" value="upsert"/>
+    <inputs name="SCM_MD_UN_CDG_Input" kind="TABLE" xmi:id="e2a00c1ee400369615d558358260b534">
+      <attributes xmi:id="39f830242d8f1000ae5dee82305b94dd" name="CD_CDG_GROUP" type="NVARCHAR" length="4" scale="0" nullable="false">
+        <annotations xmi:id="e36f10803fc36025728e7fb5c8b249d5" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="98145e25d53f7d2e9211b8992b372ac4" name="DS_CDG_GROUP" type="NVARCHAR" length="40" scale="0" nullable="true"/>
+      <attributes xmi:id="fb7220719751e89d26c17ac64ddcf335" name="CD_CDG_SUBGROUP" type="NVARCHAR" length="4" scale="0" nullable="false">
+        <annotations xmi:id="98ece8804e0ebdfc03105f3aa157bc9a" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="aa9b7c515ad9dcce4febef400ca4ac3f" name="DS_CDG_SUBGROUP" type="NVARCHAR" length="40" scale="0" nullable="true"/>
+      <attributes xmi:id="f09f010d92ec54d6c7be3c99ed551a61" name="CD_CDG_UN" type="NVARCHAR" length="4" scale="0" nullable="false">
+        <annotations xmi:id="1375ff8ba409a35ea99fdcc79217d68b" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="d8e09f40ed26f31d257d6fc473d49fff" name="DS_CDG_UN" type="NVARCHAR" length="40" scale="0" nullable="true"/>
+      <attributes xmi:id="0a153179c8213ab373b59abba7a3d9ee" name="CD_CDG_UNS" type="VARCHAR" length="4" scale="0" nullable="true"/>
+      <attributes xmi:id="ec5aea0aa7671ed7110de5f04d476061" name="DS_CDG_UNS" type="NVARCHAR" length="40" scale="0" nullable="true"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="73403a2996942a6b11e17bd7a94bda94" source="2a8e2da20507a6d3294deaab14f08586" target="bebeff0442087b6df1a964768b6ba50b">
+    <attributeMappings source="0a4515133255134f0fd8146be5365494" target="ad2d9a856b3d72257276de59fc59bd1d" xmi:id="967782ddc4750c6f5d19f01de72cb2ff"/>
+    <attributeMappings source="ac09501d445ded9d446b898f78565a88" target="94cb6b5d46b3a112d17a3d97525a0792" xmi:id="e21a9c586832daaf34589d5095fd20ac"/>
+    <attributeMappings source="8377d71c010e7e112337e644e070bc33" target="e9eff9f285ad581e8233809d8066ca80" xmi:id="1bb987d7f87ed9340ae7cdc322465c82"/>
+    <attributeMappings source="120d146ba39a5b3dbdc99e9c6fbd21db" target="efb9353c206fb283bdae0440a8184bd6" xmi:id="328fc16462bac16d2c15a7263905867a"/>
+    <attributeMappings source="a9f61c7f017dd76f726f4036b2dce8d5" target="05326d2e79d3c0c52ece596b7454a417" xmi:id="cce520c075517842d5b717600840ecf4"/>
+    <attributeMappings source="41740ff42e740a3ee0bfb1448fced462" target="b709722180b409ed5ca87ac4e24bc7c2" xmi:id="bf5803ef2e01fd8486b6c06d3335e83c"/>
+    <attributeMappings source="23ec55950f05ebe84712c5b9e33f64b6" target="88bc053d3e00cc75a1bebed13fe6cb71" xmi:id="556bafbd31ce832bfab9878adb16a2ab"/>
+    <attributeMappings source="5038d28919dfeb50fc8c30276a45207a" target="b20c8225a1cbdb4344a185d383f6c5b4" xmi:id="3e303e5072d3b5f57ec4f521bf64e79f"/>
+  </tableMappings>
+  <tableMappings xmi:id="3148e5e94c139dab929b15adf98b2fe4" source="363927bad961302ac2734dafa325039a" target="e2a00c1ee400369615d558358260b534">
+    <attributeMappings source="7e81c49888e7c7ba2914f9f9d48391fc" target="f09f010d92ec54d6c7be3c99ed551a61" xmi:id="3592f621ae3fdd674133c948cd6438ef"/>
+    <attributeMappings source="b2be162f217138a53fef27cc5d7e5acf" target="d8e09f40ed26f31d257d6fc473d49fff" xmi:id="74ffadebf01b86ad2b20d821fa762ba8"/>
+    <attributeMappings source="f8a8e7ebd41626c4bbf9da1bbe618717" target="0a153179c8213ab373b59abba7a3d9ee" xmi:id="5a8d6b0e4ad7812aead67825ccb4191d"/>
+    <attributeMappings source="8951af851332fae7d399a2d988b0d545" target="ec5aea0aa7671ed7110de5f04d476061" xmi:id="9a04bdd87b63d3483967507fa0f6cf08"/>
+    <attributeMappings source="6e59d31352d20d9577d5bb62a3ee8e58" target="39f830242d8f1000ae5dee82305b94dd" xmi:id="e5d8a8e36d37d3b54ef324a2298bf962"/>
+    <attributeMappings source="b99a8baba710e04e64f123d94b8d7eb7" target="98145e25d53f7d2e9211b8992b372ac4" xmi:id="3d32ab64f2fa626f63d127f0b81a4e94"/>
+    <attributeMappings source="3fb94b977bd533f42e75867bfc71206a" target="fb7220719751e89d26c17ac64ddcf335" xmi:id="5c11c57d509a5c1acec29b3f320ae20c"/>
+    <attributeMappings source="f8e6b3df7bf02d40c4a5de8692a8273a" target="aa9b7c515ad9dcce4febef400ca4ac3f" xmi:id="c569fc89e29f65cf82b6400855dd11bf"/>
+  </tableMappings>
+</flowgraph:ContainerNode>

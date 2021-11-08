@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:id="af37149da470d89824a7940ac2199d83" name="FG_FT_BW_FINANCIALS_6" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="59183b980f9052c93ec2fcf2663c1f34" key="sap.afm.layout">
+    <annotations xmi:id="66fd61f44cabc526a7c118e8a881306e" key="x" value="10"/>
+    <annotations xmi:id="d57fe8885d2c324e137035de9aad742a" key="y" value="10"/>
+    <annotations xmi:id="1be1052b9f96002bf2f2adcd0f351a77" key="width" value="100"/>
+    <annotations xmi:id="10487388559c954dabe93b27cdcd0df8" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="8f02c3484395f86c4656f8788e687eb6" key="sap.afm.palette">
+    <annotations xmi:id="4039ce61d9fe592dfd0ec45e9cb144fb" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="6fa3e9c19e6f14343cf0a89e7bed96f1" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="481fbcbeeed049ad82ecfab5ca592de7" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="b0c17d45a3b757bcab23dccda7265eee" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="77e46b8ca3e7fdd00d717c72a9a224f1" name="FT_BW_FINANCIALS_TEMP" type="DATABASE_TABLE" catalogObjectName="FT_BW_FINANCIALS_TEMP" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="50050200a3f010fad2dee9dc6efe7066" key="sap.afm.description" value=""/>
+    <annotations xmi:id="a043f830c32d256a586b5eccc931173f" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="97ee6a2285cb51f16c341181a2c3bdf6" key="sap.afm.layout">
+      <annotations xmi:id="8bf91a767928655ff2dfcc96c2f7b94c" key="x" value="138"/>
+      <annotations xmi:id="38d73d182f4803d87c9ab2e1f541986a" key="y" value="80"/>
+      <annotations xmi:id="d630c0e186ccf8045f5598f374df4ed7" key="width" value="100"/>
+      <annotations xmi:id="be2449108ee5125a49d4bbd1d29afdb3" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="898f42addb47c447e0e8b9876ff5cb81" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="965da9edcc46dd8e8ae52d29f1dc64da" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="940f0b0863ecf43ae5850ce43422934f" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="31875fc00a3e31c122b9bf9202e94d60" key="FT_BW_FINANCIALS_TEMP_Output" value="FT_BW_FINANCIALS_Input"/>
+    </annotations>
+    <outputs name="FT_BW_FINANCIALS_TEMP_Output" kind="TABLE" xmi:id="cc4639a397420c35e624c5bb6ae66135">
+      <attributes xmi:id="22f930a99df042f20397fd305df6d35c" name="YEAR" type="INTEGER" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="27b3b4b844922b5aabeae113aa5708ee" name="MONTH" type="INTEGER" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="74903808d4e6c7e0e75cbad86a4a7886" name="PROFIT_CENTER" type="NVARCHAR" length="1024" scale="0" nullable="true"/>
+      <attributes xmi:id="b8ecb924f716c95280f6593aff708c97" name="PROFIT_CENTER_NAME" type="NVARCHAR" length="1024" scale="0" nullable="true"/>
+      <attributes xmi:id="33e4ebf4c630aedce397d38d9448834a" name="SALES_BUDGET_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="e20d9f4471969ca5e5986691ac397553" name="SALES_BUDGET_CURRENCY_CODE" type="NVARCHAR" length="1024" scale="0" nullable="true"/>
+      <attributes xmi:id="30cc30e064ec1dc6325d181948832c6d" name="SALES_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="4f7d9cd79a5c6eba8f6bdaa9dbdfa8da" name="SALES_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="32369f336ba479c21f5a174d496bcb04" name="COST_CENTER" type="NVARCHAR" length="32" scale="0" nullable="false"/>
+      <attributes xmi:id="e6d014f58dcf31f384bb2b15f9109bc6" name="COMPANY" type="NVARCHAR" length="4" scale="0" nullable="false"/>
+      <attributes xmi:id="55c1e6305dd21bf134ea916d66a3f27c" name="SALES_CURRENCY_CODE" type="NVARCHAR" length="3" scale="0" nullable="false"/>
+      <attributes xmi:id="0cfb7d010531bf5909dac6727bbfe46f" name="COST_ELEMENT" type="NVARCHAR" length="32" scale="0" nullable="false"/>
+      <attributes xmi:id="3f9c5d7b4ab80e823a956b9d371161c1" name="COST_ELEMENT_TYPE" type="NVARCHAR" length="128" scale="0" nullable="false"/>
+      <attributes xmi:id="23bec33a936da48eeae4a36ebb2fc7bb" name="COST_ELEMENT_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="a1404019968aacbfea5a1092d9bea51c" name="IS_COST_ELEMENT_SALARY" type="INTEGER" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="671db02d6f5ac6416269b75681ba1048" name="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="a7369b7bf954598d2f424a55e04a9405" name="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="e31c9d7c049a86870f82119869aa542a" name="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" type="INTEGER" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="c37affd1ff5d158d90619a92747b12cf" name="COST_CENTER_NAME" type="NVARCHAR" length="32" scale="0" nullable="false"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="7adce8b89832e7ed450b7b07b07d8fd8" name="FT_BW_FINANCIALS" type="DATABASE_TABLE" catalogObjectName="FT_BW_FINANCIALS" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="08a18df403fe588532a070cb9b515f2c" key="sap.afm.attributeMapping" value="ByName"/>
+    <annotations xmi:id="74e80ec3c2dca5c96b7c9b46169630f2" key="sap.afm.layout">
+      <annotations xmi:id="c9cbef8aabf984f23b18312afe68902c" key="x" value="219"/>
+      <annotations xmi:id="22a291d6e7df4eb5a9f8608de6443925" key="y" value="233"/>
+      <annotations xmi:id="af384c8f63333b4d91b43d24eb20aa9f" key="width" value="100"/>
+      <annotations xmi:id="6bd82efba7f3820ae08b94e64534c61a" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="8e1d4bced25873ca671c0dc781e1fe0d" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="81d22cb7ad50da73e7e87890a3d5a67b" key="sap.afm.nodeInputs">
+      <annotations xmi:id="b5b35f8718f3f8dd47cc2f4022e434e9" key="FT_BW_FINANCIALS_Input" value="FT_BW_FINANCIALS_TEMP_Output"/>
+    </annotations>
+    <annotations xmi:id="57344bafdcab53c1e2c4ae6ed8e607bb" key="sap.afm.nodeOutputs"/>
+    <annotations xmi:id="e7946c0d155e8b621cb43ef93e5b4290" key="sap.im.writerType" value="upsert"/>
+    <inputs name="FT_BW_FINANCIALS_Input" kind="TABLE" xmi:id="6ddf040065fa6159966b8bed50fa84cc">
+      <attributes xmi:id="04fff5cb019f132632ff54580a3f4d51" name="SALES_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="a88698783158408989480ed44eadca62" name="SALES_BUDGET_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="302fa295703853166f8c546419f4e23d" name="SALES_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="fb2c979f48cd51afdbdb7eb6eec560a2" name="COST_CENTER" type="NVARCHAR" length="32" scale="0" nullable="false">
+        <annotations xmi:id="75d033ec86e30e7deb263fcf19f96aab" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="0307c198c2af4c6f56b30dada0daa368" name="PROFIT_CENTER" type="NVARCHAR" length="32" scale="0" nullable="false">
+        <annotations xmi:id="dea12bb6b3b32f491a0943141d34ffa3" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="80e03bfa5d7bc398876ccf28d3de057d" name="YEAR" type="INTEGER" length="0" scale="0" nullable="false">
+        <annotations xmi:id="85a48d559f8f92c0635bb3fcaeb57155" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="a50f502574d32ea84ce60b006f5b23d3" name="MONTH" type="INTEGER" length="0" scale="0" nullable="false">
+        <annotations xmi:id="45127d005576d822ea3603f493bb9e5d" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="0551c9ba4f01bb8de63303225cae9f19" name="COMPANY" type="NVARCHAR" length="4" scale="0" nullable="false">
+        <annotations xmi:id="6b74a3b4a07effc9fb4597937f4c2c4b" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="769c8ebdaf4a324474cf780ce0301387" name="SALES_CURRENCY_CODE" type="NVARCHAR" length="3" scale="0" nullable="true"/>
+      <attributes xmi:id="db95a02c8a5767e01538577327f018d5" name="COST_ELEMENT" type="NVARCHAR" length="32" scale="0" nullable="false">
+        <annotations xmi:id="3b4537d2bc4f646d61b173aa9f5f89e7" key="sap.im.primaryKey" value="true"/>
+      </attributes>
+      <attributes xmi:id="873cb175df54758a1deaa46dd9f706d6" name="COST_ELEMENT_TYPE" type="NVARCHAR" length="128" scale="0" nullable="true"/>
+      <attributes xmi:id="ea32ce026d8678dec6f619c60e93828e" name="COST_ELEMENT_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="c75eab4c068ae85e6451d169f74e79bf" name="COST_CURRENCY_CODE" type="NVARCHAR" length="3" scale="0" nullable="true"/>
+      <attributes xmi:id="d458da47130b58b50929dcd72b2c8aa7" name="COST_PLAN_AMOUNT" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="fd7d6235ac803bce86502f8d6bce4e3c" name="IS_COST_ELEMENT_SALARY" type="INTEGER" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="e66ac5c0230e56d4c6b78567b684b89a" name="COST_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="0d4b91ff8e585b0be52fdc946d08145a" name="SALES_AMOUNT_INCREASE_FROM_PREVIOUS_MONTH" type="DOUBLE" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="fdd17a42a456f0c3d8c5e60da0853d44" name="IS_COST_ELEMENT_EXTERNAL_CONSULTANCY" type="INTEGER" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="781a71dfcb3ad8e075730db55c0c6368" name="COST_CENTER_NAME" type="NVARCHAR" length="64" scale="0" nullable="true"/>
+      <attributes xmi:id="a7bc6e2f578c69012a690b83330a061c" name="PROFIT_CENTER_NAME" type="NVARCHAR" length="64" scale="0" nullable="true"/>
+      <attributes xmi:id="819cdae597f641e025a3487e05cf718a" name="SALES_BUDGET_CURRENCY_CODE" type="NVARCHAR" length="3" scale="0" nullable="true"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="3f333652cb9f5823f528842a38b0138e" source="cc4639a397420c35e624c5bb6ae66135" target="6ddf040065fa6159966b8bed50fa84cc">
+    <attributeMappings source="22f930a99df042f20397fd305df6d35c" target="80e03bfa5d7bc398876ccf28d3de057d" xmi:id="5349832823090180dda9ea1f088402a4"/>
+    <attributeMappings source="27b3b4b844922b5aabeae113aa5708ee" target="a50f502574d32ea84ce60b006f5b23d3" xmi:id="787bfe0751d7a6a8b2b597df49659a18"/>
+    <attributeMappings source="74903808d4e6c7e0e75cbad86a4a7886" target="0307c198c2af4c6f56b30dada0daa368" xmi:id="b89e61612decb1977dc7576de834639b"/>
+    <attributeMappings source="b8ecb924f716c95280f6593aff708c97" target="a7bc6e2f578c69012a690b83330a061c" xmi:id="a798c1bf5f2156c92fefe8764a3de3fa"/>
+    <attributeMappings source="33e4ebf4c630aedce397d38d9448834a" target="a88698783158408989480ed44eadca62" xmi:id="40b4fa50aae2316bdfc65a34a91c037c"/>
+    <attributeMappings source="e20d9f4471969ca5e5986691ac397553" target="819cdae597f641e025a3487e05cf718a" xmi:id="b7fb7e1a1748a5f81de43833479f227b"/>
+    <attributeMappings source="30cc30e064ec1dc6325d181948832c6d" target="04fff5cb019f132632ff54580a3f4d51" xmi:id="7467adae359ade3712b4d8da3467249a"/>
+    <attributeMappings source="4f7d9cd79a5c6eba8f6bdaa9dbdfa8da" target="302fa295703853166f8c546419f4e23d" xmi:id="68dba77fb7e27aa47a5291d959b1bc2c"/>
+    <attributeMappings source="32369f336ba479c21f5a174d496bcb04" target="fb2c979f48cd51afdbdb7eb6eec560a2" xmi:id="5db9787dec9e0b615ce1f4704f643727"/>
+    <attributeMappings source="e6d014f58dcf31f384bb2b15f9109bc6" target="0551c9ba4f01bb8de63303225cae9f19" xmi:id="6512ecc9a299ce98facedc10daca7814"/>
+    <attributeMappings source="55c1e6305dd21bf134ea916d66a3f27c" target="769c8ebdaf4a324474cf780ce0301387" xmi:id="caf2f3b8767cc7eac4c020e1485a9434"/>
+    <attributeMappings source="0cfb7d010531bf5909dac6727bbfe46f" target="db95a02c8a5767e01538577327f018d5" xmi:id="4a75626dcc0bbab509a197727923ae64"/>
+    <attributeMappings source="3f9c5d7b4ab80e823a956b9d371161c1" target="873cb175df54758a1deaa46dd9f706d6" xmi:id="4f9fe8fb528cb4dd5b7f7e87d78e9ae1"/>
+    <attributeMappings source="23bec33a936da48eeae4a36ebb2fc7bb" target="ea32ce026d8678dec6f619c60e93828e" xmi:id="2ec6f586026962bdccff752d6a0c19a0"/>
+    <attributeMappings source="a1404019968aacbfea5a1092d9bea51c" target="fd7d6235ac803bce86502f8d6bce4e3c" xmi:id="ca12f119870d0e3bb81495c354e13cf0"/>
+    <attributeMappings source="671db02d6f5ac6416269b75681ba1048" target="e66ac5c0230e56d4c6b78567b684b89a" xmi:id="5b7db7f5df5b5fcca8fbeb3058c149f3"/>
+    <attributeMappings source="a7369b7bf954598d2f424a55e04a9405" target="0d4b91ff8e585b0be52fdc946d08145a" xmi:id="46580a64de3b61e003d82a3454bd3a68"/>
+    <attributeMappings source="e31c9d7c049a86870f82119869aa542a" target="fdd17a42a456f0c3d8c5e60da0853d44" xmi:id="cedd31161c2d931c82fa748b0060dd7e"/>
+    <attributeMappings source="c37affd1ff5d158d90619a92747b12cf" target="781a71dfcb3ad8e075730db55c0c6368" xmi:id="89aa936ac912bdb9286b3e3964e7be4c"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
