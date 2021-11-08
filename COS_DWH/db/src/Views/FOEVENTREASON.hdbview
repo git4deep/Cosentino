@@ -1,0 +1,16 @@
+VIEW "FOEVENTREASON" ( "createdBy", "createdDateTime", "createdOn", "emplStatus", "endDate", "event", "externalCode", "lastModifiedBy", "lastModifiedDateTime", "lastModifiedOn", "name", "payrollEvent", "startDate", "status" ) AS SELECT
+	 "createdBy" ,
+	 "createdDateTime" ,
+	 "createdOn" ,
+	 "emplStatus" ,
+	 "endDate" ,
+	 "event" ,
+	 "externalCode" ,
+	 "lastModifiedBy" ,
+	 "lastModifiedDateTime" ,
+	 "lastModifiedOn" ,
+	 "name" ,
+	 "payrollEvent" ,
+	 "startDate" ,
+	 "status" 
+FROM "SSFF_FOEventReason"

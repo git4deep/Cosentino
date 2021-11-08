@@ -1,0 +1,10 @@
+VIEW "V_FO_EVENT_REASON" ( "emplStatus", "endDate", "event", "externalCode", "name", "payrollEvent", "startDate", "status" ) AS SELECT
+	"emplStatus",
+	"endDate",
+	"event",
+	"externalCode",
+	"name",
+	"payrollEvent",
+	"startDate",
+	"status"
+FROM "SSFF_FOEventReason"

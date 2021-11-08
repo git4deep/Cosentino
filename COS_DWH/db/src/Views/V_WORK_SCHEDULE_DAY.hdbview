@@ -1,0 +1,8 @@
+VIEW "V_WORK_SCHEDULE_DAY" ( "WorkSchedule_externalCode", "day", "hoursAndMinutes", "workingHours", "mdfSystemEffectiveStartDate", "mdfSystemEffectiveEndDate" ) AS SELECT
+	"WorkSchedule_externalCode",
+	"day",
+	"hoursAndMinutes",
+	"workingHours",
+	"mdfSystemEffectiveStartDate",
+	"mdfSystemEffectiveEndDate"
+FROM "SSFF_WorkScheduleDay"

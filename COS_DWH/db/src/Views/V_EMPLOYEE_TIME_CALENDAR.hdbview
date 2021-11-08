@@ -1,0 +1,16 @@
+VIEW "V_EMPLOYEE_TIME_CALENDAR" ( "EmployeeTime_externalCode", "createdBy", "createdDate", "createdDateTime", "date", "deductionQuantity", "endTime", "externalCode", "lastModifiedBy", "lastModifiedDate", "quantityInDays", "quantityInHours", "startTime", "workScheduleInternalId" ) AS SELECT
+	"EmployeeTime_externalCode",
+	"createdBy",
+	"createdDate",
+	"createdDateTime",
+	"date",
+	"deductionQuantity",
+	"endTime",
+	"externalCode",
+	"lastModifiedBy",
+	"lastModifiedDate",
+	"quantityInDays",
+	"quantityInHours",
+	"startTime",
+	"workScheduleInternalId"
+FROM "SSFF_EmployeeTimeCalendar"

@@ -1,0 +1,13 @@
+VIEW "V_EMP_JOB_RELATIONSHIPS" ( "createdBy", "createdDateTime", "createdOn", "endDate", "lastModifiedBy", "lastModifiedDateTime", "lastModifiedOn", "relUserId", "relationshipType", "startDate", "userId" ) AS select
+	 T0."createdBy",
+	 T0."createdDateTime",
+	 T0."createdOn",
+	 T0."endDate",
+	 T0."lastModifiedBy",
+	 T0."lastModifiedDateTime",
+	 T0."lastModifiedOn",
+	 T0."relUserId",
+	 T0."relationshipType",
+	 T0."startDate",
+	 T0."userId" 
+from "SSFF_EmpJobRelationships" T0

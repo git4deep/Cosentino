@@ -1,0 +1,12 @@
+VIEW "V_WORK_SCHEDULE" ( "averageHoursPerDay", "averageHoursPerMonth", "averageHoursPerWeek", "averageHoursPerYear", "averageWorkingDaysPerWeek", "country", "externalCode", "externalName_defaultValue", "userId" ) AS SELECT
+	"averageHoursPerDay",
+	"averageHoursPerMonth",
+	"averageHoursPerWeek",
+	"averageHoursPerYear",
+	"averageWorkingDaysPerWeek",
+	"country",
+	"externalCode",
+	"externalName_defaultValue",
+	"userId"
+FROM 
+    "SSFF_WorkSchedule"

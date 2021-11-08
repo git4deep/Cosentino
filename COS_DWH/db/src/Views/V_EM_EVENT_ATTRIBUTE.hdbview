@@ -1,0 +1,5 @@
+VIEW "V_EM_EVENT_ATTRIBUTE" ( "id", "name", "value" ) AS SELECT
+	"id",
+	"name",
+	"value"
+FROM "SSFF_EMEventAttribute"

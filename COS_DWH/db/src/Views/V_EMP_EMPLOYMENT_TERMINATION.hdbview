@@ -1,0 +1,21 @@
+VIEW "V_EMP_EMPLOYMENT_TERMINATION" ( "StockEndDate", "benefitsEndDate", "bonusPayExpirationDate", "customDate6", "customString17", "customString82", "customString86", "customString88", "customString89", "customString90", "customString91", "endDate", "lastDateWorked", "notes", "okToRehire", "payrollEndDate", "personIdExternal", "salaryEndDate", "userId" ) AS SELECT 
+	"StockEndDate",
+	"benefitsEndDate",
+	"bonusPayExpirationDate",
+	"customDate6",
+	"customString17",
+	"customString82",
+	"customString86",
+	"customString88",
+	"customString89",
+	"customString90",
+	"customString91",
+	"endDate",
+	"lastDateWorked",
+	"notes",
+	"okToRehire",
+	"payrollEndDate",
+	"personIdExternal",
+	"salaryEndDate",
+	"userId"
+FROM "SSFF_EmpEmploymentTermination"

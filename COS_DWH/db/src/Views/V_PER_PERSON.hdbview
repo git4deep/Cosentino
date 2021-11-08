@@ -1,0 +1,14 @@
+VIEW "V_PER_PERSON" ( "attachmentId", "countryOfBirth", "createdBy", "createdDateTime", "createdOn", "dateOfBirth", "lastModifiedBy", "lastModifiedDateTime", "lastModifiedOn", "perPersonUuid", "personId", "personIdExternal" ) AS select
+	 T0."attachmentId",
+	 T0."countryOfBirth",
+	 T0."createdBy",
+	 T0."createdDateTime",
+	 T0."createdOn",
+	 T0."dateOfBirth",
+	 T0."lastModifiedBy",
+	 T0."lastModifiedDateTime",
+	 T0."lastModifiedOn",
+	 T0."perPersonUuid",
+	 T0."personId",
+	 T0."personIdExternal" 
+from "SSFF_PerPerson" T0

@@ -1,0 +1,8 @@
+VIEW "V_HOLIDAY_ASSIGNMENT" ( "HolidayCalendar_externalCode", "date", "holiday", "holidayClass", "mdfSystemEffectiveEndDate", "mdfSystemEffectiveStartDate" ) AS SELECT 
+	"HolidayCalendar_externalCode",
+	"date",
+	"holiday",
+	"holidayClass",
+	"mdfSystemEffectiveEndDate",
+	"mdfSystemEffectiveStartDate"
+FROM "SSFF_HolidayAssignment"

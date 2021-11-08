@@ -1,0 +1,15 @@
+VIEW "V_POSITION" ( "code", "createdDateTime", "effectiveStartDate", "effectiveEndDate", "vacant", "company", "costCenter", "businessUnit", "division", "department", "cust_subdepartment", "externalName_defaultValue" ) AS select 
+T0."code",
+T0."createdDateTime",
+T0."effectiveStartDate",
+T0."effectiveEndDate",
+T0."vacant",
+T0."company",
+T0."costCenter",
+T0."businessUnit",
+T0."division",
+T0."department",
+T0."cust_subdepartment",
+T0."externalName_defaultValue"
+ from 
+"SSFF_Position" T0

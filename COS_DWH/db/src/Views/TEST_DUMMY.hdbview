@@ -1,0 +1,1 @@
+VIEW "TEST_DUMMY" ( "NUMBER" ) AS select 10 as number from "COS_DWH::DUMMY"

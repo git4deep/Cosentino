@@ -1,0 +1,22 @@
+VIEW "V_JOB_APPLICATION_AUDIT" ( "changedBy", "clobFieldRef", "dateNewValue", "dateOldValue", "fieldId", "fieldOrderPos", "fieldType", "jobPostEndDate", "jobPostStartDate", "jobPostingId", "lastModifiedBy", "lastModifiedDate", "lastModifiedExtId", "mergedFrom", "newValue", "oldValue", "refType", "revNumber", "revType", "source" ) AS SELECT
+	"changedBy",
+	"clobFieldRef",
+	"dateNewValue",
+	"dateOldValue",
+	"fieldId",
+	"fieldOrderPos",
+	"fieldType",
+	"jobPostEndDate",
+	"jobPostStartDate",
+	"jobPostingId",
+	"lastModifiedBy",
+	"lastModifiedDate",
+	"lastModifiedExtId",
+	"mergedFrom",
+	"newValue",
+	"oldValue",
+	"refType",
+	"revNumber",
+	"revType",
+	"source"
+FROM "SSFF_JobApplicationAudit"

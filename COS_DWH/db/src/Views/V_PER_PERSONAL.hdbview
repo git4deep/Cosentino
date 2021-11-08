@@ -1,0 +1,8 @@
+VIEW "V_PER_PERSONAL" ( "startDate", "endDate", "firstName", "lastName", "gender", "personIdExternal" ) AS SELECT
+    "startDate",
+    "endDate",
+    "firstName",
+    "lastName",
+    "gender",
+    "personIdExternal"
+FROM "SSFF_PerPersonal"

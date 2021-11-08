@@ -1,0 +1,15 @@
+VIEW "V_JOB_REQUISITION" ( "closedDateTime", "createdDateTime", "department", "formDueDate", "jobCode", "numberOpenings", "openingsFilled", "positionNumber", "timeToFill", "jobReqId", "jobStartDate", "cust_slajobcode", "deleted" ) AS select
+	 T0."closedDateTime",
+	 T0."createdDateTime",
+	 T0."department",
+	 T0."formDueDate",
+	 T0."jobCode",
+	 T0."numberOpenings",
+	 T0."openingsFilled",
+	 T0."positionNumber",
+	 T0."timeToFill",
+	 T0."jobReqId",
+	 T0."cust_timetofill" "jobStartDate",
+	 T0."cust_slajobcode",
+	 T0."deleted" 
+from "SSFF_JobRequisition" T0

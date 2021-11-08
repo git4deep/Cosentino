@@ -1,0 +1,5 @@
+VIEW "V_JOB_APPLICATION_STATUS" ( "appStatusId", "appStatusName", "appStatusSetId" ) AS SELECT
+	"appStatusId",
+	"appStatusName",
+	"appStatusSetId"
+FROM "SSFF_JobApplicationStatus"

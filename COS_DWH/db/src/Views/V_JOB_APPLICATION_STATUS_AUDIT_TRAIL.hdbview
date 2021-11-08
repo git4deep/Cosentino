@@ -1,0 +1,1 @@
+VIEW "V_JOB_APPLICATION_STATUS_AUDIT_TRAIL" ( "createdBy", "createdDateTime", "lastModifiedBy", "lastModifiedDateTime", "lastModifiedProxyUser", "revNumber" ) AS SELECT "createdBy" , "createdDateTime" , "lastModifiedBy" , "lastModifiedDateTime" , "lastModifiedProxyUser" , "revNumber" FROM "SSFF_JobApplicationStatusAuditTrail"

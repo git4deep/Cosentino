@@ -1,0 +1,8 @@
+VIEW "V_EM_EVENT" ( "eventDescription", "eventDescriptionMsgKey", "eventName", "eventTime", "eventType", "id" ) AS SELECT
+	"eventDescription",
+	"eventDescriptionMsgKey",
+	"eventName",
+	"eventTime",
+	"eventType",
+	"id"
+FROM "SSFF_EMEvent"

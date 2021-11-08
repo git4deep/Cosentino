@@ -1,0 +1,6 @@
+VIEW "V_HOLIDAY" ( "country", "holidayCode", "mdfSystemEffectiveEndDate", "mdfSystemEffectiveStartDate" ) AS SELECT
+	"country",
+	"holidayCode",
+	"mdfSystemEffectiveEndDate",
+	"mdfSystemEffectiveStartDate"
+FROM "SSFF_Holiday"

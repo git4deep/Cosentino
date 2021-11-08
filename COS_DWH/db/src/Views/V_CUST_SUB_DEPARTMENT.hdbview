@@ -1,0 +1,9 @@
+VIEW "V_CUST_SUB_DEPARTMENT" ( "createdDateTime", "cust_parent", "effectiveStartDate", "externalCode", "externalName_defaultValue", "mdfSystemEffectiveEndDate", "mdfSystemStatus" ) AS SELECT
+	 "createdDateTime" ,
+	 "cust_parent" ,
+	 "effectiveStartDate" ,
+	 "externalCode" ,
+	 "externalName_defaultValue" ,
+	 "mdfSystemEffectiveEndDate" ,
+	 "mdfSystemStatus" 
+FROM "SSFF_cust_sub_department"

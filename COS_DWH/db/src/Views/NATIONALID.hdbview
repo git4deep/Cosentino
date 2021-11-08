@@ -1,0 +1,15 @@
+VIEW "NATIONALID" ( "attachmentId", "cardType", "country", "createdBy", "createdDateTime", "createdOn", "isPrimary", "lastModifiedBy", "lastModifiedDateTime", "lastModifiedOn", "nationalId", "notes", "personIdExternal" ) AS select
+	 T0."attachmentId",
+	 T0."cardType",
+	 T0."country",
+	 T0."createdBy",
+	 T0."createdDateTime",
+	 T0."createdOn",
+	 T0."isPrimary",
+	 T0."lastModifiedBy",
+	 T0."lastModifiedDateTime",
+	 T0."lastModifiedOn",
+	 T0."nationalId",
+	 T0."notes",
+	 T0."personIdExternal" 
+from "SSFF_PerNationalId" T0
