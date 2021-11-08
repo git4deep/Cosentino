@@ -397,7 +397,7 @@
       <attributes xmi:id="c0175141286bae3139ab4844c62afa36" name="isVoluntary" type="VARCHAR" length="20" scale="0" nullable="false"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="69324023860a2b511fc8b2f20c1ed6cc" name="STG_SSFF_TURNOVER" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_TURNOVER_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="69324023860a2b511fc8b2f20c1ed6cc" name="STG_SSFF_TURNOVER" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_TURNOVER" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="b792fc47f52444d0c6a793a613bb90bb" key="sap.afm.layout">
       <annotations xmi:id="5c50f37e8fe0cf80062039e099e73f18" key="x" value="581.9999988079071"/>
       <annotations xmi:id="431d48752cada186e699092348f107c5" key="y" value="184.59678471551302"/>

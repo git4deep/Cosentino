@@ -45,7 +45,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="63e74f17f4a2f5e02edaff001b42999f" name="STG_JOB_APPLICATION_STATUS" type="TEMPLATE_TABLE" catalogObjectName="STG_JOB_APPLICATION_STATUS_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="63e74f17f4a2f5e02edaff001b42999f" name="STG_JOB_APPLICATION_STATUS" type="DATABASE_TABLE" catalogObjectName="STG_JOB_APPLICATION_STATUS" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="51f13aa8101bd4d4b08a2ca04f2c3c49" key="sap.afm.layout">
       <annotations xmi:id="45d2ea821fcdb8cb2e6373f207357709" key="x" value="372"/>
       <annotations xmi:id="d2d2c55268f939fad07f42d464a94609" key="y" value="87"/>

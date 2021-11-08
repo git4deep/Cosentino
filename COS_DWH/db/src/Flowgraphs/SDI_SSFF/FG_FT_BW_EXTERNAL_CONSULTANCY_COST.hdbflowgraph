@@ -450,7 +450,7 @@
       <attributes xmi:id="6b8cf2e86b050a32d36061141ca2bc1c" name="profitCenterName" type="NVARCHAR" length="64" scale="0" nullable="true"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="500c022a8a3889612c61281e87da5fd6" name="TemplateTable4" type="TEMPLATE_TABLE" catalogObjectName="AUX_BW_EXTERNAL_CONSULTANCY_COST_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="500c022a8a3889612c61281e87da5fd6" name="TemplateTable4" type="DATABASE_TABLE" catalogObjectName="AUX_BW_EXTERNAL_CONSULTANCY_COST" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="6bd189ef3a932718967e83238b677ac9" key="sap.afm.layout">
       <annotations xmi:id="ba011eb039e0cdb0e5baffd910fd7ea0" key="x" value="572"/>
       <annotations xmi:id="d1a592312bdb49f449d3d6e813de30c8" key="y" value="275"/>

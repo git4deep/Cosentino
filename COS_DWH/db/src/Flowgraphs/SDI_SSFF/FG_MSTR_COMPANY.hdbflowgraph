@@ -93,7 +93,7 @@
       <attributes xmi:id="73a3429ea2f4855507ba6fe7da83aa5e" name="status" type="NVARCHAR" nullable="true" length="255" scale="0" expression="status"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="49ea057bbc8fe533b3c428af78ef119e" name="MSTR_COMPANY" type="TEMPLATE_TABLE" catalogObjectName="MSTR_COMPANY_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="49ea057bbc8fe533b3c428af78ef119e" name="MSTR_COMPANY" type="DATABASE_TABLE" catalogObjectName="MSTR_COMPANY" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="512ba1ce51ecf1523718799a95c69e1d" key="sap.afm.layout">
       <annotations xmi:id="685e42ec64995d7ff7dee4e5288a81e2" key="x" value="508"/>
       <annotations xmi:id="96248f9d31f69bf803ce3baae9df67e2" key="y" value="168"/>

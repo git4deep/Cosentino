@@ -39,7 +39,7 @@
       <attributes xmi:id="09a363da09259d274afa72845e50e029" name="id" type="BIGINT" length="0" scale="0" nullable="false"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="9c3484498c0eed2373cc26702a2136d1" name="STG_EM_EVENT" type="TEMPLATE_TABLE" catalogObjectName="STG_EM_EVENT_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="9c3484498c0eed2373cc26702a2136d1" name="STG_EM_EVENT" type="DATABASE_TABLE" catalogObjectName="STG_EM_EVENT" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="8d073bc8d1e1646c7a75f872384771d7" key="sap.afm.layout">
       <annotations xmi:id="153178f5cda26abec66f4f31134f330b" key="x" value="449"/>
       <annotations xmi:id="e2a5ef3101b8c24a14afb6d3a2a2579a" key="y" value="128"/>

@@ -275,7 +275,7 @@
     </tableMappings>
     <joinDefinitions left="8fdbc3425363284ca71379c0237f9ec8" right="d0a0980a7c61caf6f68f7e4343b5ae84" type="LEFT_OUTER" condition="&quot;Join6_Aggregation3&quot;.&quot;profitCenter&quot; = &quot;Join6_Filter12&quot;.&quot;profitCenter&quot;"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="aeb0a162762dfbd537b6c589887b0857" name="PRE_FT_BW_FINANCIALS" type="TEMPLATE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_n_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="aeb0a162762dfbd537b6c589887b0857" name="PRE_FT_BW_FINANCIALS" type="DATABASE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_n" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="8fcb9f0800e64bc5db069b10b0698b2a" key="sap.afm.layout">
       <annotations xmi:id="77be4da17bde664640fca8478922a765" key="x" value="711.9999976158142"/>
       <annotations xmi:id="53ba72b7dd82930e788c11b4aaed3074" key="y" value="121.2136699013341"/>

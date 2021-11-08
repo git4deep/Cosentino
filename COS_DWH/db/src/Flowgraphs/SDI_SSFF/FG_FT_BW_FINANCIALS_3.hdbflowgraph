@@ -190,7 +190,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="30598142869eb96dc9d9554849508d4b" name="PRE_FT_BW_FINANCIALS_3" type="TEMPLATE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_3_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="30598142869eb96dc9d9554849508d4b" name="PRE_FT_BW_FINANCIALS_3" type="DATABASE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_3" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="3d5badbea17f7662df396c8fa921535c" key="sap.afm.layout">
       <annotations xmi:id="82503f6133081dbf657f08c4be480ea8" key="x" value="691.9999988079071"/>
       <annotations xmi:id="b1014eba2167ff679d87c2360a5222da" key="y" value="115.95356647185741"/>

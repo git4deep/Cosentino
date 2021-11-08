@@ -121,7 +121,7 @@
       <attributes xmi:id="a6a03848f20cf23926e0bfc53fcfec3a" name="timeType" type="NVARCHAR" nullable="true" length="128" scale="0" expression="timeType"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="73f7356eca7a6c6848327e8f95e6336b" name="STG_SSFF_ABSENTEEISM_5" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_5_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="73f7356eca7a6c6848327e8f95e6336b" name="STG_SSFF_ABSENTEEISM_5" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_5" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="e0e3f2b2f9cd2b0adb90ef2b57acc23e" key="sap.afm.layout">
       <annotations xmi:id="6abc97af017fffc1458ed89a17da3d2b" key="x" value="570"/>
       <annotations xmi:id="c36b534a35da9f58510fc7428d967ba1" key="y" value="238"/>

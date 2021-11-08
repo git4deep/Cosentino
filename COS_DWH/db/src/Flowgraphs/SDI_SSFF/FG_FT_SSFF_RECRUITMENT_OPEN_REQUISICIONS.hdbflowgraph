@@ -181,7 +181,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="8457cf049e58e9c4ac4faa748296075e" name="FT_SSFF_RECRUITMENT_CLOSED_JOB_REQUISITIONS" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_CLOSED_JOB_REQUISITIONS_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="8457cf049e58e9c4ac4faa748296075e" name="FT_SSFF_RECRUITMENT_CLOSED_JOB_REQUISITIONS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_CLOSED_JOB_REQUISITIONS" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="6a2cfb0d3cb133b4ace41645d879907a" key="sap.afm.layout">
       <annotations xmi:id="3684890ccb50aade32d2a76fded73949" key="x" value="541.9999988079071"/>
       <annotations xmi:id="dd2194a114f60e2b3802722a03420880" key="y" value="187"/>
@@ -270,7 +270,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="d78c91ad5ab18d53fde687d0f5a55763" name="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="d78c91ad5ab18d53fde687d0f5a55763" name="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_OPEN_JOB_REQUISITIONS" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="d63d8f5027e89d3cf9c07f966a3d37b9" key="sap.afm.layout">
       <annotations xmi:id="8da9079961f60d91e0df9149db5cbb09" key="x" value="541.9999988079071"/>
       <annotations xmi:id="e52996c27095ccf53cb88a817e0d1227" key="y" value="87"/>
@@ -485,7 +485,7 @@
       <attributes xmi:id="f658a7ae358f376cb64c27bf20c07973" name="createdBeforeAndClosedCurrentMonth" type="INTEGER" nullable="true" length="0" scale="0" expression="createdBeforeAndClosedCurrentMonth"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="49c248d85d70f7e8803afdef653b5c79" name="FT_SSFF_RECRUITMENT_ACTIVE_REQUISITIONS" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_ACTIVE_REQUISITIONS_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="49c248d85d70f7e8803afdef653b5c79" name="FT_SSFF_RECRUITMENT_ACTIVE_REQUISITIONS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_ACTIVE_REQUISITIONS" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="fae12a1b9af393de4e92ee30da8cba9e" key="sap.afm.layout">
       <annotations xmi:id="e8a3588364e2c1b7a7e10ad1efb8b82d" key="x" value="541.9999988079071"/>
       <annotations xmi:id="6fb73eaa60197b2cfd6e004203f9667a" key="y" value="297.5455997053881"/>

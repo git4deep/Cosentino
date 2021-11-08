@@ -184,7 +184,7 @@
       <attributes xmi:id="6a03ba1c98b12e5efa5436398c1d78fa" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0" expression="holidayClass"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="96fc7ab9ee6afbde26933f3bf46c744e" name="STG_SSFF_ABSENTEEISM_2" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="96fc7ab9ee6afbde26933f3bf46c744e" name="STG_SSFF_ABSENTEEISM_2" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="f36d5a16116a0e79d6468b37c05fbc16" key="sap.afm.layout">
       <annotations xmi:id="7d2028afb9090f7099bf724fb033baef" key="x" value="541.9999988079071"/>
       <annotations xmi:id="ef3080b9e07948df82e6bd5ef30ea614" key="y" value="123.90615814206286"/>

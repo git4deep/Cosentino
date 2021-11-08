@@ -205,7 +205,7 @@
     </tableMappings>
     <joinDefinitions left="892abc6ee4de30f3ac36e548aeddbdb5" right="fa7096d5a6cc418cab8947f8c751dceb" type="INNER" condition="&quot;Join3_Filter17&quot;.&quot;costCenter&quot; = &quot;Join3_Filter16&quot;.&quot;costCenter&quot; AND &#xA;&quot;Join3_Filter17&quot;.&quot;company&quot; = &quot;Join3_Filter16&quot;.&quot;company&quot;"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="45bbeeef0121e52cb13e6f37c1f6cf91" name="MSTR_HIERARCHY_BW_SSFF" type="TEMPLATE_TABLE" catalogObjectName="MSTR_HIERARCHY_BW_SSFF_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="45bbeeef0121e52cb13e6f37c1f6cf91" name="MSTR_HIERARCHY_BW_SSFF" type="DATABASE_TABLE" catalogObjectName="MSTR_HIERARCHY_BW_SSFF" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="6739c5e4629a3cad8c358ef21f3b1870" key="sap.afm.layout">
       <annotations xmi:id="ff1f1d6d4d7d838690963e98aca3fa1e" key="x" value="541.9999988079071"/>
       <annotations xmi:id="989f475872e2cbaa48e44ef6eedd34fb" key="y" value="123.38930047395674"/>

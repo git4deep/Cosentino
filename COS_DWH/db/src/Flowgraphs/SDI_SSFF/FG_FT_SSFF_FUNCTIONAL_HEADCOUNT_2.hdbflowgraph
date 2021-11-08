@@ -168,7 +168,7 @@
       <attributes xmi:id="2b2a5695d41b682c6b79cf0f01345cc4" name="DAYS_IN_PERIOD" type="INTEGER" nullable="false" expression="EXTRACT( DAY FROM $$V_EXP_LOAD_DATE$$ )"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="8967f7e93e46b6f622a281d55d3b5d88" name="FT_SSFF_FUNCTIONAL_HEADCOUNT" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_FUNCTIONAL_HEADCOUNT_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="8967f7e93e46b6f622a281d55d3b5d88" name="FT_SSFF_FUNCTIONAL_HEADCOUNT" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_FUNCTIONAL_HEADCOUNT" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="0ac167e03d9eaa51a2b0e25c1d18c382" key="sap.afm.layout">
       <annotations xmi:id="432137d659c2ef7de68e6ebe7c0e2135" key="x" value="656"/>
       <annotations xmi:id="6b0973d44345f978ab22d62f9c45a1a8" key="y" value="225"/>

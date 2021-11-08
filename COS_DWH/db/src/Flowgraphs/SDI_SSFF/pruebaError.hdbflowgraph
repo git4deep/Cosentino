@@ -430,7 +430,7 @@
       <attributeMappings xmi:id="53b1660c77160009fb8db5b16d4ed73e" source="6f5dd0d82377dfe6a5fa75d8b20efcc0" target="5d3a90876eef6962a2e1483e3238d880"/>
     </tableMappings>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="ab349f3272efadc1d220e2042e733b5d" name="FT_LEARNING_HOURS" type="TEMPLATE_TABLE" catalogObjectName="FT_LEARNING_HOURS_123_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="ab349f3272efadc1d220e2042e733b5d" name="FT_LEARNING_HOURS" type="DATABASE_TABLE" catalogObjectName="FT_LEARNING_HOURS_123" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="f2cff0562ab5db0bc7dd7b31665c9919" key="sap.afm.layout">
       <annotations xmi:id="cf47f723e6357bd6fe4bcb8758448a32" key="x" value="711.9999976158142"/>
       <annotations xmi:id="8ae197fd1cff2cdf459b1c52da666e9e" key="y" value="139.76137120054392"/>

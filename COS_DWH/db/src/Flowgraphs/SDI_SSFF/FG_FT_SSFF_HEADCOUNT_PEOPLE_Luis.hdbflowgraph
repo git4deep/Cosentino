@@ -170,7 +170,7 @@
       <attributeMappings xmi:id="e6ec9f0a738e25c4deb519eafa19521b" source="9d42f957fd5ff9bb3002563efd2ff794" target="ec24993d9131f663f4ab704fd1a073df"/>
     </tableMappings>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="b5509a10dba0af3b7cb9ef219d18b52c" name="akuna_matata" type="TEMPLATE_TABLE" catalogObjectName="akuna_matata_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="b5509a10dba0af3b7cb9ef219d18b52c" name="akuna_matata" type="DATABASE_TABLE" catalogObjectName="akuna_matata" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="8888c9f2a97de3884d5be24fb765c0d4" key="sap.afm.layout">
       <annotations xmi:id="b4edb0728506413267a46494eade624c" key="x" value="625"/>
       <annotations xmi:id="121c8a1127bbab8245d1e90139ac045e" key="y" value="94"/>

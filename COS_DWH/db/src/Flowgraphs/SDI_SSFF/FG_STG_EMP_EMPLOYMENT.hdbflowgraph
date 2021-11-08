@@ -125,7 +125,7 @@
       <attributes xmi:id="c819a6b43fbd77e8e1fece94a63599ff" name="userId" type="NVARCHAR" nullable="false" length="100" scale="0" expression="&quot;F_EMP_EMPLOYMENT_Input&quot;.&quot;userId&quot;"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="b149b5b078a4276d094ae68f0796892e" name="STG_EMP_EMPLOYMENT" type="TEMPLATE_TABLE" catalogObjectName="STG_EMP_EMPLOYMENT_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="b149b5b078a4276d094ae68f0796892e" name="STG_EMP_EMPLOYMENT" type="DATABASE_TABLE" catalogObjectName="STG_EMP_EMPLOYMENT" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="176d564b0cf4c2aecf9cee37a0f31459" key="sap.afm.layout">
       <annotations xmi:id="7676fc29ff9846af2c8a6fa8343da7b7" key="x" value="372"/>
       <annotations xmi:id="44eb7d8ce9de37acec2d1834a7999593" key="y" value="87"/>

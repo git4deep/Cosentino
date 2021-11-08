@@ -506,7 +506,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="fad5d27e20f33db30e9a27f48ae177f5" name="STG_BW_CEBES" type="TEMPLATE_TABLE" catalogObjectName="STG_BW_CEBES_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="fad5d27e20f33db30e9a27f48ae177f5" name="STG_BW_CEBES" type="DATABASE_TABLE" catalogObjectName="STG_BW_CEBES" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="f653b36179d673a80a7ff14160e29966" key="sap.afm.layout">
       <annotations xmi:id="48098232c84ad36412ff2fe18960e18c" key="x" value="691.9999988079071"/>
       <annotations xmi:id="d2d20318a89fbfb34ae58d9e0e1de9e8" key="y" value="115.95356647185741"/>

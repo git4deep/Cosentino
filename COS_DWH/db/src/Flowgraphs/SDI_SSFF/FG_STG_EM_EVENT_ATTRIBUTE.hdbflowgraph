@@ -36,7 +36,7 @@
       <attributes xmi:id="1fece51fd4a1a94bcbd727c944bf5c62" name="value" type="NVARCHAR" length="3999" scale="0" nullable="true"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="76611b966c950fdd3583567d4bed55c5" name="STG_EM_EVENT_ATTRIBUTE" type="TEMPLATE_TABLE" catalogObjectName="STG_EM_EVENT_ATTRIBUTE_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="76611b966c950fdd3583567d4bed55c5" name="STG_EM_EVENT_ATTRIBUTE" type="DATABASE_TABLE" catalogObjectName="STG_EM_EVENT_ATTRIBUTE" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="452480b453661a274b6d185fb5ba01ad" key="sap.afm.layout">
       <annotations xmi:id="fd6cb233b4981c55c79643942ed18b45" key="x" value="222"/>
       <annotations xmi:id="37033895922285963c6bad4c7374b6fc" key="y" value="82"/>

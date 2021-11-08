@@ -319,7 +319,7 @@
     </tableMappings>
     <joinDefinitions left="00097032572ca9f43e9f2fc96d2a471a" right="3b2941dfa7f6b2a772f3dfe904466218" type="LEFT_OUTER" condition="&quot;J_EMP_JOB_EMPLOYMENT_STG_EMP_JOB&quot;.&quot;userId&quot; = &quot;J_EMP_JOB_EMPLOYMENT_STG_EMP_EMPLOYMENT&quot;.&quot;userId&quot;"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="bf2a8d0265a4c6e0dd41646cccfbc510" name="STG_SSFF_HEADCOUNT" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_HEADCOUNT_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="bf2a8d0265a4c6e0dd41646cccfbc510" name="STG_SSFF_HEADCOUNT" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_HEADCOUNT" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="3074e152f8add86ff2d78d345f250f40" key="sap.afm.layout">
       <annotations xmi:id="c738743a6ac19ff8717949c367037c57" key="x" value="541.9999988079071"/>
       <annotations xmi:id="00ee199f63ac8f39e2f7aac36520437e" key="y" value="115.54063476201506"/>

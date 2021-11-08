@@ -147,7 +147,7 @@
       <attributes xmi:id="b82eac637c41a11b86a42cbf8e7bccc4" name="workflowRequestId" type="BIGINT" nullable="true" length="0" scale="0" expression="workflowRequestId"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="33d28306895cae793b5f353ed9824704" name="STG_EMPLOYEE_TIME" type="TEMPLATE_TABLE" catalogObjectName="STG_EMPLOYEE_TIME_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="33d28306895cae793b5f353ed9824704" name="STG_EMPLOYEE_TIME" type="DATABASE_TABLE" catalogObjectName="STG_EMPLOYEE_TIME" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="2355a394402a2f70a8b627b7857edf11" key="sap.afm.layout">
       <annotations xmi:id="7be0f9c557d6ebbb4d4b9ac25a5791fc" key="x" value="372"/>
       <annotations xmi:id="8b4caede7d2dc0e3afbf310e2bc0e623" key="y" value="87"/>

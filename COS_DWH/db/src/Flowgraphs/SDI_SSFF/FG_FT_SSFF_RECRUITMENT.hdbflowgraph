@@ -1389,7 +1389,7 @@
     <joinDefinitions left="5701c855782c30d73e4962acb65b187c" right="3b94d250621bf218e55a3dff514b651e" type="LEFT_OUTER" condition="&quot;Join4_Filter3&quot;.&quot;jobReqId&quot; = &quot;Join4_Filter5&quot;.&quot;jobReqId&quot; AND&#xA;&quot;Join4_Filter3&quot;.&quot;YEAR&quot; = &quot;Join4_Filter5&quot;.&quot;YEAR&quot; AND&#xA;&quot;Join4_Filter3&quot;.&quot;MONTH&quot; = &quot;Join4_Filter5&quot;.&quot;MONTH&quot;"/>
     <joinDefinitions right="a62aa2ca64ff02a3a178fe404de3db52" type="LEFT_OUTER" condition="&quot;Join4_Filter2_1&quot;.&quot;code&quot; = &quot;Join4_Filter5&quot;.&quot;positionNumber&quot;"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="9f2e44ae6873aa2ee9c43336fbedf26a" name="TemplateTable1" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_3_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="9f2e44ae6873aa2ee9c43336fbedf26a" name="TemplateTable1" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_3" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="267f5c5820a97cd7c9102246dd64ceb4" key="sap.afm.layout">
       <annotations xmi:id="041317867a570b4b74623550b4c6bf8d" key="x" value="771.9999964237213"/>
       <annotations xmi:id="c1cca3fa41ec2a03c9460cd35d8776e3" key="y" value="82"/>
@@ -1420,7 +1420,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="cbf591f4d06a7c6c95af802bda510e2c" name="TemplateTable2" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_1_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="cbf591f4d06a7c6c95af802bda510e2c" name="TemplateTable2" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_1" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="7e7649b47dd94a530bbc0057014fda40" key="sap.afm.layout">
       <annotations xmi:id="e80024cb8160364b2366543f522d0916" key="x" value="771.9999964237213"/>
       <annotations xmi:id="b0a694100c25864e66f2e6923f714cfb" key="y" value="361.99999999999994"/>
@@ -1448,7 +1448,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="1744389bb8a446c1366d9977f738cd61" name="TemplateTable3" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_4_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="1744389bb8a446c1366d9977f738cd61" name="TemplateTable3" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_4" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="5f749e395ef775fccb22f87e08b1de60" key="sap.afm.layout">
       <annotations xmi:id="a69df49ff9ba535006e04426b3e911b3" key="x" value="771.9999964237213"/>
       <annotations xmi:id="ac699fc2483a1cc4c1e27d2d873dc3b6" key="y" value="172"/>
@@ -1472,7 +1472,7 @@
       <attributes xmi:id="c4d6f8e99d082b8e2b42ec709a5aa2e5" name="DEVIATION_FROM_SELECTION_DATE" type="INTEGER" nullable="true" length="0" scale="0"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="925093b398651b5439cbc2d30c11f02f" name="TemplateTable4" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="925093b398651b5439cbc2d30c11f02f" name="TemplateTable4" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="b7b74c3a92950d48e8934d4776fff98d" key="sap.afm.layout">
       <annotations xmi:id="4b12fd279bf2a7bd745d77adb6a80055" key="x" value="771.9999964237213"/>
       <annotations xmi:id="5b367d78de34b0d631a61b10560277c6" key="y" value="561.6216001846917"/>
@@ -1507,7 +1507,7 @@
       <attributes xmi:id="43d24679b596e53630b79afd20ad8104" name="SUB_DEPARTMENT" type="NVARCHAR" nullable="true" length="128" scale="0"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="69f6a42e3bd5742c3f5beaff40bc7d1b" name="TemplateTable5" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_2_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="69f6a42e3bd5742c3f5beaff40bc7d1b" name="TemplateTable5" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_2_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="60a16f1bd466e1283b8d907f95d222d2" key="sap.afm.layout">
       <annotations xmi:id="533acc4210256adc936315abead649d4" key="x" value="941.9999952316284"/>
       <annotations xmi:id="69732acb9a41d3ca9e418bda31f058c1" key="y" value="240.96971344349717"/>
@@ -1539,7 +1539,7 @@
       <attributes xmi:id="65056f926cc21f2171b32144aa54260c" name="OPEN_PROCESS_LESS_5_CANDIDATES" type="INTEGER" nullable="true" length="0" scale="0"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="26421448848c9cba04f6d7bbfa39d001" name="TemplateTable6" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_2_1_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="26421448848c9cba04f6d7bbfa39d001" name="TemplateTable6" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_2_1" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="b02a6b2a16409137ab301375501fe334" key="sap.afm.layout">
       <annotations xmi:id="d0558bc4b6d9a90ec6e1e82e245a5a7d" key="x" value="941.9999952316284"/>
       <annotations xmi:id="0166d60946ca033e96241b841e07dbf3" key="y" value="465.33333333333326"/>

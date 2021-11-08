@@ -16,7 +16,7 @@
   <annotations xmi:id="83ecfd61f04484d4c32ad8ad1ca719bd" key="sap.afm.nodeOutputs">
     <annotations/>
   </annotations>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="a8e32f721644f08bb518760d4d5303cb" name="STG_EMPLOYEE_TIME_CALENDAR" type="TEMPLATE_TABLE" catalogObjectName="STG_EMPLOYEE_TIME_CALENDAR_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a8e32f721644f08bb518760d4d5303cb" name="STG_EMPLOYEE_TIME_CALENDAR" type="DATABASE_TABLE" catalogObjectName="STG_EMPLOYEE_TIME_CALENDAR" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="4c3e9edec2e33f4b5f2e5cbb40a108f7" key="sap.afm.layout">
       <annotations xmi:id="4f3c82cf635e5e3247534d6ac249a9b8" key="x" value="372"/>
       <annotations xmi:id="ce94ef3bae49b3d58ab60b644db465d6" key="y" value="87"/>

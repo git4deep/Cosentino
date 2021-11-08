@@ -351,7 +351,7 @@
       <attributes xmi:id="8c1fce35a2642c409b59bb99615bf86c" name="isDisqualified" type="INTEGER" length="0" scale="0" nullable="false"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="50e47ed488524f013e14f62b96b1ad1f" name="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE_2" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="50e47ed488524f013e14f62b96b1ad1f" name="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE_2" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="70d2e247e09d87461467037f408967a1" key="sap.afm.layout">
       <annotations xmi:id="9c5925c9df4e82e81a4f1f32afca3de3" key="x" value="881.9999964237213"/>
       <annotations xmi:id="c3ac5fd0724233c465e730cd76b25384" key="y" value="157.39613532437778"/>

@@ -461,7 +461,7 @@
       <attributes xmi:id="5939ab2646b8f8bde603050c70621df9" name="isDisqualified" type="INTEGER" nullable="true" expression="&quot;Filter1_Input&quot;.&quot;isDisqualified&quot;" length="0" scale="0"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="65d2a35c0ef3bc42a3b19a586b8e1fe9" name="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="65d2a35c0ef3bc42a3b19a586b8e1fe9" name="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS_PRE" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="7e722c21fd78c1f5cbacd2a7f053d677" key="sap.afm.layout">
       <annotations xmi:id="f0be0db7c8b50cd38abe6f248fbb4b15" key="x" value="881.9999964237213"/>
       <annotations xmi:id="941e49c2eff5bf4d40e77467385cc3f0" key="y" value="225.36925619797688"/>
@@ -765,7 +765,7 @@
       <attributes xmi:id="500c3f77a3d2b3729fdf4c4a420fe963" name="hiredOn" type="TIMESTAMP" nullable="true" length="0" scale="0" expression="hiredOn"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="526be9442037c0551a8e99a59bcfd9b3" name="MSTR_JOB_REQUISITION_APPLICATION" type="TEMPLATE_TABLE" catalogObjectName="MSTR_JOB_REQUISITION_APPLICATION_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="526be9442037c0551a8e99a59bcfd9b3" name="MSTR_JOB_REQUISITION_APPLICATION" type="DATABASE_TABLE" catalogObjectName="MSTR_JOB_REQUISITION_APPLICATION" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="45eafee342671dfd00d35c07bda126ba" key="sap.afm.layout">
       <annotations xmi:id="8ebe51edbe710e5391598a37e2752034" key="x" value="1031.9999964237213"/>
       <annotations xmi:id="f0986ed292aeeba7cd90935276f6b6af" key="y" value="109.03051786920864"/>

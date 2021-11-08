@@ -79,7 +79,7 @@
       <attributes xmi:id="15fcfd2109a5ea5cc216b5111a63c407" name="isVoluntary" type="VARCHAR" nullable="false" length="20" expression="CASE WHEN UPPER( &quot;F_FO_EVENT_REASON_Input&quot;.&quot;name&quot;) LIKE '%INVOLUNTARY%' THEN 'false' &#xA;     WHEN UPPER( &quot;F_FO_EVENT_REASON_Input&quot;.&quot;name&quot;) LIKE '%VOLUNTARY%'   THEN 'true' &#xA;ELSE 'other' END" scale="0"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="257d682a483d83bb3696d29f91a49fb4" name="STG_FO_EVENT_REASON" type="TEMPLATE_TABLE" catalogObjectName="STG_FO_EVENT_REASON_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="257d682a483d83bb3696d29f91a49fb4" name="STG_FO_EVENT_REASON" type="DATABASE_TABLE" catalogObjectName="STG_FO_EVENT_REASON" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="566dd76ccde3e0489f1c016b63ffff26" key="sap.afm.layout">
       <annotations xmi:id="8549878156136a9124db0cb5016c2e82" key="x" value="372"/>
       <annotations xmi:id="839f416cd4029bd7543b857e6f325823" key="y" value="87"/>

@@ -16,7 +16,7 @@
   <annotations xmi:id="923485c54963282e35d9fab1f1d0de48" key="sap.afm.nodeOutputs">
     <annotations/>
   </annotations>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="c4f6ed8a7c07df677db1718c9054dc30" name="STG_COST_CENTER" type="TEMPLATE_TABLE" catalogObjectName="STG_COST_CENTER_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="c4f6ed8a7c07df677db1718c9054dc30" name="STG_COST_CENTER" type="DATABASE_TABLE" catalogObjectName="STG_COST_CENTER" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="ab8354105b806d50f04d43debce28d71" key="sap.afm.layout">
       <annotations xmi:id="ead4634eca1d14c8d5678f22be95eeb7" key="x" value="372"/>
       <annotations xmi:id="4875715e90cf9defd2fc89342a817d5c" key="y" value="87"/>

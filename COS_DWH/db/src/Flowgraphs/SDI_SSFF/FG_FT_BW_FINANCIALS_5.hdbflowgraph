@@ -191,7 +191,7 @@
     </tableMappings>
     <joinDefinitions left="7101ee48f8ea0768ab4d27f878b3745d" right="69479965fb098758a3326a3b145ced2f" type="LEFT_OUTER" condition="&quot;Join1_FT_BW_SALES_BUDGET&quot;.&quot;year&quot; = &quot;Join1_FT_BW_FINANCIALS&quot;.&quot;YEAR&quot; AND&#xA;&quot;Join1_FT_BW_SALES_BUDGET&quot;.&quot;month&quot; = &quot;Join1_FT_BW_FINANCIALS&quot;.&quot;MONTH&quot; AND&#xA;&quot;Join1_FT_BW_SALES_BUDGET&quot;.&quot;dynamicProfitCenter&quot; = &quot;Join1_FT_BW_FINANCIALS&quot;.&quot;PROFIT_CENTER&quot; AND&#xA;&quot;Join1_FT_BW_FINANCIALS&quot;.&quot;COST_ELEMENT_TYPE&quot; = 'Sales'"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="7d0ae0d44609071922eccc9e5094f7bd" name="FT_BW_FINANCIALS_TEMP" type="TEMPLATE_TABLE" catalogObjectName="FT_BW_FINANCIALS_TEMP_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="7d0ae0d44609071922eccc9e5094f7bd" name="FT_BW_FINANCIALS_TEMP" type="DATABASE_TABLE" catalogObjectName="FT_BW_FINANCIALS_TEMP" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="59ea7b4c9e56cdbc51fb38f0665e2340" key="sap.afm.layout">
       <annotations xmi:id="997518d77417df12896825830e2b86f2" key="x" value="541.9999988079071"/>
       <annotations xmi:id="6fef4184ec278b2e06a9640dc06b82e1" key="y" value="115.54063476201506"/>

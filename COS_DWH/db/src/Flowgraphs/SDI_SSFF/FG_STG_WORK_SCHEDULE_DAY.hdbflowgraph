@@ -307,7 +307,7 @@
     </tableMappings>
     <joinDefinitions left="3c2386b103098f77e96b451c83a459fd" right="3f45ee129521b88e422688b60af440f2" type="INNER" condition="&quot;JOIN_V_WORK_SCHEDULE_DAY&quot;.&quot;day&quot; = (&quot;JOIN_Filter2&quot;.&quot;DAY_OF_WEEK_INT&quot; + 1) "/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="13c10f5550efd51a14d78107c6b71d77" name="STG_WORK_SCHEDULE_DAY_DATE" type="TEMPLATE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_DAY_DATE_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="13c10f5550efd51a14d78107c6b71d77" name="STG_WORK_SCHEDULE_DAY_DATE" type="DATABASE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_DAY_DATE" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="d97e4c244a8eeb8e6d87dd9a195f894f" key="sap.afm.layout">
       <annotations xmi:id="9f66837ae96d48b22548f558272b29c8" key="x" value="735"/>
       <annotations xmi:id="00396570df28dae4da44cad2dbe44474" key="y" value="128"/>
@@ -384,7 +384,7 @@
       <attributes xmi:id="9aabb0e98c9aa9c9a73aa06aaa8ca9d7" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="6c5e18fe80bfb0714cd2d6711ea57cd4" name="STG_WORK_SCHEDULE_DAY_DATE_HOLIDAYS" type="TEMPLATE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_DAY_DATE_HOLIDAYS_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="6c5e18fe80bfb0714cd2d6711ea57cd4" name="STG_WORK_SCHEDULE_DAY_DATE_HOLIDAYS" type="DATABASE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_DAY_DATE_HOLIDAYS" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="40f408264c4d723583d28c20545f6864" key="sap.afm.layout">
       <annotations xmi:id="2ffe50950d5b3baa7342c2dc38df0ec2" key="x" value="1025"/>
       <annotations xmi:id="50a6ee4e635d8ac50316df9b87008b88" key="y" value="314"/>

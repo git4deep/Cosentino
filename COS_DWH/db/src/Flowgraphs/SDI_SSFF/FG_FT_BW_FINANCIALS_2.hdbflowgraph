@@ -262,7 +262,7 @@
       <attributes xmi:id="b85c19694d03f12ef1b2a8914f1fdb6f" name="profitCenterName" type="NVARCHAR" nullable="true" length="64" scale="0" expression="profitCenterName"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="8d3dbb941b8cb2ea4ed017911abd0b22" name="PRE_FT_BW_FINANCIALS_2" type="TEMPLATE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="8d3dbb941b8cb2ea4ed017911abd0b22" name="PRE_FT_BW_FINANCIALS_2" type="DATABASE_TABLE" catalogObjectName="PRE_FT_BW_FINANCIALS_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="72c6c059ec6933f089f8d419833c2893" key="sap.afm.layout">
       <annotations xmi:id="7377bbfea72097663d3ff17038ccb74a" key="x" value="711.9999976158142"/>
       <annotations xmi:id="e5b2b70cffe6661b5b836452a68e53b0" key="y" value="121.48418677319454"/>
@@ -517,7 +517,7 @@
       <attributes xmi:id="eed5eecf810089e928ee37340f8b2b60" name="profitCenterName" type="NVARCHAR" nullable="true" length="64" scale="0" expression="profitCenterName"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="583e0dc96e1f07ab0800336659ba7d6a" name="TemplateTable4" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable4_123123_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="583e0dc96e1f07ab0800336659ba7d6a" name="TemplateTable4" type="DATABASE_TABLE" catalogObjectName="TemplateTable4_123123" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="cf83fe96b2953237bca4c5d4e2382b9e" key="sap.afm.layout">
       <annotations xmi:id="50bfc34cd448e73ed76e8dd70731b0a8" key="x" value="465"/>
       <annotations xmi:id="db0e7ea13a0f5107bf60ad5810d7b7d1" key="y" value="315"/>
@@ -561,7 +561,7 @@
       <attributes xmi:id="5343675e2c7385f53039acdca332412e" name="profitCenterName" type="NVARCHAR" nullable="true" length="64" scale="0"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="c3126f8a978e8b57f598478a7a6f31b9" name="TemplateTable5" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable5_123123_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="c3126f8a978e8b57f598478a7a6f31b9" name="TemplateTable5" type="DATABASE_TABLE" catalogObjectName="TemplateTable5_123123" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="6c4c954b6e154e9d492d7ee48586b8bb" key="sap.afm.layout">
       <annotations xmi:id="fd7b3c03706ca0659ee73b727e2f07c2" key="x" value="465"/>
       <annotations xmi:id="a75c3cf0cb8d2fb367c69c135c456162" key="y" value="62"/>

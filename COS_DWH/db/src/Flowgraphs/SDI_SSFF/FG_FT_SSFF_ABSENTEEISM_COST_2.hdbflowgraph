@@ -370,7 +370,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="a2a38bfccad6a4ce3184ed71dfc3fde8" name="PRE_FT_ABSENTEEISM_COST" type="TEMPLATE_TABLE" catalogObjectName="PRE_FT_ABSENTEEISM_COST_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a2a38bfccad6a4ce3184ed71dfc3fde8" name="PRE_FT_ABSENTEEISM_COST" type="DATABASE_TABLE" catalogObjectName="PRE_FT_ABSENTEEISM_COST" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="492888e1336a2171dc09dc139d28a419" key="sap.afm.layout">
       <annotations xmi:id="5e1fce0f1c88fb1782640de314b16cca" key="x" value="711.9999976158142"/>
       <annotations xmi:id="1fd4aaa2769023a9fbd90aede983a2cf" key="y" value="82"/>

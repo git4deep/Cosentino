@@ -521,7 +521,7 @@
       <attributeMappings source="ece9c9a8dd39644d92ae8f44b94b6942" target="060585e75f5b58e389e0cea86a4b7eda" xmi:id="029e6d39c950d76ef6292f63c3fc33e2"/>
     </tableMappings>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="c3681df72d0248340fe15abdfb104a28" name="STG_SSFF_RECRUITMENT_REQUISITIONS" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="c3681df72d0248340fe15abdfb104a28" name="STG_SSFF_RECRUITMENT_REQUISITIONS" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_RECRUITMENT_REQUISITIONS" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="20758d08268a9d675355eed9c20c5352" key="sap.afm.layout">
       <annotations xmi:id="d6ea0af9294f9fdfd26e10556bd94743" key="x" value="1031.9999964237213"/>
       <annotations xmi:id="944d569c74afc2c1c620e890ef86df29" key="y" value="152.68424826908563"/>

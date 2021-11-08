@@ -69,7 +69,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="a7ec9bb2a0f40b7e81e482d64d1eff06" name="STG_JOB_REQUISITION" type="TEMPLATE_TABLE" catalogObjectName="STG_JOB_REQUISITION_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a7ec9bb2a0f40b7e81e482d64d1eff06" name="STG_JOB_REQUISITION" type="DATABASE_TABLE" catalogObjectName="STG_JOB_REQUISITION" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="60c1339fd14ee2596afce46dc901290f" key="sap.afm.layout">
       <annotations xmi:id="53fb4ac88b4db9f08cfa938314a08f81" key="x" value="372"/>
       <annotations xmi:id="067ddd37892d8551e41b61d715b12a20" key="y" value="87"/>

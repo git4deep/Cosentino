@@ -379,7 +379,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="bb26347401a028be5e3a6e30d0d07ec7" name="STG_SSFF_HEADCOUNT_3" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_HEADCOUNT_3_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="bb26347401a028be5e3a6e30d0d07ec7" name="STG_SSFF_HEADCOUNT_3" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_HEADCOUNT_3" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="5915ffd49ebf742c3800edf8bd6d5a98" key="sap.afm.layout">
       <annotations xmi:id="7abc922c8ef70cf9d4a3f718fcc50634" key="x" value="1051.9999952316284"/>
       <annotations xmi:id="3732050e077b519d82f9679dbcad1c96" key="y" value="141.19907280366698"/>

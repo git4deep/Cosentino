@@ -510,7 +510,7 @@
       <attributes xmi:id="14a2264245d2a42bb36e8191857e4ef6" name="occupationPercentage" type="DOUBLE" nullable="true" length="0" scale="0" expression="occupationPercentage"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="ecfa2b891b86f2f98a888540a9c41b2c" name="STG_SSFF_ABSENTEEISM" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="ecfa2b891b86f2f98a888540a9c41b2c" name="STG_SSFF_ABSENTEEISM" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="276c11e04d7d349333a79b7b84f2b753" key="sap.afm.layout">
       <annotations xmi:id="bb750eb92d5562cb2e240519ebcb1360" key="x" value="711.9999976158142"/>
       <annotations xmi:id="da1f5d2f42f782d60fb4d8c8f1fdfcdb" key="y" value="149.00807141543825"/>

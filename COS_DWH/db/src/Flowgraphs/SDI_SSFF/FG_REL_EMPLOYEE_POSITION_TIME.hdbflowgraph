@@ -346,7 +346,7 @@
       <attributes xmi:id="8b19448cdc27d603fa39a870c1d7549c" name="userId" type="NVARCHAR" nullable="false" length="100" scale="0" expression="&quot;F_EMP_EMPLOYMENT_Input&quot;.&quot;userId&quot;"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="4e24651b8127351d4b77164f95a3f0ee" name="REL_EMPLOYEE_POSITION_TIME" type="TEMPLATE_TABLE" catalogObjectName="REL_EMPLOYEE_POSITION_TIME_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="4e24651b8127351d4b77164f95a3f0ee" name="REL_EMPLOYEE_POSITION_TIME" type="DATABASE_TABLE" catalogObjectName="REL_EMPLOYEE_POSITION_TIME" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="433cf7b22f0ba6c78ca59b8c202bcc92" key="sap.afm.layout">
       <annotations xmi:id="00d0c4b784b2e9342480e33bcfde6f8f" key="x" value="711.9999976158142"/>
       <annotations xmi:id="a895c9ddc0e36c75ea1d19ec40895605" key="y" value="149.00807141543825"/>

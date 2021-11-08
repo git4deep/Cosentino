@@ -765,7 +765,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="a6448a8e64967f805116b4640b02879a" name="TEMP_FT_BW_FINANCIALS_2" type="TEMPLATE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a6448a8e64967f805116b4640b02879a" name="TEMP_FT_BW_FINANCIALS_2" type="DATABASE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="5091a5172da52e3ea5969cc7d79cb933" key="sap.afm.layout">
       <annotations xmi:id="77aff252505a204184f316145aa79523" key="x" value="921.9999964237213"/>
       <annotations xmi:id="df95150f397490e2458ef0453132c196" key="y" value="208.92877008715968"/>
@@ -815,7 +815,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="ef184a8aa569c10a9637eadd7f0e07c7" name="TEMP_FT_BW_FINANCIALS_1" type="TEMPLATE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_1_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="ef184a8aa569c10a9637eadd7f0e07c7" name="TEMP_FT_BW_FINANCIALS_1" type="DATABASE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_1" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="047d6e410e59c833ff70f7bb1db030ac" key="sap.afm.layout">
       <annotations xmi:id="2ceea914325c80b57b01846be22ac526" key="x" value="1320"/>
       <annotations xmi:id="771e9748f1168246226d9a456287c49b" key="y" value="141"/>
@@ -868,7 +868,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="59387d547e881a33cc0501cbd7925d08" name="TemplateTable1" type="TEMPLATE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_3_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="59387d547e881a33cc0501cbd7925d08" name="TemplateTable1" type="DATABASE_TABLE" catalogObjectName="TEMP_FT_BW_FINANCIALS_3" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="f38ca431e1625513a543ac256740cbf7" key="sap.afm.layout">
       <annotations xmi:id="74c1e76a2c732ad08273f5b1638b3611" key="x" value="1204"/>
       <annotations xmi:id="307b910405140367009411845271e5e5" key="y" value="69"/>

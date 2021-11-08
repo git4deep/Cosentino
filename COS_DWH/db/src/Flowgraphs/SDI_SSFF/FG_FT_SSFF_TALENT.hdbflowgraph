@@ -304,7 +304,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="a730413ff76331c88fd2cb1a00c21978" name="STG_SSFF_TALENT" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_TALENT_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="a730413ff76331c88fd2cb1a00c21978" name="STG_SSFF_TALENT" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_TALENT" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="f4f5df9208150b304a1d489ef7a0110d" key="sap.afm.layout">
       <annotations xmi:id="835afcb93ba9790674a12a2a8004dc8f" key="x" value="541.9999988079071"/>
       <annotations xmi:id="accf860f7da3f56e90a67573fd36eebe" key="y" value="115.54063476201506"/>

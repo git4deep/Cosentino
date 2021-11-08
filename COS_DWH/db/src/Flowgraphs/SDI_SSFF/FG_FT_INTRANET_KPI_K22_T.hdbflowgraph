@@ -64,7 +64,7 @@
       <attributes xmi:id="c55433998054f3c6e8b058d8329e9a74" name="personalDivision" type="NVARCHAR" length="32" scale="0" nullable="true"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="3b8c05f57b06e949248fbfedd5005ce1" name="FT_INTRANET_KPI_K22_TRANSFERS" type="TEMPLATE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="3b8c05f57b06e949248fbfedd5005ce1" name="FT_INTRANET_KPI_K22_TRANSFERS" type="DATABASE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="a199b4c3151ff1a07c37246a1f0f8098" key="sap.afm.layout">
       <annotations xmi:id="7ddcb7c6608a1b927233a2c4f23e26c1" key="x" value="731.9999964237213"/>
       <annotations xmi:id="bb63f7bec397464ce5acd5b18c4a8063" key="y" value="87"/>
@@ -364,7 +364,7 @@
       <attributes xmi:id="d404ff904ed2c8c7722c665d832064b4" name="event" type="NVARCHAR" nullable="true" length="45" scale="0" expression="event"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="9c2e51a9a82f1bd630a892636facc0fb" name="TemplateTable7" type="TEMPLATE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_T_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="9c2e51a9a82f1bd630a892636facc0fb" name="TemplateTable7" type="DATABASE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_T_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="d76e1f5fbb82b7085b4d324613301572" key="sap.afm.layout">
       <annotations xmi:id="e8c7c27ef608451ce89bb5e397b6e5c6" key="x" value="581.9999964237213"/>
       <annotations xmi:id="66795ff310671e3c7aa3088da62bcf11" key="y" value="182"/>
@@ -392,7 +392,7 @@
       </attributes>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="12972f78e1b37612d43982becc18474e" name="FT_INTRANET_KPI_K22_TRANSFERS_T" type="TEMPLATE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_T2_2_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="12972f78e1b37612d43982becc18474e" name="FT_INTRANET_KPI_K22_TRANSFERS_T" type="DATABASE_TABLE" catalogObjectName="FT_INTRANET_KPI_K22_TRANSFERS_T2_2" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="2647a14f4e149d2d44ea994e4212158a" key="sap.afm.layout">
       <annotations xmi:id="f8b75007fe85e038f5b1bc9bbae64d7d" key="x" value="411.9999976158142"/>
       <annotations xmi:id="1980e8319812bf0bc516b4d6195e0956" key="y" value="224.48772539271178"/>

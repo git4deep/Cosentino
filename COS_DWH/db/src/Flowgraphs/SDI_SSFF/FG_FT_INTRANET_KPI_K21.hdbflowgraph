@@ -433,7 +433,7 @@
       <attributes xmi:id="02fb3e6b278d47cfcf4595a96876e891" name="STATUS_CANCELED" type="INTEGER" length="0" scale="0" nullable="true"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="1d1767aff6f33b29abc6150bce5b0ca7" name="TemplateTable1" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable1K21STG_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="1d1767aff6f33b29abc6150bce5b0ca7" name="TemplateTable1" type="DATABASE_TABLE" catalogObjectName="TemplateTable1K21STG" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="1fb3910452c593066349a0364e4f498d" key="sap.afm.layout">
       <annotations xmi:id="bca811ffede9d33225ef391cf483d4f1" key="x" value="391.9999988079071"/>
       <annotations xmi:id="3664d3728cb72e0b86d53de3357d4163" key="y" value="274.60559927250546"/>
@@ -462,7 +462,7 @@
       <attributes xmi:id="bcd3335ee63f5d140f1283495ec75d1c" name="status" type="NVARCHAR" nullable="true" length="1024" scale="0"/>
     </inputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="b25a99b32398c7ce298b4e19332f33ae" name="TemplateTable2" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable1K21FT_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="b25a99b32398c7ce298b4e19332f33ae" name="TemplateTable2" type="DATABASE_TABLE" catalogObjectName="TemplateTable1K21FT" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="9e721a08b5a6f6c85b1d08df3df5e118" key="sap.afm.layout">
       <annotations xmi:id="dd45dab39931534b0db12d900cf99927" key="x" value="391.9999988079071"/>
       <annotations xmi:id="9ebe2e21547eddb88ed7d7ec37798118" key="y" value="82"/>

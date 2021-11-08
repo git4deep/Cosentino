@@ -558,7 +558,7 @@
     </tableMappings>
     <joinDefinitions left="5f9853c1fadcdee57a6ae58ac8ebb781" right="36835697d0ad6887ca686e81e61f7f92" type="LEFT_OUTER" condition="&quot;Join2_Filter4&quot;.&quot;jobReqId&quot; = &quot;Join2_Filter2&quot;.&quot;jobReqId&quot; AND&#xA;&quot;Join2_Filter4&quot;.&quot;YEAR&quot; = &quot;Join2_Filter2&quot;.&quot;YEAR&quot; AND &#xA;&quot;Join2_Filter4&quot;.&quot;MONTH&quot; = &quot;Join2_Filter2&quot;.&quot;MONTH&quot;"/>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="26421448848c9cba04f6d7bbfa39d001" name="TemplateTable6" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable_REC_2_1_test_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="26421448848c9cba04f6d7bbfa39d001" name="TemplateTable6" type="DATABASE_TABLE" catalogObjectName="TemplateTable_REC_2_1_test" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="b02a6b2a16409137ab301375501fe334" key="sap.afm.layout">
       <annotations xmi:id="d0558bc4b6d9a90ec6e1e82e245a5a7d" key="x" value="901.9999952316284"/>
       <annotations xmi:id="0166d60946ca033e96241b841e07dbf3" key="y" value="168.66666666666669"/>

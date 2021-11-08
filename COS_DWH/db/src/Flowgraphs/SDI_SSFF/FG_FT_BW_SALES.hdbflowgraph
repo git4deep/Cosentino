@@ -425,7 +425,7 @@
       <attributes name="businessUnitName" type="NVARCHAR" length="32" scale="0" nullable="true" xmi:id="247dfba3bfe8ee1ba77abd1a09f7ee0a"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="8164ab9300e68244baaed8a945e3333f" name="PRE_FT_BW_SALES" type="TEMPLATE_TABLE" catalogObjectName="PRE_FT_BW_SALES_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="8164ab9300e68244baaed8a945e3333f" name="PRE_FT_BW_SALES" type="DATABASE_TABLE" catalogObjectName="PRE_FT_BW_SALES" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="95704cacf7e4a60c2bfb78d8f0686a43" key="sap.afm.layout">
       <annotations xmi:id="69e311fc398fe6491ac1bffbd63bd931" key="x" value="861.9999976158142"/>
       <annotations xmi:id="b2016bea19f79eac17e3af4a6e7daba1" key="y" value="133.76473964849953"/>

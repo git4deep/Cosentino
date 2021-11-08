@@ -405,7 +405,7 @@
       <attributes xmi:id="4c217d1e2c83eac791dcae01b4d82685" name="managedUserEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0" expression="managedUserEndDate"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="18f0f4676538fb07fa877c5eaaa49596" name="STG_SSFF_FUNCTIONAL_HEADCOUNT" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_FUNCTIONAL_HEADCOUNT_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="18f0f4676538fb07fa877c5eaaa49596" name="STG_SSFF_FUNCTIONAL_HEADCOUNT" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_FUNCTIONAL_HEADCOUNT" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="b952f7bcf8478585ca218edd525b621b" key="sap.afm.layout">
       <annotations xmi:id="438be85e7f17082b343321d567c5d903" key="x" value="881.9999964237213"/>
       <annotations xmi:id="888863623eb48db01a9c6c87db536846" key="y" value="133.0066446692394"/>

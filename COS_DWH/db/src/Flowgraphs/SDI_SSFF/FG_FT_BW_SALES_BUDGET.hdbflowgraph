@@ -166,7 +166,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="bc33f7f0b77b58bfa9dd27dc5dd16077" name="FT_BW_SALES_BUDGET_OLD" type="TEMPLATE_TABLE" catalogObjectName="FT_BW_SALES_BUDGET_OLD_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="bc33f7f0b77b58bfa9dd27dc5dd16077" name="FT_BW_SALES_BUDGET_OLD" type="DATABASE_TABLE" catalogObjectName="FT_BW_SALES_BUDGET_OLD" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="a5a4127244734e59f7afe6b256d46eac" key="sap.afm.layout">
       <annotations xmi:id="79c4d36e7a1b11f824340e9772047826" key="x" value="748"/>
       <annotations xmi:id="32da225803d215acf5616f61f3ceecfa" key="y" value="345"/>
@@ -241,7 +241,7 @@
       <attributeMappings source="215917e719c8e2fbedc105b396f52af7" target="a9a795ac4e4f341e4168048f9aea20a1" xmi:id="beb1f8d3dadbc0e9eaa6ace86377e974"/>
     </tableMappings>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="7b2bff0513c215fa13101656519bd98c" name="FT_BW_SALES_BUDGET" type="TEMPLATE_TABLE" catalogObjectName="FT_BW_SALES_BUDGET_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="7b2bff0513c215fa13101656519bd98c" name="FT_BW_SALES_BUDGET" type="DATABASE_TABLE" catalogObjectName="FT_BW_SALES_BUDGET" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="a1eb10ad36cd0c67fb58454d27cba711" key="sap.afm.layout">
       <annotations xmi:id="c2e5e52c008e8ef90b4e8345267e258f" key="x" value="1067"/>
       <annotations xmi:id="50f8acadd7ef529a7e8b1c5064ba0109" key="y" value="260"/>

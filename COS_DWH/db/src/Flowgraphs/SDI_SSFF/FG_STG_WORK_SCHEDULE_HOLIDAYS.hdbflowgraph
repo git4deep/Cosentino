@@ -178,7 +178,7 @@
       <attributes xmi:id="a736314a559db81c78c2fe26e644c41c" name="mdfSystemEffectiveStartDate_1" type="TIMESTAMP" nullable="true" length="0" scale="0" expression="mdfSystemEffectiveStartDate_1"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="cf280e75ca4998f895ec1c1e832c44d1" name="STG_WORK_SCHEDULE_HOLIDAYS" type="TEMPLATE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_HOLIDAYS_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="cf280e75ca4998f895ec1c1e832c44d1" name="STG_WORK_SCHEDULE_HOLIDAYS" type="DATABASE_TABLE" catalogObjectName="STG_WORK_SCHEDULE_HOLIDAYS" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="d54b3be946df7fd80cf63df206fb35d3" key="sap.afm.layout">
       <annotations xmi:id="1cc764c76e6bbbc2e49d3eec15cc9f11" key="x" value="537"/>
       <annotations xmi:id="3236623a71b22591029efa34eb1e84aa" key="y" value="217"/>

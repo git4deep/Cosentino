@@ -159,7 +159,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="23f87e827bb28faadf4f7a2f37dc8b92" name="STG_SSFF_ABSENTEEISM_4" type="TEMPLATE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_4_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="23f87e827bb28faadf4f7a2f37dc8b92" name="STG_SSFF_ABSENTEEISM_4" type="DATABASE_TABLE" catalogObjectName="STG_SSFF_ABSENTEEISM_4" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="bb2b93d3054e44b6a7a0ad57b6e6c4ad" key="sap.afm.layout">
       <annotations xmi:id="74d8572424193e71a80ddd15c68c39f9" key="x" value="711.9999976158142"/>
       <annotations xmi:id="a8fbfce7365390a7970ade7bfcc5ae49" key="y" value="117.9587025563323"/>

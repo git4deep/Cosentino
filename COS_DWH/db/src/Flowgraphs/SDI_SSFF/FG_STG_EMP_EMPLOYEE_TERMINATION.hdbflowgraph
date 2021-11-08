@@ -111,7 +111,7 @@
       <attributes xmi:id="8c654dd3368e34b25960bdcf315a2943" name="userId" type="NVARCHAR" nullable="false" length="100" scale="0" expression="userId"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="17fb70f37b055516324c83ffb45b02de" name="STG_EMPLOYEE_TERMINATION" type="TEMPLATE_TABLE" catalogObjectName="STG_EMPLOYEE_TERMINATION_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="17fb70f37b055516324c83ffb45b02de" name="STG_EMPLOYEE_TERMINATION" type="DATABASE_TABLE" catalogObjectName="STG_EMPLOYEE_TERMINATION" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="648077270ff036fb3fe43c8877aec5d6" key="sap.afm.layout">
       <annotations xmi:id="427a2bde3cdf6cb9f5fe74581cd18941" key="x" value="372"/>
       <annotations xmi:id="6b40c33c7d743fa141b42cac3ebc3d54" key="y" value="87"/>

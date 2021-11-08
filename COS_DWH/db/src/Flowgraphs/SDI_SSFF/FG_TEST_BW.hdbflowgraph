@@ -148,7 +148,7 @@
       <attributes xmi:id="295e54e089762a4e36b470a6a4619844" name="profitCenterName" type="NVARCHAR" nullable="false" length="64" expression="&quot;Filter4_Input&quot;.&quot;profitCenterName&quot;"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="69e2f76e5ecbbf4f5567846cdba188d4" name="TemplateTable1" type="TEMPLATE_TABLE" catalogObjectName="TemplateTable1_TEST_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="69e2f76e5ecbbf4f5567846cdba188d4" name="TemplateTable1" type="DATABASE_TABLE" catalogObjectName="TemplateTable1_TEST" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="7b3031c0a4fa002ce723f77b2bd30888" key="sap.afm.layout">
       <annotations xmi:id="e2a18aaac4bd23c058ea4589da2c6200" key="x" value="633"/>
       <annotations xmi:id="7861845b7393cf28b43968522ca9bfa3" key="y" value="254"/>

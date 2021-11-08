@@ -123,7 +123,7 @@
       <attributes xmi:id="fe14dd4f9e30f1932948d2ec920a674c" name="status" type="NVARCHAR" nullable="true" length="255" scale="0" expression="status"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="dafc05cf51196c6c8f321956ca57f6d9" name="STG_COMPANY" type="TEMPLATE_TABLE" catalogObjectName="STG_COMPANY_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="dafc05cf51196c6c8f321956ca57f6d9" name="STG_COMPANY" type="DATABASE_TABLE" catalogObjectName="STG_COMPANY" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="45ba5905c7874623dd2cbdf4044c0837" key="sap.afm.layout">
       <annotations xmi:id="42c3895cf8a3d91c6c2659a64e2b5167" key="x" value="372"/>
       <annotations xmi:id="c8bc826413c03f25433e0706e2a04e35" key="y" value="87"/>

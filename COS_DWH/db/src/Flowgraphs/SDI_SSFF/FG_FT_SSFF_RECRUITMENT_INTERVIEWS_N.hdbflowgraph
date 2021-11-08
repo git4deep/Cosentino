@@ -277,7 +277,7 @@
       </attributes>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="5c1978b159bbe749d2b88cc226b4845f" name="FT_SSFF_RECRUITMENT_INTERVIEWS" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_INTERVIEWS_N_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="5c1978b159bbe749d2b88cc226b4845f" name="FT_SSFF_RECRUITMENT_INTERVIEWS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_INTERVIEWS_N" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="259996fa883481ec13c1d52f629d782d" key="sap.afm.layout">
       <annotations xmi:id="eccdb6e51b2eaff50bf061b8b4b65c2a" key="x" value="1221.9999940395355"/>
       <annotations xmi:id="4caebcc8ea53fe41d06f401ba2c46d12" key="y" value="179.06291786580584"/>
@@ -344,7 +344,7 @@
       <attributes xmi:id="f0bb3bb05988d346a50388f2e8fc42d0" name="isDisqualified" type="INTEGER" length="0" scale="0" nullable="false"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="ff08e9b9fe30d9d74dda1ad3b707b19c" name="TemplateTable3" type="TEMPLATE_TABLE" catalogObjectName="TemplateTableRecDev3_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="ff08e9b9fe30d9d74dda1ad3b707b19c" name="TemplateTable3" type="DATABASE_TABLE" catalogObjectName="TemplateTableRecDev3" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="f587c7c28b1d512b19b1bf0e9771606b" key="sap.afm.layout">
       <annotations xmi:id="e700d4ebe677dcd0667169729e93cfcd" key="x" value="901.9999952316284"/>
       <annotations xmi:id="2a233e9452eb4e8d5df3b473b5a0eafb" key="y" value="182"/>
@@ -534,7 +534,7 @@
       <attributes xmi:id="075f1624474f295beafc7e32f47289ec" name="positionNumber" type="INTEGER" nullable="true" length="0" scale="0" expression="positionNumber"/>
     </outputs>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="cf636bfc80183c8515facb7e7b7dbb44" name="TemplateTable7" type="TEMPLATE_TABLE" catalogObjectName="TemplateTableRecDev7_MIG" dataLayout="COLUMN" truncateTable="true">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="cf636bfc80183c8515facb7e7b7dbb44" name="TemplateTable7" type="DATABASE_TABLE" catalogObjectName="TemplateTableRecDev7" dataLayout="COLUMN" truncateTable="true">
     <annotations xmi:id="cc4c79dd84099fbd7c834ebb59c1135d" key="sap.afm.layout">
       <annotations xmi:id="722f57ea7731746078cf7e1573091e5c" key="x" value="581.9999964237213"/>
       <annotations xmi:id="6a5644e8147b8f826bbbe8292b6cd2f4" key="y" value="240.74945949889243"/>

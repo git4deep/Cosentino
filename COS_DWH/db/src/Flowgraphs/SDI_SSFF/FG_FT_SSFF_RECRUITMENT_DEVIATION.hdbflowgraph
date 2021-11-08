@@ -331,7 +331,7 @@
       <attributeMappings source="a41e0ed5cb1dfb4b8043951e51cb6773" target="f72b2c6f55103d8aaf99cdaad279c674" xmi:id="8aad547bb403b6366e75a2a80797c58b"/>
     </tableMappings>
   </nodes>
-  <nodes xsi:type="flowgraph:DataNode" xmi:id="e483c3209ec744b7272d7d139cbfab65" name="FT_SSFF_RECRUITMENT_DEVIATIONS" type="TEMPLATE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_DEVIATIONS_MIG" dataLayout="COLUMN" truncateTable="false">
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="e483c3209ec744b7272d7d139cbfab65" name="FT_SSFF_RECRUITMENT_DEVIATIONS" type="DATABASE_TABLE" catalogObjectName="FT_SSFF_RECRUITMENT_DEVIATIONS" dataLayout="COLUMN" truncateTable="false">
     <annotations xmi:id="7267b6ac6c0f24ccde7f0b8ce89443f6" key="sap.afm.layout">
       <annotations xmi:id="d4d28591cef5af70448fca9e185a707f" key="x" value="861.9999976158142"/>
       <annotations xmi:id="07352bd54cf448f7fbb538b40c8e1607" key="y" value="105.90674712410234"/>
