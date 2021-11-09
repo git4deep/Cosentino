@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="d18593ce560626ad2580126f9be091a0" name="MSTR_FACTORY_CALENDAR" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="d64761ddafec44c0435d3df87ecd271a" key="sap.afm.layout">
+    <annotations xmi:id="470b16631929f1c0edfd01b014a05fc3" key="x" value="10"/>
+    <annotations xmi:id="dc66abbbb9aae2658663ca1b48fa626b" key="y" value="10"/>
+    <annotations xmi:id="d768300be36cb4340a5045db6cd066d6" key="width" value="100"/>
+    <annotations xmi:id="841dc5f6daa8cf37c419df4a1c7c4a44" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="f3bf61c8ae511aaac74248bd99397d2d" key="sap.afm.palette">
+    <annotations xmi:id="2d4bc9e17c0ad68d1f6f0df44cae8c49" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="947b3439ac1eee1ee7268e8bc408cdd1" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="dbda5c821e76fd5ac41395a14fef1207" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="fc7de410f073802405d871f7f35e0899" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="9e84c7f1e2374a1675c6ccce776140c4" name="STG_HOLIDAY" type="DATABASE_TABLE" catalogObjectName="STG_HOLIDAY" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="38d312731131018c90c700e4f1cf509c" key="sap.afm.description" value=""/>
+    <annotations xmi:id="72a7dd613dfce443ed6884a2e06576d0" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="e03df132f47164dbede54c2aeca134ae" key="sap.afm.layout">
+      <annotations xmi:id="9a5d5f30ca926fb76e5536543998eafa" key="x" value="301.9999988079071"/>
+      <annotations xmi:id="08e92fb7c16f63bcd9c34c9cb894204c" key="y" value="82"/>
+      <annotations xmi:id="898d3e6d112b650be4b7376752b65197" key="width" value="100"/>
+      <annotations xmi:id="07a76928b432d6d802b7a4bee1dc7197" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="4b46956ac9035365004cac1a667ec821" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="e10af7a47b9d90c0d0802e850c677984" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="a04a2d3a63965034c1c9c85ecd3062ab" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="1e0f94729827416c78c03d3af38c7440" key="STG_HOLIDAY_Output" value="J_HOLIDAY_STG_HOLIDAY"/>
+    </annotations>
+    <outputs name="STG_HOLIDAY_Output" kind="TABLE" xmi:id="d2331c97fec3527b9f6984fa06a0c6b4">
+      <attributes xmi:id="162f606ae9ffbcf75f33422c2ac04459" name="country" type="NVARCHAR" length="128" scale="0" nullable="true"/>
+      <attributes xmi:id="696cba5c8edd991ee84ffe5605469f0e" name="holidayCode" type="NVARCHAR" length="128" scale="0" nullable="false"/>
+      <attributes xmi:id="00416e49d547a0eb9bc23fbdbe7a113b" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="074e6e9ae7d29bc99d456562c384c7e2" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="16e26d2e3ce3f79afaca05108a63a17b" name="STG_HOLIDAY_CALENDAR" type="DATABASE_TABLE" catalogObjectName="STG_HOLIDAY_CALENDAR" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="88187dd131355b4bb0bcb2344eb68080" key="sap.afm.description" value=""/>
+    <annotations xmi:id="31c5cfa353cd6689b1d2cb66aa327402" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="21249973868bd045b669f313c631b923" key="sap.afm.layout">
+      <annotations xmi:id="1c32e5d89e379669f9387d687d6528e1" key="x" value="132"/>
+      <annotations xmi:id="f9243aa13b35af3f30cb800f3dd5efed" key="y" value="215.64639555555127"/>
+      <annotations xmi:id="eb5319c45602df5d5557acf839bb1eb2" key="width" value="100"/>
+      <annotations xmi:id="9bb65eaa8f394504059060ef9332823a" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="37a49633dcb1913759271932d89462ed" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="1052757f6a0f8d59aa20143506658198" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="e1520eeb7a9889ad73dbd5b17b9e7f5a" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="9849d695b5de9aa0855fcc091b350bd9" key="STG_HOLIDAY_CALENDAR_Output" value="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_CALENDAR"/>
+      <annotations xmi:id="531bd78ac0c8dfc498f155d4f023c3f0" key="STG_HOLIDAY_CALENDAR_Output" value="Join1_STG_HOLIDAY_CALENDAR"/>
+    </annotations>
+    <outputs name="STG_HOLIDAY_CALENDAR_Output" kind="TABLE" xmi:id="a14e6e76895758f4446f2e90f7f1df13">
+      <attributes xmi:id="2f674827bdf801a62d81c0b852216779" name="country" type="NVARCHAR" length="128" scale="0" nullable="true"/>
+      <attributes xmi:id="eb5504ccd4633b1820b7401bff3df6ff" name="externalCode" type="NVARCHAR" length="128" scale="0" nullable="false"/>
+      <attributes xmi:id="44d30f9b4f3d01bc70b3d6f726ec3ee6" name="name_defaultValue" type="NVARCHAR" length="255" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="384af64d31c159abbda2c91e3a5030d1" name="STG_HOLIDAY_ASSIGNMENT" type="DATABASE_TABLE" catalogObjectName="STG_HOLIDAY_ASSIGNMENT" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="81ad9a88d1ee25d2dc02f77edee214c4" key="sap.afm.description" value=""/>
+    <annotations xmi:id="1e54a22915010329fcde5872e3ab0cf1" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="43b8db92cb4ecc6527cd18ffa7a8df1c" key="sap.afm.layout">
+      <annotations xmi:id="9818783b4ac9dfad6c3cd85aa082fef9" key="x" value="132"/>
+      <annotations xmi:id="75e67c583f14860259d4a3dadf88dc76" key="y" value="125.64639555555127"/>
+      <annotations xmi:id="c7c456eeae2eea5a501a36ec07b540de" key="width" value="100"/>
+      <annotations xmi:id="eaae350b85fe4f720c3c2240e2f3d88c" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="e5a846224cd9920f3dc90cff11e72f37" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="e63529f060352a5a32abf645e89d1c11" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="c608132f6dc5996bb12290d89fa73d2a" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="48589d94a77049b606c6ea308c385f38" key="STG_HOLIDAY_ASSIGNMENT_Output" value="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_ASSIGNMENT"/>
+      <annotations xmi:id="373137f2c221bc1a6f530d70832c6169" key="STG_HOLIDAY_ASSIGNMENT_Output" value="Join1_STG_HOLIDAY_ASSIGNMENT"/>
+    </annotations>
+    <outputs name="STG_HOLIDAY_ASSIGNMENT_Output" kind="TABLE" xmi:id="e9fe75f2027fab3670e915cabc42be0b">
+      <attributes xmi:id="28f8d8a467bfa1657bfc8e6df7903f1e" name="HolidayCalendar_externalCode" type="NVARCHAR" length="128" scale="0" nullable="false"/>
+      <attributes xmi:id="aeaf2e424811aebbfca6f1361109969f" name="date" type="TIMESTAMP" length="0" scale="0" nullable="false"/>
+      <attributes xmi:id="55bb1f8114fa1580198c9b85ee219c56" name="holiday" type="NVARCHAR" length="128" scale="0" nullable="true"/>
+      <attributes xmi:id="b2ef42b566cb5f4421166b463fb1fd16" name="holidayClass" type="NVARCHAR" length="255" scale="0" nullable="true"/>
+      <attributes xmi:id="919cbc0c8977b76333276fa5410d8bf5" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="00f50b9456175c6b1c021309ae5ece29" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:JoinNode" xmi:id="80702dd62b8801c88f136d75ec336ac1" name="J_HOLIDAY_CALENDAR_ASSIGNMENT">
+    <annotations xmi:id="bb2708fc5c6e20740ea4b33fa36b28b5" key="sap.afm.description" value=""/>
+    <annotations xmi:id="63d3fbfd7ba2a18f0e858c7a0f561825" key="sap.afm.displayName" value="JOIN"/>
+    <annotations xmi:id="94e1586493ad253cbc3a4ec7ca72145a" key="sap.afm.layout">
+      <annotations xmi:id="4d01e71ead49d13ebd0623e395ae11a5" key="x" value="271.9999988079071"/>
+      <annotations xmi:id="7439a30f59d6e1f4cd90fe34f279c95e" key="y" value="207.31306222221792"/>
+      <annotations xmi:id="eaeba7dde2d442437735cfdaa56edba1" key="width" value="100"/>
+      <annotations xmi:id="18afce33f5c4970748ee01e2c7d041c9" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="9940f0b12fdd8cae23b99af10fed8a19" key="sap.afm.nodeType" value="JoinNode"/>
+    <annotations xmi:id="ccdd409a81e3886d8e8bf51b17d2930d" key="sap.afm.nodeInputs">
+      <annotations xmi:id="855c9ee95180c799c864c59d41465e94" key="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_CALENDAR" value="STG_HOLIDAY_CALENDAR_Output"/>
+      <annotations xmi:id="ef67ea22661da55d063a64add0431481" key="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_ASSIGNMENT" value="STG_HOLIDAY_ASSIGNMENT_Output"/>
+    </annotations>
+    <annotations xmi:id="a2830ecd1a6b014cbf540740f755554d" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="5f20dd6f0edab468b7d30766b041a4e3" key="J_HOLIDAY_CALENDAR_ASSIGNMENT_Output" value="J_HOLIDAY_J_HOLIDAY_CALENDAR_ASSIGNMENT"/>
+    </annotations>
+    <inputs xmi:id="416aefbb35ca1b43b268a40c1f7bd79b" name="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_CALENDAR">
+      <attributes xmi:id="2f859674e511deb520d4cb25464b66ce" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="4f5931dcb5fb7905cd6763a409195704" name="externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="b682c7a7a898fdcac89f3e7745bf04e0" name="name_defaultValue" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+    </inputs>
+    <inputs xmi:id="e1edd1449db2d55ec464a7621c50fd36" name="J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_ASSIGNMENT">
+      <attributes xmi:id="b99ab2290099806772c3489a5ca0f30c" name="HolidayCalendar_externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="b05e3000104df6490777f231dc42ae3c" name="date" type="TIMESTAMP" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="2916ee1fabb9360d7f164c8efdbff614" name="holiday" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="426eb170b0fa2956487cb95a2c71ca7d" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="8daa788da7c2184612cded0b2c1afd18" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="43b3ed8337b027689d5c253535d5f095" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <outputs name="J_HOLIDAY_CALENDAR_ASSIGNMENT_Output" xmi:id="845afdc5e9f59104bc946452aff0f655">
+      <attributes xmi:id="b2d32df0330a37da08cc69651e193657" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="d7567f5eb8f737bbeab0bc76e5095781" name="externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="7e5cfe87ac97a0b3b20b7b0279505f85" name="name_defaultValue" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="ebd3c83c5e4547577d655cf5b92c6a7c" name="HolidayCalendar_externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="65a11b65fb516d78f440258bee629795" name="date" type="TIMESTAMP" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="8ea2afe562c72a4c293bcf1bb7372c4f" name="holiday" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="6d7d701e541efb9ec0a87db98eb51a1c" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="8d5bbc37b4ae2e19c056362b655d86a4" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="a52d4331f7877e01e15addee6bc2a31c" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+    </outputs>
+    <tableMappings xmi:id="60a0c570a45190a1718e9e55c8add13f" source="416aefbb35ca1b43b268a40c1f7bd79b" target="845afdc5e9f59104bc946452aff0f655">
+      <attributeMappings source="2f859674e511deb520d4cb25464b66ce" target="b2d32df0330a37da08cc69651e193657" xmi:id="f85f1442f2702119bc587384e93255d5"/>
+      <attributeMappings source="4f5931dcb5fb7905cd6763a409195704" target="d7567f5eb8f737bbeab0bc76e5095781" xmi:id="e6798e781673857ae5b28d7bf084fa96"/>
+      <attributeMappings source="b682c7a7a898fdcac89f3e7745bf04e0" target="7e5cfe87ac97a0b3b20b7b0279505f85" xmi:id="19075763f48dded57bc667b46d33a946"/>
+    </tableMappings>
+    <tableMappings xmi:id="43d511b7f0c3740aa5b12b5d9467d16e" source="e1edd1449db2d55ec464a7621c50fd36" target="845afdc5e9f59104bc946452aff0f655">
+      <attributeMappings source="b99ab2290099806772c3489a5ca0f30c" target="ebd3c83c5e4547577d655cf5b92c6a7c" xmi:id="ad6644f4b87e4e04f78c22156dc8fdb9"/>
+      <attributeMappings source="b05e3000104df6490777f231dc42ae3c" target="65a11b65fb516d78f440258bee629795" xmi:id="770bbd7b7450fde5044dfec6831b2cec"/>
+      <attributeMappings source="2916ee1fabb9360d7f164c8efdbff614" target="8ea2afe562c72a4c293bcf1bb7372c4f" xmi:id="60114ff4b5d2271123b2b480f45c4372"/>
+      <attributeMappings source="426eb170b0fa2956487cb95a2c71ca7d" target="6d7d701e541efb9ec0a87db98eb51a1c" xmi:id="56aa5af3d1cf6756566c2a17cf963975"/>
+      <attributeMappings source="8daa788da7c2184612cded0b2c1afd18" target="8d5bbc37b4ae2e19c056362b655d86a4" xmi:id="bb53ddb1d4ab4c31e9a1d078a3c5253b"/>
+      <attributeMappings source="43b3ed8337b027689d5c253535d5f095" target="a52d4331f7877e01e15addee6bc2a31c" xmi:id="2f199eaaa6855a5ced9a00e88a251e65"/>
+    </tableMappings>
+    <joinDefinitions left="e1edd1449db2d55ec464a7621c50fd36" right="416aefbb35ca1b43b268a40c1f7bd79b" type="LEFT_OUTER" condition="&quot;J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_CALENDAR&quot;.&quot;externalCode&quot; = &quot;J_HOLIDAY_CALENDAR_ASSIGNMENT_STG_HOLIDAY_ASSIGNMENT&quot;.&quot;HolidayCalendar_externalCode&quot;"/>
+  </nodes>
+  <nodes xsi:type="flowgraph:JoinNode" xmi:id="7bb0f05906613f48d37ec385f4f57098" name="J_HOLIDAY">
+    <annotations xmi:id="7073f938ce478776940fafcf713809fc" key="sap.afm.description" value=""/>
+    <annotations xmi:id="4bbba62676e25f6b40797770adda36e7" key="sap.afm.displayName" value="JOIN"/>
+    <annotations xmi:id="a18574344f1133c76c6a2add299287d6" key="sap.afm.layout">
+      <annotations xmi:id="23d3fb25c70c8b9a60168139e001955b" key="x" value="441.9999976158142"/>
+      <annotations xmi:id="3450e3f64933ecfb3735aa8fc1356d4e" key="y" value="117.10100529957012"/>
+      <annotations xmi:id="d4217d85ee352b5f4c35f193b70865c1" key="width" value="100"/>
+      <annotations xmi:id="663e3364f4f477e2adb2b694ec7fd94d" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="4fc504b942b7ee2e33f2d1c835c42258" key="sap.afm.nodeType" value="JoinNode"/>
+    <annotations xmi:id="20d42ce64012cedccd9bf11d9ecafa89" key="sap.afm.nodeInputs">
+      <annotations xmi:id="14fe1942e0d833f76543a10fd0afa375" key="J_HOLIDAY_STG_HOLIDAY" value="STG_HOLIDAY_Output"/>
+      <annotations xmi:id="fbebfca1a52cf9a3e971f218aec1d657" key="J_HOLIDAY_J_HOLIDAY_CALENDAR_ASSIGNMENT" value="J_HOLIDAY_CALENDAR_ASSIGNMENT_Output"/>
+    </annotations>
+    <annotations xmi:id="607f511e2c966ef0aa73d3eacc12be96" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="657c339edd692179abf243fa8619c2d1" key="J_HOLIDAY_Output" value="MSTR_FACTORY_CALENDAR_Input"/>
+    </annotations>
+    <inputs xmi:id="47892c9d13a85134439b7af57ddc944b" name="J_HOLIDAY_STG_HOLIDAY">
+      <attributes xmi:id="b3129b52045e7230c5ba701583a40954" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="d40edad50113c81def3adc070e9b860b" name="holidayCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="1ec450a4365008d7a20a11bf003d6fa3" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="ebad4f239a0a91679d2915c2de3973f9" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <inputs xmi:id="2b515225cb21af0ceb4a1366df2f26c9" name="J_HOLIDAY_J_HOLIDAY_CALENDAR_ASSIGNMENT">
+      <attributes xmi:id="42a45bcc1e171c63188bcb622723d3b6" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="e98c2680a422350bbd21b7431788cd7d" name="externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="49c4850adb0ffe25d6e7886eea670486" name="name_defaultValue" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="5a5bff4abb9efce460772a41e392aa11" name="HolidayCalendar_externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="237d73ef0f3d1e38e854aa9efdac2686" name="date" type="TIMESTAMP" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="bd26665797304aab67041ed721079eea" name="holiday" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="0a5ca291f5165351a632323edffcd1af" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="5220235dcdad21dcc348efdee229efac" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="1315c3c3b9056fddda7ce9f14e41d11b" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <outputs name="J_HOLIDAY_Output" xmi:id="10f0b659da725aeeefd9feb35582e6a8">
+      <attributes xmi:id="c8107fbadae6b957ddbb0d5c5c66242f" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="0fa66a288c7742bfbb9b6b933d5c9a8b" name="holidayCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="da6f0431f0c570cf5ef968c16d7c52f8" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="349cb059159b05f0ce48c65f0a6ca85f" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="b5bf6989c9891e54a7ef06ec46abbcd5" name="externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="5be4634f3d489dbb2d24b235f67755ea" name="name_defaultValue" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="2d3f12aa3ef9f84b8a2ba02dcbdc6090" name="HolidayCalendar_externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="c4b39708703803b07e58d18f7fc599cb" name="date" type="TIMESTAMP" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="5e01d95363ebff73575340d25e172ce4" name="holiday" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="fef49dad4699cdb0c802e3b41fb56f6d" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+    </outputs>
+    <tableMappings xmi:id="ca1693677b32bc87947f302ff19dec26" source="47892c9d13a85134439b7af57ddc944b" target="10f0b659da725aeeefd9feb35582e6a8">
+      <attributeMappings source="d40edad50113c81def3adc070e9b860b" target="0fa66a288c7742bfbb9b6b933d5c9a8b" xmi:id="642b5ca8b471f5e0254676406b09c987"/>
+      <attributeMappings source="1ec450a4365008d7a20a11bf003d6fa3" target="da6f0431f0c570cf5ef968c16d7c52f8" xmi:id="f87507ef17c3acd0f83bf6a2bebaf9cb"/>
+      <attributeMappings source="ebad4f239a0a91679d2915c2de3973f9" target="349cb059159b05f0ce48c65f0a6ca85f" xmi:id="0e72acc946b3b1f9573a45d0d7a5cc07"/>
+    </tableMappings>
+    <tableMappings xmi:id="bcc5514694a8a46710ea97e8e96107da" source="2b515225cb21af0ceb4a1366df2f26c9" target="10f0b659da725aeeefd9feb35582e6a8">
+      <attributeMappings source="e98c2680a422350bbd21b7431788cd7d" target="b5bf6989c9891e54a7ef06ec46abbcd5" xmi:id="40fdbc5560fdb6f2920113c9ee8ca13e"/>
+      <attributeMappings source="49c4850adb0ffe25d6e7886eea670486" target="5be4634f3d489dbb2d24b235f67755ea" xmi:id="4258dccb03814506e750d6d0dcb0abab"/>
+      <attributeMappings source="5a5bff4abb9efce460772a41e392aa11" target="2d3f12aa3ef9f84b8a2ba02dcbdc6090" xmi:id="32595af7b4dd852543391e16189c9beb"/>
+      <attributeMappings source="237d73ef0f3d1e38e854aa9efdac2686" target="c4b39708703803b07e58d18f7fc599cb" xmi:id="5f4c65bff27ce95bbce30cf8a45b3afb"/>
+      <attributeMappings source="bd26665797304aab67041ed721079eea" target="5e01d95363ebff73575340d25e172ce4" xmi:id="f1aed362c54e735d95c35562f62a048d"/>
+      <attributeMappings source="0a5ca291f5165351a632323edffcd1af" target="fef49dad4699cdb0c802e3b41fb56f6d" xmi:id="fc0cf9b5ced034699013c3db1380c370"/>
+      <attributeMappings xmi:id="c6efd67bf408b612a524d3091c7a0fef" source="42a45bcc1e171c63188bcb622723d3b6" target="c8107fbadae6b957ddbb0d5c5c66242f"/>
+    </tableMappings>
+    <joinDefinitions left="2b515225cb21af0ceb4a1366df2f26c9" right="47892c9d13a85134439b7af57ddc944b" type="LEFT_OUTER" condition="&quot;J_HOLIDAY_J_HOLIDAY_CALENDAR_ASSIGNMENT&quot;.&quot;holiday&quot; = &quot;J_HOLIDAY_STG_HOLIDAY&quot;.&quot;holidayCode&quot;"/>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="28102373c11a604c9058a14d52893a70" name="MSTR_FACTORY_CALENDAR" type="DATABASE_TABLE" catalogObjectName="MSTR_FACTORY_CALENDAR" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="59525837e48102d32087c401052688f7" key="sap.afm.layout">
+      <annotations xmi:id="7bb4d11720c4c3b57a48afa3454f2db4" key="x" value="561.9999976158142"/>
+      <annotations xmi:id="5f65429f322a2e1e9b28dd6ed9b2a584" key="y" value="117.10100529957012"/>
+      <annotations xmi:id="4653613e56222a5c861510a2266a0765" key="width" value="100"/>
+      <annotations xmi:id="0709dc6383505eb63b5628a3554f3a33" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="d3fee0ad94ad1b8ad91c2a52746f6cf8" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="b43d572179f8692c6784994bc5d07c76" key="sap.afm.nodeInputs">
+      <annotations xmi:id="ccb5cbee6533d8ab95eec7e0eb795187" key="MSTR_FACTORY_CALENDAR_Input" value="J_HOLIDAY_Output"/>
+    </annotations>
+    <annotations xmi:id="930392e6b30a8313894864c5d0f2cef9" key="sap.afm.nodeOutputs">
+      <annotations/>
+    </annotations>
+    <annotations xmi:id="15a084822ea9e1c43b1d23194890ecc7" key="sap.im.writerType" value="insert"/>
+    <inputs name="MSTR_FACTORY_CALENDAR_Input" kind="TABLE" xmi:id="dfd5f20f06480888ad807ef66f1e0bce">
+      <attributes xmi:id="c7914d026bc9b6863c98b045967467b2" name="country" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="b31508c9767ba49351b545850a17e6a3" name="holidayCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="a65da21630e3a3cc6043af7a6c998c3d" name="mdfSystemEffectiveEndDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="b3e1432040f813de69ad8cfb0c921883" name="mdfSystemEffectiveStartDate" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="6e09b5d72e1d5d574250025567ff82bc" name="externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="9d8fb0202a49f7304c0cd2003c06e2c6" name="name_defaultValue" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+      <attributes xmi:id="3531c85db1b1e382f26d3129883a369c" name="HolidayCalendar_externalCode" type="NVARCHAR" nullable="false" length="128" scale="0"/>
+      <attributes xmi:id="affe2872766419d95fc70daaa6183054" name="date" type="TIMESTAMP" nullable="false" length="0" scale="0"/>
+      <attributes xmi:id="9c4afe7f78e26656830d333c2d70d941" name="holiday" type="NVARCHAR" nullable="true" length="128" scale="0"/>
+      <attributes xmi:id="6b52c32631ee01936e500168221eae0e" name="holidayClass" type="NVARCHAR" nullable="true" length="255" scale="0"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="6e6646d73c637cd931f9191f008b4cfd" source="a14e6e76895758f4446f2e90f7f1df13" target="416aefbb35ca1b43b268a40c1f7bd79b">
+    <attributeMappings source="2f674827bdf801a62d81c0b852216779" target="2f859674e511deb520d4cb25464b66ce" xmi:id="7ff0714a517f8de15b3276bc432ed936"/>
+    <attributeMappings source="eb5504ccd4633b1820b7401bff3df6ff" target="4f5931dcb5fb7905cd6763a409195704" xmi:id="af53848c5ed2d9660a3f0d271a746151"/>
+    <attributeMappings source="44d30f9b4f3d01bc70b3d6f726ec3ee6" target="b682c7a7a898fdcac89f3e7745bf04e0" xmi:id="1c737ae6732b3ef9c6b19f3bb8973b1c"/>
+  </tableMappings>
+  <tableMappings xmi:id="814304daebd574bbd0b28f242e1bbd08" source="e9fe75f2027fab3670e915cabc42be0b" target="e1edd1449db2d55ec464a7621c50fd36">
+    <attributeMappings source="28f8d8a467bfa1657bfc8e6df7903f1e" target="b99ab2290099806772c3489a5ca0f30c" xmi:id="7da10c3fae981463b7dbae497691dbd0"/>
+    <attributeMappings source="aeaf2e424811aebbfca6f1361109969f" target="b05e3000104df6490777f231dc42ae3c" xmi:id="6275d67320cc0134784592f15c17d5e1"/>
+    <attributeMappings source="55bb1f8114fa1580198c9b85ee219c56" target="2916ee1fabb9360d7f164c8efdbff614" xmi:id="e46c2250972bf5060f96192a2e24612c"/>
+    <attributeMappings source="b2ef42b566cb5f4421166b463fb1fd16" target="426eb170b0fa2956487cb95a2c71ca7d" xmi:id="19d22b7fdd402be187759547accc26be"/>
+    <attributeMappings source="919cbc0c8977b76333276fa5410d8bf5" target="8daa788da7c2184612cded0b2c1afd18" xmi:id="961e0dc0dbd6ad46e2b874c02eac004d"/>
+    <attributeMappings source="00f50b9456175c6b1c021309ae5ece29" target="43b3ed8337b027689d5c253535d5f095" xmi:id="fb59c6345b74aa72b2eb7bbdbc9c6615"/>
+  </tableMappings>
+  <tableMappings xmi:id="201c34a3ea8a92c7042e6f9e9e5ea397" source="d2331c97fec3527b9f6984fa06a0c6b4" target="47892c9d13a85134439b7af57ddc944b">
+    <attributeMappings source="162f606ae9ffbcf75f33422c2ac04459" target="b3129b52045e7230c5ba701583a40954" xmi:id="7402e224d56cf779eaf93b852d980d66"/>
+    <attributeMappings source="696cba5c8edd991ee84ffe5605469f0e" target="d40edad50113c81def3adc070e9b860b" xmi:id="777b8a2c9bf064ef556190338e65d73e"/>
+    <attributeMappings source="00416e49d547a0eb9bc23fbdbe7a113b" target="1ec450a4365008d7a20a11bf003d6fa3" xmi:id="ff76b3a699b10e23f8f69c1f875a3f86"/>
+    <attributeMappings source="074e6e9ae7d29bc99d456562c384c7e2" target="ebad4f239a0a91679d2915c2de3973f9" xmi:id="a35243dae0c38cfcc9103e939dc1916f"/>
+  </tableMappings>
+  <tableMappings xmi:id="52ddc40c842b8a194decbbad2be2c6be" source="845afdc5e9f59104bc946452aff0f655" target="2b515225cb21af0ceb4a1366df2f26c9">
+    <attributeMappings source="b2d32df0330a37da08cc69651e193657" target="42a45bcc1e171c63188bcb622723d3b6" xmi:id="2853b9e7a93a63d470f9d6427f7533d3"/>
+    <attributeMappings source="d7567f5eb8f737bbeab0bc76e5095781" target="e98c2680a422350bbd21b7431788cd7d" xmi:id="76c7ef363104603914c470253ca39ee8"/>
+    <attributeMappings source="7e5cfe87ac97a0b3b20b7b0279505f85" target="49c4850adb0ffe25d6e7886eea670486" xmi:id="17a3727629a1412dd3bc1144df9486e5"/>
+    <attributeMappings source="ebd3c83c5e4547577d655cf5b92c6a7c" target="5a5bff4abb9efce460772a41e392aa11" xmi:id="9dabd878c022dac5d5f926461addd06f"/>
+    <attributeMappings source="65a11b65fb516d78f440258bee629795" target="237d73ef0f3d1e38e854aa9efdac2686" xmi:id="a37ef4498bb8f344bcda8c3f9370d74d"/>
+    <attributeMappings source="8ea2afe562c72a4c293bcf1bb7372c4f" target="bd26665797304aab67041ed721079eea" xmi:id="acc3d9246ac4a13147e127fb6eb0320d"/>
+    <attributeMappings source="6d7d701e541efb9ec0a87db98eb51a1c" target="0a5ca291f5165351a632323edffcd1af" xmi:id="bccc4d18b65b8413bd7b0588652ec1d1"/>
+    <attributeMappings source="8d5bbc37b4ae2e19c056362b655d86a4" target="5220235dcdad21dcc348efdee229efac" xmi:id="4d45bf95f9cffce94d92c6dded865ea7"/>
+    <attributeMappings source="a52d4331f7877e01e15addee6bc2a31c" target="1315c3c3b9056fddda7ce9f14e41d11b" xmi:id="19ed0010a97115266caf0975e97257a4"/>
+  </tableMappings>
+  <tableMappings xmi:id="57960651b2e1032b8607f733388d2053" source="10f0b659da725aeeefd9feb35582e6a8" target="dfd5f20f06480888ad807ef66f1e0bce">
+    <attributeMappings source="c8107fbadae6b957ddbb0d5c5c66242f" target="c7914d026bc9b6863c98b045967467b2" xmi:id="c6a03229e77a463ab153c67148b81ade"/>
+    <attributeMappings source="0fa66a288c7742bfbb9b6b933d5c9a8b" target="b31508c9767ba49351b545850a17e6a3" xmi:id="8136bfd28fb0d1be91cd9492a853faa8"/>
+    <attributeMappings source="da6f0431f0c570cf5ef968c16d7c52f8" target="a65da21630e3a3cc6043af7a6c998c3d" xmi:id="13051faaaf990e8ffbd81f23dbb6174e"/>
+    <attributeMappings source="349cb059159b05f0ce48c65f0a6ca85f" target="b3e1432040f813de69ad8cfb0c921883" xmi:id="fb09f426f65a491dbb7221869cc4275f"/>
+    <attributeMappings source="b5bf6989c9891e54a7ef06ec46abbcd5" target="6e09b5d72e1d5d574250025567ff82bc" xmi:id="7d2a75ac1c449e167e2c6ff443a37701"/>
+    <attributeMappings source="5be4634f3d489dbb2d24b235f67755ea" target="9d8fb0202a49f7304c0cd2003c06e2c6" xmi:id="6b2b336f0089c24ace08c1f2962e5c29"/>
+    <attributeMappings source="2d3f12aa3ef9f84b8a2ba02dcbdc6090" target="3531c85db1b1e382f26d3129883a369c" xmi:id="e96f73c3fe73d6d3f38e5573ed83bbb1"/>
+    <attributeMappings source="c4b39708703803b07e58d18f7fc599cb" target="affe2872766419d95fc70daaa6183054" xmi:id="94bca1c72db0dffa9f7803ae700d5c89"/>
+    <attributeMappings source="5e01d95363ebff73575340d25e172ce4" target="9c4afe7f78e26656830d333c2d70d941" xmi:id="06de1a1fba97197817ace59a8ab46e96"/>
+    <attributeMappings source="fef49dad4699cdb0c802e3b41fb56f6d" target="6b52c32631ee01936e500168221eae0e" xmi:id="3ac28ae3380abad8a4c9d48a65b6b0a1"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
