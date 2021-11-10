@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flowgraph:ContainerNode xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:flowgraph="http://www.sap.com/ndb/flowgraph/1.0" xmi:version="2.0" xmi:id="036715d75c770940e9bf9ec53fd29527" name="FG_LMS_TEST" runtimeBehavior="BATCH_TASK">
+  <annotations xmi:id="27a0517a774737a2c877535cf68cac42" key="sap.afm.layout">
+    <annotations xmi:id="1b1fbe9ce726c4b6cf924d0d38250cf8" key="x" value="10"/>
+    <annotations xmi:id="94b8c933fcb4e31421edf9652909f4cf" key="y" value="10"/>
+    <annotations xmi:id="3f3cb3342bb10cc7a235b8bbbd0d2c6b" key="width" value="100"/>
+    <annotations xmi:id="fd15295fd7ec5c61cbace0f99813e196" key="height" value="84"/>
+  </annotations>
+  <annotations xmi:id="bf3758c77524c266be3734dbbe5ffc9c" key="sap.afm.palette">
+    <annotations xmi:id="6352942db85680fc562d968b97ab1e4a" key="additions" value=""/>
+  </annotations>
+  <annotations xmi:id="364aad33e88b32c5c473cde6ff01fded" key="sap.afm.nodeType" value="ContainerNode"/>
+  <annotations xmi:id="ee1f752ad1be8767f8cd11e94a78d729" key="sap.afm.nodeInputs">
+    <annotations/>
+  </annotations>
+  <annotations xmi:id="b8aba206bad0c6666f02a3e13d1faf4e" key="sap.afm.nodeOutputs">
+    <annotations/>
+  </annotations>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="33b044f5a576a82b9b77e045f87c57c2" name="COS_FS_lms_users_calls_xls_lms_users_calls_new" type="VIRTUAL_TABLE" catalogObjectName="SDI_SSFF::COS_FS_lms_users_calls.xls_lms_users_calls_new" dataLayout="COLUMN" truncateTable="false">
+    <annotations xmi:id="a27a1a90c64fdf786db65a7ea4f38d45" key="sap.afm.description" value=""/>
+    <annotations xmi:id="63b0b546e3f171b3c0bc3c4f0ed5c92c" key="sap.afm.displayName" value="Data Source"/>
+    <annotations xmi:id="bce1f4454f41dcae5f621003f8c8ebd1" key="sap.afm.layout">
+      <annotations xmi:id="607a8d0d358e8c223bc0f05e92424668" key="x" value="132"/>
+      <annotations xmi:id="f30fba898bf097b150338b438c6b0ec4" key="y" value="175.33333333333331"/>
+      <annotations xmi:id="36cbf848d21b86aaf247f94153da62c0" key="width" value="100"/>
+      <annotations xmi:id="786929f724e2e5c12b825956c7aadd2e" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="279b0aeef0906305f68678f30acc22e3" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="4a24d043af13c9720fe52faefd7bd139" key="sap.afm.nodeInputs"/>
+    <annotations xmi:id="f0674f8014498e5e0fc0ef66c7adb224" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="5ff5c3b7b259828143503fb90d8fdd6c" key="COS_FS_lms_users_calls_xls_lms_users_calls_new_Output" value="Filter1_Input"/>
+    </annotations>
+    <annotations xmi:id="a49700403eeb8822ec417f125d51f05b" key="sap.im.remoteSourceTableDefinitions" value="">
+      <annotations xmi:id="1e800db441ed6ebdb11978b21f3b295f" key="type" value=""/>
+    </annotations>
+    <outputs name="COS_FS_lms_users_calls_xls_lms_users_calls_new_Output" kind="TABLE" xmi:id="0ba4fa51afae43d56b94fb8cde52f555">
+      <attributes xmi:id="17660e1582e61732a1ed3f845616a6b3" name="user_code" type="INTEGER" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="894290b4857d17eeb49f8d869ba40a52" name="user_call_begin_date" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="69d8d5e15abca1c64cbe179c96d992cf" name="user_call_end_date" type="TIMESTAMP" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="408ff3d7ae44e70d1797d0aa1ae357e2" name="tiempo_experimentado_horas" type="DECIMAL" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="296cb9c1f885f5844784b156df8e0641" name="horas_reales_teoricas" type="DECIMAL" length="0" scale="0" nullable="true"/>
+      <attributes xmi:id="31268052fd2771bf0fe75635c1233b30" name="horas_virtuales_teoricas" type="DECIMAL" length="0" scale="0" nullable="true"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="99a7fa8ed4659e2ba584544a695b331b" name="STG_LEARNING_HOURS_T2" type="TEMPLATE_TABLE" catalogObjectName="STG_LEARNING_HOURS_T2" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="784cff2df6ebc53b8465915dff0af1a6" key="sap.afm.layout">
+      <annotations xmi:id="9de75be074a53970394a433282ad594f" key="x" value="241.9999988079071"/>
+      <annotations xmi:id="7fff29445579fdf8581d544cc66cf661" key="y" value="182"/>
+      <annotations xmi:id="5494fe1a5b9e9278959a0e739179cd45" key="width" value="100"/>
+      <annotations xmi:id="07fb0713c0502165c2d53d8d3f323a66" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="9939966e774a5d21b03fed65144fc317" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="9e8acde05a66040f6067e95b9d090a1a" key="sap.afm.nodeInputs">
+      <annotations xmi:id="48404bae500a2924d483247c5aa28ac4" key="STG_LEARNING_HOURS_T2_Input" value="COS_FS_lms_users_calls_xls_lms_users_calls_new_Output"/>
+    </annotations>
+    <annotations xmi:id="5b7946c68ba033c903ca5a966b2fc6da" key="sap.afm.nodeOutputs">
+      <annotations>
+      </annotations>
+    </annotations>
+    <annotations xmi:id="99b0d8efce1dbe1fd498db1bc83cd4c4" key="sap.afm.attributeMapping" value="Custom"/>
+    <inputs name="STG_LEARNING_HOURS_T2_Input" kind="TABLE" xmi:id="86f4258e99fd7da221890d7d9a1990f9">
+      <attributes xmi:id="70d3394f2068d383a3a6cacd55e58012" name="user_code" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="03945b2069d6d113839023a1c5179865" name="user_call_begin_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="87f4f5642407ddfc90fbbe9abde52dc3" name="user_call_end_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="0b98ff180a2d6b70cee5808681cb0793" name="tiempo_experimentado_horas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="d80dfb72d561fe61777e7d782ba3d434" name="horas_reales_teoricas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="f0fe3e61c656acba42cde6f8876e09e4" name="horas_virtuales_teoricas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+    </inputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:FilterNode" xmi:id="e5bdbece0f67228432356fbab25420cd" name="Filter1">
+    <annotations xmi:id="32d81ee0de52e534cdcf7cedf52488e6" key="sap.afm.description" value=""/>
+    <annotations xmi:id="c7915ac04d0f9368bb29de04d2ad746f" key="sap.afm.displayName" value="Filter"/>
+    <annotations xmi:id="79c8d47f145fe9f4410c153325a252e1" key="sap.afm.layout">
+      <annotations xmi:id="11057442eec5c3e970b1735611c100da" key="x" value="271.9999988079071"/>
+      <annotations xmi:id="4c51f348d523405496f83c36a4b380f5" key="y" value="87"/>
+      <annotations xmi:id="c45bb1efb62df0e4dd2b8bdd716ec4eb" key="width" value="100"/>
+      <annotations xmi:id="d365d47e7ebd503440ad9d21694b2706" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="39ea65ee715894f2fa6353e1cba15b64" key="sap.afm.nodeType" value="FilterNode"/>
+    <annotations xmi:id="c60de13c48607fd70f5afc12af152974" key="sap.afm.nodeInputs">
+      <annotations xmi:id="7c79470f4766493ba49c243b6073a1b6" key="Filter1_Input" value="COS_FS_lms_users_calls_xls_lms_users_calls_new_Output"/>
+    </annotations>
+    <annotations xmi:id="9c53d1c582dd570666d86bfd9ef1fb94" key="sap.afm.nodeOutputs">
+      <annotations xmi:id="7399c0cbbe463e3c2911e17675fcc0bc" key="Filter1_Output" value="STG_LEARNING_HOURS_T3_Input"/>
+    </annotations>
+    <inputs name="Filter1_Input" xmi:id="e2618439765df587be2fc66fc5d145aa" kind="TABLE">
+      <attributes xmi:id="e6bc9d7abafc0deb0c7bc11e033dc103" name="user_code" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="84bb1386f3b3af9f396c7e06d394395e" name="user_call_begin_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="ca494b07916c25b27d47721509c25b8b" name="user_call_end_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="f9d3cce18cce15f682666d50e2adae18" name="tiempo_experimentado_horas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="5bb006be160e6e6c14b4e452d0a1ad9b" name="horas_reales_teoricas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="f51473e0e6653fef133b63fb6a62828f" name="horas_virtuales_teoricas" type="DECIMAL" nullable="true" length="0" scale="0"/>
+    </inputs>
+    <outputs name="Filter1_Output" xmi:id="34e498e2c4c01940eaeb10345c2195c6" kind="TABLE">
+      <attributes xmi:id="70e640328e2b9f82a6c86f695f072402" name="user_code" type="INTEGER" nullable="true" length="0" scale="0" expression="user_code"/>
+      <attributes xmi:id="b18ab7b1e190adce71ec990c1c0968a6" name="user_call_begin_date" type="TIMESTAMP" nullable="true" length="0" scale="0" expression="user_call_begin_date"/>
+      <attributes xmi:id="f567c33fce768beee1c0ace074f9ef3f" name="user_call_end_date" type="TIMESTAMP" nullable="true" length="0" scale="0" expression="user_call_end_date"/>
+      <attributes xmi:id="db3d499a953535a1f50a84e5784b51e7" name="tiempo_experimentado_horas" type="DOUBLE" nullable="true" length="0" scale="0" expression="TO_DOUBLE ( &quot;Filter1_Input&quot;.&quot;tiempo_experimentado_horas&quot; )"/>
+      <attributes xmi:id="7ec38c971111cd75a3c2bc6b3c23d483" name="horas_reales_teoricas" type="DOUBLE" nullable="true" length="0" scale="0" expression="TO_DOUBLE ( &quot;Filter1_Input&quot;.&quot;horas_reales_teoricas&quot; )"/>
+      <attributes xmi:id="b42e6522318a02112b5df49ef089d7eb" name="horas_virtuales_teoricas" type="DOUBLE" nullable="true" length="0" scale="0" expression="TO_DOUBLE ( &quot;Filter1_Input&quot;.&quot;horas_virtuales_teoricas&quot; )"/>
+    </outputs>
+  </nodes>
+  <nodes xsi:type="flowgraph:DataNode" xmi:id="f2447b7571e4ddf3256081f36942d1ae" name="STG_LEARNING_HOURS_T3" type="TEMPLATE_TABLE" catalogObjectName="STG_LEARNING_HOURS_T3" dataLayout="COLUMN" truncateTable="true">
+    <annotations xmi:id="b0379ffc034395b4ec01f7df5e9d9ca8" key="sap.afm.layout">
+      <annotations xmi:id="6186a95aaaba169045867bae1ebec688" key="x" value="391.9999988079071"/>
+      <annotations xmi:id="f240257b2a43ceaa768f64e029887862" key="y" value="87"/>
+      <annotations xmi:id="93181a0a04ad024f71744d7b3697a1cb" key="width" value="100"/>
+      <annotations xmi:id="eafec6475b0598dca176b00dbbda1f02" key="height" value="84"/>
+    </annotations>
+    <annotations xmi:id="4f63e819454d23e19c7e9261b15da230" key="sap.afm.nodeType" value="DataNode"/>
+    <annotations xmi:id="1b05b381a1b7bd813e70020ccf5dc7cd" key="sap.afm.nodeInputs">
+      <annotations xmi:id="2190c30b01b00c5b0b06abe8db8fd99f" key="STG_LEARNING_HOURS_T3_Input" value="Filter1_Output"/>
+    </annotations>
+    <annotations xmi:id="0065618398fc44b42b7487fcf67fe9bc" key="sap.afm.nodeOutputs">
+      <annotations>
+      </annotations>
+    </annotations>
+    <inputs name="STG_LEARNING_HOURS_T3_Input" kind="TABLE" xmi:id="850c1addde94e065de299f4f7b4fd518">
+      <attributes xmi:id="8046a471025ec1f26d6837e2668949d4" name="user_code" type="INTEGER" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="c5c516562bb1baf6e23cff6c679ca64f" name="user_call_begin_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="0be5817f95810d7c3d626c6f702f31e2" name="user_call_end_date" type="TIMESTAMP" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="1a0040079f28d05a5d0e3b35c76f89a8" name="tiempo_experimentado_horas" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="3912609e222f40d5aaf3c90b78a40a9d" name="horas_reales_teoricas" type="DOUBLE" nullable="true" length="0" scale="0"/>
+      <attributes xmi:id="e32b0526be7766d38518c06ca0d85b67" name="horas_virtuales_teoricas" type="DOUBLE" nullable="true" length="0" scale="0"/>
+    </inputs>
+  </nodes>
+  <tableMappings xmi:id="e85845566e53a1772e1e002246f341f1" source="0ba4fa51afae43d56b94fb8cde52f555" target="86f4258e99fd7da221890d7d9a1990f9">
+    <attributeMappings source="17660e1582e61732a1ed3f845616a6b3" target="70d3394f2068d383a3a6cacd55e58012" xmi:id="4189ad1728c01ecece754ff07cb1e9cf"/>
+    <attributeMappings source="894290b4857d17eeb49f8d869ba40a52" target="03945b2069d6d113839023a1c5179865" xmi:id="1ff01d5ba0f308ab04c157a7657191ef"/>
+    <attributeMappings source="69d8d5e15abca1c64cbe179c96d992cf" target="87f4f5642407ddfc90fbbe9abde52dc3" xmi:id="8641fdb6e0ccf79fd659953f72703705"/>
+    <attributeMappings source="408ff3d7ae44e70d1797d0aa1ae357e2" target="0b98ff180a2d6b70cee5808681cb0793" xmi:id="fda672953ffc2e3976dd1541f6153533"/>
+    <attributeMappings source="296cb9c1f885f5844784b156df8e0641" target="d80dfb72d561fe61777e7d782ba3d434" xmi:id="3be0fb25e5fb561c2158a7bf9475c95f"/>
+    <attributeMappings source="31268052fd2771bf0fe75635c1233b30" target="f0fe3e61c656acba42cde6f8876e09e4" xmi:id="d187f364d4e38b28a9df9ea12e151ce7"/>
+  </tableMappings>
+  <tableMappings xmi:id="d28add56487769d9805de20fd07cf687" source="0ba4fa51afae43d56b94fb8cde52f555" target="e2618439765df587be2fc66fc5d145aa">
+    <attributeMappings source="17660e1582e61732a1ed3f845616a6b3" target="e6bc9d7abafc0deb0c7bc11e033dc103" xmi:id="30a6d31fc1f6944191fe241a7c167985"/>
+    <attributeMappings source="894290b4857d17eeb49f8d869ba40a52" target="84bb1386f3b3af9f396c7e06d394395e" xmi:id="3955cdde1d656203b78bb0de3a2d195e"/>
+    <attributeMappings source="69d8d5e15abca1c64cbe179c96d992cf" target="ca494b07916c25b27d47721509c25b8b" xmi:id="e07c0a0668d0046e429c4ebfc0b2beb1"/>
+    <attributeMappings source="408ff3d7ae44e70d1797d0aa1ae357e2" target="f9d3cce18cce15f682666d50e2adae18" xmi:id="fffbee107baeb9ec2bf8a406cde4f80c"/>
+    <attributeMappings source="296cb9c1f885f5844784b156df8e0641" target="5bb006be160e6e6c14b4e452d0a1ad9b" xmi:id="79fa40bb2d8f36b08611c82be3e4cc47"/>
+    <attributeMappings source="31268052fd2771bf0fe75635c1233b30" target="f51473e0e6653fef133b63fb6a62828f" xmi:id="433a777331603a2a7c91c82031b640d3"/>
+  </tableMappings>
+  <tableMappings xmi:id="a10de5d2ae56955150a81af5a1f8ab7c" source="34e498e2c4c01940eaeb10345c2195c6" target="850c1addde94e065de299f4f7b4fd518">
+    <attributeMappings source="70e640328e2b9f82a6c86f695f072402" target="8046a471025ec1f26d6837e2668949d4" xmi:id="9fe2812558f97c528d7d91a206b93a11"/>
+    <attributeMappings source="b18ab7b1e190adce71ec990c1c0968a6" target="c5c516562bb1baf6e23cff6c679ca64f" xmi:id="530684bbf87bdccf6911bf125a930f59"/>
+    <attributeMappings source="f567c33fce768beee1c0ace074f9ef3f" target="0be5817f95810d7c3d626c6f702f31e2" xmi:id="0f5ccba467541450c2287773c4dbc3eb"/>
+    <attributeMappings source="db3d499a953535a1f50a84e5784b51e7" target="1a0040079f28d05a5d0e3b35c76f89a8" xmi:id="34da9ce752b67eac3cd07f9f840647cc"/>
+    <attributeMappings source="7ec38c971111cd75a3c2bc6b3c23d483" target="3912609e222f40d5aaf3c90b78a40a9d" xmi:id="c1e2859a03a15619c435b7691a38abb0"/>
+    <attributeMappings source="b42e6522318a02112b5df49ef089d7eb" target="e32b0526be7766d38518c06ca0d85b67" xmi:id="2203dbca21fce5d02152a8ea76e8f8f2"/>
+  </tableMappings>
+</flowgraph:ContainerNode>
