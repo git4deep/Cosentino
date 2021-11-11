@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS" applyPrivilegeType="NONE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
-  <origin/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" xscCompatibilityMode="true">
+<origin/>
   <descriptions defaultDescription="CV_HEADCOUNT_TMP"/>
   <metadata changedAt="2019-09-27 16:30:17.447" createdAt="2019-09-27 16:30:11.457"/>
   <localVariables>
@@ -29,10 +29,10 @@
       <resourceUri>DWH_CDM_PEOPLE::MONTH_DAYS</resourceUri>
     </DataSource>
   </dataSources>
-  <calculationViews>
-    <calculationView xsi:type="Calculation:ProjectionView" id="P_DATA" filterExpressionLanguage="SQL">
-      <descriptions/>
-      <viewAttributes>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_DATA" filterExpressionLanguage="SQL">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
         <viewAttribute id="HEADCOUNT"/>
@@ -44,7 +44,7 @@
         <viewAttribute id="SUB_DEPARTMENT"/>
         <viewAttribute id="CONTINGENT_WORKER"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="DOUBLE" id="HEAD_WORKED" expressionLanguage="COLUMN_ENGINE">
           <formula>&quot;HEADCOUNT&quot; * &quot;DAYS_WORKED_IN_MONTH&quot;</formula>
         </calculatedViewAttribute>
@@ -58,32 +58,21 @@
           <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#FT_SSFF_HEADCOUNT">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEADCOUNT" source="HEADCOUNT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS_IN_PERIOD" source="DAYS_IN_PERIOD"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS_WORKED_IN_MONTH" source="DAYS_WORKED_IN_MONTH"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENT_WORKER" source="CONTINGENT_WORKER"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;
+      <input node="FT_SSFF_HEADCOUNT"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
 AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot; 
 AND
  &quot;CONTINGENT_WORKER&quot; = 'Not Contingent'</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="DAYS"/>
         <viewAttribute id="YEAR"/>
         <viewAttribute id="MONTH"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="NVARCHAR" id="YEAR_MONTH" length="6" expressionLanguage="SQL">
           <formula>(&quot;YEAR&quot;||right(100+&quot;MONTH&quot;,2))</formula>
         </calculatedViewAttribute>
@@ -94,32 +83,25 @@ AND
           <formula>('$$IP_YEAR$$'||right(100+'$$IP_MONTH$$',2))</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#MONTH_DAYS">
-        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS" source="DAYS"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR" source="YEAR"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="MONTH" source="MONTH"/>
-      </input>
-      <filter>&quot;YEAR_MONTH&quot; >= &quot;YEAR_MONTH_START&quot;&#xD;
-AND &#xD;
+      <input node="MONTH_DAYS"/>
+    <filter>&quot;YEAR_MONTH&quot; &gt;= &quot;YEAR_MONTH_START&quot;
+AND 
 &quot;YEAR_MONTH&quot; &lt;= &quot;YEAR_MONTH_END&quot;</filter>
-    </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
-      <descriptions/>
-      <viewAttributes>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_2">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="YEAR_MONTH_START"/>
         <viewAttribute id="YEAR_MONTH_END"/>
         <viewAttribute aggregationType="sum" id="DAYS"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Projection_1">
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_START" source="YEAR_MONTH_START"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="YEAR_MONTH_END" source="YEAR_MONTH_END"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DAYS" source="DAYS"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Projection_1"/>
     </calculationView>
-    <calculationView xsi:type="Calculation:JoinView" id="Join_1">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute id="HEAD_WORKED"/>
         <viewAttribute id="BUSINESS_UNIT"/>
         <viewAttribute id="DEPARTMENT"/>
@@ -127,41 +109,36 @@ AND &#xD;
         <viewAttribute id="SUB_DEPARTMENT"/>
         <viewAttribute id="DAYS"/>
       </viewAttributes>
-      <calculatedViewAttributes>
+    <calculatedViewAttributes>
         <calculatedViewAttribute datatype="DOUBLE" id="HEAD_WORKED_TOTAL" expressionLanguage="COLUMN_ENGINE">
           <formula>&quot;HEAD_WORKED&quot; / &quot;DAYS&quot;</formula>
         </calculatedViewAttribute>
       </calculatedViewAttributes>
-      <input node="#P_DATA">
+      <input node="P_DATA">
         <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED" source="HEAD_WORKED"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
         <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
       </input>
-      <input node="#Aggregation_2">
+      <input node="Aggregation_2">
         <mapping xsi:type="Calculation:AttributeMapping" target="DAYS" source="DAYS"/>
       </input>
     </calculationView>
-    <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
-      <descriptions/>
-      <viewAttributes>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <descriptions/>
+    <viewAttributes>
         <viewAttribute aggregationType="sum" id="HEAD_WORKED_TOTAL"/>
         <viewAttribute id="BUSINESS_UNIT"/>
         <viewAttribute id="DEPARTMENT"/>
         <viewAttribute id="DIVISION"/>
         <viewAttribute id="SUB_DEPARTMENT"/>
       </viewAttributes>
-      <calculatedViewAttributes/>
-      <input node="#Join_1">
-        <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_WORKED_TOTAL" source="HEAD_WORKED_TOTAL"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="BUSINESS_UNIT" source="BUSINESS_UNIT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DEPARTMENT" source="DEPARTMENT"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="DIVISION" source="DIVISION"/>
-        <mapping xsi:type="Calculation:AttributeMapping" target="SUB_DEPARTMENT" source="SUB_DEPARTMENT"/>
-      </input>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+      <input node="Join_1"/>
     </calculationView>
-  </calculationViews>
+</calculationViews>
   <logicalModel id="Aggregation_1">
     <descriptions defaultDescription="CV_HEADCOUNT_TMP"/>
     <attributes>
@@ -213,8 +190,8 @@ AND &#xD;
     <restrictedMeasures/>
     <localDimensions/>
   </logicalModel>
-  <layout>
-    <shapes>
+<layout>
+  <shapes>
       <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
         <upperLeftCorner x="99" y="87"/>
         <rectangleSize height="0" width="0"/>
@@ -235,10 +212,18 @@ AND &#xD;
         <upperLeftCorner x="99" y="243"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
+    <shape modelObjectName="P_DATA" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Aggregation_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
       <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
         <upperLeftCorner x="99" y="165"/>
         <rectangleSize height="-1" width="-1"/>
       </shape>
     </shapes>
-  </layout>
+</layout>
 </Calculation:scenario>

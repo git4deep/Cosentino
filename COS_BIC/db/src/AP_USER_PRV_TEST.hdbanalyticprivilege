@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="AP_USER_PRIVILEGE_21TST" privilegeType="SQL_ANALYTIC_PRIVILEGE" schemaVersion="1.1">
+    <descriptions defaultDescription="AP_USER_PRV_TEST"/>
+    <securedModels>
+      <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_LY</modelUri>
+      <sqlObjectUri name="DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS" type="SYNONYM"/>
+    </securedModels>
+
+<validity xsi:type="AccessControl:SingleValueFilter" operator="GE" including="true" value="2019-01-01"/>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="BUSINESS_UNIT">
+      <procedureFilter operator="IN" procedureName="&quot;COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT"/>
+    </filter>
+    <attributeName>BUSINESS_UNIT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DIVISION">
+      <procedureFilter operator="IN" procedureName="&quot;COS_DWH::USER_SECURITY_FILTER_DIVISION"/>
+    </filter>
+    <attributeName>DIVISION</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="&quot;COS_DWH::USER_SECURITY_FILTER_DEPARTMENT"/>
+    </filter>
+    <attributeName>DEPARTMENT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="SUB_DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="&quot;COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT"/>
+    </filter>
+    <attributeName>SUB_DEPARTMENT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+</Privilege:analyticPrivilege>
