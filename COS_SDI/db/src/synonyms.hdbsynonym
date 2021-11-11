@@ -28,5 +28,11 @@
         "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
         "schema": "COS_BIC"
         }
+    },
+    "COS_DWH::SSFF_JobApplicationStatusAuditTrail": {
+    "target": {
+        "object": "SSFF_JobApplicationStatusAuditTrail",
+        "schema": "COS_DWH"
+        }
     }
 }
