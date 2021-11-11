@@ -3,4 +3,4 @@ VIEW "V_JOB_APPLICATION_STATUS_AUDIT_TRAIL" ( "createdDateTime", "lastModifiedBy
 	"lastModifiedBy",
 	"lastModifiedDateTime",
 	"revNumber"
-FROM "COS_DWH"."SSFF_JobApplicationStatusAuditTrail"
+FROM "COS_DWH::SSFF_JobApplicationStatusAuditTrail"
