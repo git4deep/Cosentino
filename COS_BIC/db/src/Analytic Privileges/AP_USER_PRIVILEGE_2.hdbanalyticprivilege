@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="AP_USER_PRIVILEGE_2" privilegeType="SQL_ANALYTIC_PRIVILEGE">
+  <origin/>
+  <descriptions defaultDescription="AP_USER_PRIVILEGE_2"/>
+  <metadata changedAt="2019-11-03 17:42:45.346" createdAt="2019-01-23 18:18:23.632"/>
+  <securedModels allInformationModels="false">
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_12MONTHS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TURNOVER_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_PEOPLE_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM</modelUri>
+    <modelUri>DWH_CDM_PEOPLE_UAT::CV_ABSENTEEISM_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_PIE</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_USERS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD_CURR</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSEENTEISM_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_COST_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ABSENTEEISM_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_RECRUITMENT_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_RECRUITMENT_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_RECRUITMENT_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_RECRUITMENT_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_RECRUITMENT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K17</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_KPI_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K22</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16_UNION_NOT_USED</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K17_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K20</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K20_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K17_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_KPI_K22_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K17_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K22_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K17_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K22_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K20_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K20_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K22_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_INTRANET_K16_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_LEARNING_HOURS_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE_UAT::CV_TALENT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TURNOVER_YTD_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TIME_DIMENSION</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_FUNCTIONAL_HEADCOUNT_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCONT_PEOPLE_TURNOVER</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_FUNCTIONAL_HEADCOUNT_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE_UAT::CV_HEADCOUNT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_FUNCTIONAL_HEADCOUNT_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_FUNCTIONAL_HEADCOUNT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE_UAT::CV_TURNOVER_UAT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD_PEOPLE_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_ALL</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_FUNCTIONAL_HEADCOUNT_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MERGE</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE_YTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_PEOPLE_TEST_2</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_BW_FINANCIALS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_RECRUITMENT</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_TALENT_STATUS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_YTD_AGG</modelUri>
+  </securedModels>
+  <validity xsi:type="AccessControl:SingleValueFilter" operator="GE" including="true" value="2019-01-01"/>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="BUSINESS_UNIT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT"/>
+    </filter>
+    <attributeName>BUSINESS_UNIT</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DIVISION">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_DIVISION"/>
+    </filter>
+    <attributeName>DIVISION</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_DEPARTMENT"/>
+    </filter>
+    <attributeName>DEPARTMENT</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="SUB_DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT"/>
+    </filter>
+    <attributeName>SUB_DEPARTMENT</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+</Privilege:analyticPrivilege>
