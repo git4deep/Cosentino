@@ -29,23 +29,23 @@
     </variable>
   </localVariables>
   <variableMappings>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_BW_FINANCE_COST_CDG" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_CURRENCY" resourceUri="DWH_CDM_PEOPLE.FINANZAS::CV_BW_FINANCE_COST_CDG"/>
       <localVariable>IP_CURRENCY</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_YEAR" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG"/>
       <localVariable>IP_YEAR</localVariable>
     </mapping>
-    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG">
+    <mapping xsi:type="Variable:VariableMapping" dataSource="CV_ORG_HIER_CECO_CDG" targetType="CALCULATION_VIEW">
       <targetVariable name="IP_MONTH" resourceUri="DWH_CDM_PEOPLE.EMPLOYEE::CV_ORG_HIER_CECO_CDG"/>
       <localVariable>IP_MONTH</localVariable>
     </mapping>

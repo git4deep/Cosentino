@@ -214,5 +214,11 @@
 "object": "DUMMY",
 "schema": "SYS"
 }
-}
+},
+"COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT": {
+    "target": {
+      "object": "USER_SECURITY_FILTER_BUSINESSUNIT",
+      "schema": "COS_DWH"
+    }
+  }
 }
