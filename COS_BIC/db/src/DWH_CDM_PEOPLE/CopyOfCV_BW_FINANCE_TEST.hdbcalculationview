@@ -678,7 +678,9 @@ end</formula>
         </calculatedViewAttribute>
       
       <calculatedViewAttribute id="YEAR_MONTH_START" datatype="NVARCHAR" length="6" expressionLanguage="SQL">
+      
         <formula>'$$IP_YEAR$$'||'01'</formula>
+      
       </calculatedViewAttribute>
     </calculatedViewAttributes>
       <input node="Union_1">
@@ -804,7 +806,9 @@ end</formula>
     
       <attribute id="YEAR_MONTH_START" hidden="true" order="58" displayAttribute="false" attributeHierarchyActive="false">
         <descriptions defaultDescription="YEAR_MONTH_START"/>
+    
         <keyMapping columnObjectName="Join_1" columnName="YEAR_MONTH_START"/>
+    
       </attribute>
     </attributes>
     <calculatedAttributes>
@@ -813,13 +817,13 @@ end</formula>
         <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
           <formula>if(&quot;IS_COST_ELEMENT_SALARY&quot; = 1, 'Wages', 'Extra Costs')</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="MONTH_AUX" hidden="false" order="2" semanticType="empty" attributeHierarchyActive="false" descriptionColumnName="MONTH_NAME" displayAttribute="false">
         <descriptions defaultDescription="MONTH_AUX"/>
         <keyCalculation datatype="NVARCHAR" expressionLanguage="COLUMN_ENGINE" length="2">
           <formula>rightstr(string(100+&quot;MONTH&quot;),2)</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="MONTH_NAME" hidden="false" order="3" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="MONTH_NAME"/>
         <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="3">
@@ -838,13 +842,13 @@ WHEN &quot;MONTH_AUX&quot; = 11 THEN 'NOV'
 WHEN &quot;MONTH_AUX&quot; = 12 THEN 'DEC'
 END</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
       <calculatedAttribute id="DAYS5" hidden="false" order="6" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
         <descriptions defaultDescription="DAYS5"/>
         <keyCalculation datatype="DATE" expressionLanguage="SQL">
           <formula>TO_DATE(&quot;YEAR_MONTH_START&quot;||'01')</formula>
         </keyCalculation>
-        </calculatedAttribute>
+      </calculatedAttribute>
     </calculatedAttributes>
     <privateDataFoundation>
       <tableProxies/>
