@@ -1,0 +1,11 @@
+{
+  "generator-saphanaacademy-haa": {
+    "projectName": "haa",
+    "newDir": true,
+    "hdiContainerName": "HDI_COS_BIC",
+    "authorization": true,
+    "clientHostname": "*",
+    "personalizeJWT": false,
+    "useNamedUser": false
+  }
+}
