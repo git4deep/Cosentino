@@ -1,0 +1,29 @@
+{
+  "xsappname": "haa",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Viewer",
+      "description": "Viewer"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Viewer",
+      "description": "Viewer",
+      "scope-references": [
+        "$XSAPPNAME.Viewer"
+      ]
+    }
+  ]
+  ,
+  "role-collections": [
+    {
+      "name": "haa_Viewer",
+      "description": "Viewing access",
+      "role-template-references": [
+        "$XSAPPNAME.Viewer"
+      ]
+    }
+  ]
+}
