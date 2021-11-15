@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="AP_USER_PRIVILEGE_2" privilegeType="SQL_ANALYTIC_PRIVILEGE">
+  <origin/>
+  <descriptions defaultDescription="AP_USER_PRIVILEGE_2"/>
+  <metadata changedAt="2019-11-03 17:42:45.346" createdAt="2019-01-23 18:18:23.632"/>
+  <securedModels allInformationModels="false">
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_YTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_PEOPLE_YTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_PEOPLE_MTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER_MTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER_12MONTHS</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER_MTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER_YTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_YTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_TURNOVER_YTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_PEOPLE_YTD</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_PEOPLE_MTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD_LY</modelUri>
+    <modelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD_TEST</modelUri>
+  </securedModels>
+  <validity xsi:type="AccessControl:SingleValueFilter" operator="GE" including="true" value="2019-01-01"/>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="BUSINESS_UNIT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT"/>
+    </filter>
+    <attributeName>BUSINESS_UNIT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DIVISION">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_DIVISION"/>
+    </filter>
+    <attributeName>DIVISION</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_DEPARTMENT"/>
+    </filter>
+    <attributeName>DEPARTMENT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="SUB_DEPARTMENT">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT"/>
+    </filter>
+    <attributeName>SUB_DEPARTMENT</attributeName>
+    <originInformationModelUri>/DWH_CDM_PEOPLE/calculationviews/CV_HEADCOUNT_MTD</originInformationModelUri>
+  </restriction>
+</Privilege:analyticPrivilege>    

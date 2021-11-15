@@ -217,8 +217,26 @@
 },
 "COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT": {
     "target": {
-      "object": "USER_SECURITY_FILTER_BUSINESSUNIT",
+      "object": "COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT",
       "schema": "COS_DWH"
     }
-  }
+  },
+"COS_DWH::USER_SECURITY_FILTER_DIVISION": {
+    "target": {
+      "object": "COS_DWH::USER_SECURITY_FILTER_DIVISION",
+      "schema": "COS_DWH"
+    }
+  },
+"COS_DWH::USER_SECURITY_FILTER_DEPARTMENT": {
+    "target": {
+      "object": "COS_DWH::USER_SECURITY_FILTER_DEPARTMENT",
+      "schema": "COS_DWH"
+    }
+  },
+"COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT": {
+    "target": {
+      "object": "COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT",
+      "schema": "COS_DWH"
+    }
+  }     
 }
