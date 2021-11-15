@@ -1,0 +1,11 @@
+{
+"description": "Daily data load Intranet API",
+"action":"SDI_SSFF.ExternalConnections.SSFF:parseIntranet.xsjs::parseIntranetKPI",
+
+"schedules": 
+                [
+                                {
+                                "description": "This job loads the data from Intranet API, updating with new information.This process is executed daily at 03:30", 
+                                "xscron": "* * * * 2 30 0" 
+                                }
+                ]}

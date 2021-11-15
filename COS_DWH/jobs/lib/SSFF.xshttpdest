@@ -1,0 +1,10 @@
+description = "SSFF";
+host = "api5.successfactors.eu";
+port = 443;
+pathPrefix = "/odata/v2";
+proxyType = none;
+authType = none;
+useSSL = true;
+timeout = 6400000;
+sslHostCheck = true;
+sslAuth = anonymous;

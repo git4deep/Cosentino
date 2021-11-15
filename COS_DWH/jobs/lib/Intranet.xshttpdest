@@ -1,0 +1,10 @@
+description = "Intranet";
+host = "apps.cosentino.com";
+port = 443;
+pathPrefix = "";
+proxyType = none;
+authType = basic;
+useSSL = true;
+timeout = 6400000;
+sslHostCheck = true;
+sslAuth = anonymous;

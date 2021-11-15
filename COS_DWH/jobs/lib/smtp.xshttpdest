@@ -1,0 +1,11 @@
+description = "Testing";
+host = "smtp.gmail.com";
+port = 587;
+proxyType = http;
+proxyHost = "proxy";
+proxyPort = 8080;
+authType = basic;
+useSSL = true;
+timeout = 0;
+sslHostCheck = true;
+sslAuth = anonymous;

@@ -1,0 +1,13 @@
+{
+  "role": {
+    "name": "ROLE_ACCESS_ALL",
+    "schema_analytic_privileges": [
+      {
+        "privileges": [
+          "AP_USER_PRIVILEGE_2",
+          "AP_USER_PRIVILEGE_ONLY_BW"
+        ]
+      }
+    ]
+  }
+}
