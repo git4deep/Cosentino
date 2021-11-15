@@ -238,5 +238,17 @@
       "object": "COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT",
       "schema": "COS_DWH"
     }
+  },
+"COS_DWH::USER_SECURITY_FILTER_PROFITCENTER": {
+    "target": {
+      "object": "COS_DWH::USER_SECURITY_FILTER_PROFITCENTER",
+      "schema": "COS_DWH"
+    }
+  },
+"COS_DWH::USER_SECURITY_FILTER_COSTCENTER": {
+    "target": {
+      "object": "COS_DWH::USER_SECURITY_FILTER_COSTCENTER",
+      "schema": "COS_DWH"
+    }
   }     
 }

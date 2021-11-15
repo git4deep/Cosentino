@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" schemaVersion="1.1" id="AP_USER_PRIVILEGE_ONLY_BW" privilegeType="SQL_ANALYTIC_PRIVILEGE">
+  <origin/>
+  <descriptions defaultDescription="&#x9;&#x9;AP_USER_PRIVILEGE_ONLY_BW"/>
+  <metadata changedAt="2019-09-27 16:27:37.42" createdAt="2019-06-21 14:11:12.844"/>
+  <securedModels allInformationModels="false">
+    <modelUri>DWH_CDM_PEOPLE::CV_BW_FINANCE_ONLY_BW</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_BW_FINANCE_TEST</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_BW_FINANCIALS</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_ORG_HIER_BW</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW_YTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW_MTD</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW_MTD_LY</modelUri>
+    <modelUri>DWH_CDM_PEOPLE::CV_HEADCOUNT_BW_YTD</modelUri>
+  </securedModels>
+  <validity xsi:type="AccessControl:SingleValueFilter" operator="GE" including="true" value="2019-07-03"/>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="PROFIT_CENTER">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_PROFITCENTER"/>
+    </filter>
+    <attributeName>PROFIT_CENTER</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_BW_FINANCE_ONLY_BW</originInformationModelUri>
+  </restriction>
+  <restriction logicalOperator="AND">
+    <filter xsi:type="Privilege:AttributeFilter" attributeName="COST_CENTER">
+      <procedureFilter operator="IN" procedureName="COS_DWH::USER_SECURITY_FILTER_COSTCENTER"/>
+    </filter>
+    <attributeName>COST_CENTER</attributeName>
+    <originInformationModelUri>DWH_CDM_PEOPLE::CV_BW_FINANCE_ONLY_BW</originInformationModelUri>
+  </restriction>
+</Privilege:analyticPrivilege>
