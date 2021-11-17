@@ -13,7 +13,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.MON_1 = ' ' THEN 0
                   WHEN A.MON_1 IS NULL THEN 0 
-                  ELSE A.MON_1 
+                  ELSE TO_INT(A.MON_1) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A 
       WHERE A.ID_KPI NOT IN (999)
@@ -23,7 +23,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.TUE_1 = ' ' THEN 0
                   WHEN A.TUE_1 IS NULL THEN 0 
-                  ELSE A.TUE_1 
+                  ELSE TO_INT(A.TUE_1) 
              END AS QT_UNIT  
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -33,7 +33,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.WED_1 = ' ' THEN 0
                   WHEN A.WED_1 IS NULL THEN 0 
-                  ELSE A.WED_1 
+                  ELSE TO_INT(A.WED_1) 
              END AS QT_UNIT    
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -43,7 +43,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.THU_1 = ' ' THEN 0
                   WHEN A.THU_1 IS NULL THEN 0 
-                  ELSE A.THU_1 
+                  ELSE TO_INT(A.THU_1) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -53,7 +53,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.FRI_1 = ' ' THEN 0
                   WHEN A.FRI_1 IS NULL THEN 0 
-                  ELSE A.FRI_1
+                  ELSE TO_INT(A.FRI_1)
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -63,7 +63,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.MON_2 = ' ' THEN 0
                   WHEN A.MON_2 IS NULL THEN 0 
-                  ELSE A.MON_2 
+                  ELSE TO_INT(A.MON_2) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -73,7 +73,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.TUE_2 = ' ' THEN 0
                   WHEN A.TUE_2 IS NULL THEN 0 
-                  ELSE A.TUE_2 
+                  ELSE TO_INT(A.TUE_2) 
              END AS QT_UNIT 
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -83,7 +83,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.WED_2 = ' ' THEN 0
                   WHEN A.WED_2 IS NULL THEN 0 
-                  ELSE A.WED_2 
+                  ELSE TO_INT(A.WED_2) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -93,7 +93,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.THU_2 = ' ' THEN 0
                   WHEN A.THU_2 IS NULL THEN 0 
-                  ELSE A.THU_2
+                  ELSE TO_INT(A.THU_2)
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -103,7 +103,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.FRI_2 = ' ' THEN 0
                   WHEN A.FRI_2 IS NULL THEN 0 
-                  ELSE A.FRI_2
+                  ELSE TO_INT(A.FRI_2)
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -113,7 +113,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.MON_3 = ' ' THEN 0
                   WHEN A.MON_3 IS NULL THEN 0 
-                  ELSE A.MON_3 
+                  ELSE TO_INT(A.MON_3) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -123,7 +123,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.TUE_3 = ' ' THEN 0
                   WHEN A.TUE_3 IS NULL THEN 0 
-                  ELSE A.TUE_3 
+                  ELSE TO_INT(A.TUE_3) 
              END AS QT_UNIT 
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -133,7 +133,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.WED_3 = ' ' THEN 0
                   WHEN A.WED_3 IS NULL THEN 0 
-                  ELSE A.WED_3 
+                  ELSE TO_INT(A.WED_3) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -143,7 +143,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.THU_3 = ' ' THEN 0
                   WHEN A.THU_3 IS NULL THEN 0 
-                  ELSE A.THU_3
+                  ELSE TO_INT(A.THU_3)
              END AS QT_UNIT  
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -153,7 +153,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.FRI_3 = ' ' THEN 0
                   WHEN A.FRI_3 IS NULL THEN 0 
-                  ELSE A.FRI_3
+                  ELSE TO_INT(A.FRI_3)
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -163,7 +163,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.MON_4 = ' ' THEN 0
                   WHEN A.MON_4 IS NULL THEN 0 
-                  ELSE A.MON_4 
+                  ELSE TO_INT(A.MON_4) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -173,7 +173,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.TUE_4 = ' ' THEN 0
                   WHEN A.TUE_4 IS NULL THEN 0 
-                  ELSE A.TUE_4 
+                  ELSE TO_INT(A.TUE_4) 
              END AS QT_UNIT 
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -183,7 +183,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.WED_4 = ' ' THEN 0
                   WHEN A.WED_4 IS NULL THEN 0 
-                  ELSE A.WED_4 
+                  ELSE TO_INT(A.WED_4) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -193,7 +193,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.THU_4 = ' ' THEN 0
                   WHEN A.THU_4 IS NULL THEN 0 
-                  ELSE A.THU_4 
+                  ELSE TO_INT(A.THU_4) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -203,7 +203,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.FRI_4 = ' ' THEN 0
                   WHEN A.FRI_4 IS NULL THEN 0 
-                  ELSE A.FRI_4
+                  ELSE TO_INT(A.FRI_4)
              END  AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -213,7 +213,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.MON_5 = ' ' THEN 0
                   WHEN A.MON_5 IS NULL THEN 0 
-                  ELSE A.MON_5 
+                  ELSE TO_INT(A.MON_5) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -223,7 +223,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.TUE_5 = ' ' THEN 0
                   WHEN A.TUE_5 IS NULL THEN 0 
-                  ELSE A.TUE_5 
+                  ELSE TO_INT(A.TUE_5) 
              END AS QT_UNIT 
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -233,7 +233,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.WED_5 = ' ' THEN 0
                   WHEN A.WED_5 IS NULL THEN 0 
-                  ELSE A.WED_5
+                  ELSE TO_INT(A.WED_5)
              END AS QT_UNIT  
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -243,7 +243,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.THU_5 = ' ' THEN 0
                   WHEN A.THU_5 IS NULL THEN 0 
-                  ELSE A.THU_5
+                  ELSE TO_INT(A.THU_5)
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)
@@ -253,7 +253,7 @@ FROM (SELECT A.ID_KPI, (SELECT B.MON_1 AS DT_NATUR
                         WHERE B.ID_KPI = 999) AS DT_NATUR,
              CASE WHEN A.FRI_5 = ' ' THEN 0
                   WHEN A.FRI_5 IS NULL THEN 0 
-                  ELSE A.FRI_5 
+                  ELSE TO_INT(A.FRI_5) 
              END AS QT_UNIT
       FROM "COS_FS_SCM_HUB_CTRL_NORFOLK_Personal" A
       WHERE A.ID_KPI NOT IN (999)) X
