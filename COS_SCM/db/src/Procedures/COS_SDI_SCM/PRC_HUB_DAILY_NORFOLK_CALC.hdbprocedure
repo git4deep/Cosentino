@@ -173,20 +173,35 @@ BEGIN
               GROUP BY A.CD_HUB, A.CD_RESOU_GROUP, A.CD_RESOU, A.DT_NATUR, A.MT_NATUR, A.QT_TARGE;
 
    /* UNION ALL de todos los template tables*/
-   T_OUT_1 = CE_UNION_ALL(:T_KPI_CALC_FACTOR, :T_KPI);
-   T_OUT_2 = CE_UNION_ALL(:T_OUT_1, :T_KPI_58);
-   T_OUT_3 = CE_UNION_ALL(:T_OUT_2, :T_KPI_59);
-   T_OUT_4 = CE_UNION_ALL(:T_OUT_3, :T_KPI_60);
-   T_OUT_5 = CE_UNION_ALL(:T_OUT_4, :T_KPI_61);
-   T_OUT_6 = CE_UNION_ALL(:T_OUT_5, :T_KPI_72);
-   T_OUT_7 = CE_UNION_ALL(:T_OUT_6, :T_KPI_73);
-   T_OUT_8 = CE_UNION_ALL(:T_OUT_7, :T_KPI_74);   
-   T_OUT_9 = CE_UNION_ALL(:T_OUT_8, :T_KPI_75);
-   T_OUT_10 = CE_UNION_ALL(:T_OUT_9, :T_KPI_76);
-   T_OUT_11 = CE_UNION_ALL(:T_OUT_10, :T_KPI_77);
-   T_OUT_12 = CE_UNION_ALL(:T_OUT_11, :T_KPI_78); 
-   T_OUT_13 = CE_UNION_ALL(:T_OUT_12, :T_KPI_79);
-   T_OUT_14 = CE_UNION_ALL(:T_OUT_13, :T_KPI_83);
+   T_OUT_14 = (SELECT * from :T_KPI_CALC_FACTOR
+						UNION ALL
+					  SELECT * from :T_KPI
+						UNION ALL
+						SELECT * from :T_KPI_58
+						UNION ALL
+						SELECT * from :T_KPI_59
+						UNION ALL
+						SELECT * from :T_KPI_60
+						UNION ALL
+						SELECT * from :T_KPI_61
+						UNION ALL
+						SELECT * from :T_KPI_72
+						UNION ALL
+						SELECT * from :T_KPI_73
+						UNION ALL
+						SELECT * from :T_KPI_74
+						UNION ALL
+						SELECT * from :T_KPI_75
+						UNION ALL
+						SELECT * from :T_KPI_76
+						UNION ALL
+						SELECT * from :T_KPI_77
+						UNION ALL
+						SELECT * from :T_KPI_78
+						UNION ALL
+						SELECT * from :T_KPI_79
+						UNION ALL
+						SELECT * from :T_KPI_83);
    
    /* Template table de los objetivos */
    T_TARGET = SELECT ID_KPI AS ID_SOURC, PR_TARGE

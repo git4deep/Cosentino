@@ -86,7 +86,11 @@ BEGIN
                                        AND C.CD_GROSS = A.CD_GROSS
                                        AND C.CD_PLANT = A.CD_PLANT;
                    
-   OUT_1 = CE_UNION_ALL(:T_PRUEB, :T_PRODU);
-   OUTPUT_TABLE = CE_UNION_ALL(:OUT_1, :T_MERMA);
+   OUT_1 = (SELECT * from :T_PRUEB
+						UNION ALL
+			   SELECT * from :T_PRODU);
+   OUTPUT_TABLE = (SELECT * from :OUT_1
+						UNION ALL
+			   SELECT * from :T_MERMA);
                  
 END
