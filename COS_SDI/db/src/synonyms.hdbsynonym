@@ -23,6 +23,12 @@
         "schema": "COS_DWH"
         }
     },
+    "COS_DWH::V_FO_DEPARTMENT": {
+    "target": {
+        "object": "V_FO_DEPARTMENT",
+        "schema": "COS_DWH"
+        }
+    },
     "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE": {
     "target": {
         "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
