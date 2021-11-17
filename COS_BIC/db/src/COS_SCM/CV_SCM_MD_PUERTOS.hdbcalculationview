@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="COS_SCM::CV_SCM_MD_PUERTOS" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_MD_PUERTOS"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="COS_FS_SCM_PUERTOS">
+      <resourceUri>COS_SCM::COS_FS_SCM_PUERTOS</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PUERTOS">
+    <viewAttributes>
+        <viewAttribute id="cd_puerto"/>
+        <viewAttribute id="cd_pais"/>
+        <viewAttribute id="cd_onu_puerto"/>
+        <viewAttribute id="nm_local_puerto"/>
+        <viewAttribute id="nm_puerto"/>
+        <viewAttribute id="cd_sub_division"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="COS_FS_SCM_PUERTOS"/>
+    </calculationView>
+</calculationViews>
+  <logicalModel id="PUERTOS">
+    <attributes>
+      <attribute id="cd_puerto" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Código puerto"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="cd_puerto"/>
+      </attribute>
+      <attribute id="cd_pais" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Código país"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="cd_pais"/>
+      </attribute>
+      <attribute id="cd_onu_puerto" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Código ONU puerto"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="cd_onu_puerto"/>
+      </attribute>
+      <attribute id="nm_local_puerto" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre local del puerto"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="nm_local_puerto"/>
+      </attribute>
+      <attribute id="nm_puerto" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nombre universal del puerto"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="nm_puerto"/>
+      </attribute>
+      <attribute id="cd_sub_division" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Sub división"/>
+        <keyMapping columnObjectName="PUERTOS" columnName="cd_sub_division"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures/>
+    <calculatedMeasures>
+      <measure id="CC_DUMMY" hidden="false" order="7" aggregationType="sum" measureType="simple" aggregatable="true" calculatedMeasureType="counter" datatype="INTEGER">
+        <descriptions defaultDescription="CC_DUMMY"/>
+        <exceptionAggregation>
+          <attribute attributeName="cd_onu_puerto"/>
+        </exceptionAggregation>
+        <formula>1</formula>
+      </measure>
+    </calculatedMeasures>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="PUERTOS" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="83" y="226"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>

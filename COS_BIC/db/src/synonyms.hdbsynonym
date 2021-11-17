@@ -203,6 +203,12 @@
       "schema": "COS_SCM"
     }
   },
+  "COS_SCM::COS_FS_SCM_PUERTOS": {
+    "target": {
+      "object": "COS_FS_SCM_PUERTOS",
+      "schema": "COS_SCM"
+    }
+  },
   "COS_SCM::SCM_ANALYTIC_SOURCE": {
     "target": {
       "object": "SCM_ANALYTIC_SOURCE",
