@@ -79,6 +79,18 @@
                   "ALTER",
                   "DROP"
                ]
+            },
+            {
+               "name":"BW_PRO_ADAPTER",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                  "ALTER",
+                  "DROP"
+               ]
             }
          ]
         },
@@ -153,6 +165,18 @@
             },
             {
                "name":"COS_FS",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                  "ALTER",
+                  "DROP"
+               ]
+            },
+            {
+               "name":"BW_PRO_ADAPTER",
                "type":"REMOTE SOURCE",
                "privileges":[
                   "CREATE VIRTUAL TABLE",
