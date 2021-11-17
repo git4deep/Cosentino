@@ -43,6 +43,18 @@
                   "ALTER",
                   "DROP"
                ]
+            },
+            {
+               "name":"SAP_HR_DEC",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                  "ALTER",
+                  "DROP"
+               ]
             }
          ]
         },
@@ -90,7 +102,19 @@
                   "ALTER",
                   "DROP"
                ]
-            }
+            },
+            {
+               "name":"SAP_HR_DEC",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                  "ALTER",
+                  "DROP"
+               ]
+            } 
          ]
 		}
 	}
