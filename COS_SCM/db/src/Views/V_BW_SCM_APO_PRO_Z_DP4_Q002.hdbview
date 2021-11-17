@@ -23,8 +23,8 @@ VIEW "V_BW_SCM_APO_PRO_Z_DP4_Q002" ( "CD_CDG_UN", "CD_CDG_UNS", "CD_CDG_GROUP", 
       cast(TO_VARCHAR(TO_DATE('01 ' || f."0CALMONTH", 'DD MON YYYY'), 'YYYY/MM')    as nvarchar(10))                                                         as MES_NATURAL,
       TO_DECIMAL(SUBSTRING_REGEXPR('^[-]{0,1}[[:digit:]]*.[[:digit:]]*' in REPLACE(TRIM("00O2TLR2H94AL8LBLZHYELD7V"), ',', '')), 20, 8) as VL_BASE_ADJUS
    from "BW_SCM_APO_PRO_Z_DP4_Q002" f 
-      inner join cos_scm.scm_md_materiales m on (f."S_MAT" = m.cd_material)
-      inner join cos_scm.scm_md_un_cdg u on (REPLACE_REGEXPR('^0*' in f."ZUNIDADNE_DISPLAY_KEY" WITH '' ) = REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ))
-      left join cos_scm.scm_md_centros c on (f."S_WERKS_DISPLAY_KEY" = c.CD_CENTRO) 
+      inner join SCM_MD_MATERIALES m on (f."S_MAT" = m.cd_material)
+      inner join SCM_MD_UN_CDG u on (REPLACE_REGEXPR('^0*' in f."ZUNIDADNE_DISPLAY_KEY" WITH '' ) = REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ))
+      left join SCM_MD_CENTROS c on (f."S_WERKS_DISPLAY_KEY" = c.CD_CENTRO) 
     where upper(right(trim(f."00O2TLR2H94AL8LBLZHYELD7V"), 2)) = 'M2' 
         and REPLACE_REGEXPR('^0*' in u.CD_CDG_UN WITH '' ) <> '' WITH READ ONLY
