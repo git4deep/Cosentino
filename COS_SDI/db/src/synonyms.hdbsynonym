@@ -238,5 +238,107 @@
         "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP",
         "schema": "COS_DWH"
         }
+    },
+    "COS_DWH::FT_LEARNING_HOURS": {
+    "target": {
+        "object": "FT_LEARNING_HOURS",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF::FG_FT_LEARNING_HOURS_SP": {
+    "target": {
+        "object": "SDI_SSFF::FG_FT_LEARNING_HOURS_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP": {
+    "target": {
+        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_BU": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_BU",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_DIV": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_DIV",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_DEP": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_DEP",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_SUB": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_SUB",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_CEBE": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_BU",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::STG_USER_PRIVILEGE_CECO": {
+    "target": {
+        "object": "STG_USER_PRIVILEGE_CECO",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::CREATE_USER_PRIVILEGE_ALL": {
+    "target": {
+        "object": "COS_DWH::CREATE_USER_PRIVILEGE_ALL",
+        "schema": "COS_DWH"
+        }
+    },
+    "COS_DWH::CREATE_USER_PROCEDURE": {
+    "target": {
+        "object": "COS_DWH::CREATE_USER_PROCEDURE",
+        "schema": "COS_DWH"
+        }
     }
 }
