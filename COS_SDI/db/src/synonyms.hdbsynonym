@@ -1,675 +1,686 @@
 {
-    "COS_SDI::DUMMY": {
+  "COS_SDI::DUMMY": {
     "target": {
-        "object": "DUMMY",
-        "schema": "SYS"
-        }
-    },
-    "COS_DWH::MSTR_EMPLOYEE_MANAGER": {
-    "target": {
-        "object": "MSTR_EMPLOYEE_MANAGER",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::MSTR_EMPLOYEE": {
-    "target": {
-        "object": "MSTR_EMPLOYEE",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::MSTR_POSITION": {
-    "target": {
-        "object": "MSTR_POSITION",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::V_FO_DEPARTMENT": {
-    "target": {
-        "object": "V_FO_DEPARTMENT",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::SSFF_EmpJob": {
-    "target": {
-        "object": "SSFF_EmpJob",
-        "schema": "COS_DWH"
-        }
-    },
-    "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE": {
-    "target": {
-        "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
-        "schema": "COS_BIC"
-        }
-    },
-    "COS_DWH::SSFF_JobApplicationStatusAuditTrail": {
-    "target": {
-        "object": "SSFF_JobApplicationStatusAuditTrail",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q007_SAC_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q007_SAC_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q008_SAC_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q008_SAC_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZSD_C02H_Q0005_IF_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZSD_C02H_Q0005_IF_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_MSTR_CECOS_CEBES_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_MSTR_CECOS_CEBES_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_MSTR_BW_CECOS_CEBES_2018_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_MSTR_BW_CECOS_CEBES_2018_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_EXTERNAL_CONSULTANCY_COST_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_EXTERNAL_CONSULTANCY_COST_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_PERSONNEL_COSTS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_PERSONNEL_COSTS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_SALES_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_SALES_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_SALES_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_SALES_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_SALES_BUDGET_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_SALES_BUDGET_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_1_BACKUP_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_1_BACKUP_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_3_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_3_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_4_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_4_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_5_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_5_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_BW_FINANCIALS_6_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_6_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::FT_BW_FINANCIALS": {
-    "target": {
-        "object": "FT_BW_FINANCIALS",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::FT_SSFF_ABSENTEEISM": {
-    "target": {
-        "object": "FT_SSFF_ABSENTEEISM",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::FT_SSFF_ABSENTEEISM_COST": {
-    "target": {
-        "object": "FT_SSFF_ABSENTEEISM_COST",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_PA2001_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PA2001_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_PA9102_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PA9102_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PT_1_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PT_1_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PY_1_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PY_1_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_WORK_SCHEDULE_DAY_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_WORK_SCHEDULE_DAY_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_WORK_SCHEDULE_HOLIDAYS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_WORK_SCHEDULE_HOLIDAYS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_3_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_3_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_4_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_4_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_5_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_5_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_6_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_6_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_JOB_REQUISITION_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_JOB_REQUISITION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_EMPLOYEE_TIME_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_EMPLOYEE_TIME_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::STG_EMPLOYEE": {
-    "target": {
-        "object": "SDI_SSFF::STG_EMPLOYEE",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_EMP_EMPLOYEE_TERMINATION_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_EMP_EMPLOYEE_TERMINATION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_EMP_EMPLOYMENT_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_EMP_EMPLOYMENT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_STG_FO_EVENT_REASON_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_STG_FO_EVENT_REASON_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::STG_FO_ORGANIZATION_SP": {
-    "target": {
-        "object": "SDI_SSFF::STG_FO_ORGANIZATION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::MSTR_FACTORY_CALENDAR_SP": {
-    "target": {
-        "object": "SDI_SSFF::MSTR_FACTORY_CALENDAR_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::MSTR_WORK_SCHEDULES_SP": {
-    "target": {
-        "object": "SDI_SSFF::MSTR_WORK_SCHEDULES_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::MSTR_POSITION_SP": {
-    "target": {
-        "object": "SDI_SSFF::MSTR_POSITION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::MSTR_ORGANIZATIONAL_UNIT_SP": {
-    "target": {
-        "object": "SDI_SSFF::MSTR_ORGANIZATIONAL_UNIT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::MSTR_POSITION_HIST_SP": {
-    "target": {
-        "object": "SDI_SSFF::MSTR_POSITION_HIST_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_3_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_3_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_4_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_4_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_PEOPLE_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_PEOPLE_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_TURNOVER_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_TURNOVER_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_TURNOVER_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_TURNOVER_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::FT_SSFF_HEADCOUNT_12MONTHS": {
-    "target": {
-        "object": "FT_SSFF_HEADCOUNT_12MONTHS",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_TALENT_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_TALENT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_TALENT_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_TALENT_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_3_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_3_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_OPEN_REQUISICIONS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_OPEN_REQUISICIONS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_DEVIATION_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_DEVIATION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_INTERVIEWS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_INTERVIEWS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_2_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K16_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K16_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K17_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K17_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K18_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K18_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K19_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K19_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K20_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K20_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K21_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K21_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K22_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K22_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_INTRANET_KPI_K23_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K23_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_REL_EMPLOYEE_POSITION_TIME_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_REL_EMPLOYEE_POSITION_TIME_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::FT_LEARNING_HOURS": {
-    "target": {
-        "object": "FT_LEARNING_HOURS",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF::FG_FT_LEARNING_HOURS_SP": {
-    "target": {
-        "object": "SDI_SSFF::FG_FT_LEARNING_HOURS_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP": {
-    "target": {
-        "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_BU": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_BU",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_DIV": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_DIV",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_DEP": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_DEP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_SUB": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_SUB",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_CEBE": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_CEBE",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_USER_PRIVILEGE_CECO": {
-    "target": {
-        "object": "STG_USER_PRIVILEGE_CECO",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::CREATE_USER_PRIVILEGE_ALL": {
-    "target": {
-        "object": "COS_DWH::CREATE_USER_PRIVILEGE_ALL",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::CREATE_USER_PROCEDURE": {
-    "target": {
-        "object": "COS_DWH::CREATE_USER_PROCEDURE",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_FT_CURRENCY_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_FT_CURRENCY_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_PT_1_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PT_1_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_HR_0HR_PT_1": {
-    "target": {
-        "object": "STG_HR_0HR_PT_1",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_2_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_2_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_2_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_3_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_3_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_4_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_4_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_2_SP": {
-    "target": {
-        "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_2_SP",
-        "schema": "COS_DWH"
-        }
-    },
-    "COS_DWH::STG_HR_PT_1": {
-    "target": {
-        "object": "STG_HR_PT_1",
-        "schema": "COS_DWH"
-        }
+      "object": "DUMMY",
+      "schema": "SYS"
     }
+  },
+  "COS_DWH::MSTR_EMPLOYEE_MANAGER": {
+    "target": {
+      "object": "MSTR_EMPLOYEE_MANAGER",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::MSTR_EMPLOYEE": {
+    "target": {
+      "object": "MSTR_EMPLOYEE",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::MSTR_POSITION": {
+    "target": {
+      "object": "MSTR_POSITION",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::V_FO_DEPARTMENT": {
+    "target": {
+      "object": "V_FO_DEPARTMENT",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::SSFF_EmpJob": {
+    "target": {
+      "object": "SSFF_EmpJob",
+      "schema": "COS_DWH"
+    }
+  },
+  "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE": {
+    "target": {
+      "object": "DWH_CDM_PEOPLE::CV_STAR_EMPLOYEE",
+      "schema": "COS_BIC"
+    }
+  },
+  "COS_DWH::SSFF_JobApplicationStatusAuditTrail": {
+    "target": {
+      "object": "SSFF_JobApplicationStatusAuditTrail",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q007_SAC_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q007_SAC_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q008_SAC_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZCOOM01_Q008_SAC_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZSD_C02H_Q0005_IF_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_BW_PRO::FG_STG_BW_ZSD_C02H_Q0005_IF_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_MSTR_CECOS_CEBES_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_MSTR_CECOS_CEBES_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_MSTR_BW_CECOS_CEBES_2018_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_MSTR_BW_CECOS_CEBES_2018_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_EXTERNAL_CONSULTANCY_COST_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_EXTERNAL_CONSULTANCY_COST_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_PERSONNEL_COSTS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_PERSONNEL_COSTS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_SALES_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_SALES_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_SALES_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_SALES_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_SALES_BUDGET_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_SALES_BUDGET_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_1_BACKUP_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_1_BACKUP_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_3_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_3_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_4_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_4_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_5_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_5_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_BW_FINANCIALS_6_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_BW_FINANCIALS_6_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_BW_FINANCIALS": {
+    "target": {
+      "object": "FT_BW_FINANCIALS",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_SSFF_ABSENTEEISM": {
+    "target": {
+      "object": "FT_SSFF_ABSENTEEISM",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_SSFF_ABSENTEEISM_COST": {
+    "target": {
+      "object": "FT_SSFF_ABSENTEEISM_COST",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_PA2001_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PA2001_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_PA9102_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PA9102_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PT_1_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PT_1_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PY_1_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_0HR_PY_1_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_WORK_SCHEDULE_DAY_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_WORK_SCHEDULE_DAY_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_WORK_SCHEDULE_HOLIDAYS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_WORK_SCHEDULE_HOLIDAYS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_3_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_3_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_4_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_4_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_5_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_5_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_6_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_6_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_JOB_REQUISITION_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_JOB_REQUISITION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_EMPLOYEE_TIME_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_EMPLOYEE_TIME_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::STG_EMPLOYEE": {
+    "target": {
+      "object": "SDI_SSFF::STG_EMPLOYEE",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_EMP_EMPLOYEE_TERMINATION_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_EMP_EMPLOYEE_TERMINATION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_EMP_EMPLOYMENT_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_EMP_EMPLOYMENT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_STG_FO_EVENT_REASON_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_STG_FO_EVENT_REASON_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::STG_FO_ORGANIZATION_SP": {
+    "target": {
+      "object": "SDI_SSFF::STG_FO_ORGANIZATION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_FACTORY_CALENDAR_SP": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_FACTORY_CALENDAR_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_WORK_SCHEDULES_SP": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_WORK_SCHEDULES_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_POSITION_SP": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_POSITION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_ORGANIZATIONAL_UNIT_SP": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_ORGANIZATIONAL_UNIT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_POSITION_HIST_SP": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_POSITION_HIST_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_3_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_3_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_4_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_4_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_PEOPLE_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_HEADCOUNT_PEOPLE_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_TURNOVER_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_TURNOVER_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_TURNOVER_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_TURNOVER_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_SSFF_HEADCOUNT_12MONTHS": {
+    "target": {
+      "object": "FT_SSFF_HEADCOUNT_12MONTHS",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_TALENT_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_TALENT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_TALENT_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_TALENT_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_3_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_REQUISITIONS_3_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_OPEN_REQUISICIONS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_OPEN_REQUISICIONS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_DEVIATION_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_DEVIATION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_INTERVIEWS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_INTERVIEWS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_RECRUITMENT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_2_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_SSFF_FUNCTIONAL_HEADCOUNT_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K16_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K16_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K17_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K17_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K18_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K18_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K19_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K19_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K20_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K20_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K21_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K21_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K22_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K22_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_INTRANET_KPI_K23_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_INTRANET_KPI_K23_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_REL_EMPLOYEE_POSITION_TIME_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_REL_EMPLOYEE_POSITION_TIME_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_LEARNING_HOURS": {
+    "target": {
+      "object": "FT_LEARNING_HOURS",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_LMS_USER_CALLS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::FG_FT_LEARNING_HOURS_SP": {
+    "target": {
+      "object": "SDI_SSFF::FG_FT_LEARNING_HOURS_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BUSINESS_UNIT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DEPARTMENT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_DIVISION_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_SUB_DEPARTMENT_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CEBE_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP": {
+    "target": {
+      "object": "SDI_SSFF.COS_FS::FG_STG_COS_FS_USER_PRIVILEGE_BW_CECO_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_BU": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_BU",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_DIV": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_DIV",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_DEP": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_DEP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_SUB": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_SUB",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_CEBE": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_CEBE",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_USER_PRIVILEGE_CECO": {
+    "target": {
+      "object": "STG_USER_PRIVILEGE_CECO",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::CREATE_USER_PRIVILEGE_ALL": {
+    "target": {
+      "object": "COS_DWH::CREATE_USER_PRIVILEGE_ALL",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::CREATE_USER_PROCEDURE": {
+    "target": {
+      "object": "COS_DWH::CREATE_USER_PROCEDURE",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_FT_CURRENCY_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_FT_CURRENCY_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_PT_1_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_PT_1_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_HR_0HR_PT_1": {
+    "target": {
+      "object": "STG_HR_0HR_PT_1",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_2_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_2_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_2_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_3_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_3_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_4_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_STG_HR_ABSENTEEISM_COST_4_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_2_SP": {
+    "target": {
+      "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_2_SP",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::STG_HR_PT_1": {
+    "target": {
+      "object": "STG_HR_PT_1",
+      "schema": "COS_DWH"
+    }
+  },
+  "SDI_SSFF::MSTR_EMPLOYEE": {
+    "target": {
+      "object": "SDI_SSFF::MSTR_EMPLOYEE",
+      "schema": "COS_DWH"
+    }
+  },
+  "COS_DWH::FT_SSFF_HEADCOUNT_12_MONTHS": {
+    "target": {
+      "object": "COS_DWH::FT_SSFF_HEADCOUNT_12_MONTHS",
+      "schema": "COS_DWH"
+    }
+  }
 }
-
