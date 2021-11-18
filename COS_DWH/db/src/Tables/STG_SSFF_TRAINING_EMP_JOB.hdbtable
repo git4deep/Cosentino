@@ -1,1 +1,0 @@
-COLUMN TABLE "STG_SSFF_TRAINING_EMP_JOB" ("businessUnit" NVARCHAR(32), "endDate" LONGDATE , "position" NVARCHAR(128), "startDate" LONGDATE  NOT NULL , "userId" NVARCHAR(100) NOT NULL , "workscheduleCode" NVARCHAR(128), PRIMARY KEY ("startDate", "userId")) UNLOAD PRIORITY 5  AUTO MERGE 
