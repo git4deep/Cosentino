@@ -232,5 +232,11 @@
         "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_6_SP",
         "schema": "COS_DWH"
         }
+    },
+    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP": {
+    "target": {
+        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP",
+        "schema": "COS_DWH"
+        }
     }
 }
