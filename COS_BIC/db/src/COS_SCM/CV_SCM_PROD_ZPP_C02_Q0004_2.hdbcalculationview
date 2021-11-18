@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="COS_SCM::CV_SCM_PROD_ZPP_C02_Q0004_2" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="CV_SCM_PROD_ZPP_C02_Q0004"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR">
+      <resourceUri>COS_SCM::BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR</resourceUri>
+    </DataSource>
+  </dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+        <viewAttribute id="ZFABRICAL_DISPLAY_KEY"/>
+        <viewAttribute id="ZAMPPPUC8"/>
+        <viewAttribute id="00O2TLOFYDHW5D17X0UYS104F"/>
+      </viewAttributes>
+    <calculatedViewAttributes/>
+      <input node="BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR"/>
+    <filter>&quot;ZAMPPPUC8&quot; = 'PRENSA01' OR
+&quot;ZAMPPPUC8&quot; = 'PRENSA02' OR
+&quot;ZAMPPPUC8&quot; = 'PRENSA03'</filter>
+  </calculationView>
+</calculationViews>
+  <logicalModel id="Projection_1">
+    <attributes>
+      <attribute id="ZFABRICAL_DISPLAY_KEY" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZFABRICAL_DISPLAY_KEY"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZFABRICAL_DISPLAY_KEY"/>
+      </attribute>
+      <attribute id="ZAMPPPUC8" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ZAMPPPUC8"/>
+        <keyMapping columnObjectName="Projection_1" columnName="ZAMPPPUC8"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="00O2TLOFYDHW5D17X0UYS104F" order="3" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="00O2TLOFYDHW5D17X0UYS104F"/>
+        <measureMapping columnObjectName="Projection_1" columnName="00O2TLOFYDHW5D17X0UYS104F"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+<layout>
+  <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="87" y="249"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+</layout>
+</Calculation:scenario>
