@@ -664,6 +664,12 @@
         "object": "SDI_SSFF.SAP_HR::FG_FT_HR_ABSENTEEISM_COST_2_SP",
         "schema": "COS_DWH"
         }
+    },
+    "COS_DWH::STG_HR_PT_1": {
+    "target": {
+        "object": "STG_HR_PT_1",
+        "schema": "COS_DWH"
+        }
     }
 }
 
