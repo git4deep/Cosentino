@@ -1,0 +1,29 @@
+PROCEDURE 
+    "COS_DWH::SP_HEADCOUNT_PRUEBA"
+(
+    IN "START_DATE" DATE,
+    IN "END_DATE"   DATE,
+    OUT RETURN_TABLE TABLE ( "YEAR" INTEGER, "DAYS" DOUBLE)
+)
+LANGUAGE SQLSCRIPT READS SQL DATA
+AS
+BEGIN
+
+RETURN_TABLE = 
+    SELECT 
+        YEAR, 
+        SUM( "DAYS") "DAYS"
+    FROM 
+    (
+        SELECT DISTINCT 
+            "YEAR", 
+            "MONTH", 
+            "DAYS_IN_PERIOD" "DAYS"
+        FROM 
+            "FT_SSFF"
+        WHERE 
+            "DW_EFFECTIVE_DATE" BETWEEN :START_DATE AND :END_DATE
+    ) 
+    GROUP BY YEAR;
+
+END
