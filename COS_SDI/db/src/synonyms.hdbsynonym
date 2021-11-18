@@ -353,9 +353,9 @@
         "schema": "COS_DWH"
         }
     },
-    "COS_DWH::FT_SSFF_HEADCOUNT_12_MONTHS": {
+    "COS_DWH::FT_SSFF_HEADCOUNT_12MONTHS": {
     "target": {
-        "object": "FT_SSFF_HEADCOUNT_12_MONTHS",
+        "object": "FT_SSFF_HEADCOUNT_12MONTHS",
         "schema": "COS_DWH"
         }
     },
