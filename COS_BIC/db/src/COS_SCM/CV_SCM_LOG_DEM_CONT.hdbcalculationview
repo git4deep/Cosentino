@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="COS_SCM::CV_SCM_LOG_DEM_CONT" applyPrivilegeType="NONE" defaultClient="$$client$$" dataCategory="CUBE" enforceSqlExecution="false" outputViewType="Aggregation" xscCompatibilityMode="true">
+  <descriptions defaultDescription="Demoras de contenedores"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="V_SCM_LOG_DEM_CONT">
+      <resourceUri>COS_SCM::V_SCM_LOG_DEM_CONT</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="V_SCM_LOG_DEM_CONT">
+    <attributes>
+      <attribute id="DS_VESSL" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. buque"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DS_VESSL"/>
+      </attribute>
+      <attribute id="CD_CNTNR" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Núm. contenedor"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_CNTNR"/>
+      </attribute>
+      <attribute id="CD_TIPO_DIA" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo de día"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_TIPO_DIA"/>
+      </attribute>
+      <attribute id="CD_PORIG" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. POL"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_PORIG"/>
+      </attribute>
+      <attribute id="CD_PDEST" order="5" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. POD"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_PDEST"/>
+      </attribute>
+      <attribute id="CD_PEVEN" order="6" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. POE"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_PEVEN"/>
+      </attribute>
+      <attribute id="FL_FINAL" order="7" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Finalizado"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="FL_FINAL"/>
+      </attribute>
+      <attribute id="DT_EVENT" order="8" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fec. evento"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DT_EVENT"/>
+      </attribute>
+      <attribute id="DS_EVENT" order="9" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. evento"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DS_EVENT"/>
+      </attribute>
+      <attribute id="CD_TIPO_EVENT" order="10" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo evento"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_TIPO_EVENT"/>
+      </attribute>
+      <attribute id="CD_PROVI" order="11" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Cód. naviera"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_PROVI"/>
+      </attribute>
+      <attribute id="DS_PROVI" order="12" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Nom. naviera"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DS_PROVI"/>
+      </attribute>
+      <attribute id="DT_NATUR" order="15" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fec. natural"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DT_NATUR"/>
+      </attribute>
+      <attribute id="DT_ESTIM" order="16" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="ETA"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DT_ESTIM"/>
+      </attribute>
+      <attribute id="CD_LUGAR_DEMORA" order="17" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Lugar demora"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_LUGAR_DEMORA"/>
+      </attribute>
+      <attribute id="CD_TRANS" order="18" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Núm. tte."/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_TRANS"/>
+      </attribute>
+      <attribute id="DT_DEPAR" order="20" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fec. salida"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DT_DEPAR"/>
+      </attribute>
+      <attribute id="DS_ALERT_TYPE" order="21" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo alerta"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DS_ALERT_TYPE"/>
+      </attribute>
+      <attribute id="CD_TIPO_DEMOR" order="22" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo demora"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_TIPO_DEMOR"/>
+      </attribute>
+      <attribute id="CD_CNTNR_TYPE" order="23" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Tipo contenedor"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CD_CNTNR_TYPE"/>
+      </attribute>
+      <attribute id="DT_CNTNR" order="24" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Fec. contenedor"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="DT_CNTNR"/>
+      </attribute>
+      <attribute id="FL_EN_DEMORA" order="38" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="En demora"/>
+        <keyMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="FL_EN_DEMORA"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <baseMeasures>
+      <measure id="QT_TABLE" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Cant. TX"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="QT_TABLE"/>
+      </measure>
+      <measure id="VL_CNTNR" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Valor contenedor"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="VL_CNTNR"/>
+      </measure>
+      <measure id="CC_QT_DAYS" order="19" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días desde evento"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_QT_DAYS"/>
+      </measure>
+      <measure id="NR_DAYS_ABAJA" order="25" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta baja"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="NR_DAYS_ABAJA"/>
+      </measure>
+      <measure id="NR_DAYS_AGRAV" order="26" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta grave"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="NR_DAYS_AGRAV"/>
+      </measure>
+      <measure id="NR_DAYS_MAXIM" order="27" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días para alerta máxima"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="NR_DAYS_MAXIM"/>
+      </measure>
+      <measure id="CC_DIAS_EN_DEMORA_BAJA" order="28" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días en demora baja"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_DIAS_EN_DEMORA_BAJA"/>
+      </measure>
+      <measure id="CC_DIAS_EN_DEMORA_GRAVE" order="29" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días en demora grave"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_DIAS_EN_DEMORA_GRAVE"/>
+      </measure>
+      <measure id="CC_DIAS_EN_DEMORA_MAXIM" order="30" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Días en demora máxima"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_DIAS_EN_DEMORA_MAXIM"/>
+      </measure>
+      <measure id="CC_NIVEL_DEMORA" order="31" aggregationType="sum" engineAggregation="count" measureType="simple">
+        <descriptions defaultDescription="Nivel de demora"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_NIVEL_DEMORA"/>
+      </measure>
+      <measure id="CC_INI_DEMORA_BAJA" order="32" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Inicio demora baja"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_INI_DEMORA_BAJA"/>
+      </measure>
+      <measure id="CC_INI_DEMORA_GRAVE" order="33" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Inicio demora grave"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_INI_DEMORA_GRAVE"/>
+      </measure>
+      <measure id="CC_INI_DEMORA_MAXIMA" order="34" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="Inicio demora máxima"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="CC_INI_DEMORA_MAXIMA"/>
+      </measure>
+      <measure id="VL_COSTE_ALERTA_BAJA_EUR" order="35" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="EUR/día alerta baja"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="VL_COSTE_ALERTA_BAJA_EUR"/>
+      </measure>
+      <measure id="VL_COSTE_ALERTA_GRAVE_EUR" order="36" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="EUR/día alerta grave"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="VL_COSTE_ALERTA_GRAVE_EUR"/>
+      </measure>
+      <measure id="VL_COSTE_ALERTA_MAXIM_EUR" order="37" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="EUR/día alerta máxima"/>
+        <measureMapping columnObjectName="V_SCM_LOG_DEM_CONT" columnName="VL_COSTE_ALERTA_MAXIM_EUR"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>
