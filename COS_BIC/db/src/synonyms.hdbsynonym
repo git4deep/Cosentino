@@ -215,46 +215,52 @@
       "schema": "COS_SCM"
     }
   },
-"COS_SCM::DUMMY": {
-"target": {
-"object": "DUMMY",
-"schema": "SYS"
-}
-},
-"COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT": {
+  "COS_SCM::DUMMY": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
+  },
+  "COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_BUSINESSUNIT",
       "schema": "COS_DWH"
     }
   },
-"COS_DWH::USER_SECURITY_FILTER_DIVISION": {
+  "COS_DWH::USER_SECURITY_FILTER_DIVISION": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_DIVISION",
       "schema": "COS_DWH"
     }
   },
-"COS_DWH::USER_SECURITY_FILTER_DEPARTMENT": {
+  "COS_DWH::USER_SECURITY_FILTER_DEPARTMENT": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_DEPARTMENT",
       "schema": "COS_DWH"
     }
   },
-"COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT": {
+  "COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_SUBDEPARTMENT",
       "schema": "COS_DWH"
     }
   },
-"COS_DWH::USER_SECURITY_FILTER_PROFITCENTER": {
+  "COS_DWH::USER_SECURITY_FILTER_PROFITCENTER": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_PROFITCENTER",
       "schema": "COS_DWH"
     }
   },
-"COS_DWH::USER_SECURITY_FILTER_COSTCENTER": {
+  "COS_DWH::USER_SECURITY_FILTER_COSTCENTER": {
     "target": {
       "object": "COS_DWH::USER_SECURITY_FILTER_COSTCENTER",
       "schema": "COS_DWH"
     }
-  }     
+  },
+  "COS_SCM::BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR": {
+    "target": {
+      "object": "BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR",
+      "schema": "COS_SCM"
+    }
+  }
 }

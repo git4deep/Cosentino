@@ -1,4 +1,8 @@
-VIEW "V_SCM_LOG_DEM_CONT" ( "DS_EVENT", "QT_TABLE", "DT_NATUR", "CD_PORIG", "CD_PDEST", "CD_PEVEN", "FL_FINAL", "DS_PROVI", "DT_EVENT", "CD_TIPO_EVENT", "VL_CNTNR", "DT_ESTIM", "CD_TRANS", "CD_PROVI", "CD_CNTNR_TYPE", "DT_DEPAR", "CD_CNTNR", "DT_CNTNR", "DS_VESSL", "DS_ALERT_TYPE", "NR_DAYS_ABAJA", "NR_DAYS_AGRAV", "NR_DAYS_MAXIM", "CD_TIPO_DEMOR", "CD_TIPO_DIA", "CD_LUGAR_DEMORA", "CC_QT_DAYS", "CC_NIVEL_DEMORA", "CC_INI_DEMORA_BAJA", "CC_INI_DEMORA_GRAVE", "CC_INI_DEMORA_MAXIMA", "CC_DIAS_EN_DEMORA_BAJA", "CC_DIAS_EN_DEMORA_GRAVE", "CC_DIAS_EN_DEMORA_MAXIM", "VL_COSTE_ALERTA_BAJA_EUR", "VL_COSTE_ALERTA_GRAVE_EUR", "VL_COSTE_ALERTA_MAXIM_EUR", "FL_EN_DEMORA" ) AS select
+VIEW "V_SCM_LOG_DEM_CONT" ( "DS_EVENT", "QT_TABLE", "DT_NATUR", "CD_PORIG", "CD_PDEST", "CD_PEVEN", "FL_FINAL", "DS_PROVI", "DT_EVENT",
+ "CD_TIPO_EVENT", "VL_CNTNR", "DT_ESTIM", "CD_TRANS", "CD_PROVI", "CD_CNTNR_TYPE", "DT_DEPAR", "CD_CNTNR", "DT_CNTNR", "DS_VESSL", "DS_ALERT_TYPE", 
+ "NR_DAYS_ABAJA", "NR_DAYS_AGRAV", "NR_DAYS_MAXIM", "CD_TIPO_DEMOR", "CD_TIPO_DIA", "CD_LUGAR_DEMORA", "CC_QT_DAYS", "CC_NIVEL_DEMORA", "CC_INI_DEMORA_BAJA",
+  "CC_INI_DEMORA_GRAVE", "CC_INI_DEMORA_MAXIMA", "CC_DIAS_EN_DEMORA_BAJA", "CC_DIAS_EN_DEMORA_GRAVE", "CC_DIAS_EN_DEMORA_MAXIM", "VL_COSTE_ALERTA_BAJA_EUR", 
+  "VL_COSTE_ALERTA_GRAVE_EUR", "VL_COSTE_ALERTA_MAXIM_EUR", "FL_EN_DEMORA" ) AS select
     t.DS_EVENT,
     t.QT_TABLE,
     t.DT_NATUR,
@@ -29,7 +33,7 @@ VIEW "V_SCM_LOG_DEM_CONT" ( "DS_EVENT", "QT_TABLE", "DT_NATUR", "CD_PORIG", "CD_
     
     TO_VARCHAR(
         case
-            when t.CC_QT_DAYS > t.NR_DAYS_MAXIM then 'M�xima'
+            when t.CC_QT_DAYS > t.NR_DAYS_MAXIM then 'Maxima'
             when t.CC_QT_DAYS > t.NR_DAYS_AGRAV then 'Grave'
             when t.CC_QT_DAYS > t.NR_DAYS_ABAJA then 'Baja'
             else 'Sin demora'
@@ -130,7 +134,7 @@ from (
         
     UNION ALL
     
-    -- Tr�nsito
+    -- Transito
     select 
         tc.DS_EVENT,
         tc.QT_TABLE,
@@ -162,7 +166,7 @@ from (
         ca.VL_ALTA                          VL_COSTE_ALERTA_GRAVE,
         ca.VL_MAXIM                         VL_COSTE_ALERTA_MAXIM,
         DAYS_BETWEEN (tc.DT_EVENT, NOW())   CC_QT_DAYS,
-        'Tr�nsito'                          CD_LUGAR_DEMORA
+        'Transito'               AS           CD_LUGAR_DEMORA
     from scm_log_contract_alert  ca
         inner join v_scm_log_tracker_container tc on tc.cd_peven = ca.cd_load_port and tc.cd_tipo_event = ca.cd_tipo_event and tc.cd_provi = ca.cd_navie
     where ca.DT_CONTR_FROM <= now() AND ca.DT_CONTR_TO >= NOW()         -- Contratos activos
@@ -214,5 +218,5 @@ from (
 ) t
     left join odt_zdash_logis_srv_tcurr c on c."Fcurr" = t.cd_moneda
                                                     and c."Tcurr" = 'EUR'
-                                                    and c."Kurst" = 'ZCGS'    -- CdG Simulaci�n. Este tipo se mantiene actualizado todo el a�o. El tipo ZCDG se actualiza DESPU�S de inicio de a�o.
+                                                    and c."Kurst" = 'ZCGS'    -- CdG Simulacian. Este tipo se mantiene actualizado todo el ano. El tipo ZCDG se actualiza DESPUS de inicio de ano.
                                                     and right(c."Gdatu", 4) = year(now())
