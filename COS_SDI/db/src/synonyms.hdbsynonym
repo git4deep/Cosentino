@@ -239,13 +239,12 @@
         "schema": "COS_DWH"
         }
     },
-    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP_2": {
+    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP": {
     "target": {
-        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP_2",
+        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_2_SP",
         "schema": "COS_DWH"
         }
     },
-    "COS_DWH::FT_LEARNING_HOURS": {
     "SDI_SSFF::FG_STG_JOB_REQUISITION_SP": {
     "target": {
         "object": "SDI_SSFF::FG_STG_JOB_REQUISITION_SP",
@@ -360,9 +359,9 @@
         "schema": "COS_DWH"
         }
     },
-    "COS_DWH::FT_SSFF_HEADCOUNT_12_MONTHS": {
+    "COS_DWH::FT_SSFF_HEADCOUNT_12MONTHS": {
     "target": {
-        "object": "FT_SSFF_HEADCOUNT_12_MONTHS",
+        "object": "FT_SSFF_HEADCOUNT_12MONTHS",
         "schema": "COS_DWH"
         }
     },
