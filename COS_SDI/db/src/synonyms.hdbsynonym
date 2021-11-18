@@ -239,6 +239,12 @@
         "schema": "COS_DWH"
         }
     },
+    "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP_2": {
+    "target": {
+        "object": "SDI_SSFF::FG_FT_SSFF_ABSENTEEISM_COST_SP_2",
+        "schema": "COS_DWH"
+        }
+    },
     "COS_DWH::FT_LEARNING_HOURS": {
     "target": {
         "object": "FT_LEARNING_HOURS",
