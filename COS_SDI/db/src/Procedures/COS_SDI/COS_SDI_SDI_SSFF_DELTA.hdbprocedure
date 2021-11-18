@@ -25,7 +25,7 @@ call "COS_DWH"."SDI_SSFF::MSTR_EMPLOYEE"();
 call "COS_DWH"."SDI_SSFF::MSTR_POSITION_SP"();
 call "COS_DWH"."SDI_SSFF::MSTR_ORGANIZATIONAL_UNIT_SP"();
 call "COS_DWH"."SDI_SSFF::MSTR_POSITION_HIST_SP"();
---Inserción manual para los registros cuyos datos no están informados o no cuadran entre fuentes
+--Inserciï¿½n manual para los registros cuyos datos no estï¿½n informados o no cuadran entre fuentes
 EXEC ('INSERT INTO "COS_DWH"."MSTR_FO_BUSINESS_UNIT" VALUES (''Sin Asignar'', ''Sin Asignar'', TO_TIMESTAMP( TO_DATE(''01-01-1900'', ''dd-mm-yyyy'')), NULL, NULL)');
 EXEC ('INSERT INTO "COS_DWH"."MSTR_FO_DIVISION" VALUES (''Sin Asignar'', ''Sin Asignar'', TO_TIMESTAMP( TO_DATE(''01-01-1900'', ''dd-mm-yyyy'')), NULL, NULL, NULL)');
 EXEC ('INSERT INTO "COS_DWH"."MSTR_FO_DEPARTMENT" VALUES (''Sin Asignar'', ''Sin Asignar'', TO_TIMESTAMP( TO_DATE(''01-01-1900'', ''dd-mm-yyyy'')), NULL, NULL, NULL)');
