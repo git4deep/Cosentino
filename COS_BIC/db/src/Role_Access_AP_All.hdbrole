@@ -1,6 +1,6 @@
 {
   "role": {
-    "name": "ROLE_ACCESS_ALL",
+    "name": "Role_Access_AP_All",
     "schema_analytic_privileges": [
       {
         "privileges": [
