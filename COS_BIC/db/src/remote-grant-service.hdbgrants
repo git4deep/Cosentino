@@ -5,8 +5,7 @@
 				"COS_SCM::external_access_g",
 				"COS_DWH::external_access_g",
 				"COS_SDI::external_access_g",
-                "MODELING",
-                "AP_ROLE"
+                "MODELING"
 			]
 		},
 		"application_user": {
@@ -14,8 +13,7 @@
 				"COS_SCM::external_access_g",
 				"COS_DWH::external_access_g",
 				"COS_SDI::external_access_g",				
-                "MODELING",
-                "AP_ROLE"
+                "MODELING"
 			]
 		}
 	}
