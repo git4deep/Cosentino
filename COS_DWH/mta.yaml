@@ -17,6 +17,10 @@ modules:
           url: '${default-url}'
     requires:
       - name: hdi_db
+      - name: SSFF
+      - name: Intranet
+      - name: IntranetKPI
+      - name: Testing
 resources:
   - name: hdi_db
     type: com.sap.xs.hdi-container
@@ -33,4 +37,28 @@ resources:
       service-name: remote-grant-service
   - name: myjobxsjs-uaa
     type: com.sap.xs.uaa-space
+  - name: SSFF
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: SSFF
+    properties:
+      xshttpdest-SSFF-service-name: '${service-name}'
+  - name: Intranet
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: Intranet
+    properties:
+      xshttpdest-Intranet-service-name: '${service-name}'
+  - name: IntranetKPI
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: IntranetKPI
+    properties:
+      xshttpdest-IntranetKPI-service-name: '${service-name}'
+  - name: Testing
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: Testing
+    properties:
+      xshttpdest-Testing-service-name: '${service-name}'
 
