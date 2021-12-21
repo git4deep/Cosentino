@@ -1,26 +1,51 @@
-_schema-version: "2.1"
-ID: COS_SCM
-version: 0.0.1
-modules:
-- name: db
-  type: hdb
-  path: db
-  requires:
-  - name: hdi_db
-    properties:
-      TARGET_CONTAINER: ~{hdi-container-name}
-  - name: remote-grant-service
+################################################
+#   Pipeline for COS_SCM                     #
+################################################
+name: COS_SCM
 resources:
-- name: hdi_db
-  type: com.sap.xs.hdi-container
-  parameters:
-    service-name: HDI_COS_SCM
-    config:
-      schema: COS_SCM
-      makeUniqueName: false
-  properties:
-    hdi-container-name: ${service-name}
-- name: remote-grant-service
-  type: org.cloudfoundry.existing-service
-  parameters:
-    service-name: remote-grant-service
+  containers:
+  - container: mta
+    image: 'devxci/mbtci:latest'
+    options: --user 0:0
+  - container: cfcli
+    image: 'ppiper/cf-cli'
+    options: --user 0:0 --privileged
+
+trigger:
+  - main
+
+pool: 
+    vmImage: 'ubuntu-latest'
+
+################################
+#   Build                      #
+################################
+stages:       
+  - stage: build
+    displayName: Build
+    jobs:
+      - job: build 
+        container: mta
+        steps: 
+          - bash: 'mbt build -p=cf --mtar=COS_SCM.mtar'
+          - publish: $(System.DefaultWorkingDirectory)/mta_archives/COS_SCM.mtar
+            artifact: COS_SCM 
+
+################################
+#   Deploy DEV                 #
+################################
+  - stage: deploy_dev
+    displayName: Deploy DEV
+    dependsOn: build
+    jobs:
+      - deployment: build        
+        environment: 'COS_SCM'
+        container: cfcli
+        strategy:
+          runOnce:
+            deploy:        
+              steps:
+               - download: current
+                 artifact: COS_SCM
+               - bash: 'cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG-DEV)" -s "$(CF-SPACE-DEV)"'
+               - bash: 'cf deploy $(Pipeline.Workspace)/COS_SCM/COS_SCM.mtar -f'
