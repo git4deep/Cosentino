@@ -21,7 +21,7 @@
                ]
             },
             {
-               "name":"R3_PRO_2",
+               "name":"R3_PRO",
                "type":"REMOTE SOURCE",
                "privileges":[
                   "CREATE VIRTUAL TABLE",
@@ -58,18 +58,6 @@
             },
             {
                "name":"R3_DEV",
-               "type":"REMOTE SOURCE",
-               "privileges":[
-                  "CREATE VIRTUAL TABLE",
-                  "CREATE VIRTUAL FUNCTION",
-                  "CREATE REMOTE SUBSCRIPTION",
-                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
-                  "ALTER",
-                  "DROP"
-               ]
-            },
-            {
-               "name":"SAP_HR_DEC",
                "type":"REMOTE SOURCE",
                "privileges":[
                   "CREATE VIRTUAL TABLE",
@@ -152,7 +140,7 @@
                ]
             },
             {
-               "name":"R3_PRO_2",
+               "name":"R3_PRO",
                "type":"REMOTE SOURCE",
                "privileges":[
                   "CREATE VIRTUAL TABLE",
@@ -189,18 +177,6 @@
             },
             {
                "name":"R3_DEV",
-               "type":"REMOTE SOURCE",
-               "privileges":[
-                  "CREATE VIRTUAL TABLE",
-                  "CREATE VIRTUAL FUNCTION",
-                  "CREATE REMOTE SUBSCRIPTION",
-                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
-                  "ALTER",
-                  "DROP"
-               ]
-            },
-            {
-               "name":"SAP_HR_DEC",
                "type":"REMOTE SOURCE",
                "privileges":[
                   "CREATE VIRTUAL TABLE",

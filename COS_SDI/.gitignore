@@ -8,3 +8,7 @@ COS_DWH/db/.env
 COS_SDI/db/.env
 # auto generated wildcard
 Cosentino/COS_SDI/db/.env
+# auto generated wildcard
+COS_SCM/db/.env
+# auto generated wildcard
+COS_BIC/db/.env
