@@ -7,6 +7,8 @@ modules:
     path: db
     requires:
       - name: hdi_db
+        properties:
+           TARGET_CONTAINER: ~{hdi-container-name}
       - name: remote-grant-service
   - name: jobs
     type: nodejs
@@ -21,6 +23,11 @@ modules:
       - name: Intranet
       - name: IntranetKPI
       - name: Testing
+      - name: myjobxsjs-uaa
+      - name: jobScheduler
+    properties:
+      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+
 resources:
   - name: hdi_db
     type: com.sap.xs.hdi-container
@@ -61,4 +68,7 @@ resources:
       service-name: Testing
     properties:
       xshttpdest-Testing-service-name: '${service-name}'
-
+  - name: jobScheduler
+    type: com.sap.xs.job-scheduler
+    parameters:
+      service-plan: standard

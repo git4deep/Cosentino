@@ -1,27 +1,38 @@
-const xsjs = require('@sap/xsjs');
-const xsenv = require('@sap/xsenv');
+/*eslint no-console: 0, no-unused-vars: 0*/
+"use strict";
+
+var xsjs  = require("@sap/xsjs");
+var xsenv = require("@sap/xsenv");
+var port  = process.env.PORT || 3000;
 
 var options = {
-	// anonymous: false,   // with UAA
-	anonymous: true,   // without UAA
-	xsApplicationUser: true,
-	auditLog: { logToConsole: true },
-	redirectUrl: '/jobs/index.xsjs',
-	headers: {"access-control-allow-origin": "*"}
+	anonymous : true, // remove to authenticate calls
+	auditLog : { logToConsole: true }, // change to auditlog service for productive scenarios
+	redirectUrl : "/index.xsjs"
 };
 
+// configure HANA
 try {
-	options = Object.assign(options, xsenv.getServices({ hana: { tag: "hana" } }));
+	options = Object.assign(options, xsenv.getServices({ hana: {tag: "hana"} }));
 } catch (err) {
 	console.log("[WARN]", err.message);
 }
 
-/*try {
-	options = Object.assign(options, xsenv.getServices({ uaa: { tag: "xsuaa" } }));
+// configure UAA
+try {
+	options = Object.assign(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
 } catch (err) {
 	console.log("[WARN]", err.message);
-}*/
+}
 
-const port = process.env.PORT || 5001;
+// configure job scheduler
+try {
+       options = Object.assign(options, xsenv.getServices({ jobs: {tag: "jobscheduler"} }));
+} catch (err) {
+       console.log("[WARN]", err.message);
+}
+
+// start server
 xsjs(options).listen(port);
-console.info('Listening on http://localhost:' + port);
+
+console.log("Server listening on port %d", port);
