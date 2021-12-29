@@ -87,13 +87,16 @@ function AuditError(audit_id, section, error) {
 function parseEmpJob() {
 
     var auditId = AuditInitialize('Emp Job');
+    //console.log("auditId"+auditId);
 
 	var dest = $.net.http.readDestination("SSFF");
+    //console.log("dest"+dest);
 	var iterationToken = '';
 	var conn = $.db.getConnection();
 	var queryTruncate = "TRUNCATE TABLE \"COS_DWH\".\"STG_EMP_JOB\" ";
 	var st = conn.prepareStatement(queryTruncate);
 	st.execute();
+    //console.log("beforeloop");
 
 	do {
 	    try {
@@ -102,7 +105,10 @@ function parseEmpJob() {
 		TokenReq.headers.set('Authorization', 'Basic QURNSU5DT1NFTlRJTk9AQzAwMDM1NTgwNTBQOkNvc2VudGlubzE3');
 
 		client.request(TokenReq, dest);
+        console.log("before response");
 		var response = client.getResponse();
+        //console.log("afterresponse"+response.body.asString());
+        //console.log("after response"+response + JSON.Stringify(response));
 		client.close();
 
 		conn = $.db.getConnection();
@@ -117,7 +123,8 @@ function parseEmpJob() {
 			iterationToken = iterationTokenString.substring(iterationTokenString.indexOf('$skiptoken='), iterationTokenString.length) +
 				'&';
 		}
-
+        //console.log("iterationToken"+iterationToken);
+        //console.log(parseAttempt.length+"parseattempt");
 		
 			for (var i = 0; i < parseAttempt.length; i++) {
 
@@ -239,6 +246,10 @@ function parseEmpJob() {
 			}
 			conn.close();
 		} catch (e) {
+            console.log("responseinerror");
+            //console.log(JSON.parse(e));
+            //console.log($.response+"responsef");
+            //console.log($.response.setBody);
 			$.response.setBody("Audit " + occupationPercent + " " + workingDaysPerWeek + " " + standardHours );
 			AuditError(auditId, 'EmpJob', e.message);
 			return;

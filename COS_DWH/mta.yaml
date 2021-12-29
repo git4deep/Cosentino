@@ -10,7 +10,7 @@ modules:
         properties:
            TARGET_CONTAINER: ~{hdi-container-name}
       - name: remote-grant-service
-  - name: jobs
+  - name: jobs_dwh
     type: nodejs
     path: jobs
     provides:

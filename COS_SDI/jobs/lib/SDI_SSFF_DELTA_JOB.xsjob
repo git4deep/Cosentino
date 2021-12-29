@@ -5,6 +5,6 @@
                 [
                                 {
                                 "description": "This job loads the data from SSFF, updating with new information.This process is executed daily at 04:00", 
-                                "xscron": "* * * * 3 * *" 
+                                "xscron": "* * * * 3 0 0" 
                                 }
                 ]}

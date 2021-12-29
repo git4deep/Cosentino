@@ -87,22 +87,26 @@ function AuditError(audit_id, section, error) {
 function parseJobApplication() {
 
     var auditId = AuditInitialize( 'jobApplication');
+    console.log("audit"+auditId );
 	var dest = $.net.http.readDestination("SSFF");
+    //console.log("dest"+JSON.stringify(dest));
 	var top = 100;
 	var skip = 0;
 	var response;
 	var content;
 	var conn = $.db.getConnection();
 	var parseAttempt;
-	var queryTruncate = "TRUNCATE TABLE \"COS_DWH\".\"STG_JOB_APPLICATION\" ";
+	var queryTruncate = "DELETE FROM \"COS_DWH\".\"STG_JOB_APPLICATION\" ";
 	var st = conn.prepareStatement(queryTruncate);
 	st.execute();
 	var client = new $.net.http.Client();
 	//get total number of records
 	var TokenReq = new $.web.WebRequest($.net.http.GET, '/JobApplication/$count');
 	TokenReq.headers.set('Authorization', 'Basic QURNSU5DT1NFTlRJTk9AQzAwMDM1NTgwNTBQOkNvc2VudGlubzE3');
+    //console.log("before client call"+TokenReq);
 	client.request(TokenReq, dest);
 	var recordsToLoad = client.getResponse().body.asString();
+    console.log("getcalldatabefore"+recordsToLoad);
 
 	do {
 		//start getting records in batches
@@ -110,14 +114,17 @@ function parseJobApplication() {
 			'&$select=appStatusSetItemId,applicationId,applicationTemplateId,candidateId,department,firstName,hiredOn,jobAppGuid,jobReqId,jobAppStatus'
 		);
 		TokenReq.headers.set('Authorization', 'Basic QURNSU5DT1NFTlRJTk9AQzAwMDM1NTgwNTBQOkNvc2VudGlubzE3');
+        //console.log("onemorereqindoblock");
 
 		try {
 			client.request(TokenReq, dest);
 			response = client.getResponse();
+            console.log("response inside try block"+JSON.stringify(response));
 			content = JSON.parse(response.body.asString());
 			parseAttempt = content.d.results;
 
 		} catch (e) {
+            console.log("getcalldataerror"+JSON.stringify(e));
 			client.close();
 			continue;
 			//throw new Error("Failed to get response from the server!" + e.message);			//TODO: Audit this error
@@ -126,6 +133,7 @@ function parseJobApplication() {
 		}
 
 		var toStr = "";
+        console.log("outoftry"+pa.length);
 
 		try {
 			for (var i = 0; i < parseAttempt.length; i++) {
@@ -147,6 +155,7 @@ function parseJobApplication() {
 				    jobAppGuid = parseAttempt[i].jobAppStatus.appStatusName + toStr;
 				}
 				var jobReqId = parseAttempt[i].jobReqId + toStr;
+                console.log("before query"+jobReqId);
 
 				var queryInsert = "INSERT INTO \"COS_DWH\".\"STG_JOB_APPLICATION\" VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 				st = conn.prepareStatement(queryInsert);
@@ -208,6 +217,7 @@ function parseJobApplication() {
 					st.setInt(11, parseFloat(jobReqId));
 				}
 				st.execute();
+                console.log("statement executed");
 				conn.commit();
 			}
 

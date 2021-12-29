@@ -89,7 +89,7 @@ function parseEmpPayRecurring() {
 	var dest = $.net.http.readDestination("SSFF");
 	var iterationToken = '';
 	var conn = $.db.getConnection();
-	var queryTruncate = "TRUNCATE TABLE \"COS_DWH\".\"STG_EMP_PAY_COMP_RECURRING\" ";
+	var queryTruncate = "DELETE FROM \"COS_DWH\".\"STG_EMP_PAY_COMP_RECURRING\" ";
 	var st = conn.prepareStatement(queryTruncate);
 	st.execute();
 

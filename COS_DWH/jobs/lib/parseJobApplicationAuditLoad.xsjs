@@ -117,12 +117,14 @@ function parseJobApplicationAuditLoad() {
 			appID = jobApplicationIds[i];
 			var str = '/JobApplication(' + appID +')/jobApplicationAudit?$format=json';
 			var TokenReq = new $.web.WebRequest($.net.http.GET, str);
+            console.log("before call"+JSON.stringify(dest));
 			TokenReq.headers.set('Authorization', 'Basic QURNSU5DT1NFTlRJTk9AQzAwMDM1NTgwNTBQOkNvc2VudGlubzE3');
 			client.request(TokenReq, dest);
 			response = client.getResponse();
 			var parseAttempt;
 			try{
 			    content = JSON.parse(response.body.asString());
+                console.log("response"+response.body.asString());
 			    parseAttempt = content.d.results;
 			}
 			catch(e){

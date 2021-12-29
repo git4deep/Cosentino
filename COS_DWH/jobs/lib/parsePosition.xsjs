@@ -91,7 +91,7 @@ function parsePosition() {
 	var dest = $.net.http.readDestination("SSFF");
 	var iterationToken = '';
 	var conn = $.db.getConnection();
-	var queryTruncate = "TRUNCATE TABLE \"COS_DWH\".\"STG_POSITION\" ";
+	var queryTruncate = "DELETE FROM \"COS_DWH\".\"STG_POSITION\" ";
 	var st = conn.prepareStatement(queryTruncate);
 	st.execute();
 
