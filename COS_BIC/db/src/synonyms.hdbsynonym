@@ -262,5 +262,11 @@
       "object": "BW_SCM_ADAPTER_PRO_ZPP_CP02_Q0004_CR",
       "schema": "COS_SCM"
     }
+  },
+  "COS_SCM::V_SCM_LOG_DEM_CONT": {
+    "target": {
+      "object": "V_SCM_LOG_DEM_CONT",
+      "schema": "COS_SCM"
+    }
   }
 }
