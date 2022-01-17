@@ -55,7 +55,55 @@
                   "ALTER",
                   "DROP"
                ]
-            }
+            },
+            {
+                "name":"ODT_ZDASH_LOGIS_SRV",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV_DES",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV_NEW",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            }                         
         ]
     },
 		"application_user": {
@@ -113,6 +161,54 @@
                   "ALTER",
                   "DROP"
                ]
+            },
+            {
+                "name":"ODT_ZDASH_LOGIS_SRV",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV_DES",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
+            },
+            {
+                "name":"ODT_ZSD_DW_SRV_NEW",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                   "ALTER",
+                   "DROP"
+                ]
             }
         ]
 		}
